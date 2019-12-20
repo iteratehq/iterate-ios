@@ -3,11 +3,11 @@
 //  IterateTests
 //
 //  Created by Michael Singleton on 12/20/19.
-//  Copyright © 2019 Iterate. All rights reserved.
+//  Copyright © 2019 Pickaxe LLC. (DBA Iterate). All rights reserved.
 //
 
 import XCTest
-@testable import Iterate
+import Iterate
 
 class IterateTests: XCTestCase {
 

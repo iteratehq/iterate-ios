@@ -142,6 +142,7 @@
 		270613B423AD862C00DDF342 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = "Pickaxe LLC. (DBA Iterate)";
 				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = Iterate;
