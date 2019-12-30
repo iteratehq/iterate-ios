@@ -17,6 +17,8 @@
 		270613E023BA4DD100DDF342 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613DF23BA4DD100DDF342 /* Errors.swift */; };
 		270613E623BA4F2500DDF342 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613E523BA4F2500DDF342 /* Survey.swift */; };
 		270613E823BA513900DDF342 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613E723BA513900DDF342 /* Show.swift */; };
+		270613EB23BA6BFD00DDF342 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613EA23BA6BFD00DDF342 /* Client.swift */; };
+		270613EF23BA6F6A00DDF342 /* Embed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613EE23BA6F6A00DDF342 /* Embed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 		270613DF23BA4DD100DDF342 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		270613E523BA4F2500DDF342 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		270613E723BA513900DDF342 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
+		270613EA23BA6BFD00DDF342 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		270613EE23BA6F6A00DDF342 /* Embed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Embed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 		270613BF23AD862C00DDF342 /* Iterate */ = {
 			isa = PBXGroup;
 			children = (
+				270613E923BA6B3D00DDF342 /* API */,
 				270613E223BA4EBE00DDF342 /* Error */,
 				270613E123BA4EB600DDF342 /* Iterate */,
 				270613C023AD862C00DDF342 /* Iterate.h */,
@@ -135,6 +140,31 @@
 			isa = PBXGroup;
 			children = (
 				270613E523BA4F2500DDF342 /* Survey.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		270613E923BA6B3D00DDF342 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				270613ED23BA6F5500DDF342 /* Models */,
+				270613EC23BA6F4B00DDF342 /* Client */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		270613EC23BA6F4B00DDF342 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				270613EA23BA6BFD00DDF342 /* Client.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		270613ED23BA6F5500DDF342 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				270613EE23BA6F6A00DDF342 /* Embed.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -252,8 +282,10 @@
 			files = (
 				270613DA23AE76A100DDF342 /* Configure.swift in Sources */,
 				270613E623BA4F2500DDF342 /* Survey.swift in Sources */,
+				270613EB23BA6BFD00DDF342 /* Client.swift in Sources */,
 				270613E023BA4DD100DDF342 /* Errors.swift in Sources */,
 				270613E823BA513900DDF342 /* Show.swift in Sources */,
+				270613EF23BA6F6A00DDF342 /* Embed.swift in Sources */,
 				270613D823AD8D6200DDF342 /* Iterate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
