@@ -99,8 +99,6 @@
 			children = (
 				27C3B28323BA9D7E00754F4D /* Error */,
 				270613E923BA6B3D00DDF342 /* API */,
-				270613EA23BA6BFD00DDF342 /* Client.swift */,
-				27C3B28123BA9BB600754F4D /* Paths.swift */,
 				270613E123BA4EB600DDF342 /* SDK */,
 				270613C023AD862C00DDF342 /* Iterate.h */,
 				270613C123AD862C00DDF342 /* Info.plist */,
@@ -141,6 +139,8 @@
 			children = (
 				27C3B28423BAA36D00754F4D /* Endpoints */,
 				270613ED23BA6F5500DDF342 /* Models */,
+				270613EA23BA6BFD00DDF342 /* Client.swift */,
+				27C3B28123BA9BB600754F4D /* Paths.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
