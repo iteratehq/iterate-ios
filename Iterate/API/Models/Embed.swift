@@ -10,7 +10,7 @@ import Foundation
 
 /// Represents the context of the request to the embed endpoint. This includes
 /// things like device type, user traits, and targeting options.
-struct EmbedContext {
+struct EmbedContext: Codable {
     var targeting: TargetingContext?
     var trigger: TriggerContext?
     var type: EmbedType?
@@ -19,7 +19,7 @@ struct EmbedContext {
 // MARK: Targeting
 
 /// Contains targeting options that are overridden by the client
-struct TargetingContext {
+struct TargetingContext: Codable {
     var frequency: TargetingContextFrequency?
     var surveyId: String?
 }
@@ -27,26 +27,26 @@ struct TargetingContext {
 /// Targeting content frequecy options. e.g. 'Always' is used to force
 /// a survey to be shown regardless of other targeting options set on
 /// the server
-enum TargetingContextFrequency: String {
+enum TargetingContextFrequency: String, Codable {
     case always = "always"
 }
 
 // MARK: Triggering
 
 /// Contains triggering options (e.g. indicate a survey was 'manually' triggered)
-struct TriggerContext {
+struct TriggerContext: Codable {
     var surveyId: String?
     var type: TriggerType?
 }
 
 /// Trigger types, currently the only option is manually triggered
-enum TriggerType: String {
+enum TriggerType: String, Codable {
     case manual = "manual"
 }
 
 // MARK: Type
 
-enum EmbedType: String {
+enum EmbedType: String, Codable {
     case mobile = "mobile"
     case web = "web"
 }

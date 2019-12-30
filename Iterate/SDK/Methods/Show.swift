@@ -17,9 +17,11 @@ extension Iterate {
     ///   - complete: Callback returning the survey that is displayed or an error
     public func show(surveyId: String, complete: (Survey?, Error?) -> Void) {
         guard self.apiKey != nil else {
-            complete(nil, IterateError.invalidApiKey)
+            complete(nil, IterateError.invalidAPIKey)
             return
         }
+        
+        // let (survey, error) = self.api.embed()
     }
 }
 

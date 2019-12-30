@@ -1,5 +1,5 @@
 //
-//  Client.swift
+//  Survey.swift
 //  Iterate
 //
 //  Created by Michael Singleton on 12/30/19.
@@ -8,10 +8,6 @@
 
 import Foundation
 
-struct APIClient {
-    let apiKey: String
-    
-    init(apiKey: String) {
-        self.apiKey = apiKey
-    }
-}
+
+/// TODO: Add properties
+public struct Survey: Codable {}

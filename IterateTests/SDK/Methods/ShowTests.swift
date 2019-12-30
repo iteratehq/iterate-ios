@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import Iterate
+@testable import Iterate
 
 /// Contains tests for the show method of the Iterate class
 class ShowTests: XCTestCase {
@@ -16,12 +16,13 @@ class ShowTests: XCTestCase {
     func testShowRequiresApiKey() {
         var error: Error?
         let exp = expectation(description: "Show completion callback")
-        Iterate.shared.show(surveyId: "") { (survey, e) in
+        let iterateInstance = Iterate()
+        iterateInstance.show(surveyId: "") { (survey, e) in
             error = e
             exp.fulfill()
         }
         
         waitForExpectations(timeout: 3)
-        XCTAssertEqual(error as? IterateError, IterateError.invalidApiKey)
+        XCTAssertEqual(error as? IterateError, IterateError.invalidAPIKey)
     }
 }

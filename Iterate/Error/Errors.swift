@@ -8,6 +8,12 @@
 
 import Foundation
 
-public enum IterateError: Error {
-    case invalidApiKey
+public enum IterateError: Error, Equatable {
+    case apiError(String)
+    case apiRequestError
+    case invalidAPIKey
+    case invalidAPIResponse
+    case invalidAPIUrl
+    case jsonDecoding
+    case jsonEncoding
 }
