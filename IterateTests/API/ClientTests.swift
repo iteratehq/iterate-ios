@@ -13,7 +13,7 @@ class ClientTests: XCTestCase {
     func testClientEmbed() {
         let api = APIClient(apiKey: testApiKey)
         var context = EmbedContext(type: EmbedType.mobile)
-        context.trigger = TriggerContext(surveyId: "5dfe369809b6ef0001b3f869", type: TriggerType.manual)
+        context.trigger = TriggerContext(surveyId: testManualTriggerSurvey, type: TriggerType.manual)
         
         let exp = expectation(description: "Show completion callback")
         var response: EmbedResponse?

@@ -8,6 +8,6 @@
 
 import Foundation
 
-
-/// TODO: Add properties
-public struct Survey: Codable {}
+public struct Survey: Codable {
+    let id: String
+}

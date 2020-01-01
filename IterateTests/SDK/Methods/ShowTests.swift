@@ -25,4 +25,24 @@ class ShowTests: XCTestCase {
         waitForExpectations(timeout: 3)
         XCTAssertEqual(error as? IterateError, IterateError.invalidAPIKey)
     }
+    
+    /// Test that the show method correctly returns a survey
+    func testShowReturnsASurvey() {
+        var error: Error?
+        var survey: Survey?
+        let exp = expectation(description: "Show completion callback")
+        let iterateInstance = Iterate()
+        iterateInstance.configure(apiKey: testApiKey)
+        iterateInstance.show(surveyId: testManualTriggerSurvey) { (surveyCallback, errorCallback) in
+            survey = surveyCallback
+            error = errorCallback
+            
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 3)
+        
+        XCTAssertNil(error)
+        XCTAssertEqual(survey?.id, testManualTriggerSurvey)
+    }
 }

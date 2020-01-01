@@ -9,8 +9,6 @@
 import XCTest
 @testable import Iterate
 
-let testApiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wYW55X2lkIjoiNWRmZTM2OGEwOWI2ZWYwMDAxYjNlNjE4IiwiaWF0IjoxNTc2OTQxMTk0fQ.QBWr2goMwOngVhi6wY9sdFAKEvBGmn-JRDKstVMFh6M"
-
 /// Contains tests for the configure method of the Iterate class
 class ConfigureTests: XCTestCase {
     
