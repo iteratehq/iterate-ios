@@ -3,7 +3,7 @@
 //  Iterate
 //
 //  Created by Michael Singleton on 1/1/20.
-//  Copyright © 2019 Pickaxe LLC. (DBA Iterate). All rights reserved.
+//  Copyright © 2020 Pickaxe LLC. (DBA Iterate). All rights reserved.
 //
 
 import Foundation
