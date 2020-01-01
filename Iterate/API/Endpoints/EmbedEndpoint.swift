@@ -24,45 +24,13 @@ struct EmbedAuth: Codable {
 extension APIClient {
     /// Embed API endpoint
     /// - Parameter context: Contains all data about the context of the embed call (device type, triggers, etc)
+    /// - Parameter complete: Results callback
     func embed(context: EmbedContext, complete: @escaping (EmbedResponse?, Error?) -> Void) -> Void {
         guard let data = try? encoder.encode(context) else {
             complete(nil, IterateError.jsonEncoding)
             return
         }
         
-        guard var request = request(path: Paths.Surveys.Embed) else {
-            complete(nil, IterateError.invalidAPIUrl)
-            return
-        }
-        
-        request.httpMethod = "POST"
-        request.httpBody = data
-        
-        // TODO: Move this to a helper method in Client
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard error == nil else {
-                complete(nil, IterateError.apiRequestError)
-                return
-            }
-            
-            guard let data = data else {
-                complete(nil, IterateError.invalidAPIResponse)
-                return
-            }
-            
-            guard let response = try? self.decoder.decode(Response<EmbedResponse>.self, from: data) else {
-                complete(nil, IterateError.jsonDecoding)
-                return
-            }
-            
-            if let err = response.error {
-                complete(nil, IterateError.apiError(err))
-                return
-            }
-            
-            complete(response.results, nil)
-        }
-        
-        task.resume()
+        post(path: Paths.Surveys.Embed, data: data, complete: complete)
     }
 }
