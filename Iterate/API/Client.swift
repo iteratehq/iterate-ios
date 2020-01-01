@@ -3,13 +3,15 @@
 //  Iterate
 //
 //  Created by Michael Singleton on 12/30/19.
-//  Copyright © 2019 Pickaxe LLC. (DBA Iterate). All rights reserved.
+//  Copyright © 2020 Pickaxe LLC. (DBA Iterate). All rights reserved.
 //
 
 import Foundation
 
+let DefaultAPIHost = "https://iteratehq.com/api/v1"
+
 /// Iterate API Client
-struct APIClient {
+class APIClient {
     // MARK: Properties
 
     /// API Host, should be https://iteratehq.com/api/v1 under most circumstances
@@ -30,7 +32,7 @@ struct APIClient {
     /// - Parameters:
     ///   - apiKey: Iterate API key
     ///   - apiHost: API Host
-    init(apiKey: String, apiHost: String = "https://iteratehq.com/api/v1") {
+    init(apiKey: String, apiHost: String = DefaultAPIHost) {
         self.apiHost = apiHost
         self.apiKey = apiKey
         
