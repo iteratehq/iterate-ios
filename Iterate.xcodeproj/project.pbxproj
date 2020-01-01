@@ -26,6 +26,9 @@
 		27C3B28A23BCF5FC00754F4D /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B28923BCF5FC00754F4D /* Context.swift */; };
 		27C3B29123BD1E7D00754F4D /* EmbedEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29023BD1E7D00754F4D /* EmbedEndpointTests.swift */; };
 		27C3B29423BD2A7F00754F4D /* ShowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29323BD2A7F00754F4D /* ShowTests.swift */; };
+		27C3B29723BD354C00754F4D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29623BD354C00754F4D /* Storage.swift */; };
+		27C3B29923BD360E00754F4D /* UserDefaultsStorageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29823BD360E00754F4D /* UserDefaultsStorageEngine.swift */; };
+		27C3B29C23BD3FA400754F4D /* MockStorageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29B23BD3FA400754F4D /* MockStorageEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		27C3B28923BCF5FC00754F4D /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		27C3B29023BD1E7D00754F4D /* EmbedEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedEndpointTests.swift; sourceTree = "<group>"; };
 		27C3B29323BD2A7F00754F4D /* ShowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTests.swift; sourceTree = "<group>"; };
+		27C3B29623BD354C00754F4D /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		27C3B29823BD360E00754F4D /* UserDefaultsStorageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageEngine.swift; sourceTree = "<group>"; };
+		27C3B29B23BD3FA400754F4D /* MockStorageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorageEngine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,7 @@
 				27C3B28323BA9D7E00754F4D /* Error */,
 				270613E923BA6B3D00DDF342 /* API */,
 				270613E123BA4EB600DDF342 /* SDK */,
+				27C3B29523BD352800754F4D /* Storage */,
 				270613C023AD862C00DDF342 /* Iterate.h */,
 				270613C123AD862C00DDF342 /* Info.plist */,
 			);
@@ -116,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				27C3B28C23BD1C9A00754F4D /* Integration */,
+				27C3B29A23BD3F9000754F4D /* Mocks */,
 				27C3B28B23BD1C8D00754F4D /* Unit */,
 				270613CD23AD862C00DDF342 /* Info.plist */,
 			);
@@ -246,6 +254,23 @@
 			path = Methods;
 			sourceTree = "<group>";
 		};
+		27C3B29523BD352800754F4D /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				27C3B29623BD354C00754F4D /* Storage.swift */,
+				27C3B29823BD360E00754F4D /* UserDefaultsStorageEngine.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		27C3B29A23BD3F9000754F4D /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				27C3B29B23BD3FA400754F4D /* MockStorageEngine.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -359,9 +384,11 @@
 			files = (
 				270613DA23AE76A100DDF342 /* Configure.swift in Sources */,
 				270613E623BA4F2500DDF342 /* Survey.swift in Sources */,
+				27C3B29923BD360E00754F4D /* UserDefaultsStorageEngine.swift in Sources */,
 				270613EB23BA6BFD00DDF342 /* Client.swift in Sources */,
 				270613E023BA4DD100DDF342 /* Errors.swift in Sources */,
 				27C3B28A23BCF5FC00754F4D /* Context.swift in Sources */,
+				27C3B29723BD354C00754F4D /* Storage.swift in Sources */,
 				27C3B28823BAA4BD00754F4D /* Response.swift in Sources */,
 				270613E823BA513900DDF342 /* Show.swift in Sources */,
 				27C3B28623BAA3A900754F4D /* EmbedEndpoint.swift in Sources */,
@@ -376,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				270613DC23AE773500DDF342 /* ConfigureTests.swift in Sources */,
+				27C3B29C23BD3FA400754F4D /* MockStorageEngine.swift in Sources */,
 				270613CC23AD862C00DDF342 /* IterateTests.swift in Sources */,
 				27C3B29423BD2A7F00754F4D /* ShowTests.swift in Sources */,
 				27C3B27C23BA832300754F4D /* ClientTests.swift in Sources */,

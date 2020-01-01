@@ -16,7 +16,7 @@ class ShowIntegrationTests: XCTestCase {
     func testShowRequiresApiKey() {
         var error: Error?
         let exp = expectation(description: "Show completion callback")
-        let iterateInstance = Iterate()
+        let iterateInstance = Iterate(storage: MockStorageEngine())
         iterateInstance.show(surveyId: testManualTriggerSurvey) { (survey, e) in
             error = e
             exp.fulfill()
@@ -31,8 +31,8 @@ class ShowIntegrationTests: XCTestCase {
         var error: Error?
         var survey: Survey?
         let exp = expectation(description: "Show completion callback")
-        let iterateInstance = Iterate()
-        iterateInstance.configure(apiKey: testApiKey)
+        let iterateInstance = Iterate(storage: MockStorageEngine())
+        iterateInstance.configure(apiKey: testCompanyApiKey)
         iterateInstance.show(surveyId: testManualTriggerSurvey) { (surveyCallback, errorCallback) in
             survey = surveyCallback
             error = errorCallback
@@ -44,5 +44,22 @@ class ShowIntegrationTests: XCTestCase {
         
         XCTAssertNil(error)
         XCTAssertEqual(survey?.id, testManualTriggerSurvey)
+    }
+    
+    /// Test that the show method correctly returns a survey
+    func testShowSetsUserApiKey() {
+        let exp = expectation(description: "Show completion callback")
+        let iterateInstance = Iterate(storage: MockStorageEngine())
+        iterateInstance.configure(apiKey: testCompanyApiKey)
+        XCTAssertEqual(iterateInstance.api?.apiKey, testCompanyApiKey)
+        
+        // Calling embed with a company API key will cause a user API key to be returned
+        // (we are testing that the new user key is saved correctly)
+        iterateInstance.show(surveyId: testManualTriggerSurvey) { (surveyCallback, errorCallback) in
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 3)
+        XCTAssertNotNil(iterateInstance.userApiKey)
+        XCTAssertNotEqual(iterateInstance.api?.apiKey, testCompanyApiKey)
     }
 }

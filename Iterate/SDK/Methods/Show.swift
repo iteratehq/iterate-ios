@@ -16,7 +16,7 @@ extension Iterate {
     ///   - surveyId: The id of the survey to show
     ///   - complete: Callback returning the survey that is displayed or an error
     public func show(surveyId: String, complete: @escaping (Survey?, Error?) -> Void) {
-        guard self.apiKey != nil else {
+        guard self.api != nil else {
             complete(nil, IterateError.invalidAPIKey)
             return
         }
@@ -26,6 +26,11 @@ extension Iterate {
         context.trigger = TriggerContext(surveyId: surveyId, type: TriggerType.manual)
         
         api?.embed(context: context, complete: { (response, error) in
+            // Update the user API key if one was returned
+            if let token = response?.auth?.token {
+                self.userApiKey = token
+            }
+            
             complete(response?.survey, error)
         })
     }

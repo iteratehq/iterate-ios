@@ -14,16 +14,16 @@ class ConfigureTests: XCTestCase {
     
     /// Test that the API key is correctly set on the shared instance
     func testConfigure() {
-        let client = Iterate()
-        client.configure(apiKey: testApiKey)
-        XCTAssertEqual(client.apiKey, testApiKey, "API key not set")
+        let client = Iterate(storage: MockStorageEngine())
+        client.configure(apiKey: testCompanyApiKey)
+        XCTAssertEqual(client.companyApiKey, testCompanyApiKey, "API key not set")
     }
     
     /// Test that setting the API key also initializes the API client
     func testConfigureSetsApiClient() {
-        let client = Iterate()
-        client.configure(apiKey: testApiKey)
+        let client = Iterate(storage: MockStorageEngine())
+        client.configure(apiKey: testCompanyApiKey)
         XCTAssertNotNil(client.api, "API client not set")
-        XCTAssertEqual(client.api?.apiKey, testApiKey, "API client has incorrect API key")
+        XCTAssertEqual(client.api?.apiKey, testCompanyApiKey, "API client has incorrect API key")
     }
 }

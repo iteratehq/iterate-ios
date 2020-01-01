@@ -20,7 +20,7 @@ class ClientTests: XCTestCase {
                 
                 XCTAssertEqual(request.url?.absoluteString, "\(DefaultAPIHost)\(Paths.Surveys.Embed)")
                 XCTAssertEqual(request.value(forHTTPHeaderField: "Content-Type")!, "application/javascript")
-                XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization")!, "Bearer \(testApiKey)")
+                XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization")!, "Bearer \(testCompanyApiKey)")
                 XCTAssertEqual(request.httpMethod, "POST")
                 XCTAssertEqual(embedContext.type, EmbedType.mobile)
                 
@@ -28,7 +28,7 @@ class ClientTests: XCTestCase {
             }
         }
         
-        let client = APIClientMock(apiKey: testApiKey)
+        let client = APIClientMock(apiKey: testCompanyApiKey)
         let context = EmbedContext(targeting: nil, trigger: nil, type: EmbedType.mobile)
         let data = try! client.encoder.encode(context)
         

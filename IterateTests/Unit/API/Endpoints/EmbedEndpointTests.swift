@@ -26,7 +26,7 @@ class EmbedEndpointTests: XCTestCase {
         }
         
         let context = EmbedContext(targeting: nil, trigger: nil, type: EmbedType.mobile)
-        let client = APIClientMock(apiKey: testApiKey)
+        let client = APIClientMock(apiKey: testCompanyApiKey)
         
         let embedComplete = expectation(description: "Embed complete")
         client.embed(context: context) { (response, error) in

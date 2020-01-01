@@ -14,6 +14,6 @@ extension Iterate {
     /// Configure sets the necessary configuration properties. This should be called before any other methods.
     /// - Parameter apiKey: Your Iterate API Key, you can find this on your settings page
     public func configure(apiKey: String) {
-        self.apiKey = apiKey
+        self.companyApiKey = apiKey
     }
 }
