@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// Iterate extension that adds the show method
 extension Iterate {
@@ -29,6 +30,12 @@ extension Iterate {
             // Update the user API key if one was returned
             if let token = response?.auth?.token {
                 self.userApiKey = token
+            }
+            
+            if let rootViewController = UIApplication.shared.delegate?.window??.rootViewController {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let modalSurveyViewController = storyboard.instantiateViewController(identifier: "ModalSurveyViewController")
+                rootViewController.present(modalSurveyViewController, animated: true)
             }
             
             complete(response?.survey, error)

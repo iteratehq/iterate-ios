@@ -29,6 +29,7 @@
 		27C3B29723BD354C00754F4D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29623BD354C00754F4D /* Storage.swift */; };
 		27C3B29923BD360E00754F4D /* UserDefaultsStorageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29823BD360E00754F4D /* UserDefaultsStorageEngine.swift */; };
 		27C3B29C23BD3FA400754F4D /* MockStorageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29B23BD3FA400754F4D /* MockStorageEngine.swift */; };
+		27C3B29F23BE89E700754F4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C3B29E23BE89E700754F4D /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		27C3B29623BD354C00754F4D /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		27C3B29823BD360E00754F4D /* UserDefaultsStorageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageEngine.swift; sourceTree = "<group>"; };
 		27C3B29B23BD3FA400754F4D /* MockStorageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorageEngine.swift; sourceTree = "<group>"; };
+		27C3B29E23BE89E700754F4D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 		270613B323AD862C00DDF342 = {
 			isa = PBXGroup;
 			children = (
+				27C3B2A023BE96D800754F4D /* Examples */,
 				270613BF23AD862C00DDF342 /* Iterate */,
 				270613CA23AD862C00DDF342 /* IterateTests */,
 				270613BE23AD862C00DDF342 /* Products */,
@@ -133,6 +136,7 @@
 		270613E123BA4EB600DDF342 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				27C3B29D23BE88F400754F4D /* UI */,
 				270613E323BA4EE700DDF342 /* Methods */,
 				270613D723AD8D6200DDF342 /* Iterate.swift */,
 				27C3B28923BCF5FC00754F4D /* Context.swift */,
@@ -271,6 +275,21 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		27C3B29D23BE88F400754F4D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				27C3B29E23BE89E700754F4D /* Main.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		27C3B2A023BE96D800754F4D /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -365,6 +384,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27C3B29F23BE89E700754F4D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
