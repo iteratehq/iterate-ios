@@ -23,6 +23,9 @@ public class Iterate {
     /// API Client, which will be initialized when the API key is
     var api: APIClient?
     
+    /// Optional API host override to use when creating the API client
+    var apiHost: String?
+    
     /// You Iterate API Key, you can get this from your settings page
     var companyApiKey: String? {
         didSet {
@@ -69,7 +72,7 @@ public class Iterate {
     /// Update the API client to use the latest API key. We prefer to use the user API key and fallback to the company key
     func updateApiKey() {
         if let apiKey = userApiKey ?? companyApiKey {
-            api = APIClient(apiKey: apiKey)
+            api = APIClient(apiKey: apiKey, apiHost: apiHost ?? DefaultAPIHost)
         }
     }
 }
