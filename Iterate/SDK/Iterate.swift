@@ -50,6 +50,9 @@ public class Iterate {
     /// Storage engine for storing user data like their API key and user attributes
     var storage: StorageEngine
     
+    /// Container manages the overlay window
+    let container = ContainerWindowProvider()
+    
     /// Cached copy of the user API key that was loaded from UserDefaults
     private var cachedUserApiKey: String?
     

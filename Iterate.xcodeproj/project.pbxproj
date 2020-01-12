@@ -29,7 +29,12 @@
 		27C3B29723BD354C00754F4D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29623BD354C00754F4D /* Storage.swift */; };
 		27C3B29923BD360E00754F4D /* UserDefaultsStorageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29823BD360E00754F4D /* UserDefaultsStorageEngine.swift */; };
 		27C3B29C23BD3FA400754F4D /* MockStorageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29B23BD3FA400754F4D /* MockStorageEngine.swift */; };
-		27C3B29F23BE89E700754F4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C3B29E23BE89E700754F4D /* Main.storyboard */; };
+		27C3B29F23BE89E700754F4D /* Surveys.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C3B29E23BE89E700754F4D /* Surveys.storyboard */; };
+		27C3B2EF23BFD44400754F4D /* ContainerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2EE23BFD44400754F4D /* ContainerWindow.swift */; };
+		27C3B2F123BFDECF00754F4D /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2F023BFDECF00754F4D /* ContainerViewController.swift */; };
+		27C3B2F323C399B200754F4D /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2F223C399B200754F4D /* Container.swift */; };
+		27C3B2F723C39DC000754F4D /* ContainerWindowProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2F623C39DC000754F4D /* ContainerWindowProvider.swift */; };
+		27DDDD5323C657F4005CA07C /* SurveyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DDDD5223C657F4005CA07C /* SurveyModalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +44,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 270613BC23AD862C00DDF342;
 			remoteInfo = Iterate;
+		};
+		27C3B2E323BE987300754F4D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27C3B2DD23BE987100754F4D /* ModalExample.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27C3B2AA23BE986D00754F4D;
+			remoteInfo = ModalExample;
+		};
+		27C3B2E523BE987300754F4D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27C3B2DD23BE987100754F4D /* ModalExample.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27C3B2C023BE987100754F4D;
+			remoteInfo = ModalExampleTests;
+		};
+		27C3B2E723BE987300754F4D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27C3B2DD23BE987100754F4D /* ModalExample.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27C3B2CB23BE987100754F4D;
+			remoteInfo = ModalExampleUITests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -68,7 +94,13 @@
 		27C3B29623BD354C00754F4D /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		27C3B29823BD360E00754F4D /* UserDefaultsStorageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageEngine.swift; sourceTree = "<group>"; };
 		27C3B29B23BD3FA400754F4D /* MockStorageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorageEngine.swift; sourceTree = "<group>"; };
-		27C3B29E23BE89E700754F4D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		27C3B29E23BE89E700754F4D /* Surveys.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Surveys.storyboard; sourceTree = "<group>"; };
+		27C3B2DD23BE987100754F4D /* ModalExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ModalExample.xcodeproj; path = ModalExample/ModalExample.xcodeproj; sourceTree = "<group>"; };
+		27C3B2EE23BFD44400754F4D /* ContainerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerWindow.swift; sourceTree = "<group>"; };
+		27C3B2F023BFDECF00754F4D /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		27C3B2F223C399B200754F4D /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		27C3B2F623C39DC000754F4D /* ContainerWindowProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerWindowProvider.swift; sourceTree = "<group>"; };
+		27DDDD5223C657F4005CA07C /* SurveyModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyModalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,7 +310,9 @@
 		27C3B29D23BE88F400754F4D /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				27C3B29E23BE89E700754F4D /* Main.storyboard */,
+				27DDDD4E23C657C4005CA07C /* Modal */,
+				27C3B2F823C3C2BF00754F4D /* Container */,
+				27C3B29E23BE89E700754F4D /* Surveys.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -286,8 +320,38 @@
 		27C3B2A023BE96D800754F4D /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				27C3B2DD23BE987100754F4D /* ModalExample.xcodeproj */,
 			);
 			path = Examples;
+			sourceTree = "<group>";
+		};
+		27C3B2DE23BE987100754F4D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27C3B2E423BE987300754F4D /* ModalExample.app */,
+				27C3B2E623BE987300754F4D /* ModalExampleTests.xctest */,
+				27C3B2E823BE987300754F4D /* ModalExampleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27C3B2F823C3C2BF00754F4D /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				27C3B2F223C399B200754F4D /* Container.swift */,
+				27C3B2F023BFDECF00754F4D /* ContainerViewController.swift */,
+				27C3B2EE23BFD44400754F4D /* ContainerWindow.swift */,
+				27C3B2F623C39DC000754F4D /* ContainerWindowProvider.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		27DDDD4E23C657C4005CA07C /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				27DDDD5223C657F4005CA07C /* SurveyModalViewController.swift */,
+			);
+			path = Modal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,6 +435,12 @@
 			mainGroup = 270613B323AD862C00DDF342;
 			productRefGroup = 270613BE23AD862C00DDF342 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 27C3B2DE23BE987100754F4D /* Products */;
+					ProjectRef = 27C3B2DD23BE987100754F4D /* ModalExample.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				270613BC23AD862C00DDF342 /* Iterate */,
@@ -379,12 +449,36 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		27C3B2E423BE987300754F4D /* ModalExample.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ModalExample.app;
+			remoteRef = 27C3B2E323BE987300754F4D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		27C3B2E623BE987300754F4D /* ModalExampleTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ModalExampleTests.xctest;
+			remoteRef = 27C3B2E523BE987300754F4D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		27C3B2E823BE987300754F4D /* ModalExampleUITests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ModalExampleUITests.xctest;
+			remoteRef = 27C3B2E723BE987300754F4D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		270613BB23AD862C00DDF342 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27C3B29F23BE89E700754F4D /* Main.storyboard in Resources */,
+				27C3B29F23BE89E700754F4D /* Surveys.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,16 +499,21 @@
 				270613DA23AE76A100DDF342 /* Configure.swift in Sources */,
 				270613E623BA4F2500DDF342 /* Survey.swift in Sources */,
 				27C3B29923BD360E00754F4D /* UserDefaultsStorageEngine.swift in Sources */,
+				27C3B2F723C39DC000754F4D /* ContainerWindowProvider.swift in Sources */,
 				270613EB23BA6BFD00DDF342 /* Client.swift in Sources */,
 				270613E023BA4DD100DDF342 /* Errors.swift in Sources */,
 				27C3B28A23BCF5FC00754F4D /* Context.swift in Sources */,
 				27C3B29723BD354C00754F4D /* Storage.swift in Sources */,
+				27C3B2F123BFDECF00754F4D /* ContainerViewController.swift in Sources */,
 				27C3B28823BAA4BD00754F4D /* Response.swift in Sources */,
 				270613E823BA513900DDF342 /* Show.swift in Sources */,
 				27C3B28623BAA3A900754F4D /* EmbedEndpoint.swift in Sources */,
 				270613EF23BA6F6A00DDF342 /* Embed.swift in Sources */,
+				27DDDD5323C657F4005CA07C /* SurveyModalViewController.swift in Sources */,
+				27C3B2F323C399B200754F4D /* Container.swift in Sources */,
 				27C3B28223BA9BB600754F4D /* Paths.swift in Sources */,
 				270613D823AD8D6200DDF342 /* Iterate.swift in Sources */,
+				27C3B2EF23BFD44400754F4D /* ContainerWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +673,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Iterate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -599,6 +699,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Iterate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

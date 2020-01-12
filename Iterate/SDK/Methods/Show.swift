@@ -12,6 +12,12 @@ import UIKit
 /// Iterate extension that adds the show method
 extension Iterate {
     
+    /// Show method without a callback
+    /// - Parameter surveyId: The id of the survey to show
+    public func show(surveyId: String) {
+        show(surveyId: surveyId) { (_, _) in }
+    }
+    
     /// Show a specific survey based on the surveyId
     /// - Parameters:
     ///   - surveyId: The id of the survey to show
@@ -32,10 +38,13 @@ extension Iterate {
                 self.userApiKey = token
             }
             
-            if let rootViewController = UIApplication.shared.delegate?.window??.rootViewController {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let modalSurveyViewController = storyboard.instantiateViewController(identifier: "ModalSurveyViewController")
-                rootViewController.present(modalSurveyViewController, animated: true)
+            DispatchQueue.main.async {
+                if let surveyModalViewController = UIStoryboard(
+                    name: "Surveys",
+                    bundle: Bundle(identifier: "com.iteratehq.Iterate")
+                ).instantiateViewController(withIdentifier: "SurveyModalViewController") as? DisappearableUIViewController {
+                    self.container.present(surveyModalViewController, animated: true, completion: nil)
+                }
             }
             
             complete(response?.survey, error)
