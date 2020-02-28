@@ -32,12 +32,7 @@ extension Iterate {
         var context = initCurrentContext()
         context.trigger = TriggerContext(surveyId: surveyId, type: TriggerType.manual)
         
-        api?.embed(context: context, complete: { (response, error) in
-            // Update the user API key if one was returned
-            if let token = response?.auth?.token {
-                self.userApiKey = token
-            }
-            
+        embedRequest(context: context, complete: { (response, error) in
             DispatchQueue.main.async {
                 if let surveyModalViewController = UIStoryboard(
                     name: "Surveys",

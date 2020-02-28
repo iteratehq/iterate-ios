@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         // Configure the default client to production
-        let key = Environment.apiHost
         Iterate.shared.configure(apiKey: Environment.apiKey, apiHost: Environment.apiHost)
         
         return true

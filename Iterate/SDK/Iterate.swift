@@ -69,6 +69,22 @@ public class Iterate {
     
     // MARK: Methods
     
+    /// Helper method used when calling the embed endpoint which is responsible for updating the user API key
+    /// if a new one is returned
+    /// - Parameters:
+    ///   - context: Embed context data
+    ///   - complete: Callback returning the response and error from the embed endpoint
+    func embedRequest(context: EmbedContext, complete: @escaping (EmbedResponse?, Error?) -> Void) {
+        api?.embed(context: context, complete: { (response, error) in
+            // Update the user API key if one was returned
+            if let token = response?.auth?.token {
+                self.userApiKey = token
+            }
+            
+            complete(response, error)
+        })
+    }
+    
     /// Update the API client to use the latest API key. We prefer to use the user API key and fallback to the company key
     func updateApiKey() {
         if let apiKey = userApiKey ?? companyApiKey {
