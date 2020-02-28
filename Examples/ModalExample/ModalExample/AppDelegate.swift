@@ -17,7 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         // Configure the default client to production
-        Iterate.shared.configure(apiKey: Environment.apiKey, apiHost: Environment.apiHost)
+        
+        // Default to demo production account (safe to share the API publically)
+        let apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wYW55X2lkIjoiNWRmZTM2OGEwOWI2ZWYwMDAxYjNlNjE4IiwiaWF0IjoxNTc2OTQxMTk0fQ.QBWr2goMwOngVhi6wY9sdFAKEvBGmn-JRDKstVMFh6M"
+        Iterate.shared.configure(apiKey: apiKey)
         
         return true
     }
