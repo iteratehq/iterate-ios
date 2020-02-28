@@ -1,24 +1,23 @@
 //
 //  AppDelegate.swift
-//  ModalExample
+//  Testing
 //
-//  Created by Michael Singleton on 1/2/20.
+//  Created by Michael Singleton on 2/27/20.
 //  Copyright © 2020 Iterate. All rights reserved.
 //
 
-import Iterate
 import UIKit
+import Iterate
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-
-        // Configure the default client to production
-        let key = Environment.apiHost
-        Iterate.shared.configure(apiKey: Environment.apiKey, apiHost: Environment.apiHost)
+        
+        Iterate.shared.configure(apiKey: "test.com", apiHost: "123")
         
         return true
     }

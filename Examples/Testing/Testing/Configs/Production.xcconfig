@@ -1,0 +1,13 @@
+//
+//  Production.xcconfig
+//  Testing
+//
+//  Created by Michael Singleton on 2/27/20.
+//  Copyright © 2020 Iterate. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+API_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wYW55X2lkIjoiNWRmZTM2OGEwOWI2ZWYwMDAxYjNlNjE4IiwiaWF0IjoxNTc2OTQxMTk0fQ.QBWr2goMwOngVhi6wY9sdFAKEvBGmn-JRDKstVMFh6M
+API_HOST = https:/$()/iteratehq.com/api/v1
