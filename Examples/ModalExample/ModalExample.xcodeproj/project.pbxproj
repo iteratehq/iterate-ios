@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		276BB96D240887E200DFCED2 /* Iterate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276BB96C240887E200DFCED2 /* Iterate.framework */; };
-		27C386C823D8CB46006469E8 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C386C723D8CB46006469E8 /* Environment.swift */; };
+		276BB972240997F600DFCED2 /* Iterate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276BB971240997F600DFCED2 /* Iterate.framework */; };
+		276BB973240997F600DFCED2 /* Iterate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 276BB971240997F600DFCED2 /* Iterate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		276BB97524099B7500DFCED2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276BB97424099B7500DFCED2 /* SettingsViewController.swift */; };
 		27C3B2AE23BE986D00754F4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2AD23BE986D00754F4D /* AppDelegate.swift */; };
 		27C3B2B023BE986D00754F4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2AF23BE986D00754F4D /* SceneDelegate.swift */; };
 		27C3B2B223BE986D00754F4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2B123BE986D00754F4D /* ViewController.swift */; };
@@ -43,6 +44,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				276BB973240997F600DFCED2 /* Iterate.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,9 +53,8 @@
 
 /* Begin PBXFileReference section */
 		276BB96C240887E200DFCED2 /* Iterate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Iterate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		27C386C523D8C94B006469E8 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
-		27C386C623D8C971006469E8 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
-		27C386C723D8CB46006469E8 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		276BB971240997F600DFCED2 /* Iterate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Iterate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		276BB97424099B7500DFCED2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		27C3B2AA23BE986D00754F4D /* ModalExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModalExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C3B2AD23BE986D00754F4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27C3B2AF23BE986D00754F4D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				276BB96D240887E200DFCED2 /* Iterate.framework in Frameworks */,
+				276BB972240997F600DFCED2 /* Iterate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,15 +97,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		27C386C423D8C893006469E8 /* Configs */ = {
-			isa = PBXGroup;
-			children = (
-				27C386C523D8C94B006469E8 /* Development.xcconfig */,
-				27C386C623D8C971006469E8 /* Production.xcconfig */,
-			);
-			path = Configs;
-			sourceTree = "<group>";
-		};
 		27C3B2A123BE986D00754F4D = {
 			isa = PBXGroup;
 			children = (
@@ -129,7 +121,6 @@
 		27C3B2AC23BE986D00754F4D /* ModalExample */ = {
 			isa = PBXGroup;
 			children = (
-				27C386C423D8C893006469E8 /* Configs */,
 				27C3B2AD23BE986D00754F4D /* AppDelegate.swift */,
 				27C3B2AF23BE986D00754F4D /* SceneDelegate.swift */,
 				27C3B2B123BE986D00754F4D /* ViewController.swift */,
@@ -137,7 +128,7 @@
 				27C3B2B623BE987100754F4D /* Assets.xcassets */,
 				27C3B2B823BE987100754F4D /* LaunchScreen.storyboard */,
 				27C3B2BB23BE987100754F4D /* Info.plist */,
-				27C386C723D8CB46006469E8 /* Environment.swift */,
+				276BB97424099B7500DFCED2 /* SettingsViewController.swift */,
 			);
 			path = ModalExample;
 			sourceTree = "<group>";
@@ -163,6 +154,7 @@
 		27C3B2E923BE9ABD00754F4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				276BB971240997F600DFCED2 /* Iterate.framework */,
 				276BB96C240887E200DFCED2 /* Iterate.framework */,
 			);
 			name = Frameworks;
@@ -301,9 +293,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				27C3B2B223BE986D00754F4D /* ViewController.swift in Sources */,
-				27C386C823D8CB46006469E8 /* Environment.swift in Sources */,
 				27C3B2AE23BE986D00754F4D /* AppDelegate.swift in Sources */,
 				27C3B2B023BE986D00754F4D /* SceneDelegate.swift in Sources */,
+				276BB97524099B7500DFCED2 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,252 +350,8 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		27427C2424085B6400734833 /* Debug (Development) */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C386C523D8C94B006469E8 /* Development.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = "Debug (Development)";
-		};
-		27427C2524085B6400734833 /* Debug (Development) */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C386C523D8C94B006469E8 /* Development.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = "$(BUILD_DIR)/Debug$(EFFECTIVE_PLATFORM_NAME)/**";
-				HEADER_SEARCH_PATHS = "$(BUILD_DIR)/Debug$(EFFECTIVE_PLATFORM_NAME)/**";
-				INFOPLIST_FILE = ModalExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				LIBRARY_SEARCH_PATHS = "$(BUILD_DIR)/Debug$(EFFECTIVE_PLATFORM_NAME)/**";
-				PRODUCT_BUNDLE_IDENTIFIER = com.iteratehq.ModalExample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(BUILD_DIR)/Debug$(EFFECTIVE_PLATFORM_NAME)/**";
-			};
-			name = "Debug (Development)";
-		};
-		27427C2624085B6400734833 /* Debug (Development) */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C386C523D8C94B006469E8 /* Development.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ModalExampleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.iteratehq.ModalExampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ModalExample.app/ModalExample";
-			};
-			name = "Debug (Development)";
-		};
-		27427C2724085B6400734833 /* Debug (Development) */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C386C523D8C94B006469E8 /* Development.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ModalExampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.iteratehq.ModalExampleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ModalExample;
-			};
-			name = "Debug (Development)";
-		};
-		27427C2824085B8A00734833 /* Release (Development) */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C386C523D8C94B006469E8 /* Development.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = "Release (Development)";
-		};
-		27427C2924085B8A00734833 /* Release (Development) */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C386C523D8C94B006469E8 /* Development.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = "$(BUILD_DIR)/Debug$(EFFECTIVE_PLATFORM_NAME)/**";
-				INFOPLIST_FILE = ModalExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.iteratehq.ModalExample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = "Release (Development)";
-		};
-		27427C2A24085B8A00734833 /* Release (Development) */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C386C523D8C94B006469E8 /* Development.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ModalExampleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.iteratehq.ModalExampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ModalExample.app/ModalExample";
-			};
-			name = "Release (Development)";
-		};
-		27427C2B24085B8A00734833 /* Release (Development) */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C386C523D8C94B006469E8 /* Development.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ModalExampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.iteratehq.ModalExampleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ModalExample;
-			};
-			name = "Release (Development)";
-		};
 		27C3B2D223BE987100754F4D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C386C623D8C971006469E8 /* Production.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -664,7 +412,6 @@
 		};
 		27C3B2D323BE987100754F4D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C386C623D8C971006469E8 /* Production.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -719,11 +466,9 @@
 		};
 		27C3B2D523BE987100754F4D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C386C623D8C971006469E8 /* Production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = "$(BUILD_DIR)/Debug$(EFFECTIVE_PLATFORM_NAME)/**";
 				INFOPLIST_FILE = ModalExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -739,11 +484,9 @@
 		};
 		27C3B2D623BE987100754F4D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C386C623D8C971006469E8 /* Production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = "$(BUILD_DIR)/Debug$(EFFECTIVE_PLATFORM_NAME)/**";
 				INFOPLIST_FILE = ModalExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -759,7 +502,6 @@
 		};
 		27C3B2D823BE987100754F4D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C386C623D8C971006469E8 /* Production.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -781,7 +523,6 @@
 		};
 		27C3B2D923BE987100754F4D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C386C623D8C971006469E8 /* Production.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -803,7 +544,6 @@
 		};
 		27C3B2DB23BE987100754F4D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C386C623D8C971006469E8 /* Production.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -823,7 +563,6 @@
 		};
 		27C3B2DC23BE987100754F4D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C386C623D8C971006469E8 /* Production.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -848,9 +587,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				27C3B2D223BE987100754F4D /* Debug */,
-				27427C2424085B6400734833 /* Debug (Development) */,
 				27C3B2D323BE987100754F4D /* Release */,
-				27427C2824085B8A00734833 /* Release (Development) */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -859,9 +596,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				27C3B2D523BE987100754F4D /* Debug */,
-				27427C2524085B6400734833 /* Debug (Development) */,
 				27C3B2D623BE987100754F4D /* Release */,
-				27427C2924085B8A00734833 /* Release (Development) */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -870,9 +605,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				27C3B2D823BE987100754F4D /* Debug */,
-				27427C2624085B6400734833 /* Debug (Development) */,
 				27C3B2D923BE987100754F4D /* Release */,
-				27427C2A24085B8A00734833 /* Release (Development) */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -881,9 +614,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				27C3B2DB23BE987100754F4D /* Debug */,
-				27427C2724085B6400734833 /* Debug (Development) */,
 				27C3B2DC23BE987100754F4D /* Release */,
-				27427C2B24085B8A00734833 /* Release (Development) */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
