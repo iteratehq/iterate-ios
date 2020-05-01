@@ -19,8 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configure the default client to production
         
         // Default to demo production account (safe to share the API publically)
-        let apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wYW55X2lkIjoiNWRmZTM2OGEwOWI2ZWYwMDAxYjNlNjE4IiwiaWF0IjoxNTc2OTQxMTk0fQ.QBWr2goMwOngVhi6wY9sdFAKEvBGmn-JRDKstVMFh6M"
-        Iterate.shared.configure(apiKey: apiKey)
+        let apiKey = UserDefaults.standard.string(forKey: ApiKeyKey) ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wYW55X2lkIjoiNWRmZTM2OGEwOWI2ZWYwMDAxYjNlNjE4IiwiaWF0IjoxNTc2OTQxMTk0fQ.QBWr2goMwOngVhi6wY9sdFAKEvBGmn-JRDKstVMFh6M"
+        let apiHost = Environment(rawValue: UserDefaults.standard.integer(forKey: EnvironmentKey)) ?? Environment.Production == Environment.Development ? EnvironmentUrl.Development : EnvironmentUrl.Production
+        Iterate.shared.configure(apiKey: apiKey, apiHost: apiHost.rawValue)
         
         return true
     }
