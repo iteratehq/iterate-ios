@@ -19,6 +19,7 @@
 		270613E823BA513900DDF342 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613E723BA513900DDF342 /* Show.swift */; };
 		270613EB23BA6BFD00DDF342 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613EA23BA6BFD00DDF342 /* Client.swift */; };
 		270613EF23BA6F6A00DDF342 /* Embed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613EE23BA6F6A00DDF342 /* Embed.swift */; };
+		27AEEEA7245DB3F800351EC1 /* SendEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AEEEA6245DB3F800351EC1 /* SendEvent.swift */; };
 		27C3B27C23BA832300754F4D /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B27B23BA832300754F4D /* ClientTests.swift */; };
 		27C3B28223BA9BB600754F4D /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B28123BA9BB600754F4D /* Paths.swift */; };
 		27C3B28623BAA3A900754F4D /* EmbedEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B28523BAA3A900754F4D /* EmbedEndpoint.swift */; };
@@ -84,6 +85,7 @@
 		270613E723BA513900DDF342 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		270613EA23BA6BFD00DDF342 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		270613EE23BA6F6A00DDF342 /* Embed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Embed.swift; sourceTree = "<group>"; };
+		27AEEEA6245DB3F800351EC1 /* SendEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEvent.swift; sourceTree = "<group>"; };
 		27C3B27B23BA832300754F4D /* ClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
 		27C3B28123BA9BB600754F4D /* Paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paths.swift; sourceTree = "<group>"; };
 		27C3B28523BAA3A900754F4D /* EmbedEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedEndpoint.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				270613D923AE76A100DDF342 /* Configure.swift */,
+				27AEEEA6245DB3F800351EC1 /* SendEvent.swift */,
 				270613E723BA513900DDF342 /* Show.swift */,
 			);
 			path = Methods;
@@ -506,6 +509,7 @@
 				27C3B29723BD354C00754F4D /* Storage.swift in Sources */,
 				27C3B2F123BFDECF00754F4D /* ContainerViewController.swift in Sources */,
 				27C3B28823BAA4BD00754F4D /* Response.swift in Sources */,
+				27AEEEA7245DB3F800351EC1 /* SendEvent.swift in Sources */,
 				270613E823BA513900DDF342 /* Show.swift in Sources */,
 				27C3B28623BAA3A900754F4D /* EmbedEndpoint.swift in Sources */,
 				270613EF23BA6F6A00DDF342 /* Embed.swift in Sources */,
