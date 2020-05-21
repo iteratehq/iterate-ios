@@ -11,9 +11,17 @@ import Foundation
 /// Represents the context of the request to the embed endpoint. This includes
 /// things like device type, user traits, and targeting options.
 struct EmbedContext: Codable {
+    var event: EventContext?
     var targeting: TargetingContext?
     var trigger: TriggerContext?
     var type: EmbedType?
+}
+
+// MARK: Event
+
+/// Contains event data
+struct EventContext: Codable {
+    var name: String?
 }
 
 // MARK: Targeting
