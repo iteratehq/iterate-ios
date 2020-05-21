@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func showSurvey(_ sender: Any) {
-        Iterate.shared.sendEvent(name: Event.ShowSurveyButtonClicked.rawValue)
+        Iterate.shared.sendEvent(name: Event.ShowSurveyButtonTapped.rawValue)
     }
 }
 
