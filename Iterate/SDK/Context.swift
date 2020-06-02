@@ -15,7 +15,11 @@ extension Iterate {
     /// In the future this may set the current 'view' the user is on, how long they've been
     /// in the app, etc. Anything that may be used for targeting.
     func initCurrentContext() -> EmbedContext {
-        return EmbedContext(targeting: nil, trigger: nil, type: EmbedType.mobile)
+        // TODO: Remove. Setting this to be in preview mode so we can force the surveys to show
+        // up until we have a proper preview-mode mechanism.
+        let targeting = TargetingContext(frequency: TargetingContextFrequency.always)
+        
+        return EmbedContext(targeting: targeting, trigger: nil, type: EmbedType.mobile)
     }
 }
 
