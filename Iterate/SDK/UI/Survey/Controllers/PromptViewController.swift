@@ -14,10 +14,20 @@ class PromptViewController: UIViewController {
     
     var delegate: ContainerWindowDelegate?
     var survey: Survey?
+    
+    override func loadView() {
+        super.loadView()
+        
+        // Allow the continer view to be dynamically sized by the parent 
+        view.translatesAutoresizingMaskIntoConstraints = false
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         promptLabel.text = survey?.prompt?.message
-        promptButton.setTitle(survey?.prompt?.buttonText, for: .normal) 
+        promptButton.setTitle(survey?.prompt?.buttonText, for: .normal)
+        if let color = survey?.color {
+            promptButton.backgroundColor = UIColor(hex: color)
+        }
     }
 
     @IBAction func showSurvey(_ sender: Any) {

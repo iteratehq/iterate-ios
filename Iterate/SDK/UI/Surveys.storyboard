@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -13,14 +13,11 @@
             <objects>
                 <viewController storyboardIdentifier="ContainerViewController" id="APU-PM-mDT" userLabel="Container View Controller" customClass="ContainerViewController" customModule="Iterate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tMS-cA-DE8" customClass="ContainerView" customModule="Iterate" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyp-c9-ocK" userLabel="Prompt View Container">
-                                <rect key="frame" x="0.0" y="662" width="414" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="V2X-ch-DXO"/>
-                                </constraints>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="185" translatesAutoresizingMaskIntoConstraints="NO" id="lyp-c9-ocK" userLabel="Prompt View Container">
+                                <rect key="frame" x="0.0" y="229" width="896" height="185"/>
                                 <connections>
                                     <segue destination="hJe-TP-gyL" kind="embed" id="V1N-ct-tog"/>
                                 </connections>
@@ -33,11 +30,11 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="0rX-C1-A2z" firstAttribute="trailing" secondItem="lyp-c9-ocK" secondAttribute="trailing" id="7wI-iV-eww"/>
-                            <constraint firstItem="0rX-C1-A2z" firstAttribute="bottom" secondItem="lyp-c9-ocK" secondAttribute="bottom" id="YuJ-25-f6l"/>
-                            <constraint firstItem="lyp-c9-ocK" firstAttribute="leading" secondItem="0rX-C1-A2z" secondAttribute="leading" id="aTc-Fg-glv"/>
+                            <constraint firstItem="lyp-c9-ocK" firstAttribute="trailing" secondItem="tMS-cA-DE8" secondAttribute="trailing" id="NLC-cs-1do"/>
+                            <constraint firstItem="lyp-c9-ocK" firstAttribute="bottom" secondItem="tMS-cA-DE8" secondAttribute="bottom" id="Rvd-Xr-Mzg"/>
+                            <constraint firstItem="lyp-c9-ocK" firstAttribute="leading" secondItem="tMS-cA-DE8" secondAttribute="leading" id="dWP-vo-QqA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0rX-C1-A2z"/>
                     </view>
@@ -54,11 +51,11 @@
             <objects>
                 <viewController storyboardIdentifier="SurveyModalViewController" id="nwb-aU-BRY" userLabel="Survey Modal View Controller" customClass="SurveyViewController" customModule="Iterate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IHk-by-TmP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6YD-fP-5QA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="44" y="0.0" width="808" height="393"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -88,27 +85,75 @@
             <objects>
                 <viewController id="hJe-TP-gyL" userLabel="Prompt View Controller" customClass="PromptViewController" customModule="Iterate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uRf-zf-xnB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="185"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Prompt Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyR-wO-C2T">
-                                <rect key="frame" x="142" y="44" width="130" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyR-wO-C2T">
+                                <rect key="frame" x="84" y="24" width="728" height="47"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Do you wish you could add more recipes to your order each week? Let us know in this 1-minute survey!">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="16"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" minimumLineHeight="23" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuT-f5-a3f">
-                                <rect key="frame" x="184" y="133" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="44" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuT-f5-a3f">
+                                <rect key="frame" x="84" y="87" width="728" height="98"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <inset key="contentEdgeInsets" minX="12" minY="12" maxX="12" maxY="12"/>
+                                <state key="normal" title="Happy to help">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="showSurvey:" destination="hJe-TP-gyL" eventType="touchUpInside" id="Ntw-wE-BvZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5a-XX-PgF" userLabel="Close Button">
+                                <rect key="frame" x="820" y="8" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="R5R-no-ST3"/>
+                                    <constraint firstAttribute="height" constant="24" id="RYF-tK-XtU"/>
+                                </constraints>
+                                <color key="tintColor" red="0.83921568627450982" green="0.83921568627450982" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="xmark.circle.fill" catalog="system"/>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zyR-wO-C2T" firstAttribute="top" secondItem="uRf-zf-xnB" secondAttribute="top" constant="24" id="1K0-7G-tMZ"/>
+                            <constraint firstItem="zuT-f5-a3f" firstAttribute="bottom" secondItem="wkK-uh-fIM" secondAttribute="bottom" priority="750" id="CAw-eq-9i2"/>
+                            <constraint firstItem="wkK-uh-fIM" firstAttribute="trailing" secondItem="P5a-XX-PgF" secondAttribute="trailing" constant="8" id="EG6-bk-RYy"/>
+                            <constraint firstItem="P5a-XX-PgF" firstAttribute="top" secondItem="wkK-uh-fIM" secondAttribute="top" constant="8" id="Gzx-E6-JLd"/>
+                            <constraint firstItem="zuT-f5-a3f" firstAttribute="leading" secondItem="wkK-uh-fIM" secondAttribute="leading" constant="40" id="KGc-oL-HY7"/>
+                            <constraint firstItem="zyR-wO-C2T" firstAttribute="trailing" secondItem="wkK-uh-fIM" secondAttribute="trailing" constant="-40" id="LaF-CY-KQl"/>
+                            <constraint firstItem="zyR-wO-C2T" firstAttribute="leading" secondItem="wkK-uh-fIM" secondAttribute="leading" constant="40" id="Q3o-2B-cs7"/>
+                            <constraint firstItem="zuT-f5-a3f" firstAttribute="top" secondItem="zyR-wO-C2T" secondAttribute="bottom" constant="16" id="QC1-6x-Mje"/>
+                            <constraint firstItem="zuT-f5-a3f" firstAttribute="trailing" secondItem="wkK-uh-fIM" secondAttribute="trailing" constant="-40" id="uVK-Xm-jLX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wkK-uh-fIM"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                <size key="value" width="0.0" height="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                <integer key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="promptButton" destination="zuT-f5-a3f" id="S71-Vt-Ya0"/>
@@ -120,4 +165,7 @@
             <point key="canvasLocation" x="164" y="11"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
+    </resources>
 </document>
