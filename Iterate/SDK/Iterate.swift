@@ -54,7 +54,7 @@ public class Iterate {
     var storage: StorageEngine
     
     /// Container manages the overlay window
-    let container = ContainerWindowProvider()
+    let container = ContainerWindowDelegate()
     
     /// Cached copy of the user API key that was loaded from UserDefaults
     private var cachedUserApiKey: String?

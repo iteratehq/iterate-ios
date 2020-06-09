@@ -27,10 +27,12 @@ extension Iterate {
         var context = initCurrentContext()
         context.event = EventContext(name: name)
         embedRequest(context: context) { (response, error) in
-            // TODO: Is a survey is returned, display it
-            
             if let callback = complete {
                 callback(response?.survey, error)
+            }
+            
+            if let survey = response?.survey {
+                self.container.showPrompt(survey)
             }
         }
     }
