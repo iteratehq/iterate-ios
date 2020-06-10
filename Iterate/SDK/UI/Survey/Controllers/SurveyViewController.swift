@@ -14,7 +14,9 @@ class SurveyViewController: UIViewController {
     
     @IBOutlet weak var webview: WKWebView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let surveyUrl = ""
     }
 }
