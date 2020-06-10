@@ -14,9 +14,13 @@ class SurveyViewController: UIViewController {
     
     @IBOutlet weak var webview: WKWebView!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        let surveyUrl = ""
+        if let survey = survey {
+            let host = Iterate.shared.apiHost ?? DefaultAPIHost
+            let myRequest = URLRequest(url: URL(string:"\(host)/\(survey.companyId)/\(survey.id)/mobile")!)
+            webview.load(myRequest)
+        }
     }
 }

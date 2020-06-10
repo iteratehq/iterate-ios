@@ -46,4 +46,10 @@ class ContainerWindowDelegate {
             self.containerViewController?.showSurvey(survey)
         }
     }
+    
+    func dismiss() {
+        // TODO: Make API call to dismissed
+        
+        hideWindow()
+    }
 }

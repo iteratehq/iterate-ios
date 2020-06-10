@@ -29,10 +29,17 @@ class PromptViewController: UIViewController {
             promptButton.backgroundColor = UIColor(hex: color)
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // TODO: Call API displayed here
+    }
 
     @IBAction func showSurvey(_ sender: Any) {
         if let survey = survey {
             delegate?.showSurvey(survey)
         }
+    }
+    @IBAction func close(_ sender: Any) {
+        delegate?.dismiss()
     }
 }

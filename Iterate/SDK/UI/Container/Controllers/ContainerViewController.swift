@@ -47,6 +47,6 @@ class ContainerViewController: UIViewController {
 
 extension ContainerViewController: UIAdaptivePresentationControllerDelegate {
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        delegate?.hideWindow()
+        delegate?.dismiss()
     }
 }
