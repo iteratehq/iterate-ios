@@ -26,7 +26,7 @@
                                 <rect key="frame" x="192" y="809" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="nwb-aU-BRY" kind="presentation" identifier="showSurvey" id="Ex7-wf-fpd"/>
+                                    <segue destination="nwb-aU-BRY" kind="show" identifier="showSurvey" id="Ex7-wf-fpd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -38,6 +38,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0rX-C1-A2z"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="promptView" destination="lyp-c9-ocK" id="sWx-S4-KJO"/>
                     </connections>
@@ -51,30 +52,12 @@
             <objects>
                 <viewController storyboardIdentifier="SurveyModalViewController" id="nwb-aU-BRY" userLabel="Survey Modal View Controller" customClass="SurveyViewController" customModule="Iterate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IHk-by-TmP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6YD-fP-5QA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="cGc-uP-ank" firstAttribute="bottom" secondItem="6YD-fP-5QA" secondAttribute="bottom" id="75i-gh-Err"/>
-                            <constraint firstItem="6YD-fP-5QA" firstAttribute="leading" secondItem="cGc-uP-ank" secondAttribute="leading" id="8Ex-BI-qlm"/>
-                            <constraint firstItem="6YD-fP-5QA" firstAttribute="top" secondItem="cGc-uP-ank" secondAttribute="top" id="NEF-6t-6Qq"/>
-                            <constraint firstItem="cGc-uP-ank" firstAttribute="trailing" secondItem="6YD-fP-5QA" secondAttribute="trailing" id="ZpG-OY-1BE"/>
-                        </constraints>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cGc-uP-ank"/>
                     </view>
-                    <connections>
-                        <outlet property="webview" destination="6YD-fP-5QA" id="65F-35-bov"/>
-                    </connections>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hK0-K4-zdU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

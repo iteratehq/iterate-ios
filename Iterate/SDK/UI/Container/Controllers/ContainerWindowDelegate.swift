@@ -47,8 +47,10 @@ class ContainerWindowDelegate {
         }
     }
     
-    func dismiss() {
-        // TODO: Make API call to dismissed
+    func dismiss(userInitiated: Bool) {
+        if (userInitiated) {
+            // TODO: Make API call to dismissed
+        }
         
         hideWindow()
     }
