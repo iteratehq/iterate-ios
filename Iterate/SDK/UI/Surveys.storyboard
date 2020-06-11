@@ -107,7 +107,7 @@
                                     <constraint firstAttribute="height" constant="24" id="RYF-tK-XtU"/>
                                 </constraints>
                                 <color key="tintColor" red="0.83921568627450982" green="0.83921568627450982" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="xmark.circle.fill" catalog="system"/>
+                                <state key="normal" image="close"/>
                                 <connections>
                                     <action selector="close:" destination="hJe-TP-gyL" eventType="touchUpInside" id="2n8-Ci-Ayh"/>
                                 </connections>
@@ -152,6 +152,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="close" width="24" height="24"/>
     </resources>
 </document>
