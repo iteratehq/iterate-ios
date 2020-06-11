@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -18,6 +18,19 @@
                         <subviews>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="185" translatesAutoresizingMaskIntoConstraints="NO" id="lyp-c9-ocK" userLabel="Prompt View Container">
                                 <rect key="frame" x="0.0" y="711" width="414" height="185"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="2pY-Fi-OI9"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2pY-Fi-OI9"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="2pY-Fi-OI9"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <segue destination="hJe-TP-gyL" kind="embed" id="V1N-ct-tog"/>
                                 </connections>
@@ -34,9 +47,32 @@
                         <constraints>
                             <constraint firstItem="lyp-c9-ocK" firstAttribute="trailing" secondItem="tMS-cA-DE8" secondAttribute="trailing" id="NLC-cs-1do"/>
                             <constraint firstItem="lyp-c9-ocK" firstAttribute="bottom" secondItem="tMS-cA-DE8" secondAttribute="bottom" id="Rvd-Xr-Mzg"/>
+                            <constraint firstItem="lyp-c9-ocK" firstAttribute="width" secondItem="0rX-C1-A2z" secondAttribute="height" multiplier="1:1" id="Sv4-WO-keV"/>
+                            <constraint firstItem="lyp-c9-ocK" firstAttribute="centerX" secondItem="tMS-cA-DE8" secondAttribute="centerX" id="WvO-Yp-BNe"/>
                             <constraint firstItem="lyp-c9-ocK" firstAttribute="leading" secondItem="tMS-cA-DE8" secondAttribute="leading" id="dWP-vo-QqA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0rX-C1-A2z"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Sv4-WO-keV"/>
+                                <exclude reference="WvO-Yp-BNe"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="NLC-cs-1do"/>
+                                <include reference="Sv4-WO-keV"/>
+                                <include reference="WvO-Yp-BNe"/>
+                                <exclude reference="dWP-vo-QqA"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="NLC-cs-1do"/>
+                                <include reference="WvO-Yp-BNe"/>
+                                <exclude reference="dWP-vo-QqA"/>
+                            </mask>
+                        </variation>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
