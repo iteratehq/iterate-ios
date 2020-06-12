@@ -90,14 +90,51 @@
                     <view key="view" contentMode="scaleToFill" id="IHk-by-TmP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9M9-G2-nI0">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="I5T-wW-wOX">
+                                        <rect key="frame" x="189.66666666666666" y="430.66666666666669" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="c3J-3z-HF2"/>
+                                            <constraint firstAttribute="height" constant="35" id="sbo-aw-eDz"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading survey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idc-G8-eRE">
+                                        <rect key="frame" x="0.0" y="477.66666666666669" width="414" height="19.333333333333314"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="I5T-wW-wOX" firstAttribute="centerX" secondItem="9M9-G2-nI0" secondAttribute="centerX" id="Py2-TO-kdW"/>
+                                    <constraint firstItem="Idc-G8-eRE" firstAttribute="top" secondItem="I5T-wW-wOX" secondAttribute="bottom" constant="12" id="ard-5P-KEo"/>
+                                    <constraint firstItem="Idc-G8-eRE" firstAttribute="leading" secondItem="9M9-G2-nI0" secondAttribute="leading" id="gIZ-l7-Ed7"/>
+                                    <constraint firstItem="I5T-wW-wOX" firstAttribute="centerY" secondItem="9M9-G2-nI0" secondAttribute="centerY" id="nGp-G3-IHT"/>
+                                    <constraint firstAttribute="trailing" secondItem="Idc-G8-eRE" secondAttribute="trailing" id="rmD-sG-3jK"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="9M9-G2-nI0" secondAttribute="bottom" id="OLl-Wd-9sJ"/>
+                            <constraint firstItem="9M9-G2-nI0" firstAttribute="leading" secondItem="cGc-uP-ank" secondAttribute="leading" id="S5d-JC-cNH"/>
+                            <constraint firstItem="9M9-G2-nI0" firstAttribute="top" secondItem="IHk-by-TmP" secondAttribute="top" id="dvq-KJ-geN"/>
+                            <constraint firstItem="9M9-G2-nI0" firstAttribute="trailing" secondItem="cGc-uP-ank" secondAttribute="trailing" id="hcg-zN-bMe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cGc-uP-ank"/>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="loadingView" destination="9M9-G2-nI0" id="DPR-Zw-pOZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hK0-K4-zdU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="991" y="176"/>
+            <point key="canvasLocation" x="989.85507246376824" y="175.44642857142856"/>
         </scene>
         <!--Prompt View Controller-->
         <scene sceneID="fRT-2p-kDp">

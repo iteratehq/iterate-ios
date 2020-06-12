@@ -10,7 +10,8 @@ import UIKit
 import WebKit
 
 class SurveyViewController: UIViewController {
-    var webView: WKWebView!
+    @objc dynamic var webView: WKWebView!
+    @IBOutlet weak var loadingView: UIView!
     
     var delegate: ContainerWindowDelegate?
     var survey: Survey?
@@ -18,10 +19,24 @@ class SurveyViewController: UIViewController {
     let MessageHandlerName = "iterateMessageHandler"
     
     override func loadView() {
+        super.loadView()
+        
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.userContentController.add(self, name: MessageHandlerName)
+
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        view = webView
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(webView)
+        NSLayoutConstraint.activate([
+            webView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            webView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            webView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            webView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+        ])
+        addObserver(self, forKeyPath: #keyPath(webView.isLoading), options: [.old, .new], context: nil)
+        
+        loadingView.frame = view.frame
+        view.bringSubviewToFront(loadingView)
     }
     
     override func viewDidLoad() {
@@ -31,6 +46,20 @@ class SurveyViewController: UIViewController {
             let host = Iterate.shared.apiHost ?? DefaultAPIHost
             let myRequest = URLRequest(url: URL(string:"\(host)/\(survey.companyId)/\(survey.id)/mobile")!)
             webView.load(myRequest)
+        }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == #keyPath(webView.isLoading) {
+            if let change = change,
+                let isLoading = change[.newKey] as? Bool {
+                if !isLoading {
+                    let animator = UIViewPropertyAnimator(duration: 1.0, dampingRatio: 1) {
+                        self.loadingView.alpha = 0
+                    }
+                    animator.startAnimation()
+                }
+            }
         }
     }
 }
