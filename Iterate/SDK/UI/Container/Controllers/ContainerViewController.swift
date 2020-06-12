@@ -40,6 +40,7 @@ class ContainerViewController: UIViewController {
         if segue.identifier == "showSurvey" {
             let surveyViewController = segue.destination as! SurveyViewController
             surveyViewController.presentationController?.delegate = self
+            surveyViewController.delegate = delegate
             surveyViewController.survey = survey
         }
     }
@@ -47,6 +48,6 @@ class ContainerViewController: UIViewController {
 
 extension ContainerViewController: UIAdaptivePresentationControllerDelegate {
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        delegate?.hideWindow()
+        delegate?.dismiss(userInitiated: true)
     }
 }

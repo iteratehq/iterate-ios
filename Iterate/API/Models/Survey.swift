@@ -10,6 +10,7 @@ import Foundation
 
 public struct Survey: Codable {
     let color: String
+    let companyId: String
     let id: String
     let prompt: Prompt?
 }
