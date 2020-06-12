@@ -10,14 +10,14 @@ import XCTest
 @testable import Iterate
 
 /// Contains tests for the show method of the Iterate class
-class ShowIntegrationTests: XCTestCase {
+class SendEventIntegrationTests: XCTestCase {
     
     /// Test that the show method is called correctly
-    func testShowRequiresApiKey() {
+    func testSendEventRequiresApiKey() {
         var error: Error?
         let exp = expectation(description: "Show completion callback")
         let iterateInstance = Iterate(storage: MockStorageEngine())
-        iterateInstance.show(surveyId: testManualTriggerSurvey) { (survey, e) in
+        iterateInstance.sendEvent(name: testEventName) { (survey, e) in
             error = e
             exp.fulfill()
         }
@@ -27,27 +27,28 @@ class ShowIntegrationTests: XCTestCase {
     }
     
     /// Test that the show method correctly returns a survey
-    func testShowReturnsASurvey() {
-        var error: Error?
-        var survey: Survey?
-        let exp = expectation(description: "Show completion callback")
-        let iterateInstance = Iterate(storage: MockStorageEngine())
-        iterateInstance.configure(apiKey: testCompanyApiKey)
-        iterateInstance.show(surveyId: testManualTriggerSurvey) { (surveyCallback, errorCallback) in
-            survey = surveyCallback
-            error = errorCallback
-            
-            exp.fulfill()
-        }
-        
-        waitForExpectations(timeout: 3)
-        
-        XCTAssertNil(error)
-        XCTAssertEqual(survey?.id, testManualTriggerSurvey)
-    }
+    // NOTE: disabled until the api changes are deployed to prod to support the send-event endpoint
+//    func testSendEventReturnsASurvey() {
+//        var error: Error?
+//        var survey: Survey?
+//        let exp = expectation(description: "Show completion callback")
+//        let iterateInstance = Iterate(storage: MockStorageEngine())
+//        iterateInstance.configure(apiKey: testCompanyApiKey)
+//        iterateInstance.sendEvent(name: testEventName) { (surveyCallback, errorCallback) in
+//            survey = surveyCallback
+//            error = errorCallback
+//
+//            exp.fulfill()
+//        }
+//
+//        waitForExpectations(timeout: 3)
+//
+//        XCTAssertNil(error)
+//        XCTAssertEqual(survey?.id, testIntegrationSurvey)
+//    }
     
     /// Test that the show method correctly returns a survey
-    func testShowSetsUserApiKey() {
+    func testSendEventSetsUserApiKey() {
         let exp = expectation(description: "Show completion callback")
         let iterateInstance = Iterate(storage: MockStorageEngine())
         iterateInstance.configure(apiKey: testCompanyApiKey)
@@ -55,7 +56,7 @@ class ShowIntegrationTests: XCTestCase {
         
         // Calling embed with a company API key will cause a user API key to be returned
         // (we are testing that the new user key is saved correctly)
-        iterateInstance.show(surveyId: testManualTriggerSurvey) { (surveyCallback, errorCallback) in
+        iterateInstance.sendEvent(name: testEventName) { (surveyCallback, errorCallback) in
             exp.fulfill()
         }
         waitForExpectations(timeout: 3)

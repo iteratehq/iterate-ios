@@ -15,8 +15,11 @@ let testCompanyApiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wYW55X2lkIj
 /// Valid Iterate user API key (suitable for use in integration tests)
 let testUserApiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wYW55X2lkIjoiNWRmZTM2OGEwOWI2ZWYwMDAxYjNlNjE4IiwidXNlcl9pZCI6IjVlMGQwNzFlM2IxMzkwMDAwMTBlMjVhMiIsImlhdCI6MTU3NzkxMjA5NH0.utTdqt32vltkWcTzS82rg3_jORqozhiTvx3RYIS_aVA"
 
-/// Valid survey id for a manually triggered mobile survey (suitable for use in integration tests)
-let testManualTriggerSurvey = "5dfe369809b6ef0001b3f869"
+/// Valid survey id for an event-triggered mobile survey (suitable for use in integration tests)
+let testIntegrationSurvey = "5edfaeb2c591ad0001ead90d"
+
+/// Valid event name for integration tests
+let testEventName = "test-event"
 
 /// Contains tests for the primary Iterate class and shared singleton object
 class IterateTests: XCTestCase {

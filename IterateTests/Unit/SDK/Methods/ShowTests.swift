@@ -17,7 +17,7 @@ class ShowTests: XCTestCase {
         var error: Error?
         let exp = expectation(description: "Show completion callback")
         let iterateInstance = Iterate(storage: MockStorageEngine())
-        iterateInstance.show(surveyId: testManualTriggerSurvey) { (survey, e) in
+        iterateInstance.sendEvent(name: testEventName) { (survey, e) in
             error = e
             exp.fulfill()
         }

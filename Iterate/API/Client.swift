@@ -8,13 +8,13 @@
 
 import Foundation
 
-let DefaultAPIHost = "https://iteratehq.com/api/v1"
+public let DefaultAPIHost = "https://iteratehq.com"
 
 /// Iterate API Client
 class APIClient {
     // MARK: Properties
 
-    /// API Host, should be https://iteratehq.com/api/v1 under most circumstances
+    /// API Host, should be https://iteratehq.com under most circumstances
     let apiHost: String
     
     /// API Key, you can find this in your Iterate dashboard
@@ -65,7 +65,7 @@ class APIClient {
     /// Generate a URLRequest set with the proper content type and authentication
     /// - Parameter path: API Path to request
     func request(path: Path) -> URLRequest? {
-        guard let url = URL(string: "\(apiHost)\(path)") else {
+        guard let url = URL(string: "\(apiHost)/api/v1\(path)") else {
             return nil
         }
         

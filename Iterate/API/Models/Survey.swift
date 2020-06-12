@@ -9,5 +9,13 @@
 import Foundation
 
 public struct Survey: Codable {
+    let color: String
+    let companyId: String
     let id: String
+    let prompt: Prompt?
+}
+
+public struct Prompt: Codable {
+    let buttonText: String?
+    let message: String?
 }

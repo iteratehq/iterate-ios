@@ -12,7 +12,7 @@ import UIKit
 /// ContainerWindow class is the primary display layer for Iterate, it's a window that sits above the
 /// current application window ensuring it an be displayed anywhere at anytime.
 class ContainerWindow: UIWindow {
-    init() {
+    init(survey: Survey, delegate: ContainerWindowDelegate) {
         if #available(iOS 13.0, *) {
             if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                 super.init(windowScene: scene)
@@ -23,12 +23,21 @@ class ContainerWindow: UIWindow {
             super.init(frame: UIScreen.main.bounds)
         }
         
-        alpha = 0.8
-        backgroundColor = .lightGray
+        // Initialize the root view controller
+        if let containerViewController = UIStoryboard(
+            name: "Surveys",
+            bundle: Bundle(identifier: "com.iteratehq.Iterate")
+        ).instantiateViewController(withIdentifier: "ContainerViewController") as? ContainerViewController {
+            containerViewController.survey = survey
+            containerViewController.delegate = delegate
+            self.rootViewController = containerViewController
+        }
+        
+        isHidden = true
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     /// Override the hit test to ignore hits on the window itself, this way it will pass through events to underlying views

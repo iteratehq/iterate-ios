@@ -18,8 +18,8 @@ enum Environment: Int {
 }
 
 enum EnvironmentUrl: String {
-    case Development = "http://localhost:8080/api/v1"
-    case Production = "https://iteratehq.com/api/v1"
+    case Development = "http://localhost:8080"
+    case Production = "https://iteratehq.com"
 }
 
 class SettingsViewController: UIViewController, UITextFieldDelegate {
