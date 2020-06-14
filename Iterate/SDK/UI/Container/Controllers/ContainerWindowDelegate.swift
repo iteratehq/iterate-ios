@@ -36,22 +36,35 @@ class ContainerWindowDelegate {
     
             DispatchQueue.main.async {
                 self.showWindow(survey: survey)
-                self.containerViewController?.showPrompt(survey)
+                self.containerViewController?.showPrompt()
             }
         }
     }
         
     func showSurvey(_ survey: Survey) {
         DispatchQueue.main.async {
+            self.containerViewController?.hidePrompt()
             self.containerViewController?.showSurvey(survey)
         }
     }
     
-    func dismiss(userInitiated: Bool) {
+    func dismissPrompt(userInitiated: Bool) {
         if (userInitiated) {
             // TODO: Make API call to dismissed
         }
         
-        hideWindow()
+        containerViewController?.hidePrompt(complete: {
+            self.hideWindow()
+        })
+    }
+    
+    func dismissSurvey(userInitiated: Bool) {
+        if (userInitiated) {
+            // TODO: Make API call to dismissed
+        }
+        
+        containerViewController?.hideSurvey(complete: {
+            self.hideWindow()
+        })
     }
 }

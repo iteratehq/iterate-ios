@@ -44,6 +44,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="lyp-c9-ocK" firstAttribute="trailing" secondItem="tMS-cA-DE8" secondAttribute="trailing" id="NLC-cs-1do"/>
                             <constraint firstItem="lyp-c9-ocK" firstAttribute="bottom" secondItem="tMS-cA-DE8" secondAttribute="bottom" id="Rvd-Xr-Mzg"/>
@@ -75,6 +76,9 @@
                                 <exclude reference="dWP-vo-QqA"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="R2c-QS-66X" appends="YES" id="r1V-Lm-tHE"/>
+                        </connections>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
@@ -84,6 +88,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wKz-fs-ONn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="R2c-QS-66X">
+                    <connections>
+                        <action selector="handlePan:" destination="APU-PM-mDT" id="eYD-QA-7qe"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-613.04347826086962" y="160.71428571428569"/>
         </scene>
