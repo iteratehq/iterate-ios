@@ -86,7 +86,7 @@ extension SurveyViewController: WKScriptMessageHandler {
             switch messageType {
             case .Close:
                 let userInitiated = data["userInitiated"] as? Bool ?? false
-                delegate?.dismissSurvey(userInitiated: userInitiated)
+                delegate?.dismissSurvey(survey: survey, userInitiated: userInitiated)
             }
         }
     }

@@ -18,6 +18,10 @@
 		270613E623BA4F2500DDF342 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613E523BA4F2500DDF342 /* Survey.swift */; };
 		270613EB23BA6BFD00DDF342 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613EA23BA6BFD00DDF342 /* Client.swift */; };
 		270613EF23BA6F6A00DDF342 /* Embed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613EE23BA6F6A00DDF342 /* Embed.swift */; };
+		27063AB024980D2B00BE6913 /* DisplayedEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27063AAF24980D2B00BE6913 /* DisplayedEndpoint.swift */; };
+		27063AB524980D3F00BE6913 /* DismissedEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27063AB424980D3F00BE6913 /* DismissedEndpoint.swift */; };
+		27063AB72498108900BE6913 /* Displayed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27063AB62498108900BE6913 /* Displayed.swift */; };
+		27063AB92498109700BE6913 /* Dismissed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27063AB82498109700BE6913 /* Dismissed.swift */; };
 		2757AB5B248EDDFE00B909C9 /* PromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2757AB5A248EDDFE00B909C9 /* PromptViewController.swift */; };
 		2757AB60248FC4FE00B909C9 /* ContainerWindowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2757AB5F248FC4FE00B909C9 /* ContainerWindowDelegate.swift */; };
 		27821A3C24900C08004AAB22 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27821A3B24900C08004AAB22 /* Color.swift */; };
@@ -87,6 +91,10 @@
 		270613E523BA4F2500DDF342 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		270613EA23BA6BFD00DDF342 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		270613EE23BA6F6A00DDF342 /* Embed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Embed.swift; sourceTree = "<group>"; };
+		27063AAF24980D2B00BE6913 /* DisplayedEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayedEndpoint.swift; sourceTree = "<group>"; };
+		27063AB424980D3F00BE6913 /* DismissedEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissedEndpoint.swift; sourceTree = "<group>"; };
+		27063AB62498108900BE6913 /* Displayed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displayed.swift; sourceTree = "<group>"; };
+		27063AB82498109700BE6913 /* Dismissed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dismissed.swift; sourceTree = "<group>"; };
 		2757AB5A248EDDFE00B909C9 /* PromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptViewController.swift; sourceTree = "<group>"; };
 		2757AB5F248FC4FE00B909C9 /* ContainerWindowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerWindowDelegate.swift; sourceTree = "<group>"; };
 		27821A3B24900C08004AAB22 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -213,6 +221,8 @@
 				270613EE23BA6F6A00DDF342 /* Embed.swift */,
 				270613E523BA4F2500DDF342 /* Survey.swift */,
 				27C3B28723BAA4BD00754F4D /* Response.swift */,
+				27063AB62498108900BE6913 /* Displayed.swift */,
+				27063AB82498109700BE6913 /* Dismissed.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -297,6 +307,8 @@
 			isa = PBXGroup;
 			children = (
 				27C3B28523BAA3A900754F4D /* EmbedEndpoint.swift */,
+				27063AAF24980D2B00BE6913 /* DisplayedEndpoint.swift */,
+				27063AB424980D3F00BE6913 /* DismissedEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -557,9 +569,12 @@
 				270613EB23BA6BFD00DDF342 /* Client.swift in Sources */,
 				270613E023BA4DD100DDF342 /* Errors.swift in Sources */,
 				27C3B28A23BCF5FC00754F4D /* Context.swift in Sources */,
+				27063AB92498109700BE6913 /* Dismissed.swift in Sources */,
+				27063AB72498108900BE6913 /* Displayed.swift in Sources */,
 				27C3B29723BD354C00754F4D /* Storage.swift in Sources */,
 				27C3B2F123BFDECF00754F4D /* ContainerViewController.swift in Sources */,
 				27C3B28823BAA4BD00754F4D /* Response.swift in Sources */,
+				27063AB524980D3F00BE6913 /* DismissedEndpoint.swift in Sources */,
 				27AEEEA7245DB3F800351EC1 /* SendEvent.swift in Sources */,
 				27C3B28623BAA3A900754F4D /* EmbedEndpoint.swift in Sources */,
 				270613EF23BA6F6A00DDF342 /* Embed.swift in Sources */,
@@ -568,6 +583,7 @@
 				27DDDD5323C657F4005CA07C /* SurveyViewController.swift in Sources */,
 				27C3B2F323C399B200754F4D /* ContainerView.swift in Sources */,
 				27C3B28223BA9BB600754F4D /* Paths.swift in Sources */,
+				27063AB024980D2B00BE6913 /* DisplayedEndpoint.swift in Sources */,
 				270613D823AD8D6200DDF342 /* Iterate.swift in Sources */,
 				27C3B2EF23BFD44400754F4D /* ContainerWindow.swift in Sources */,
 			);

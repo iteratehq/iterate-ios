@@ -45,7 +45,9 @@ class ContainerWindowDelegate {
     
             DispatchQueue.main.async {
                 self.showWindow(survey: survey)
-                self.containerViewController?.showPrompt()
+                self.containerViewController?.showPrompt(complete: {
+                    Iterate.shared.api?.displayed(survey: survey, complete: { _, _ in })
+                })
             }
         }
     }
@@ -67,9 +69,9 @@ class ContainerWindowDelegate {
         }
     }
     
-    func dismissPrompt(userInitiated: Bool) {
-        if (userInitiated) {
-            // TODO: Make API call to dismissed
+    func dismissPrompt(survey: Survey?, userInitiated: Bool) {
+        if let survey = survey, userInitiated {
+            Iterate.shared.api?.dismissed(survey: survey, complete: { _, _ in })
         }
         
         containerViewController?.hidePrompt(complete: {
@@ -77,9 +79,9 @@ class ContainerWindowDelegate {
         })
     }
     
-    func dismissSurvey(userInitiated: Bool) {
-        if (userInitiated) {
-            // TODO: Make API call to dismissed
+    func dismissSurvey(survey: Survey?, userInitiated: Bool) {
+        if let survey = survey, userInitiated {
+            Iterate.shared.api?.dismissed(survey: survey, complete: { _, _ in })
         }
         
         self.presentingViewController?.dismiss(animated: true, completion: {
