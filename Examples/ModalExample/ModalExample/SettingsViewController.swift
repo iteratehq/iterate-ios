@@ -50,5 +50,9 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         let apiHost = Environment(rawValue: environmentSegmentedControl.selectedSegmentIndex) == Environment.Development ? EnvironmentUrl.Development : EnvironmentUrl.Production
         Iterate.shared.configure(apiKey: apiKeyTextField.text ?? "", apiHost: apiHost.rawValue)
     }
+    
+    @IBAction func done(_ sender: Any) {
+        presentingViewController?.dismiss(animated: true, completion: nil)
+    }
 }
 

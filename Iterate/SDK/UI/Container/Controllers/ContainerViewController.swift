@@ -14,6 +14,8 @@ class ContainerViewController: UIViewController {
     var survey: Survey?
     
     @IBOutlet weak var promptView: UIView!
+    @IBOutlet weak var promptViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var promptViewTopConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         // Get the prompt child container controller
@@ -21,19 +23,72 @@ class ContainerViewController: UIViewController {
             promptViewController = viewController
             promptViewController?.delegate = delegate
         }
+        
+        promptViewBottomConstraint.isActive = false
+        promptViewTopConstraint.isActive = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        promptViewBottomConstraint.constant = 0
         promptViewController?.survey = survey
     }
     
-    func showPrompt(_ survey: Survey) {
+    @IBAction func handlePan(_ gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: view)
+        
+        if (promptViewBottomConstraint.constant + translation.y) > 0 {
+            promptViewBottomConstraint.constant = promptViewBottomConstraint.constant + translation.y
+        }
+        
+        gesture.setTranslation(.zero, in: view)
+        
+        guard gesture.state == .ended else {
+            return
+        }
+        
+        promptViewBottomConstraint.constant > 25 ? hidePrompt() : showPrompt()
+    }
+    
+    func showPrompt() {
         promptView.isHidden = false
+        self.promptViewBottomConstraint.constant = promptViewController?.view.frame.height ?? 300
+        self.promptViewBottomConstraint.isActive = true
+        self.promptViewTopConstraint.isActive = false
+        view.layoutIfNeeded()
+        
+        let animator = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 1) {
+            self.promptViewBottomConstraint.constant = 0
+            self.view.layoutIfNeeded()
+        }
+        
+        animator.startAnimation()
+    }
+    
+    func hidePrompt(complete: (() -> Void)? = nil) {
+        view.layoutIfNeeded()
+        let animator = UIViewPropertyAnimator(duration: 0.3, dampingRatio: 1) {
+            self.promptViewBottomConstraint.constant = 0
+            self.promptViewBottomConstraint.isActive = false
+            self.promptViewTopConstraint.isActive = true
+            
+            self.view.layoutIfNeeded()
+        }
+        
+        if let complete = complete {
+            animator.addCompletion { (_ UIViewAnimatingPosition) in
+                complete()
+            }
+        }
+        
+        animator.startAnimation()
     }
     
     func showSurvey(_ survey: Survey) {
-        promptView.isHidden = true
         performSegue(withIdentifier: "showSurvey", sender: self)
+    }
+    
+    func hideSurvey(complete: (() -> Void)? = nil) {
+        dismiss(animated: true, completion: complete)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -48,6 +103,6 @@ class ContainerViewController: UIViewController {
 
 extension ContainerViewController: UIAdaptivePresentationControllerDelegate {
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        delegate?.dismiss(userInitiated: true)
+        delegate?.dismissSurvey(userInitiated: true)
     }
 }

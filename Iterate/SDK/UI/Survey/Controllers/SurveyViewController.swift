@@ -12,6 +12,7 @@ import WebKit
 class SurveyViewController: UIViewController {
     @objc dynamic var webView: WKWebView!
     @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var delegate: ContainerWindowDelegate?
     var survey: Survey?
@@ -36,11 +37,16 @@ class SurveyViewController: UIViewController {
         addObserver(self, forKeyPath: #keyPath(webView.isLoading), options: [.old, .new], context: nil)
         
         loadingView.frame = view.frame
+        if #available(iOS 13.0, *) {
+            loadingIndicator.style = .medium
+        } else {
+            loadingIndicator.style = .gray
+        } 
         view.bringSubviewToFront(loadingView)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         if let survey = survey {
             let host = Iterate.shared.apiHost ?? DefaultAPIHost
@@ -80,7 +86,7 @@ extension SurveyViewController: WKScriptMessageHandler {
             switch messageType {
             case .Close:
                 let userInitiated = data["userInitiated"] as? Bool ?? false
-                delegate?.dismiss(userInitiated: userInitiated)
+                delegate?.dismissSurvey(userInitiated: userInitiated)
             }
         }
     }

@@ -39,23 +39,26 @@
                                 <rect key="frame" x="192" y="809" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="nwb-aU-BRY" kind="show" identifier="showSurvey" id="Ex7-wf-fpd"/>
+                                    <segue destination="nwb-aU-BRY" kind="presentation" identifier="showSurvey" id="Ex7-wf-fpd"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="lyp-c9-ocK" firstAttribute="trailing" secondItem="tMS-cA-DE8" secondAttribute="trailing" id="NLC-cs-1do"/>
                             <constraint firstItem="lyp-c9-ocK" firstAttribute="bottom" secondItem="tMS-cA-DE8" secondAttribute="bottom" id="Rvd-Xr-Mzg"/>
                             <constraint firstItem="lyp-c9-ocK" firstAttribute="width" secondItem="0rX-C1-A2z" secondAttribute="height" multiplier="1:1" id="Sv4-WO-keV"/>
                             <constraint firstItem="lyp-c9-ocK" firstAttribute="centerX" secondItem="tMS-cA-DE8" secondAttribute="centerX" id="WvO-Yp-BNe"/>
                             <constraint firstItem="lyp-c9-ocK" firstAttribute="leading" secondItem="tMS-cA-DE8" secondAttribute="leading" id="dWP-vo-QqA"/>
+                            <constraint firstItem="lyp-c9-ocK" firstAttribute="top" secondItem="tMS-cA-DE8" secondAttribute="bottom" id="n7N-uG-Ev5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0rX-C1-A2z"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Sv4-WO-keV"/>
                                 <exclude reference="WvO-Yp-BNe"/>
+                                <exclude reference="n7N-uG-Ev5"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -73,13 +76,23 @@
                                 <exclude reference="dWP-vo-QqA"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="R2c-QS-66X" appends="YES" id="r1V-Lm-tHE"/>
+                        </connections>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="promptView" destination="lyp-c9-ocK" id="sWx-S4-KJO"/>
+                        <outlet property="promptViewBottomConstraint" destination="Rvd-Xr-Mzg" id="cYb-Ct-CPB"/>
+                        <outlet property="promptViewTopConstraint" destination="n7N-uG-Ev5" id="1ok-aQ-rDP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wKz-fs-ONn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="R2c-QS-66X">
+                    <connections>
+                        <action selector="handlePan:" destination="APU-PM-mDT" id="eYD-QA-7qe"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-613.04347826086962" y="160.71428571428569"/>
         </scene>
@@ -88,21 +101,21 @@
             <objects>
                 <viewController storyboardIdentifier="SurveyModalViewController" id="nwb-aU-BRY" userLabel="Survey Modal View Controller" customClass="SurveyViewController" customModule="Iterate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IHk-by-TmP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9M9-G2-nI0">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="I5T-wW-wOX">
-                                        <rect key="frame" x="189.66666666666666" y="430.66666666666669" width="35" height="35"/>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="I5T-wW-wOX">
+                                        <rect key="frame" x="189.66666666666666" y="403.66666666666669" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="c3J-3z-HF2"/>
                                             <constraint firstAttribute="height" constant="35" id="sbo-aw-eDz"/>
                                         </constraints>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading survey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idc-G8-eRE">
-                                        <rect key="frame" x="0.0" y="477.66666666666669" width="414" height="19.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="450.66666666666669" width="414" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -129,6 +142,7 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="loadingIndicator" destination="I5T-wW-wOX" id="JeI-hI-d0p"/>
                         <outlet property="loadingView" destination="9M9-G2-nI0" id="DPR-Zw-pOZ"/>
                     </connections>
                 </viewController>
