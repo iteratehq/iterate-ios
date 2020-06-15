@@ -82,23 +82,6 @@ class ContainerViewController: UIViewController {
         
         animator.startAnimation()
     }
-    
-    func showSurvey(_ survey: Survey) {
-        performSegue(withIdentifier: "showSurvey", sender: self)
-    }
-    
-    func hideSurvey(complete: (() -> Void)? = nil) {
-        dismiss(animated: true, completion: complete)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showSurvey" {
-            let surveyViewController = segue.destination as! SurveyViewController
-            surveyViewController.presentationController?.delegate = self
-            surveyViewController.delegate = delegate
-            surveyViewController.survey = survey
-        }
-    }
 }
 
 extension ContainerViewController: UIAdaptivePresentationControllerDelegate {
