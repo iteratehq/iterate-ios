@@ -39,7 +39,7 @@
                                 <rect key="frame" x="192" y="809" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="nwb-aU-BRY" kind="show" identifier="showSurvey" id="Ex7-wf-fpd"/>
+                                    <segue destination="nwb-aU-BRY" kind="presentation" identifier="showSurvey" id="Ex7-wf-fpd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -101,21 +101,21 @@
             <objects>
                 <viewController storyboardIdentifier="SurveyModalViewController" id="nwb-aU-BRY" userLabel="Survey Modal View Controller" customClass="SurveyViewController" customModule="Iterate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IHk-by-TmP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9M9-G2-nI0">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="I5T-wW-wOX">
-                                        <rect key="frame" x="189.66666666666666" y="430.66666666666669" width="35" height="35"/>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="I5T-wW-wOX">
+                                        <rect key="frame" x="189.66666666666666" y="403.66666666666669" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="c3J-3z-HF2"/>
                                             <constraint firstAttribute="height" constant="35" id="sbo-aw-eDz"/>
                                         </constraints>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading survey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idc-G8-eRE">
-                                        <rect key="frame" x="0.0" y="477.66666666666669" width="414" height="19.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="450.66666666666669" width="414" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -142,6 +142,7 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="loadingIndicator" destination="I5T-wW-wOX" id="JeI-hI-d0p"/>
                         <outlet property="loadingView" destination="9M9-G2-nI0" id="DPR-Zw-pOZ"/>
                     </connections>
                 </viewController>
