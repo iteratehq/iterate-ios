@@ -51,13 +51,13 @@ class ContainerViewController: UIViewController {
     
     func showPrompt() {
         promptView.isHidden = false
+        self.promptViewBottomConstraint.constant = promptViewController?.view.frame.height ?? 300
+        self.promptViewBottomConstraint.isActive = true
+        self.promptViewTopConstraint.isActive = false
         view.layoutIfNeeded()
         
         let animator = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 1) {
             self.promptViewBottomConstraint.constant = 0
-            self.promptViewBottomConstraint.isActive = true
-            self.promptViewTopConstraint.isActive = false
-            
             self.view.layoutIfNeeded()
         }
         
