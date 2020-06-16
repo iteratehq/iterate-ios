@@ -48,15 +48,15 @@ class APIClient {
     ///   - path: Path to call
     ///   - data: Post body data
     ///   - complete: Results callback
-    func post<T: Codable> (path: Path, data: Data, complete: @escaping (T?, Error?) -> Void) {
-        guard var request = request(path: Paths.Surveys.Embed) else {
+    func post<T: Codable> (path: Path, data: Data?, complete: @escaping (T?, Error?) -> Void) {
+        guard var request = request(path: path) else {
             complete(nil, IterateError.invalidAPIUrl)
             return
         }
         
         request.httpMethod = "POST"
         request.httpBody = data
-        
+
         dataTask(request: request, complete: complete)
     }
     

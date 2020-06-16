@@ -1,0 +1,16 @@
+//
+//  Displayed.swift
+//  Iterate
+//
+//  Created by Michael Singleton on 6/15/20.
+//  Copyright © 2020 Pickaxe LLC. (DBA Iterate). All rights reserved.
+//
+
+import Foundation
+
+public struct Displayed: Codable {
+    let id: String
+    let lastDisplayed: String
+    let surveyId: String
+    let userId: String
+}

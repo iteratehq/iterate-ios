@@ -49,7 +49,7 @@ class ContainerViewController: UIViewController {
         promptViewBottomConstraint.constant > 25 ? hidePrompt() : showPrompt()
     }
     
-    func showPrompt() {
+    func showPrompt(complete: (() -> Void)? = nil) {
         promptView.isHidden = false
         self.promptViewBottomConstraint.constant = promptViewController?.view.frame.height ?? 300
         self.promptViewBottomConstraint.isActive = true
@@ -59,6 +59,12 @@ class ContainerViewController: UIViewController {
         let animator = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 1) {
             self.promptViewBottomConstraint.constant = 0
             self.view.layoutIfNeeded()
+        }
+        
+        if let complete = complete {
+            animator.addCompletion { (_ UIViewAnimatingPosition) in
+                complete()
+            }
         }
         
         animator.startAnimation()
@@ -82,27 +88,10 @@ class ContainerViewController: UIViewController {
         
         animator.startAnimation()
     }
-    
-    func showSurvey(_ survey: Survey) {
-        performSegue(withIdentifier: "showSurvey", sender: self)
-    }
-    
-    func hideSurvey(complete: (() -> Void)? = nil) {
-        dismiss(animated: true, completion: complete)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showSurvey" {
-            let surveyViewController = segue.destination as! SurveyViewController
-            surveyViewController.presentationController?.delegate = self
-            surveyViewController.delegate = delegate
-            surveyViewController.survey = survey
-        }
-    }
 }
 
 extension ContainerViewController: UIAdaptivePresentationControllerDelegate {
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        delegate?.dismissSurvey(userInitiated: true)
+        delegate?.dismissSurvey(survey: survey, userInitiated: true)
     }
 }
