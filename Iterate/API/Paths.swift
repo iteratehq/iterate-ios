@@ -18,5 +18,7 @@ struct Paths {
 
 /// Survey-level API paths
 struct SurveyPaths {
+    func Displayed(surveyId: String) -> Path { "/surveys/\(surveyId)/displayed" }
+    func Dismissed(surveyId: String) -> Path { "/surveys/\(surveyId)/dismiss" }
     let Embed: Path = "/surveys/embed"
 }

@@ -42,6 +42,6 @@ class PromptViewController: UIViewController {
         }
     }
     @IBAction func close(_ sender: Any) {
-        delegate?.dismissPrompt(userInitiated: true)
+        delegate?.dismissPrompt(survey: survey, userInitiated: true)
     }
 }
