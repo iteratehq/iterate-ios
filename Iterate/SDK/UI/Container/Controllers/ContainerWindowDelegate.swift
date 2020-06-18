@@ -88,7 +88,7 @@ class ContainerWindowDelegate {
         })
     }
     
-    /// Get the currently visible view controller which we will use to modally present the survey and fallback to our container view controller
+    /// Get the currently visible view controller which we will use to modally present the survey and fall back to our container view controller
     func getPresentingViewController() -> UIViewController? {
         let window = UIApplication.shared.windows.first { $0.isKeyWindow }
         var visibleViewController = window?.rootViewController
@@ -99,8 +99,8 @@ class ContainerWindowDelegate {
         
         while visibleViewController?.presentedViewController != nil {
             switch visibleViewController?.presentedViewController {
-                case let navagationController as UINavigationController:
-                    visibleViewController = navagationController.visibleViewController
+                case let navigationController as UINavigationController:
+                    visibleViewController = navigationController.visibleViewController
             case let tabBarController as UITabBarController:
                 visibleViewController = tabBarController.selectedViewController
             default:

@@ -85,7 +85,7 @@ public class Iterate {
         })
     }
     
-    /// Update the API client to use the latest API key. We prefer to use the user API key and fallback to the company key
+    /// Update the API client to use the latest API key. We prefer to use the user API key and fall back to the company key
     func updateApiKey() {
         if let apiKey = userApiKey ?? companyApiKey {
             api = APIClient(apiKey: apiKey, apiHost: apiHost ?? DefaultAPIHost)
