@@ -6,6 +6,7 @@
 //  Copyright © 2020 Iterate. All rights reserved.
 //
 
+import Iterate
 import UIKit
 
 @available(iOS 13.0, *)
@@ -49,6 +50,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        for context in URLContexts {
+            if context.url.absoluteString.contains(Iterate.PreviewParameter) {
+                Iterate.shared.preview(url: context.url.absoluteURL)
+            }
+        }
+    }
 
 }
 

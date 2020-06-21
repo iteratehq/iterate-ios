@@ -15,11 +15,19 @@ extension Iterate {
     /// In the future this may set the current 'view' the user is on, how long they've been
     /// in the app, etc. Anything that may be used for targeting.
     func initCurrentContext() -> EmbedContext {
-        // TODO: Remove. Setting this to be in preview mode so we can force the surveys to show
-        // up until we have a proper preview-mode mechanism.
-        let targeting = TargetingContext(frequency: TargetingContextFrequency.always, surveyId: "5ec54a4857d68f0104c1e97d")
+        // Include the url scheme of the app so we can generate a url to preview the survey
+        var app: AppContext?
+        if let urlScheme = Iterate.shared.urlScheme {
+            app = AppContext(urlScheme: urlScheme)
+        }
         
-        return EmbedContext(targeting: targeting, trigger: nil, type: EmbedType.mobile)
+        // Include the survey id we're previewing
+        var targeting: TargetingContext?
+        if let previewingSurveyId = previewingSurveyId {
+            targeting = TargetingContext(frequency: TargetingContextFrequency.always, surveyId: previewingSurveyId)
+        }
+        
+        return EmbedContext(app: app, targeting: targeting, trigger: nil, type: EmbedType.mobile)
     }
 }
 
