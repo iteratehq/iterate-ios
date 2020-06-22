@@ -18,7 +18,7 @@ class ClientTests: XCTestCase {
             override func dataTask<T: Codable>(request: URLRequest, complete: @escaping (T?, Error?) -> Void) {
                 let embedContext = try! decoder.decode(EmbedContext.self, from: request.httpBody!)
                 
-                XCTAssertEqual(request.url?.absoluteString, "\(DefaultAPIHost)\(Paths.Surveys.Embed)")
+                XCTAssertEqual(request.url?.absoluteString, "\(DefaultAPIHost)/api/v1\(Paths.Surveys.Embed)")
                 XCTAssertEqual(request.value(forHTTPHeaderField: "Content-Type")!, "application/javascript")
                 XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization")!, "Bearer \(testCompanyApiKey)")
                 XCTAssertEqual(request.httpMethod, "POST")
