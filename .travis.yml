@@ -1,6 +1,6 @@
 language: swift
 os: osx
 osx_image: xcode11.5
-xcode_destination: platform=iOS Simulator,OS=13.2,name=iPhone 11 Pro
+xcode_destination: platform=iOS Simulator,OS=13.5,name=iPhone 11 Pro
 xcode_scheme: Iterate
 xcode_workspace: Iterate.xcworkspace
