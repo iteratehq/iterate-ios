@@ -1,4 +1,6 @@
 language: swift
+notifications:
+  slack: pickaxenyc:ItTUSCTonQINPFbxGAQ9uusW
 os: osx
 osx_image: xcode11.5
 xcode_destination: platform=iOS Simulator,OS=13.5,name=iPhone 11 Pro
