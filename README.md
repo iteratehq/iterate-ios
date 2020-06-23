@@ -1,4 +1,4 @@
-![](https://github.com/iteratehq/iterate-ios/blob/master/Assets/readme-banner.gif?raw=true)
+![Iterate for iOS](https://github.com/iteratehq/iterate-ios/blob/master/Assets/static-banner.png?raw=true)
 
 # Iterate for iOS
 
