@@ -2,5 +2,125 @@
 
 # Iterate for iOS
 
-[![build](https://img.shields.io/travis/com/iteratehq/iterate-ios)](https://travis-ci.com/github/iteratehq/iterate-ios) [![version](https://img.shields.io/codeclimate/maintainability/iteratehq/iterate-ios)](https://codeclimate.com/github/iteratehq/iterate-ios) [![version](https://img.shields.io/github/v/tag/iteratehq/iterate-ios?label=version)](https://github.com/iteratehq/iterate-ios/releases) [![version](https://img.shields.io/github/license/iteratehq/iterate-ios?color=%23000000)](https://github.com/iteratehq/iterate-ios/blob/master/LICENSE.txt) 
+[![build](https://img.shields.io/travis/com/iteratehq/iterate-ios)](https://travis-ci.com/github/iteratehq/iterate-ios) [![version](https://img.shields.io/codeclimate/maintainability/iteratehq/iterate-ios)](https://codeclimate.com/github/iteratehq/iterate-ios) [![version](https://img.shields.io/github/v/tag/iteratehq/iterate-ios?label=version)](https://github.com/iteratehq/iterate-ios/releases) [![version](https://img.shields.io/github/license/iteratehq/iterate-ios?color=%23000000)](https://github.com/iteratehq/iterate-ios/blob/master/LICENSE.txt)
 
+---
+
+Iterate surveys put you directly in touch with your app users to learn how you can change for the better—from your product to your app experience.
+
+Run surveys that are highly targeted, user-friendly, and on-brand. You’ll understand not just what your visitors are doing, but why.
+
+## Requirements
+
+✅ iOS 12 or higher
+✅ Works with iPhone or iPad
+👌 No 3rd party dependencies
+
+## Install
+
+_Coming Soon_
+
+## Usage
+
+Within your app surveys are shown in response to _events_. An event can be anything from viewing a screen, clicking a button, or any other user action. You use the Iterate SDK to send events to Iterate, then from your Iterate dashboard you create surveys that target those events.
+
+**Quickstart**
+
+Creating your [Iterate](https://iteratehq.com) account if you haven't already, then go into your settings and copy your API key.
+
+1. Initialize the SDK in your AppDelegate class
+
+```swift
+import Iterate
+
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    // ...
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        Iterate.shared.configure(apiKey: YOUR_API_KEY)
+    }
+
+    // ...
+
+}
+```
+
+2. Implement events
+
+Here's an example of an event being fired when the user views the activity feed screen
+
+```swift
+import Iterate
+
+class ViewController: UIViewController {
+
+  // ...
+
+   override func viewDidAppear(_ animated: Bool) {
+       Iterate.shared.sendEvent(name: "viewed-activity-feed")
+   }
+
+   // ...
+
+}
+```
+
+3. Create your survey on iteratehq.com and target it to that event
+
+![](https://github.com/iteratehq/iterate-ios/blob/master/Assets/event-targeting.png?raw=true | width=400)
+
+4. Publish your survey and you're done 🎉
+
+**Previewing your survey**
+
+You'll likely want to preview your survey before publishing it so you can test it out and confirm everything is working correctly. To enable previewing you'll need to have a [custom URL scheme](https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app) for you app and add the following code when your app is opened from your app's URL scheme.
+
+The `Iterate.shared.preview(url:)` method looks for the query parameter `?iterate_preview=YOUR_SURVEY_ID` which enables _preview mode_ allowing you to see the survey in response to your targeted event being fired, but before it's published for everyone.
+
+If you're using scenes add the following code to your SceneDelegate
+
+```swift
+import Iterate
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+  // ...
+
+  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+      for context in URLContexts {
+          if context.url.absoluteString.contains(Iterate.PreviewParameter) {
+              Iterate.shared.preview(url: context.url.absoluteURL)
+          }
+      }
+  }
+
+  // ...
+}
+```
+
+otherwise add it to your AppDelegate
+
+```swift
+import Iterate
+
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    // ...
+
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:] ) -> Bool {
+        if url.absoluteString.contains(Iterate.PreviewParameter) {
+            Iterate.shared.preview(url: url.absoluteURL)
+        }
+    }
+
+    // ...
+
+}
+```
+
+Once that's added you can scan the QR code on the "Preview & Publish" tab of your survey which will open your app allowing you to preview the survey once the event you're targeting has fired.
+
+**Recommendations**
+
+When implementing Iterate for the first time, we encurage you to implement events for _all_ of your core use cases which you may want to target surveys to in the future. e.g. signup, puchased, viewed X screen, tapped notification, etc. This way you can easily launch new surveys targeting these events without needing to instrument a new event each time.
