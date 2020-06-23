@@ -12,9 +12,10 @@ Run surveys that are highly targeted, user-friendly, and on-brand. You’ll unde
 
 ## Requirements
 
-✅ iOS 12 or higher
-✅ Works with iPhone or iPad
+✅ iOS 12 or higher  
+✅ Works with iPhone or iPad  
 👌 No 3rd party dependencies
+
 
 ## Install
 
@@ -68,7 +69,7 @@ class ViewController: UIViewController {
 
 3. Create your survey on iteratehq.com and target it to that event
 
-![](https://github.com/iteratehq/iterate-ios/blob/master/Assets/event-targeting.png?raw=true | width=400)
+<img src="https://github.com/iteratehq/iterate-ios/blob/master/Assets/event-targeting.png?raw=true" width="500">
 
 4. Publish your survey and you're done 🎉
 
@@ -124,3 +125,7 @@ Once that's added you can scan the QR code on the "Preview & Publish" tab of you
 **Recommendations**
 
 When implementing Iterate for the first time, we encurage you to implement events for _all_ of your core use cases which you may want to target surveys to in the future. e.g. signup, puchased, viewed X screen, tapped notification, etc. This way you can easily launch new surveys targeting these events without needing to instrument a new event each time.
+
+**Survey eligibility and frequency**
+
+By default surveys are only shown once per person and user's can only see at most 1 survey every 72 hours (which is configurable). You can learn more about how [eligibility and frequency works](https://help.iteratehq.com/en/articles/2835008-survey-eligibility-and-frequency).
