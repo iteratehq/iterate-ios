@@ -17,8 +17,14 @@ public class Iterate {
     /// on the Iterate class.
     public static let shared = Iterate()
     
+    /// Query parameter used to set the preview mode
+    public static let PreviewParameter = "iterate_preview"
+    
     /// Storage key used to store the user API key
     static let UserApiStorageKey = "userApiStorageKey"
+    
+    /// URL Scheme of the app, used for previewing surveys
+    lazy var urlScheme = URLScheme()
     
     /// API Client, which will be initialized when the API key is
     var api: APIClient?
@@ -49,6 +55,9 @@ public class Iterate {
             updateApiKey()
         }
     }
+    
+    /// The id of the survey being previewed
+    var previewingSurveyId: String?
     
     /// Storage engine for storing user data like their API key and user attributes
     var storage: StorageEngine
