@@ -12,9 +12,10 @@ Run surveys that are highly targeted, user-friendly, and on-brand. You’ll unde
 
 ## Requirements
 
-✅ iOS 12 or higher
-✅ Works with iPhone or iPad
+✅ iOS 12 or higher  
+✅ Works with iPhone or iPad  
 👌 No 3rd party dependencies
+
 
 ## Install
 
@@ -68,7 +69,7 @@ class ViewController: UIViewController {
 
 3. Create your survey on iteratehq.com and target it to that event
 
-![](https://github.com/iteratehq/iterate-ios/blob/master/Assets/event-targeting.png?raw=true | width=400)
+<img src="https://github.com/iteratehq/iterate-ios/blob/master/Assets/event-targeting.png?raw=true" width="500">
 
 4. Publish your survey and you're done 🎉
 
