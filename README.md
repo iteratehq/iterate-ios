@@ -14,8 +14,8 @@ Run surveys that are highly targeted, user-friendly, and on-brand. You’ll unde
 
 ✅ iOS 12 or higher  
 ✅ Works with iPhone or iPad  
+✅ Swift 4.2 or higher
 👌 No 3rd party dependencies
-
 
 ## Install
 
