@@ -24,9 +24,12 @@ class ContainerWindow: UIWindow {
         }
         
         // Initialize the root view controller
+        let containerBundle = Bundle(for: ContainerWindow.self)
+        let bundleUrl = containerBundle.url(forResource: "Iterate", withExtension: "bundle")
+        let bundle = Bundle(url: bundleUrl!)
         if let containerViewController = UIStoryboard(
             name: "Surveys",
-            bundle: Bundle(identifier: "com.iteratehq.Iterate")
+            bundle: bundle
         ).instantiateViewController(withIdentifier: "ContainerViewController") as? ContainerViewController {
             containerViewController.survey = survey
             containerViewController.delegate = delegate
