@@ -14,6 +14,9 @@ Pod::Spec.new do |spec|
   spec.platform       = :ios, "12.0"
   spec.source         = { :git => "https://github.com/iteratehq/iterate-ios.git", :tag => "v#{spec.version}" }
   spec.source_files   = "Iterate/**/*.{h,m,swift}"
+  spec.resource_bundles = {
+    'Iterate' => ["Iterate/**/*.{storyboard,xib,xcassets,json,imageset,png}"]
+  }
   spec.swift_versions = ['4.2', '5.0']
   spec.framework      = "Webkit"
 end
