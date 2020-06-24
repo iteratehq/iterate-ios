@@ -14,9 +14,13 @@ class ContainerWindowDelegate {
         window?.rootViewController as? ContainerViewController
     }
     var surveyViewController: SurveyViewController? {
-        UIStoryboard(
+        let containerBundle = Bundle(for: ContainerWindowDelegate.self)
+        let bundleUrl = containerBundle.url(forResource: "Iterate", withExtension: "bundle")
+        let bundle = Bundle(url: bundleUrl!)
+        
+       return UIStoryboard(
             name: "Surveys",
-            bundle: Bundle(identifier: "com.iteratehq.Iterate")
+            bundle: bundle
         ).instantiateViewController(withIdentifier: "SurveyModalViewController") as? SurveyViewController
     }
     
