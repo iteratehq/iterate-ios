@@ -68,6 +68,17 @@ public class Iterate {
     /// Cached copy of the user API key that was loaded from UserDefaults
     private var cachedUserApiKey: String?
     
+    // Get the bundle by identifier or by url (needed when packaging in cocoapods)
+    var bundle: Bundle? {
+        let containerBundle = Bundle(for: ContainerWindowDelegate.self)
+        if let bundleUrl = containerBundle.url(forResource: "Iterate", withExtension: "bundle") {
+            return Bundle(url: bundleUrl)
+        } else {
+            return Bundle(identifier: "com.iteratehq.Iterate")
+        }
+    }
+    
+    
     // MARK: Init
     
     /// Initializer
