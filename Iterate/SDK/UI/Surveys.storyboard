@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -108,14 +108,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="I5T-wW-wOX">
-                                        <rect key="frame" x="189.66666666666666" y="403.66666666666669" width="35" height="35"/>
+                                        <rect key="frame" x="189.5" y="403.5" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="c3J-3z-HF2"/>
                                             <constraint firstAttribute="height" constant="35" id="sbo-aw-eDz"/>
                                         </constraints>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading survey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idc-G8-eRE">
-                                        <rect key="frame" x="0.0" y="450.66666666666669" width="414" height="19.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="450.5" width="414" height="19.5"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -171,7 +171,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="44" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuT-f5-a3f">
-                                <rect key="frame" x="40" y="111" width="334" height="74"/>
+                                <rect key="frame" x="40" y="111" width="334" height="44"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <inset key="contentEdgeInsets" minX="12" minY="12" maxX="12" maxY="12"/>
@@ -203,13 +203,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zyR-wO-C2T" firstAttribute="top" secondItem="uRf-zf-xnB" secondAttribute="top" constant="24" id="1K0-7G-tMZ"/>
-                            <constraint firstItem="zuT-f5-a3f" firstAttribute="bottom" secondItem="wkK-uh-fIM" secondAttribute="bottom" priority="750" id="CAw-eq-9i2"/>
+                            <constraint firstItem="zuT-f5-a3f" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="wkK-uh-fIM" secondAttribute="bottom" priority="750" id="CAw-eq-9i2"/>
                             <constraint firstItem="wkK-uh-fIM" firstAttribute="trailing" secondItem="P5a-XX-PgF" secondAttribute="trailing" constant="8" id="EG6-bk-RYy"/>
                             <constraint firstItem="P5a-XX-PgF" firstAttribute="top" secondItem="wkK-uh-fIM" secondAttribute="top" constant="8" id="Gzx-E6-JLd"/>
                             <constraint firstItem="zuT-f5-a3f" firstAttribute="leading" secondItem="wkK-uh-fIM" secondAttribute="leading" constant="40" id="KGc-oL-HY7"/>
                             <constraint firstItem="zyR-wO-C2T" firstAttribute="trailing" secondItem="wkK-uh-fIM" secondAttribute="trailing" constant="-40" id="LaF-CY-KQl"/>
                             <constraint firstItem="zyR-wO-C2T" firstAttribute="leading" secondItem="wkK-uh-fIM" secondAttribute="leading" constant="40" id="Q3o-2B-cs7"/>
                             <constraint firstItem="zuT-f5-a3f" firstAttribute="top" secondItem="zyR-wO-C2T" secondAttribute="bottom" constant="16" id="QC1-6x-Mje"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="zuT-f5-a3f" secondAttribute="bottom" constant="24" id="TBE-3T-xZP"/>
                             <constraint firstItem="zuT-f5-a3f" firstAttribute="trailing" secondItem="wkK-uh-fIM" secondAttribute="trailing" constant="-40" id="uVK-Xm-jLX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wkK-uh-fIM"/>
