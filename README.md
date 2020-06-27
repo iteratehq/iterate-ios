@@ -20,6 +20,7 @@ Run surveys that are highly targeted, user-friendly, and on-brand. You’ll unde
 ## Install
 
 **CocoaPods**
+
 You can install Iterate using the [CocoaPods](http://cocoapods.org/) dependency manager by installing CocoaPods and adding the following to your Podfile:
 ```ruby
 pod 'Iterate', '~> 0.1'
