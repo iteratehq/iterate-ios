@@ -2,7 +2,7 @@
 
 # Iterate for iOS
 
-[![build](https://img.shields.io/travis/com/iteratehq/iterate-ios)](https://travis-ci.com/github/iteratehq/iterate-ios) [![version](https://img.shields.io/codeclimate/maintainability/iteratehq/iterate-ios)](https://codeclimate.com/github/iteratehq/iterate-ios) [![version](https://img.shields.io/github/v/tag/iteratehq/iterate-ios?label=version)](https://github.com/iteratehq/iterate-ios/releases) [![version](https://img.shields.io/github/license/iteratehq/iterate-ios?color=%23000000)](https://github.com/iteratehq/iterate-ios/blob/master/LICENSE.txt)
+[![build](https://img.shields.io/travis/com/iteratehq/iterate-ios)](https://travis-ci.com/github/iteratehq/iterate-ios) [![version](https://img.shields.io/codeclimate/maintainability/iteratehq/iterate-ios)](https://codeclimate.com/github/iteratehq/iterate-ios) [![version](https://img.shields.io/github/v/tag/iteratehq/iterate-ios?label=version)](https://github.com/iteratehq/iterate-ios/releases) [![CocoaPod](https://img.shields.io/cocoapods/v/Iterate)](https://cocoapods.org/pods/Iterate) [![license](https://img.shields.io/github/license/iteratehq/iterate-ios?color=%23000000)](https://github.com/iteratehq/iterate-ios/blob/master/LICENSE.txt)
 
 ---
 
@@ -19,7 +19,17 @@ Run surveys that are highly targeted, user-friendly, and on-brand. You’ll unde
 
 ## Install
 
-_Coming Soon_
+**CocoaPods**
+You can install Iterate using the [CocoaPods](http://cocoapods.org/) dependency manager by installing CocoaPods and adding the following to your Podfile:
+```ruby
+pod 'Iterate', '~> 0.1'
+```
+
+Then run
+
+```bash
+$ pod install 
+```
 
 ## Usage
 
