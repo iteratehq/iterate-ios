@@ -18,4 +18,10 @@ extension Iterate {
         let result = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.first(where: { $0.name == Iterate.PreviewParameter })?.value
         previewingSurveyId = result
     }
+    
+    /// Preview a specific survey using it's id
+    /// - Parameter surveyId: The id of the survey to preview
+    public func preview(surveyId: String) {
+        previewingSurveyId = surveyId
+    }
 }
