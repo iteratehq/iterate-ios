@@ -20,6 +20,9 @@ public class Iterate {
     /// Query parameter used to set the preview mode
     public static let PreviewParameter = "iterate_preview"
     
+    // Current version number, will be updated on each release
+    static let Version = "0.1.1"
+    
     /// Storage key used to store the user API key
     static let UserApiStorageKey = "userApiStorageKey"
     

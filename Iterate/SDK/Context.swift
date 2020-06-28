@@ -18,7 +18,7 @@ extension Iterate {
         // Include the url scheme of the app so we can generate a url to preview the survey
         var app: AppContext?
         if let urlScheme = Iterate.shared.urlScheme {
-            app = AppContext(urlScheme: urlScheme)
+            app = AppContext(urlScheme: urlScheme, version: Iterate.Version)
         }
         
         // Include the survey id we're previewing
