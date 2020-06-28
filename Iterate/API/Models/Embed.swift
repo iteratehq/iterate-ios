@@ -23,6 +23,7 @@ struct EmbedContext: Codable {
 // Contains data about the application
 struct AppContext: Codable {
     var urlScheme: String?
+    var version: String?
 }
 
 // MARK: Event
