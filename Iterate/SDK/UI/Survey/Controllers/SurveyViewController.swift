@@ -55,6 +55,10 @@ class SurveyViewController: UIViewController {
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        delegate?.surveyDismissed(survey: survey)
+    }
+    
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == #keyPath(webView.isLoading) {
             if let change = change,
@@ -78,15 +82,13 @@ extension SurveyViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == MessageHandlerName {
             guard let body = message.body as? [String: AnyObject],
-                let messageType = MessageType(rawValue:body["type"] as? String ?? ""),
-                let data = body["data"] as? [String: AnyObject] else {
+                let messageType = MessageType(rawValue:body["type"] as? String ?? "") else {
                 return
             }
             
             switch messageType {
             case .Close:
-                let userInitiated = data["userInitiated"] as? Bool ?? false
-                delegate?.dismissSurvey(survey: survey, userInitiated: userInitiated)
+                delegate?.dismissSurvey()
             }
         }
     }

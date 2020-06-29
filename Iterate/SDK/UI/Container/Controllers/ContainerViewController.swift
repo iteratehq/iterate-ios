@@ -12,6 +12,7 @@ class ContainerViewController: UIViewController {
     var delegate: ContainerWindowDelegate?
     var promptViewController: PromptViewController?
     var survey: Survey?
+    var isSurveyDisplayed: Bool?
     
     @IBOutlet weak var promptView: UIView!
     @IBOutlet weak var promptViewBottomConstraint: NSLayoutConstraint!
@@ -31,6 +32,15 @@ class ContainerViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         promptViewBottomConstraint.constant = 0
         promptViewController?.survey = survey
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if let isSurveyDisplayed = isSurveyDisplayed,
+            isSurveyDisplayed {
+            return .lightContent
+        }
+        
+        return .default
     }
     
     @IBAction func handlePan(_ gesture: UIPanGestureRecognizer) {
@@ -87,11 +97,5 @@ class ContainerViewController: UIViewController {
         }
         
         animator.startAnimation()
-    }
-}
-
-extension ContainerViewController: UIAdaptivePresentationControllerDelegate {
-    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        delegate?.dismissSurvey(survey: survey, userInitiated: true)
     }
 }
