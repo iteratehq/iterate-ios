@@ -61,6 +61,9 @@ class ContainerWindowDelegate {
                 return
             }
             
+            self.containerViewController?.isSurveyDisplayed = true
+            self.containerViewController?.setNeedsStatusBarAppearanceUpdate()
+            
             // Show the survey
             surveyViewController.survey = survey
             surveyViewController.delegate = self
@@ -79,15 +82,21 @@ class ContainerWindowDelegate {
         })
     }
     
-    func dismissSurvey(survey: Survey?, userInitiated: Bool) {
-        if let survey = survey, userInitiated {
+    /// Dismiss the survey, called when the user clicks the 'X' within the survey
+    func dismissSurvey() {
+        self.presentingViewController?.dismiss(animated: true)
+    }
+    
+    /// Called once a survey has been dismissed, this can happen if a user clicks the 'X' within a survey
+    /// or drags down on the modal view
+    func surveyDismissed(survey: Survey?) {
+        if let survey = survey {
             Iterate.shared.api?.dismissed(survey: survey, complete: { _, _ in })
         }
         
-        self.presentingViewController?.dismiss(animated: true, completion: {
-            self.presentingViewController = nil
-            self.hideWindow()
-        })
+        self.containerViewController?.isSurveyDisplayed = false
+        self.presentingViewController = nil
+        self.hideWindow()
     }
     
     /// Get the currently visible view controller which we will use to modally present the survey and fall back to our container view controller
