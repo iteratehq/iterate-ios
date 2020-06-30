@@ -86,8 +86,11 @@ class ContainerViewController: UIViewController {
             self.promptViewBottomConstraint.constant = 0
             self.promptViewBottomConstraint.isActive = false
             self.promptViewTopConstraint.isActive = true
-            
             self.view.layoutIfNeeded()
+        }
+        
+        animator.addCompletion { (_ UIViewAnimatingPosition) in
+            self.promptView.isHidden = true
         }
         
         if let complete = complete {
