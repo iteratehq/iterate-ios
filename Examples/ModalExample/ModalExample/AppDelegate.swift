@@ -23,6 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let apiHost = Environment(rawValue: UserDefaults.standard.integer(forKey: EnvironmentKey)) ?? Environment.Production == Environment.Development ? EnvironmentUrl.Development : EnvironmentUrl.Production
         Iterate.shared.configure(apiKey: apiKey, apiHost: apiHost.rawValue)
         Iterate.shared.preview(surveyId: "5efa0121a9fffa0001c70b8d")
+        
+        // Optionally set user properties
+        // Iterate.shared.identify(userProperties: [
+        //   "user_id": UserPropertyValue(123456),
+        //   "email": UserPropertyValue("team@iteratehq.com"),
+        // ])
 
         return true
     }

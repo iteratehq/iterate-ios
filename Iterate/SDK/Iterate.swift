@@ -23,9 +23,6 @@ public class Iterate {
     // Current version number, will be updated on each release
     static let Version = "0.1.1"
     
-    /// Storage key used to store the user API key
-    static let UserApiStorageKey = "userApiStorageKey"
-    
     /// URL Scheme of the app, used for previewing surveys
     lazy var urlScheme = URLScheme()
     
@@ -35,30 +32,6 @@ public class Iterate {
     /// Optional API host override to use when creating the API client
     var apiHost: String?
     
-    /// You Iterate API Key, you can get this from your settings page
-    var companyApiKey: String? {
-        didSet {
-            updateApiKey()
-        }
-    }
-    
-    /// The API key for a user, this is returned by the server the first time a request is made by a new user
-    var userApiKey: String? {
-        get {
-            if cachedUserApiKey == nil {
-                cachedUserApiKey = storage.get(key: Iterate.UserApiStorageKey) as? String
-            }
-            
-            return cachedUserApiKey
-        }
-        set(newUserApiKey) {
-            cachedUserApiKey = newUserApiKey
-            storage.set(key: Iterate.UserApiStorageKey, value: newUserApiKey)
-            
-            updateApiKey()
-        }
-    }
-    
     /// The id of the survey being previewed
     var previewingSurveyId: String?
     
@@ -67,9 +40,6 @@ public class Iterate {
     
     /// Container manages the overlay window
     let container = ContainerWindowDelegate()
-    
-    /// Cached copy of the user API key that was loaded from UserDefaults
-    private var cachedUserApiKey: String?
     
     // Get the bundle by identifier or by url (needed when packaging in cocoapods)
     var bundle: Bundle? {
@@ -81,6 +51,61 @@ public class Iterate {
         }
     }
     
+    // MARK: API Keys
+
+    /// You Iterate API Key, you can get this from your settings page
+    var companyApiKey: String? {
+        didSet {
+            updateApiKey()
+        }
+    }
+    
+    /// The API key for a user, this is returned by the server the first time a request is made by a new user
+    var userApiKey: String? {
+        get {
+            if cachedUserApiKey == nil {
+                cachedUserApiKey = storage.get(key: StorageKeys.UserApiKey) as? String
+            }
+            
+            return cachedUserApiKey
+        }
+        set(newUserApiKey) {
+            cachedUserApiKey = newUserApiKey
+            storage.set(key: StorageKeys.UserApiKey, value: newUserApiKey)
+            
+            updateApiKey()
+        }
+    }
+    
+    /// Cached copy of the user API key that was loaded from UserDefaults
+    private var cachedUserApiKey: String?
+    
+    
+    // MARK: User Properties
+    
+    var userProperties: UserProperties? {
+        get {
+            if cachedUserProperties == nil {
+                if let data = storage.get(key: StorageKeys.UserProperties) as? Data,
+                    let properties = try? JSONDecoder().decode(UserProperties.self, from: data) {
+                    cachedUserProperties = properties
+                }
+            }
+            
+            return cachedUserProperties
+        }
+        set (newUserProperties) {
+            if let newUserProperties = newUserProperties,
+                let encodedNewUserProperties = try? JSONEncoder().encode(newUserProperties) {
+                cachedUserProperties = newUserProperties
+                
+                storage.set(key: StorageKeys.UserProperties, value: encodedNewUserProperties)
+            }
+        }
+    }
+    
+    /// Cached copy of the user properties that was loaded from UserDefaults
+    private var cachedUserProperties: UserProperties?
     
     // MARK: Init
     
