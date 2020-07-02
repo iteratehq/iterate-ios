@@ -11,11 +11,11 @@ import Foundation
 
 /// Storage engine backed by in memory dictionary
 class MockStorageEngine: StorageEngine {
-    var storage: [String: Any?] = [:]
+    var storage: [StorageKeys: Any?] = [:]
     
     /// Get a value from the key
     /// - Parameter key: Key to get
-    func get(key: String) -> Any? {
+    func get(key: StorageKeys) -> Any? {
         storage[key] ?? nil
     }
     
@@ -23,7 +23,7 @@ class MockStorageEngine: StorageEngine {
     /// - Parameters:
     ///   - key: Key to set
     ///   - value: Value to set
-    func set(key: String, value: Any?) -> Void {
+    func set(key: StorageKeys, value: Any?) -> Void {
         storage[key] = value
     }
 }
