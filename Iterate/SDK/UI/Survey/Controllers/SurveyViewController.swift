@@ -50,7 +50,15 @@ class SurveyViewController: UIViewController {
         
         if let survey = survey {
             let host = Iterate.shared.apiHost ?? DefaultAPIHost
-            let myRequest = URLRequest(url: URL(string:"\(host)/\(survey.companyId)/\(survey.id)/mobile")!)
+            
+            // Include the user's auth token as a query param. The web view
+            // will use this token to authorize API calls
+            var authTokenParam = ""
+            if let authToken = Iterate.shared.userApiKey {
+                authTokenParam = "auth_token=\(authToken)"
+            }
+            
+            let myRequest = URLRequest(url: URL(string:"\(host)/\(survey.companyId)/\(survey.id)/mobile?\(authTokenParam)")!)
             webView.load(myRequest)
         }
     }
