@@ -14,4 +14,8 @@ extension Iterate {
         self.userProperties = userProperties
     }
     
+    public func identify(responseProperties: ResponseProperties?) {
+        self.responseProperties = responseProperties
+    }
+    
 }
