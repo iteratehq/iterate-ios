@@ -30,7 +30,7 @@ pod 'Iterate', '~> 0.1'
 Then run
 
 ```bash
-$ pod install 
+$ pod install
 ```
 
 **Carthage**
@@ -47,8 +47,7 @@ Then run
 $ carthage update
 ```
 
-and follow the Carthage [instructions](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos) to copy the framework into your app. 
-
+and follow the Carthage [instructions](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos) to copy the framework into your app.
 
 ## Usage
 
@@ -56,9 +55,21 @@ Within your app surveys are shown in response to _events_. An event can be anyth
 
 **Quickstart**
 
-Creating your [Iterate](https://iteratehq.com) account if you haven't already, then go into your settings and copy your API key.
+Create your [Iterate](https://iteratehq.com) account if you haven't already.
 
-1. Initialize the SDK in your AppDelegate class
+1. Create a new survey and select "Install in your mobile app"
+
+<img src="https://github.com/iteratehq/iterate-ios/raw/master/Assets/new-survey.png" width="800">
+
+<br/>
+
+2. Go to the "Preview & Publish" tab and copy your SDK API key
+
+<img src="https://github.com/iteratehq/iterate-ios/raw/master/Assets/publish.png" width="500">
+
+<br/>
+
+3. Initialize the SDK in your AppDelegate class
 
 ```swift
 import Iterate
@@ -76,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-2. Implement events
+4. Implement events
 
 Here's an example of an event being fired when the user views the activity feed screen
 
@@ -96,11 +107,11 @@ class ViewController: UIViewController {
 }
 ```
 
-3. Create your survey on iteratehq.com and target it to that event
+5. Create your survey on iteratehq.com and target it to that event
 
 <img src="https://github.com/iteratehq/iterate-ios/blob/master/Assets/event-targeting.png?raw=true" width="500">
 
-4. Publish your survey and you're done 🎉
+6. Publish your survey and you're done 🎉
 
 **Previewing your survey**
 
