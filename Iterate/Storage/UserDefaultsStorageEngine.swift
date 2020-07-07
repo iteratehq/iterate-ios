@@ -15,15 +15,15 @@ class UserDefaultsStorageEngine: StorageEngine {
     
     /// Get a value from the key
     /// - Parameter key: Key to get
-    func get(key: String) -> Any? {
-        UserDefaults.standard.object(forKey: "\(KeyPrefix)\(key)")
+    func get(key: StorageKeys) -> Any? {
+        UserDefaults.standard.object(forKey: "\(KeyPrefix)\(key.rawValue)")
     }
     
     /// Set a value using the key
     /// - Parameters:
     ///   - key: Key to set
     ///   - value: Value to set
-    func set(key: String, value: Any?) -> Void {
-        UserDefaults.standard.set(value, forKey: "\(KeyPrefix)\(key)")
+    func set(key: StorageKeys, value: Any?) -> Void {
+        UserDefaults.standard.set(value, forKey: "\(KeyPrefix)\(key.rawValue)")
     }
 }

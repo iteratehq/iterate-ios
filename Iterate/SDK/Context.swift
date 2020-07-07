@@ -27,7 +27,13 @@ extension Iterate {
             targeting = TargetingContext(frequency: TargetingContextFrequency.always, surveyId: previewingSurveyId)
         }
         
-        return EmbedContext(app: app, targeting: targeting, trigger: nil, type: EmbedType.mobile)
+        var userPropertiesContext: UserProperties?
+        if let userProperties = Iterate.shared.userProperties {
+            userPropertiesContext = userProperties
+        }
+        
+        
+        return EmbedContext(app: app, targeting: targeting, trigger: nil, type: EmbedType.mobile, userTraits: userPropertiesContext)
     }
 }
 

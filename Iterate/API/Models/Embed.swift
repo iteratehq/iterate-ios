@@ -16,6 +16,7 @@ struct EmbedContext: Codable {
     var targeting: TargetingContext?
     var trigger: TriggerContext?
     var type: EmbedType?
+    var userTraits: UserProperties?
 }
 
 // MARK: App
@@ -68,3 +69,32 @@ enum EmbedType: String, Codable {
     case web = "web"
 }
 
+// MARK: Properties
+
+public typealias UserProperties = [String: UserPropertyValue]
+
+/// User property values can be a string, int, or bool
+public struct UserPropertyValue: Codable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+
+        if let bool = try? container.decode(Bool.self) {
+            self.init(bool)
+        } else if let int = try? container.decode(Int.self) {
+            self.init(int)
+        } else if let string = try? container.decode(String.self) {
+            self.init(string)
+        } else {
+            throw DecodingError.dataCorruptedError(in: container, debugDescription: "UserPropertyValue value cannot be decoded")
+        }
+    }
+
+    private let _encode: (Encoder) throws -> Void
+    public init<T: Encodable>(_ wrapped: T) {
+        _encode = wrapped.encode
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        try _encode(encoder)
+    }
+}
