@@ -51,14 +51,24 @@ class SurveyViewController: UIViewController {
         if let survey = survey {
             let host = Iterate.shared.apiHost ?? DefaultAPIHost
             
+            var params: [String] = []
+            
             // Include the user's auth token as a query param. The web view
             // will use this token to authorize API calls
-            var authTokenParam = ""
             if let authToken = Iterate.shared.userApiKey {
-                authTokenParam = "auth_token=\(authToken)"
+                params.append("auth_token=\(authToken)")
             }
             
-            let myRequest = URLRequest(url: URL(string:"\(host)/\(survey.companyId)/\(survey.id)/mobile?\(authTokenParam)")!)
+            // Include response properties. These are in the format of response_[type]_[name]=[value]
+            // e.g. response_number_userId=123
+            if let responseProperties = Iterate.shared.responseProperties {
+                params.append(contentsOf: responseProperties.map {
+                    let value = "\($0.value.value)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                    return "response\($0.value.typeString())_\($0.key)=\(value)" })
+            }
+            
+            let url = "\(host)/\(survey.companyId)/\(survey.id)/mobile?\(params.joined(separator: "&"))"
+            let myRequest = URLRequest(url: URL(string: url)!)
             webView.load(myRequest)
         }
     }

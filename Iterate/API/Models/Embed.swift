@@ -72,6 +72,7 @@ enum EmbedType: String, Codable {
 // MARK: Properties
 
 public typealias UserProperties = [String: UserPropertyValue]
+public typealias ResponseProperties = [String: ResponsePropertyValue]
 
 /// User property values can be a string, int, or bool
 public struct UserPropertyValue: Codable {
@@ -96,5 +97,27 @@ public struct UserPropertyValue: Codable {
 
     public func encode(to encoder: Encoder) throws {
         try _encode(encoder)
+    }
+}
+
+public struct ResponsePropertyValue {
+    let value: Any
+    
+    public init(_ value: Any) {
+        self.value = value
+    }
+    
+    /// Returns a string representing the type of the value, this is used
+    /// when passing the value into the survey webview as a
+    /// query parameter
+    public func typeString() -> String {
+        switch value {
+        case _ as Bool:
+            return "_boolean"
+        case _ as Int:
+            return "_number"
+        default:
+            return ""
+        }
     }
 }

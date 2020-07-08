@@ -107,6 +107,8 @@ public class Iterate {
     /// Cached copy of the user properties that was loaded from UserDefaults
     private var cachedUserProperties: UserProperties?
     
+    var responseProperties: ResponseProperties?
+    
     // MARK: Init
     
     /// Initializer
