@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ContainerWindowDelegate {
-    var window: ContainerWindow?
-    var containerViewController: ContainerViewController? {
+final class ContainerWindowDelegate {
+    private var window: ContainerWindow?
+    private var containerViewController: ContainerViewController? {
         window?.rootViewController as? ContainerViewController
     }
-    var surveyViewController: SurveyViewController? {
+    private var surveyViewController: SurveyViewController? {
        return UIStoryboard(
             name: "Surveys",
             bundle: Iterate.shared.bundle
@@ -21,7 +21,7 @@ class ContainerWindowDelegate {
     }
     
     /// Holds a reference to the view controller that presents the survey
-    var presentingViewController: UIViewController?
+    private var presentingViewController: UIViewController?
     
     /// Show the window
     func showWindow(survey: Survey) {

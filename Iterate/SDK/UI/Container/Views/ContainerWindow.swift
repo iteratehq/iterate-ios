@@ -11,7 +11,7 @@ import UIKit
 
 /// ContainerWindow class is the primary display layer for Iterate, it's a window that sits above the
 /// current application window ensuring it an be displayed anywhere at anytime.
-class ContainerWindow: UIWindow {
+final class ContainerWindow: UIWindow {
     init(survey: Survey, delegate: ContainerWindowDelegate) {
         if #available(iOS 13.0, *) {
             if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {

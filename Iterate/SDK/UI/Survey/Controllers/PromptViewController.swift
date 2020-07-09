@@ -8,9 +8,9 @@
 
 import UIKit
 
-class PromptViewController: UIViewController {
-    @IBOutlet weak var promptLabel: UILabel!
-    @IBOutlet weak var promptButton: UIButton!
+final class PromptViewController: UIViewController {
+    @IBOutlet weak private var promptLabel: UILabel!
+    @IBOutlet weak private var promptButton: UIButton!
     
     var delegate: ContainerWindowDelegate?
     var survey: Survey?

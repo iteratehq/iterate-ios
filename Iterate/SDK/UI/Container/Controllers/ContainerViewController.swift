@@ -8,15 +8,15 @@
 
 import UIKit
 
-class ContainerViewController: UIViewController {
+final class ContainerViewController: UIViewController {
     var delegate: ContainerWindowDelegate?
-    var promptViewController: PromptViewController?
+    private var promptViewController: PromptViewController?
     var survey: Survey?
     var isSurveyDisplayed: Bool?
     
-    @IBOutlet weak var promptView: UIView!
-    @IBOutlet weak var promptViewBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var promptViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var promptView: UIView!
+    @IBOutlet weak private var promptViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var promptViewTopConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         // Get the prompt child container controller

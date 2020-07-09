@@ -9,7 +9,7 @@
 import Foundation
 
 /// The Iterate class is the primary class of the SDK, the main entry point is the shared singleton property
-public class Iterate {
+public final class Iterate {
     // MARK: Properties
     
     /// The shared singleton instance is the primary entrypoint into the Iterate iOS SDK.
@@ -21,10 +21,10 @@ public class Iterate {
     public static let PreviewParameter = "iterate_preview"
     
     // Current version number, will be updated on each release
-    static let Version = "0.1.1"
+    private static let Version = "0.1.1"
     
     /// URL Scheme of the app, used for previewing surveys
-    lazy var urlScheme = URLScheme()
+    private lazy var urlScheme = URLScheme()
     
     /// API Client, which will be initialized when the API key is
     var api: APIClient?
@@ -33,13 +33,13 @@ public class Iterate {
     var apiHost: String?
     
     /// The id of the survey being previewed
-    var previewingSurveyId: String?
+    private var previewingSurveyId: String?
     
     /// Storage engine for storing user data like their API key and user attributes
-    var storage: StorageEngine
+    private var storage: StorageEngine
     
     /// Container manages the overlay window
-    let container = ContainerWindowDelegate()
+    private let container = ContainerWindowDelegate()
     
     // Get the bundle by identifier or by url (needed when packaging in cocoapods)
     var bundle: Bundle? {
@@ -54,7 +54,7 @@ public class Iterate {
     // MARK: API Keys
 
     /// You Iterate API Key, you can get this from your settings page
-    var companyApiKey: String? {
+    private var companyApiKey: String? {
         didSet {
             updateApiKey()
         }
@@ -83,7 +83,7 @@ public class Iterate {
     
     // MARK: User Properties
     
-    var userProperties: UserProperties? {
+    private var userProperties: UserProperties? {
         get {
             if cachedUserProperties == nil {
                 if let data = storage.get(key: StorageKeys.UserProperties) as? Data,
@@ -113,7 +113,7 @@ public class Iterate {
     
     /// Initializer
     /// - Parameter storage: Storage engine to use
-    init(storage: StorageEngine = Storage.shared) {
+    private init(storage: StorageEngine = Storage.shared) {
         self.storage = storage
     }
     
@@ -201,7 +201,7 @@ public class Iterate {
     /// - Parameters:
     ///   - context: Embed context data
     ///   - complete: Callback returning the response and error from the embed endpoint
-    func embedRequest(context: EmbedContext, complete: @escaping (EmbedResponse?, Error?) -> Void) {
+    private func embedRequest(context: EmbedContext, complete: @escaping (EmbedResponse?, Error?) -> Void) {
         api?.embed(context: context, complete: { (response, error) in
             // Update the user API key if one was returned
             if let token = response?.auth?.token {
@@ -213,9 +213,34 @@ public class Iterate {
     }
     
     /// Update the API client to use the latest API key. We prefer to use the user API key and fall back to the company key
-    func updateApiKey() {
+    private func updateApiKey() {
         if let apiKey = userApiKey ?? companyApiKey {
             api = APIClient(apiKey: apiKey, apiHost: apiHost ?? DefaultAPIHost)
         }
+    }
+    
+    /// Generate a embed context that represents the current state of the user.
+    /// In the future this may set the current 'view' the user is on, how long they've been
+    /// in the app, etc. Anything that may be used for targeting.
+    private func initCurrentContext() -> EmbedContext {
+        // Include the url scheme of the app so we can generate a url to preview the survey
+        var app: AppContext?
+        if let urlScheme = Iterate.shared.urlScheme {
+            app = AppContext(urlScheme: urlScheme, version: Iterate.Version)
+        }
+        
+        // Include the survey id we're previewing
+        var targeting: TargetingContext?
+        if let previewingSurveyId = previewingSurveyId {
+            targeting = TargetingContext(frequency: TargetingContextFrequency.always, surveyId: previewingSurveyId)
+        }
+        
+        var userPropertiesContext: UserProperties?
+        if let userProperties = Iterate.shared.userProperties {
+            userPropertiesContext = userProperties
+        }
+        
+        
+        return EmbedContext(app: app, targeting: targeting, trigger: nil, type: EmbedType.mobile, userTraits: userPropertiesContext)
     }
 }
