@@ -54,7 +54,7 @@ public final class Iterate {
     // MARK: API Keys
 
     /// You Iterate API Key, you can get this from your settings page
-    private var companyApiKey: String? {
+    var companyApiKey: String? {
         didSet {
             updateApiKey()
         }
