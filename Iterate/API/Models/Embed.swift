@@ -54,11 +54,11 @@ enum TargetingContextFrequency: String, Codable {
 /// Contains triggering options (e.g. indicate a survey was 'manually' triggered)
 struct TriggerContext: Codable {
     var surveyId: String?
-    var type: TriggerType?
+    var type: EmbedTriggerType?
 }
 
 /// Trigger types, currently the only option is manually triggered
-enum TriggerType: String, Codable {
+enum EmbedTriggerType: String, Codable {
     case manual = "manual"
 }
 
