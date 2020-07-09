@@ -113,7 +113,7 @@ public final class Iterate {
     
     /// Initializer
     /// - Parameter storage: Storage engine to use
-    private init(storage: StorageEngine = Storage.shared) {
+    init(storage: StorageEngine = Storage.shared) {
         self.storage = storage
     }
     
