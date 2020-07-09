@@ -117,7 +117,84 @@ public class Iterate {
         self.storage = storage
     }
     
-    // MARK: Methods
+    // MARK: Public methods
+    
+    /// Send event to determine if a survey should be shown
+    /// - Parameters:
+    ///   - name: Event name
+    ///   - complete: optional callback with the results of the request
+    public func sendEvent(name: String, complete: ((Survey?, Error?) -> Void)? = nil) {
+        guard self.api != nil else {
+            if let callback = complete {
+                callback(nil, IterateError.invalidAPIKey)
+            }
+            
+            return
+        }
+        
+        var context = initCurrentContext()
+        context.event = EventContext(name: name)
+        embedRequest(context: context) { (response, error) in
+            if let callback = complete {
+                callback(response?.survey, error)
+            }
+            
+            if let survey = response?.survey {
+                // Show the survey after N seconds otherwise show immediately
+                if survey.triggers?.first?.type == TriggerType.seconds {
+                    DispatchQueue.main.async {
+                        let seconds: Int = survey.triggers?.first?.options?.seconds ?? 0
+                        Timer.scheduledTimer(withTimeInterval: Double(seconds), repeats: false) { timer in
+                            self.container.showPrompt(survey)
+                        }
+                    }
+                } else {
+                    self.container.showPrompt(survey)
+                }
+            }
+        }
+    }
+    
+    /// Configure sets the necessary configuration properties. This should be called before any other methods.
+    /// - Parameter apiKey: Your Iterate API Key, you can find this on your settings page
+    public func configure(apiKey: String, apiHost: String? = DefaultAPIHost) {
+        // Note: we need to set the apiHost before setting the companyApiKey
+        // since updating the companyApiKey is what triggers to API client
+        // to be set via a custom setter
+        self.apiHost = apiHost
+        
+        // If we're changing the company API key to a different company API key
+        // clear the user api key since it won't work for a different company
+        if self.companyApiKey != nil && self.companyApiKey != apiKey {
+            self.userApiKey = nil
+        }
+        
+        self.companyApiKey = apiKey
+    }
+    
+    /// Preview processes the custom scheme url that was used to open the app and sets
+    /// the preview mode to the surveyId passed in
+    /// - Parameter url: The URL that opened the application
+    public func preview(url: URL) {
+        let result = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.first(where: { $0.name == Iterate.PreviewParameter })?.value
+        previewingSurveyId = result
+    }
+    
+    /// Preview a specific survey using it's id
+    /// - Parameter surveyId: The id of the survey to preview
+    public func preview(surveyId: String) {
+        previewingSurveyId = surveyId
+    }
+    
+    public func identify(userProperties: UserProperties?) {
+        self.userProperties = userProperties
+    }
+    
+    public func identify(responseProperties: ResponseProperties?) {
+        self.responseProperties = responseProperties
+    }
+    
+    // MARK: Private methods
     
     /// Helper method used when calling the embed endpoint which is responsible for updating the user API key
     /// if a new one is returned

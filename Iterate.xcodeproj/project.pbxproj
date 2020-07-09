@@ -11,7 +11,6 @@
 		270613CC23AD862C00DDF342 /* IterateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613CB23AD862C00DDF342 /* IterateTests.swift */; };
 		270613CE23AD862C00DDF342 /* Iterate.h in Headers */ = {isa = PBXBuildFile; fileRef = 270613C023AD862C00DDF342 /* Iterate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		270613D823AD8D6200DDF342 /* Iterate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613D723AD8D6200DDF342 /* Iterate.swift */; };
-		270613DA23AE76A100DDF342 /* Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613D923AE76A100DDF342 /* Configure.swift */; };
 		270613DC23AE773500DDF342 /* ConfigureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613DB23AE773500DDF342 /* ConfigureTests.swift */; };
 		270613DE23BA4A0900DDF342 /* SendEventIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613DD23BA4A0900DDF342 /* SendEventIntegrationTests.swift */; };
 		270613E023BA4DD100DDF342 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613DF23BA4DD100DDF342 /* Errors.swift */; };
@@ -23,13 +22,10 @@
 		27063AB72498108900BE6913 /* Displayed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27063AB62498108900BE6913 /* Displayed.swift */; };
 		27063AB92498109700BE6913 /* Dismissed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27063AB82498109700BE6913 /* Dismissed.swift */; };
 		274FAFFB249C0B970014C012 /* Scheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274FAFFA249C0B970014C012 /* Scheme.swift */; };
-		274FB000249FAA810014C012 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274FAFFF249FAA810014C012 /* Preview.swift */; };
-		2753C73F24AA7C4200861BC0 /* Identify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2753C73E24AA7C4200861BC0 /* Identify.swift */; };
 		2757AB5B248EDDFE00B909C9 /* PromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2757AB5A248EDDFE00B909C9 /* PromptViewController.swift */; };
 		2757AB60248FC4FE00B909C9 /* ContainerWindowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2757AB5F248FC4FE00B909C9 /* ContainerWindowDelegate.swift */; };
 		27821A3C24900C08004AAB22 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27821A3B24900C08004AAB22 /* Color.swift */; };
 		27821A3E2492B89C004AAB22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27821A3D2492B89C004AAB22 /* Assets.xcassets */; };
-		27AEEEA7245DB3F800351EC1 /* SendEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AEEEA6245DB3F800351EC1 /* SendEvent.swift */; };
 		27C3B27C23BA832300754F4D /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B27B23BA832300754F4D /* ClientTests.swift */; };
 		27C3B28223BA9BB600754F4D /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B28123BA9BB600754F4D /* Paths.swift */; };
 		27C3B28623BAA3A900754F4D /* EmbedEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B28523BAA3A900754F4D /* EmbedEndpoint.swift */; };
@@ -87,7 +83,6 @@
 		270613CB23AD862C00DDF342 /* IterateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterateTests.swift; sourceTree = "<group>"; };
 		270613CD23AD862C00DDF342 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		270613D723AD8D6200DDF342 /* Iterate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Iterate.swift; sourceTree = "<group>"; };
-		270613D923AE76A100DDF342 /* Configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configure.swift; sourceTree = "<group>"; };
 		270613DB23AE773500DDF342 /* ConfigureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureTests.swift; sourceTree = "<group>"; };
 		270613DD23BA4A0900DDF342 /* SendEventIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEventIntegrationTests.swift; sourceTree = "<group>"; };
 		270613DF23BA4DD100DDF342 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -99,13 +94,10 @@
 		27063AB62498108900BE6913 /* Displayed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displayed.swift; sourceTree = "<group>"; };
 		27063AB82498109700BE6913 /* Dismissed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dismissed.swift; sourceTree = "<group>"; };
 		274FAFFA249C0B970014C012 /* Scheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheme.swift; sourceTree = "<group>"; };
-		274FAFFF249FAA810014C012 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
-		2753C73E24AA7C4200861BC0 /* Identify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identify.swift; sourceTree = "<group>"; };
 		2757AB5A248EDDFE00B909C9 /* PromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptViewController.swift; sourceTree = "<group>"; };
 		2757AB5F248FC4FE00B909C9 /* ContainerWindowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerWindowDelegate.swift; sourceTree = "<group>"; };
 		27821A3B24900C08004AAB22 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		27821A3D2492B89C004AAB22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		27AEEEA6245DB3F800351EC1 /* SendEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEvent.swift; sourceTree = "<group>"; };
 		27C3B27B23BA832300754F4D /* ClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
 		27C3B28123BA9BB600754F4D /* Paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paths.swift; sourceTree = "<group>"; };
 		27C3B28523BAA3A900754F4D /* EmbedEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedEndpoint.swift; sourceTree = "<group>"; };
@@ -194,22 +186,10 @@
 			isa = PBXGroup;
 			children = (
 				27C3B29D23BE88F400754F4D /* UI */,
-				270613E323BA4EE700DDF342 /* Methods */,
 				270613D723AD8D6200DDF342 /* Iterate.swift */,
 				27C3B28923BCF5FC00754F4D /* Context.swift */,
 			);
 			path = SDK;
-			sourceTree = "<group>";
-		};
-		270613E323BA4EE700DDF342 /* Methods */ = {
-			isa = PBXGroup;
-			children = (
-				270613D923AE76A100DDF342 /* Configure.swift */,
-				27AEEEA6245DB3F800351EC1 /* SendEvent.swift */,
-				274FAFFF249FAA810014C012 /* Preview.swift */,
-				2753C73E24AA7C4200861BC0 /* Identify.swift */,
-			);
-			path = Methods;
 			sourceTree = "<group>";
 		};
 		270613E923BA6B3D00DDF342 /* API */ = {
@@ -571,7 +551,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				270613DA23AE76A100DDF342 /* Configure.swift in Sources */,
 				270613E623BA4F2500DDF342 /* Survey.swift in Sources */,
 				2757AB5B248EDDFE00B909C9 /* PromptViewController.swift in Sources */,
 				27C3B29923BD360E00754F4D /* UserDefaultsStorageEngine.swift in Sources */,
@@ -580,19 +559,16 @@
 				27C3B28A23BCF5FC00754F4D /* Context.swift in Sources */,
 				27063AB92498109700BE6913 /* Dismissed.swift in Sources */,
 				27063AB72498108900BE6913 /* Displayed.swift in Sources */,
-				2753C73F24AA7C4200861BC0 /* Identify.swift in Sources */,
 				274FAFFB249C0B970014C012 /* Scheme.swift in Sources */,
 				27C3B29723BD354C00754F4D /* Storage.swift in Sources */,
 				27C3B2F123BFDECF00754F4D /* ContainerViewController.swift in Sources */,
 				27C3B28823BAA4BD00754F4D /* Response.swift in Sources */,
 				27063AB524980D3F00BE6913 /* DismissedEndpoint.swift in Sources */,
-				27AEEEA7245DB3F800351EC1 /* SendEvent.swift in Sources */,
 				27C3B28623BAA3A900754F4D /* EmbedEndpoint.swift in Sources */,
 				270613EF23BA6F6A00DDF342 /* Embed.swift in Sources */,
 				27821A3C24900C08004AAB22 /* Color.swift in Sources */,
 				2757AB60248FC4FE00B909C9 /* ContainerWindowDelegate.swift in Sources */,
 				27DDDD5323C657F4005CA07C /* SurveyViewController.swift in Sources */,
-				274FB000249FAA810014C012 /* Preview.swift in Sources */,
 				27C3B2F323C399B200754F4D /* ContainerView.swift in Sources */,
 				27C3B28223BA9BB600754F4D /* Paths.swift in Sources */,
 				27063AB024980D2B00BE6913 /* DisplayedEndpoint.swift in Sources */,
