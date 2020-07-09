@@ -6,7 +6,7 @@
 
 ---
 
-[Iterate](http://iteratehq.com) surveys put you directly in touch with your app users to learn how you can change for the better—from your product to your app experience.
+[Iterate](https://iteratehq.com) surveys put you directly in touch with your app users to learn how you can change for the better—from your product to your app experience.
 
 Run surveys that are highly targeted, user-friendly, and on-brand. You’ll understand not just what your visitors are doing, but why.
 

@@ -9,7 +9,7 @@ Released on 2020-06-27.
 
 **Added**
 
-- Support fo cocoapods & carthage
+- Support for cocoapods & carthage
 
 **Fixed**
 

@@ -2,11 +2,11 @@
 
 ### Welcome!
 
-Thank you for considering contributing to Iterate for iOS. We welcome PRs and appreciate the help, we encurage you to first open an issue to confirm we aren't already working on your feature or bug and confirm it's something we'd like added to the project.
+Thank you for considering contributing to Iterate for iOS. We welcome PRs and appreciate the help, we encourage you to first open an issue to confirm we aren't already working on your feature or bug and confirm it's something we'd like added to the project.
 
 ### What we're looking for
 
-Iterate for iOS is an open source project and we love to receive contributions from the community. We're open to many contibutions including features, bug fixes, documentation improvements, etc.
+Iterate for iOS is an open source project and we love to receive contributions from the community. We're open to many contributions including features, bug fixes, documentation improvements, etc.
 
 ### The Process
 
