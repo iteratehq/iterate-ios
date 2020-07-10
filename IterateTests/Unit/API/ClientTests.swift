@@ -15,7 +15,7 @@ class ClientTests: XCTestCase {
     func testPost() {
         // Mock the dataTask method of APIClient
         class APIClientMock: APIClient {
-            override func dataTask<T: Codable>(request: URLRequest, complete: @escaping (T?, Error?) -> Void) {
+            override func dataTask<T: Codable>(request: URLRequest, completion: @escaping (T?, Error?) -> Void) {
                 let embedContext = try! decoder.decode(EmbedContext.self, from: request.httpBody!)
                 
                 XCTAssertEqual(request.url?.absoluteString, "\(Iterate.DefaultAPIHost)/api/v1\(Paths.Surveys.Embed)")
@@ -24,7 +24,7 @@ class ClientTests: XCTestCase {
                 XCTAssertEqual(request.httpMethod, "POST")
                 XCTAssertEqual(embedContext.type, EmbedType.mobile)
                 
-                complete(nil, nil)
+                completion(nil, nil)
             }
         }
         

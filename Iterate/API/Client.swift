@@ -55,7 +55,7 @@ class APIClient {
         request.httpMethod = "POST"
         request.httpBody = data
 
-        dataTask(request: request, complete: completion)
+        dataTask(request: request, completion: completion)
     }
     
     // MARK: Helpers
@@ -77,29 +77,29 @@ class APIClient {
     /// - Parameters:
     ///   - request: Request to run, see the request helper method to help construct it
     ///   - complete: Results callback
-    func dataTask<T: Codable>(request: URLRequest, complete: @escaping (T?, Error?) -> Void) {
+    func dataTask<T: Codable>(request: URLRequest, completion: @escaping (T?, Error?) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
-                complete(nil, IterateError.apiRequestError)
+                completion(nil, IterateError.apiRequestError)
                 return
             }
             
             guard let data = data else {
-                complete(nil, IterateError.invalidAPIResponse)
+                completion(nil, IterateError.invalidAPIResponse)
                 return
             }
             
             guard let response = try? self.decoder.decode(Response<T>.self, from: data) else {
-                complete(nil, IterateError.jsonDecoding)
+                completion(nil, IterateError.jsonDecoding)
                 return
             }
             
             if let err = response.error {
-                complete(nil, IterateError.apiError(err))
+                completion(nil, IterateError.apiError(err))
                 return
             }
             
-            complete(response.results, nil)
+            completion(response.results, nil)
         }
         
         task.resume()
