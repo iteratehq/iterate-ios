@@ -46,7 +46,7 @@ final class ContainerWindowDelegate {
             DispatchQueue.main.async {
                 self.showWindow(survey: survey)
                 self.containerViewController?.showPrompt(complete: {
-                    Iterate.shared.api?.displayed(survey: survey, complete: { _, _ in })
+                    Iterate.shared.api?.displayed(survey: survey, completion: { _, _ in })
                 })
             }
         }
@@ -74,7 +74,7 @@ final class ContainerWindowDelegate {
     
     func dismissPrompt(survey: Survey?, userInitiated: Bool) {
         if let survey = survey, userInitiated {
-            Iterate.shared.api?.dismissed(survey: survey, complete: { _, _ in })
+            Iterate.shared.api?.dismissed(survey: survey, completion: { _, _ in })
         }
         
         containerViewController?.hidePrompt(complete: {
@@ -91,7 +91,7 @@ final class ContainerWindowDelegate {
     /// or drags down on the modal view
     func surveyDismissed(survey: Survey?) {
         if let survey = survey {
-            Iterate.shared.api?.dismissed(survey: survey, complete: { _, _ in })
+            Iterate.shared.api?.dismissed(survey: survey, completion: { _, _ in })
         }
         
         self.containerViewController?.isSurveyDisplayed = false

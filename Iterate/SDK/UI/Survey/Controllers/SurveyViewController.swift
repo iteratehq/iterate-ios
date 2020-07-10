@@ -49,7 +49,7 @@ final class SurveyViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if let survey = survey {
-            let host = Iterate.shared.apiHost ?? DefaultAPIHost
+            let host = Iterate.shared.apiHost ?? Iterate.DefaultAPIHost
             
             var params: [String] = []
             

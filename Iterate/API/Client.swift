@@ -8,8 +8,6 @@
 
 import Foundation
 
-public let DefaultAPIHost = "https://iteratehq.com"
-
 /// Iterate API Client
 class APIClient {
     // MARK: Properties
@@ -32,7 +30,7 @@ class APIClient {
     /// - Parameters:
     ///   - apiKey: Iterate API key
     ///   - apiHost: API Host
-    init(apiKey: String, apiHost: String = DefaultAPIHost) {
+    init(apiKey: String, apiHost: String = Iterate.DefaultAPIHost) {
         self.apiHost = apiHost
         self.apiKey = apiKey
         
@@ -48,16 +46,16 @@ class APIClient {
     ///   - path: Path to call
     ///   - data: Post body data
     ///   - complete: Results callback
-    func post<T: Codable> (path: Path, data: Data?, complete: @escaping (T?, Error?) -> Void) {
+    func post<T: Codable> (_ data: Data?, to path: Path, completion: @escaping (T?, Error?) -> Void) {
         guard var request = request(path: path) else {
-            complete(nil, IterateError.invalidAPIUrl)
+            completion(nil, IterateError.invalidAPIUrl)
             return
         }
         
         request.httpMethod = "POST"
         request.httpBody = data
 
-        dataTask(request: request, complete: complete)
+        dataTask(request: request, complete: completion)
     }
     
     // MARK: Helpers

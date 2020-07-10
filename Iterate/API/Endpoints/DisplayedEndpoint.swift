@@ -9,7 +9,7 @@
 import Foundation
 
 extension APIClient {
-    func displayed(survey: Survey, complete: @escaping (Displayed?, Error?) -> Void) {
-        post(path: Paths.Surveys.Displayed(surveyId: survey.id), data: nil, complete: complete)
+    func displayed(survey: Survey, completion: @escaping (Displayed?, Error?) -> Void) {
+        post(nil, to: Paths.Surveys.Displayed(surveyId: survey.id), completion: completion)
     }
 }

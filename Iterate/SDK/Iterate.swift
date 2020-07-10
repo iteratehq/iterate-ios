@@ -23,6 +23,9 @@ public final class Iterate {
     // Current version number, will be updated on each release
     private static let Version = "0.1.1"
     
+    /// Default API host
+    public static let DefaultAPIHost = "https://iteratehq.com"
+    
     /// URL Scheme of the app, used for previewing surveys
     private lazy var urlScheme = URLScheme()
     
@@ -157,7 +160,7 @@ public final class Iterate {
     
     /// Configure sets the necessary configuration properties. This should be called before any other methods.
     /// - Parameter apiKey: Your Iterate API Key, you can find this on your settings page
-    public func configure(apiKey: String, apiHost: String? = DefaultAPIHost) {
+    public func configure(apiKey: String, apiHost: String? = Iterate.DefaultAPIHost) {
         // Note: we need to set the apiHost before setting the companyApiKey
         // since updating the companyApiKey is what triggers to API client
         // to be set via a custom setter
@@ -215,7 +218,7 @@ public final class Iterate {
     /// Update the API client to use the latest API key. We prefer to use the user API key and fall back to the company key
     private func updateApiKey() {
         if let apiKey = userApiKey ?? companyApiKey {
-            api = APIClient(apiKey: apiKey, apiHost: apiHost ?? DefaultAPIHost)
+            api = APIClient(apiKey: apiKey, apiHost: apiHost ?? Iterate.DefaultAPIHost)
         }
     }
     

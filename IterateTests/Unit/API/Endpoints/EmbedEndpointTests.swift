@@ -15,7 +15,7 @@ class EmbedEndpointTests: XCTestCase {
     func testEmbed() {
         // Mock the post method of APIClient
         class APIClientMock: APIClient {
-            override func post<T: Codable>(path: Path, data: Data?, complete: @escaping (T?, Error?) -> Void) {
+            override func post<T: Codable>(_ data: Data?, to path: Path, completion: @escaping (T?, Error?) -> Void) {
                 var embedContext: EmbedContext?
                 if let data = data {
                     embedContext = try? decoder.decode(EmbedContext.self, from: data)
@@ -24,7 +24,7 @@ class EmbedEndpointTests: XCTestCase {
                 XCTAssertEqual(path, Paths.Surveys.Embed)
                 XCTAssertEqual(embedContext?.type, EmbedType.mobile)
                 
-                complete(nil, nil)
+                completion(nil, nil)
             }
         }
         
