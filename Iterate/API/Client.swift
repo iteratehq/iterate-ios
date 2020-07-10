@@ -68,7 +68,7 @@ class APIClient {
         }
         
         var request = URLRequest(url: url)
-        request.setValue("application/javascript", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         return request
     }
