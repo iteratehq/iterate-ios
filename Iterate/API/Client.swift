@@ -47,7 +47,7 @@ class APIClient {
     ///   - data: Post body data
     ///   - complete: Results callback
     func post<T: Codable> (_ data: Data?, to path: Path, completion: @escaping (T?, Error?) -> Void) {
-        guard var request = request(path: path) else {
+        guard var request = makeRequest(path: path) else {
             completion(nil, IterateError.invalidAPIUrl)
             return
         }
@@ -62,7 +62,7 @@ class APIClient {
     
     /// Generate a URLRequest set with the proper content type and authentication
     /// - Parameter path: API Path to request
-    func request(path: Path) -> URLRequest? {
+    func makeRequest(path: Path) -> URLRequest? {
         guard let url = URL(string: "\(apiHost)/api/v1\(path)") else {
             return nil
         }
