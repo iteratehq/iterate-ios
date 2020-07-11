@@ -72,49 +72,33 @@ public final class Iterate {
     /// The API key for a user, this is returned by the server the first time a request is made by a new user
     var userApiKey: String? {
         get {
-            if cachedUserApiKey == nil {
-                cachedUserApiKey = storage.get(key: StorageKeys.UserApiKey) as? String
-            }
-            
-            return cachedUserApiKey
+            storage.get(key: StorageKeys.UserApiKey) as? String
         }
+        
         set(newUserApiKey) {
-            cachedUserApiKey = newUserApiKey
             storage.set(key: StorageKeys.UserApiKey, value: newUserApiKey)
-            
             updateApiKey()
         }
     }
-    
-    /// Cached copy of the user API key that was loaded from UserDefaults
-    private var cachedUserApiKey: String?
     
     
     // MARK: User Properties
     
     private var userProperties: UserProperties? {
         get {
-            if cachedUserProperties == nil {
-                if let data = storage.get(key: StorageKeys.UserProperties) as? Data,
-                    let properties = try? JSONDecoder().decode(UserProperties.self, from: data) {
-                    cachedUserProperties = properties
-                }
+            if let data = storage.get(key: StorageKeys.UserProperties) as? Data {
+                return try? JSONDecoder().decode(UserProperties.self, from: data)
             }
             
-            return cachedUserProperties
+            return nil
         }
         set (newUserProperties) {
             if let newUserProperties = newUserProperties,
                 let encodedNewUserProperties = try? JSONEncoder().encode(newUserProperties) {
-                cachedUserProperties = newUserProperties
-                
                 storage.set(key: StorageKeys.UserProperties, value: encodedNewUserProperties)
             }
         }
     }
-    
-    /// Cached copy of the user properties that was loaded from UserDefaults
-    private var cachedUserProperties: UserProperties?
     
     var responseProperties: ResponseProperties?
     
