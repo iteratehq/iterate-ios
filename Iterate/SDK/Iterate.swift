@@ -59,6 +59,12 @@ public final class Iterate {
     /// You Iterate API Key, you can get this from your settings page
     var companyApiKey: String? {
         didSet {
+            // If we're changing the company API key to a different company API key
+            // clear the user api key since it won't work for a different company
+            if companyApiKey != oldValue  {
+                userApiKey = nil
+            }
+            
             updateApiKey()
         }
     }
@@ -165,12 +171,6 @@ public final class Iterate {
         // since updating the companyApiKey is what triggers to API client
         // to be set via a custom setter
         self.apiHost = apiHost
-        
-        // If we're changing the company API key to a different company API key
-        // clear the user api key since it won't work for a different company
-        if self.companyApiKey != nil && self.companyApiKey != apiKey {
-            self.userApiKey = nil
-        }
         
         self.companyApiKey = apiKey
     }
