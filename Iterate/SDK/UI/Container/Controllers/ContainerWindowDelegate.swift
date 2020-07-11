@@ -14,9 +14,6 @@ final class ContainerWindowDelegate {
         window?.rootViewController as? ContainerViewController
     }
     
-    /// Holds a reference to the view controller that presents the survey
-    private var presentingViewController: UIViewController?
-    
     /// Show the window
     func showWindow(survey: Survey) {
         if window == nil {
@@ -61,8 +58,7 @@ final class ContainerWindowDelegate {
             // Show the survey
             surveyViewController.survey = survey
             surveyViewController.delegate = self
-            self.presentingViewController = self.getPresentingViewController()
-            self.presentingViewController?.present(surveyViewController, animated: true, completion: nil)
+            self.getPresentingViewController()?.present(surveyViewController, animated: true, completion: nil)
         }
     }
     
@@ -78,7 +74,7 @@ final class ContainerWindowDelegate {
     
     /// Dismiss the survey, called when the user clicks the 'X' within the survey
     func dismissSurvey() {
-        self.presentingViewController?.dismiss(animated: true)
+        self.getPresentingViewController()?.dismiss(animated: true)
     }
     
     /// Called once a survey has been dismissed, this can happen if a user clicks the 'X' within a survey
@@ -89,7 +85,6 @@ final class ContainerWindowDelegate {
         }
         
         self.containerViewController?.isSurveyDisplayed = false
-        self.presentingViewController = nil
         self.hideWindow()
     }
     
