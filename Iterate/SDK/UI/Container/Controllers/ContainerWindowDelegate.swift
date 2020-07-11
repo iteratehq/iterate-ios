@@ -13,12 +13,6 @@ final class ContainerWindowDelegate {
     private var containerViewController: ContainerViewController? {
         window?.rootViewController as? ContainerViewController
     }
-    private var surveyViewController: SurveyViewController? {
-       return UIStoryboard(
-            name: "Surveys",
-            bundle: Iterate.shared.bundle
-        ).instantiateViewController(withIdentifier: "SurveyModalViewController") as? SurveyViewController
-    }
     
     /// Holds a reference to the view controller that presents the survey
     private var presentingViewController: UIViewController?
@@ -57,7 +51,7 @@ final class ContainerWindowDelegate {
             // Hide the prompt
             self.containerViewController?.hidePrompt()
             
-            guard let surveyViewController = self.surveyViewController else {
+            guard let surveyViewController = self.makeSurveyViewController() else {
                 return
             }
             
@@ -120,5 +114,12 @@ final class ContainerWindowDelegate {
         }
         
         return visibleViewController
+    }
+    
+    private func makeSurveyViewController() -> SurveyViewController? {
+       return UIStoryboard(
+            name: "Surveys",
+            bundle: Iterate.shared.bundle
+        ).instantiateViewController(withIdentifier: "SurveyModalViewController") as? SurveyViewController
     }
 }
