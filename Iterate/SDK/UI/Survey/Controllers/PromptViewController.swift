@@ -9,22 +9,31 @@
 import UIKit
 
 final class PromptViewController: UIViewController {
-    @IBOutlet weak private var promptLabel: UILabel!
-    @IBOutlet weak private var promptButton: UIButton!
+    @IBOutlet weak private var promptLabel: UILabel?
+    @IBOutlet weak private var promptButton: UIButton?
     
     var delegate: ContainerWindowDelegate?
-    var survey: Survey?
+    var survey: Survey? {
+        didSet {
+            preparePrompt()
+        }
+    }
     
-    override func loadView() {
-        super.loadView()
+    override func viewDidLoad() {
+        preparePrompt()
         
-        // Allow the continer view to be dynamically sized by the parent 
+        // Allow the continer view to be dynamically sized by the parent
         view.translatesAutoresizingMaskIntoConstraints = false
         
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
-
-    override func viewWillAppear(_ animated: Bool) {
+    
+    private func preparePrompt() {
+        guard let promptLabel = promptLabel,
+            let promptButton = promptButton else {
+                return
+        }
+        
         promptLabel.text = survey?.prompt?.message
         promptButton.setTitle(survey?.prompt?.buttonText, for: .normal)
         if let color = survey?.color {
@@ -32,10 +41,6 @@ final class PromptViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        // TODO: Call API displayed here
-    }
-
     @IBAction func showSurvey(_ sender: Any) {
         if let survey = survey {
             delegate?.showSurvey(survey)
