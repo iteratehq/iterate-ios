@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="185" translatesAutoresizingMaskIntoConstraints="NO" id="lyp-c9-ocK" userLabel="Prompt View Container">
-                                <rect key="frame" x="0.0" y="711" width="414" height="185"/>
+                                <rect key="frame" x="0.0" y="896" width="414" height="185"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="414" id="2pY-Fi-OI9"/>
                                 </constraints>
@@ -32,7 +32,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="hJe-TP-gyL" kind="embed" id="V1N-ct-tog"/>
+                                    <segue destination="hJe-TP-gyL" kind="embed" identifier="promptViewControllerSegue" id="V1N-ct-tog"/>
                                 </connections>
                             </containerView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hjn-bG-L7g">
@@ -56,9 +56,9 @@
                         <viewLayoutGuide key="safeArea" id="0rX-C1-A2z"/>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Rvd-Xr-Mzg"/>
                                 <exclude reference="Sv4-WO-keV"/>
                                 <exclude reference="WvO-Yp-BNe"/>
-                                <exclude reference="n7N-uG-Ev5"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
