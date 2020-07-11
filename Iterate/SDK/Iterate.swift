@@ -141,7 +141,7 @@ public final class Iterate {
             return
         }
         
-        var context = initCurrentContext()
+        var context = makeCurrentEmbedContext()
         context.event = EventContext(name: name)
         embedRequest(context: context) { (response, error) in
             if let callback = complete {
@@ -225,7 +225,7 @@ public final class Iterate {
     /// Generate a embed context that represents the current state of the user.
     /// In the future this may set the current 'view' the user is on, how long they've been
     /// in the app, etc. Anything that may be used for targeting.
-    private func initCurrentContext() -> EmbedContext {
+    private func makeCurrentEmbedContext() -> EmbedContext {
         // Include the url scheme of the app so we can generate a url to preview the survey
         var app: AppContext?
         if let urlScheme = Iterate.shared.urlScheme {
