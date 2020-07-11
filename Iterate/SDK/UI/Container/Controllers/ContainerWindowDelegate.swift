@@ -9,7 +9,7 @@
 import UIKit
 
 final class ContainerWindowDelegate {
-    private var window: ContainerWindow?
+    private var window: PassthroughWindow?
     private var containerViewController: ContainerViewController? {
         window?.rootViewController as? ContainerViewController
     }
@@ -26,7 +26,7 @@ final class ContainerWindowDelegate {
     /// Show the window
     func showWindow(survey: Survey) {
         if window == nil {
-            window = ContainerWindow(survey: survey, delegate: self)
+            window = PassthroughWindow(survey: survey, delegate: self)
         }
         
         window?.isHidden = false

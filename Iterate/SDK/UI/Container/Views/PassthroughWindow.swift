@@ -1,5 +1,5 @@
 //
-//  ContainerWindow.swift
+//  PassthroughWindow.swift
 //  Iterate
 //
 //  Created by Michael Singleton on 1/3/20.
@@ -9,9 +9,9 @@
 import UIKit
 
 
-/// ContainerWindow class is the primary display layer for Iterate, it's a window that sits above the
+/// PassthroughWindow class is the primary display layer for Iterate, it's a window that sits above the
 /// current application window ensuring it an be displayed anywhere at anytime.
-final class ContainerWindow: UIWindow {
+final class PassthroughWindow: UIWindow {
     init(survey: Survey, delegate: ContainerWindowDelegate) {
         if #available(iOS 13.0, *) {
             if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
