@@ -205,7 +205,7 @@ public final class Iterate {
     ///   - context: Embed context data
     ///   - complete: Callback returning the response and error from the embed endpoint
     private func embedRequest(context: EmbedContext, complete: @escaping (EmbedResponse?, Error?) -> Void) {
-        api?.embed(context: context, complete: { (response, error) in
+        api?.embed(context: context, completion: { (response, error) in
             // Update the user API key if one was returned
             if let token = response?.auth?.token {
                 self.userApiKey = token
@@ -227,9 +227,9 @@ public final class Iterate {
     /// in the app, etc. Anything that may be used for targeting.
     private func makeCurrentEmbedContext() -> EmbedContext {
         // Include the url scheme of the app so we can generate a url to preview the survey
-        var app: AppContext?
+        var app = AppContext(version: Iterate.Version)
         if let urlScheme = Iterate.shared.urlScheme {
-            app = AppContext(urlScheme: urlScheme, version: Iterate.Version)
+            app.urlScheme = urlScheme
         }
         
         // Include the survey id we're previewing

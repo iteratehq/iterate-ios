@@ -25,12 +25,12 @@ extension APIClient {
     /// Embed API endpoint
     /// - Parameter context: Contains all data about the context of the embed call (device type, triggers, etc)
     /// - Parameter complete: Results callback
-    func embed(context: EmbedContext, complete: @escaping (EmbedResponse?, Error?) -> Void) {
+    func embed(context: EmbedContext, completion: @escaping (EmbedResponse?, Error?) -> Void) {
         guard let data = try? encoder.encode(context) else {
-            complete(nil, IterateError.jsonEncoding)
+            completion(nil, IterateError.jsonEncoding)
             return
         }
         
-        post(data, to: Paths.Surveys.Embed, completion: complete)
+        post(data, to: Paths.Surveys.Embed, completion: completion)
     }
 }

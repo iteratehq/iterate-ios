@@ -11,11 +11,11 @@ import Foundation
 /// Represents the context of the request to the embed endpoint. This includes
 /// things like device type, user traits, and targeting options.
 struct EmbedContext: Codable {
-    var app: AppContext?
+    var app: AppContext
     var event: EventContext?
     var targeting: TargetingContext?
     var trigger: TriggerContext?
-    var type: EmbedType?
+    var type: EmbedType
     var userTraits: UserProperties?
 }
 
@@ -24,21 +24,21 @@ struct EmbedContext: Codable {
 // Contains data about the application
 struct AppContext: Codable {
     var urlScheme: String?
-    var version: String?
+    var version: String
 }
 
 // MARK: Event
 
 /// Contains event data
 struct EventContext: Codable {
-    var name: String?
+    var name: String
 }
 
 // MARK: Targeting
 
 /// Contains targeting options that are overridden by the client
 struct TargetingContext: Codable {
-    var frequency: TargetingContextFrequency?
+    var frequency: TargetingContextFrequency
     var surveyId: String?
 }
 
@@ -53,8 +53,8 @@ enum TargetingContextFrequency: String, Codable {
 
 /// Contains triggering options (e.g. indicate a survey was 'manually' triggered)
 struct TriggerContext: Codable {
-    var surveyId: String?
-    var type: EmbedTriggerType?
+    var surveyId: String
+    var type: EmbedTriggerType
 }
 
 /// Trigger types, currently the only option is manually triggered
