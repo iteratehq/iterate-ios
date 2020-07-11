@@ -13,12 +13,12 @@ typealias Path = String
 /// List of all API paths used by the client, we use static members here to simulate
 /// namespaces so the consumer can call: Paths.Surveys.Embed
 struct Paths {
-    static let Surveys = SurveyPaths()
+    static let surveys = SurveyPaths()
 }
 
 /// Survey-level API paths
 struct SurveyPaths {
-    func Displayed(surveyId: String) -> Path { "/surveys/\(surveyId)/displayed" }
-    func Dismissed(surveyId: String) -> Path { "/surveys/\(surveyId)/dismiss" }
-    let Embed: Path = "/surveys/embed"
+    func displayed(surveyId: String) -> Path { "/surveys/\(surveyId)/displayed" }
+    func dismissed(surveyId: String) -> Path { "/surveys/\(surveyId)/dismiss" }
+    let embed: Path = "/surveys/embed"
 }

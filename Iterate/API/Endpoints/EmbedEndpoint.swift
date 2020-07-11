@@ -31,6 +31,6 @@ extension APIClient {
             return
         }
         
-        post(data, to: Paths.Surveys.Embed, completion: completion)
+        post(data, to: Paths.surveys.embed, completion: completion)
     }
 }

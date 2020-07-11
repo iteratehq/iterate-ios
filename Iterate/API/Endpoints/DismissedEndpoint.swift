@@ -10,6 +10,6 @@ import Foundation
 
 extension APIClient {
     func dismissed(survey: Survey, completion: @escaping (Dismissal?, Error?) -> Void) {
-        post(nil, to: Paths.Surveys.Dismissed(surveyId: survey.id), completion: completion)
+        post(nil, to: Paths.surveys.dismissed(surveyId: survey.id), completion: completion)
     }
 }
