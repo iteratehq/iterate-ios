@@ -37,7 +37,7 @@ final class PassthroughWindow: UIWindow {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init from coder not supported")
     }
     
     /// Override the hit test to ignore hits on the window itself, this way it will pass through events to underlying views
