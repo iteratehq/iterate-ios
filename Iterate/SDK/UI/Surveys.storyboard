@@ -12,7 +12,7 @@
         <scene sceneID="VLQ-oG-KWg">
             <objects>
                 <viewController storyboardIdentifier="ContainerViewController" id="APU-PM-mDT" userLabel="Container View Controller" customClass="ContainerViewController" customModule="Iterate" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tMS-cA-DE8" customClass="ContainerView" customModule="Iterate" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="tMS-cA-DE8" customClass="PassthroughView" customModule="Iterate" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
