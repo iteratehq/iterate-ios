@@ -21,13 +21,13 @@ public final class Iterate {
     public static let PreviewParameter = "iterate_preview"
     
     // Current version number, will be updated on each release
-    private static let Version = "0.1.1"
+    static let Version = "0.1.1"
     
     /// Default API host
     public static let DefaultAPIHost = "https://iteratehq.com"
     
     /// URL Scheme of the app, used for previewing surveys
-    private lazy var urlScheme = URLScheme()
+    lazy var urlScheme = URLScheme()
     
     /// API Client, which will be initialized when the API key is
     var api: APIClient?
@@ -36,7 +36,7 @@ public final class Iterate {
     var apiHost: String?
     
     /// The id of the survey being previewed
-    private var previewingSurveyId: String?
+    var previewingSurveyId: String?
     
     /// Storage engine for storing user data like their API key and user attributes
     private var storage: StorageEngine
@@ -84,7 +84,7 @@ public final class Iterate {
     
     // MARK: User Properties
     
-    private var userProperties: UserProperties? {
+    var userProperties: UserProperties? {
         get {
             if let data = storage.get(key: StorageKeys.UserProperties) as? Data {
                 return try? JSONDecoder().decode(UserProperties.self, from: data)
@@ -125,9 +125,7 @@ public final class Iterate {
             return
         }
         
-        var context = makeCurrentEmbedContext()
-        context.event = EventContext(name: name)
-        embedRequest(context: context) { (response, error) in
+        embedRequest(context: EmbedContext(eventName: name)) { (response, error) in
             if let callback = complete {
                 callback(response?.survey, error)
             }
@@ -204,30 +202,5 @@ public final class Iterate {
         if let apiKey = userApiKey ?? companyApiKey {
             api = APIClient(apiKey: apiKey, apiHost: apiHost ?? Iterate.DefaultAPIHost)
         }
-    }
-    
-    /// Generate a embed context that represents the current state of the user.
-    /// In the future this may set the current 'view' the user is on, how long they've been
-    /// in the app, etc. Anything that may be used for targeting.
-    private func makeCurrentEmbedContext() -> EmbedContext {
-        // Include the url scheme of the app so we can generate a url to preview the survey
-        var app = AppContext(version: Iterate.Version)
-        if let urlScheme = Iterate.shared.urlScheme {
-            app.urlScheme = urlScheme
-        }
-        
-        // Include the survey id we're previewing
-        var targeting: TargetingContext?
-        if let previewingSurveyId = previewingSurveyId {
-            targeting = TargetingContext(frequency: TargetingContextFrequency.always, surveyId: previewingSurveyId)
-        }
-        
-        var userPropertiesContext: UserProperties?
-        if let userProperties = Iterate.shared.userProperties {
-            userPropertiesContext = userProperties
-        }
-        
-        
-        return EmbedContext(app: app, targeting: targeting, trigger: nil, type: EmbedType.mobile, userTraits: userPropertiesContext)
     }
 }
