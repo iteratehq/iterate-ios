@@ -28,7 +28,8 @@ class EmbedEndpointTests: XCTestCase {
             }
         }
         
-        let context = EmbedContext()
+        let iterate = Iterate(storage: MockStorageEngine())
+        let context = EmbedContext(iterate)
         let client = APIClientMock(apiKey: testCompanyApiKey)
         
         let embedComplete = expectation(description: "Embed complete")

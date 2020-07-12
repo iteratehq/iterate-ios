@@ -28,8 +28,9 @@ class ClientTests: XCTestCase {
             }
         }
         
+        let iterate = Iterate(storage: MockStorageEngine())
         let client = APIClientMock(apiKey: testCompanyApiKey)
-        let context = EmbedContext()
+        let context = EmbedContext(iterate)
         let data = try! client.encoder.encode(context)
         
         let postComplete = expectation(description: "Post complete")

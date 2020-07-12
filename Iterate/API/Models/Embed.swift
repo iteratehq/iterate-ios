@@ -18,28 +18,28 @@ struct EmbedContext: Codable {
     var type: EmbedType
     var userTraits: UserProperties?
     
-    init() {
+    init(_ iterate: Iterate) {
         type = EmbedType.mobile
         
         // Include the url scheme of the app so we can generate a url to preview the survey
         app = AppContext(version: Iterate.Version)
-        if let urlScheme = Iterate.shared.urlScheme {
+        if let urlScheme = iterate.urlScheme {
             app.urlScheme = urlScheme
         }
         
         // Include the survey id we're previewing
-        if let previewingSurveyId = Iterate.shared.previewingSurveyId {
+        if let previewingSurveyId = iterate.previewingSurveyId {
             targeting = TargetingContext(frequency: TargetingContextFrequency.always, surveyId: previewingSurveyId)
         }
         
         // Include user properties
-        if let userProperties = Iterate.shared.userProperties {
+        if let userProperties = iterate.userProperties {
             userTraits = userProperties
         }
     }
     
-    init(eventName: String) {
-        self.init()
+    init(_ iterate: Iterate, withEventName eventName: String) {
+        self.init(iterate)
         event = EventContext(name: eventName)
     }
 }

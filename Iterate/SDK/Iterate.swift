@@ -129,7 +129,7 @@ public final class Iterate {
             return
         }
         
-        embedRequest(context: EmbedContext(eventName: name)) { (response, error) in
+        embedRequest(context: EmbedContext(self, withEventName: name)) { (response, error) in
             if let callback = complete {
                 callback(response?.survey, error)
             }
