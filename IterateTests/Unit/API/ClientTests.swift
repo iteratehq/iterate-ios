@@ -18,8 +18,8 @@ class ClientTests: XCTestCase {
             override func performDataTask<T: Codable>(request: URLRequest, completion: @escaping (T?, Error?) -> Void) {
                 let embedContext = try! decoder.decode(EmbedContext.self, from: request.httpBody!)
                 
-                XCTAssertEqual(request.url?.absoluteString, "\(Iterate.DefaultAPIHost)/api/v1\(Paths.Surveys.Embed)")
-                XCTAssertEqual(request.value(forHTTPHeaderField: "Content-Type")!, "application/javascript")
+                XCTAssertEqual(request.url?.absoluteString, "\(Iterate.DefaultAPIHost)/api/v1\(Paths.surveys.embed)")
+                XCTAssertEqual(request.value(forHTTPHeaderField: "Content-Type")!, "application/json")
                 XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization")!, "Bearer \(testCompanyApiKey)")
                 XCTAssertEqual(request.httpMethod, "POST")
                 XCTAssertEqual(embedContext.type, EmbedType.mobile)
@@ -29,11 +29,11 @@ class ClientTests: XCTestCase {
         }
         
         let client = APIClientMock(apiKey: testCompanyApiKey)
-        let context = EmbedContext(targeting: nil, trigger: nil, type: EmbedType.mobile)
+        let context = EmbedContext()
         let data = try! client.encoder.encode(context)
         
         let postComplete = expectation(description: "Post complete")
-        client.post(data, to: Paths.Surveys.Embed) { (response: EmbedResponse?, error) in
+        client.post(data, to: Paths.surveys.embed) { (response: EmbedResponse?, error) in
             postComplete.fulfill()
         }
          waitForExpectations(timeout: 3)

@@ -21,14 +21,14 @@ class EmbedEndpointTests: XCTestCase {
                     embedContext = try? decoder.decode(EmbedContext.self, from: data)
                 }
                 
-                XCTAssertEqual(path, Paths.Surveys.Embed)
+                XCTAssertEqual(path, Paths.surveys.embed)
                 XCTAssertEqual(embedContext?.type, EmbedType.mobile)
                 
                 completion(nil, nil)
             }
         }
         
-        let context = EmbedContext(targeting: nil, trigger: nil, type: EmbedType.mobile)
+        let context = EmbedContext()
         let client = APIClientMock(apiKey: testCompanyApiKey)
         
         let embedComplete = expectation(description: "Embed complete")

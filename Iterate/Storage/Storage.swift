@@ -10,8 +10,8 @@ import Foundation
 
 /// Protocol to represent a simple get/set storage engine
 protocol StorageEngine {
-    func get(key: StorageKeys) -> Any?
-    func set(key: StorageKeys, value: Any?) -> Void
+    func value(for key: StorageKeys) -> Any?
+    func set(value: Any?, for key: StorageKeys) -> Void
 }
 
 /// Create a Storage namespace

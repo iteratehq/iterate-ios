@@ -60,8 +60,12 @@ public final class Iterate {
     var companyApiKey: String? {
         didSet {
             // If we're changing the company API key to a different company API key
-            // clear the user api key since it won't work for a different company
-            if companyApiKey != oldValue  {
+            // clear the user api key since it won't work for a different company.
+            // We don't want to clear the user api key if the companyApiKey is nil
+            // since that would cause us to always clear the userApiKey that was loaded
+            // from storage when Iterate.shared.configure is called to set the
+            // companyApiKey.
+            if oldValue != nil && companyApiKey != oldValue  {
                 userApiKey = nil
             }
             
@@ -72,11 +76,11 @@ public final class Iterate {
     /// The API key for a user, this is returned by the server the first time a request is made by a new user
     var userApiKey: String? {
         get {
-            storage.get(key: StorageKeys.UserApiKey) as? String
+            storage.value(for: StorageKeys.UserApiKey) as? String
         }
         
         set(newUserApiKey) {
-            storage.set(key: StorageKeys.UserApiKey, value: newUserApiKey)
+            storage.set(value: newUserApiKey, for: StorageKeys.UserApiKey)
             updateApiKey()
         }
     }
@@ -86,7 +90,7 @@ public final class Iterate {
     
     var userProperties: UserProperties? {
         get {
-            if let data = storage.get(key: StorageKeys.UserProperties) as? Data {
+            if let data = storage.value(for: StorageKeys.UserProperties) as? Data {
                 return try? JSONDecoder().decode(UserProperties.self, from: data)
             }
             
@@ -95,7 +99,7 @@ public final class Iterate {
         set (newUserProperties) {
             if let newUserProperties = newUserProperties,
                 let encodedNewUserProperties = try? JSONEncoder().encode(newUserProperties) {
-                storage.set(key: StorageKeys.UserProperties, value: encodedNewUserProperties)
+                storage.set(value: encodedNewUserProperties, for: StorageKeys.UserProperties)
             }
         }
     }
