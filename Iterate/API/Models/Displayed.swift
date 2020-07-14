@@ -10,7 +10,6 @@ import Foundation
 
 public struct Displayed: Codable {
     let id: String
-    let lastDisplayed: String
     let surveyId: String
     let userId: String
 }
