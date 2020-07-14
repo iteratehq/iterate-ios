@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContainerView: UIView {
+final class ContainerView: UIView {
     /// Override the hit test to ignore hits on the window itself, this way it will pass through events to underlying views
     /// - Parameters:
     ///   - point: Point of hit

@@ -9,15 +9,15 @@
 import UIKit
 import WebKit
 
-class SurveyViewController: UIViewController {
-    @objc dynamic var webView: WKWebView!
-    @IBOutlet weak var loadingView: UIView!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+final class SurveyViewController: UIViewController {
+    @objc dynamic private var webView: WKWebView!
+    @IBOutlet weak private var loadingView: UIView!
+    @IBOutlet weak private var loadingIndicator: UIActivityIndicatorView!
     
     var delegate: ContainerWindowDelegate?
     var survey: Survey?
     
-    let MessageHandlerName = "iterateMessageHandler"
+    private let MessageHandlerName = "iterateMessageHandler"
     
     override func loadView() {
         super.loadView()
@@ -92,7 +92,7 @@ class SurveyViewController: UIViewController {
     }
 }
 
-enum MessageType: String {
+private enum MessageType: String {
     case Close = "close"
 }
 
