@@ -79,27 +79,29 @@ class APIClient {
     ///   - complete: Results callback
     func performDataTask<T: Codable>(request: URLRequest, completion: @escaping (T?, Error?) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard error == nil else {
-                completion(nil, IterateError.apiRequestError)
-                return
+            DispatchQueue.main.async {
+                guard error == nil else {
+                    completion(nil, IterateError.apiRequestError)
+                    return
+                }
+                
+                guard let data = data else {
+                    completion(nil, IterateError.invalidAPIResponse)
+                    return
+                }
+                
+                guard let response = try? self.decoder.decode(Response<T>.self, from: data) else {
+                    completion(nil, IterateError.jsonDecoding)
+                    return
+                }
+                
+                if let err = response.error {
+                    completion(nil, IterateError.apiError(err))
+                    return
+                }
+                
+                completion(response.results, nil)
             }
-            
-            guard let data = data else {
-                completion(nil, IterateError.invalidAPIResponse)
-                return
-            }
-            
-            guard let response = try? self.decoder.decode(Response<T>.self, from: data) else {
-                completion(nil, IterateError.jsonDecoding)
-                return
-            }
-            
-            if let err = response.error {
-                completion(nil, IterateError.apiError(err))
-                return
-            }
-            
-            completion(response.results, nil)
         }
         
         task.resume()

@@ -137,11 +137,9 @@ public final class Iterate {
             if let survey = response?.survey {
                 // Show the survey after N seconds otherwise show immediately
                 if survey.triggers?.first?.type == TriggerType.seconds {
-                    DispatchQueue.main.async {
-                        let seconds: Int = survey.triggers?.first?.options?.seconds ?? 0
-                        Timer.scheduledTimer(withTimeInterval: Double(seconds), repeats: false) { timer in
-                            self.container.showPrompt(survey)
-                        }
+                    let seconds: Int = survey.triggers?.first?.options?.seconds ?? 0
+                    Timer.scheduledTimer(withTimeInterval: Double(seconds), repeats: false) { timer in
+                        self.container.showPrompt(survey)
                     }
                 } else {
                     self.container.showPrompt(survey)

@@ -37,31 +37,27 @@ final class ContainerWindowDelegate {
                 return
         }
         
-        DispatchQueue.main.async {
-            self.showWindow(survey: survey)
-            self.containerViewController?.showPrompt(complete: {
-                Iterate.shared.api?.displayed(survey: survey, completion: { _, _ in })
-            })
-        }
+        self.showWindow(survey: survey)
+        self.containerViewController?.showPrompt(complete: {
+            Iterate.shared.api?.displayed(survey: survey, completion: { _, _ in })
+        })
     }
         
     func showSurvey(_ survey: Survey) {
-        DispatchQueue.main.async {
-            // Hide the prompt
-            self.containerViewController?.hidePrompt()
-            
-            guard let surveyViewController = self.makeSurveyViewController() else {
-                return
-            }
-            
-            self.containerViewController?.isSurveyDisplayed = true
-            self.containerViewController?.setNeedsStatusBarAppearanceUpdate()
-            
-            // Show the survey
-            surveyViewController.survey = survey
-            surveyViewController.delegate = self
-            self.getPresentingViewController()?.present(surveyViewController, animated: true, completion: nil)
+        // Hide the prompt
+        self.containerViewController?.hidePrompt()
+        
+        guard let surveyViewController = self.makeSurveyViewController() else {
+            return
         }
+        
+        self.containerViewController?.isSurveyDisplayed = true
+        self.containerViewController?.setNeedsStatusBarAppearanceUpdate()
+        
+        // Show the survey
+        surveyViewController.survey = survey
+        surveyViewController.delegate = self
+        self.getPresentingViewController()?.present(surveyViewController, animated: true, completion: nil)
     }
     
     func dismissPrompt(survey: Survey?, userInitiated: Bool) {
