@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "last_name": UserPropertyValue("User"),
             "user_id": UserPropertyValue(123)
         ])
-        Iterate.shared.preview(surveyId: "5edfaeb2c591ad0001ead90d")
+        Iterate.shared.preview(surveyId: "5efa0121a9fffa0001c70b8d")
 
         return true
     }
