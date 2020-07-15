@@ -6,7 +6,7 @@
 //  Copyright © 2020 Pickaxe LLC. (DBA Iterate). All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /// The Iterate class is the primary class of the SDK, the main entry point is the shared singleton property
 public final class Iterate {
@@ -27,7 +27,7 @@ public final class Iterate {
     public static let DefaultAPIHost = "https://iteratehq.com"
     
     /// URL Scheme of the app, used for previewing surveys
-    lazy var urlScheme = URLScheme()
+    lazy var urlScheme = UIApplication.URLScheme()
     
     /// API Client, which will be initialized when the API key is
     var api: APIClient?
