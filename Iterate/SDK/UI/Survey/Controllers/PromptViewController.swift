@@ -42,9 +42,12 @@ final class PromptViewController: UIViewController {
     }
     
     @IBAction func showSurvey(_ sender: Any) {
-        if let survey = survey {
-            delegate?.showSurvey(survey)
+        guard let survey = survey else {
+            assertionFailure("Survey not set")
+            return
         }
+        
+        delegate?.showSurvey(survey)
     }
     @IBAction func close(_ sender: Any) {
         delegate?.dismissPrompt(survey: survey, userInitiated: true)
