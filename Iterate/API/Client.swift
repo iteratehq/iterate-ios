@@ -81,22 +81,26 @@ class APIClient {
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 guard error == nil else {
+                    print("Error calling the Iterate API: \(String(describing: error))")
                     completion(nil, IterateError.apiRequestError)
                     return
                 }
                 
                 guard let data = data else {
+                    print("Error calling the Iterate API: invalid response")
                     completion(nil, IterateError.invalidAPIResponse)
                     return
                 }
                 
                 guard let response = try? self.decoder.decode(Response<T>.self, from: data) else {
+                    print("Error calling the Iterate API: error decoding json response")
                     completion(nil, IterateError.jsonDecoding)
                     return
                 }
                 
-                if let err = response.error {
-                    completion(nil, IterateError.apiError(err))
+                if let error = response.error {
+                    print("Error calling the Iterate API: \(String(describing: error))")
+                    completion(nil, IterateError.apiError(error))
                     return
                 }
                 
