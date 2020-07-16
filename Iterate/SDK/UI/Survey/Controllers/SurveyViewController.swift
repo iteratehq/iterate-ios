@@ -15,6 +15,7 @@ final class SurveyViewController: UIViewController {
     @IBOutlet weak private var loadingIndicator: UIActivityIndicatorView!
     
     var delegate: ContainerWindowDelegate?
+    var observation: NSKeyValueObservation?
     var survey: Survey? {
         willSet(newSurvey) {
             guard survey == nil else {
@@ -41,7 +42,16 @@ final class SurveyViewController: UIViewController {
             webView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
             webView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
         ])
-        addObserver(self, forKeyPath: #keyPath(webView.isLoading), options: [.old, .new], context: nil)
+        
+        // Show the survey once the webview has loaded
+        observation = observe(\.webView.isLoading, options: [.old, .new]) { object, change in
+            if let isLoading = change.newValue, !isLoading {
+                let animator = UIViewPropertyAnimator(duration: 1.0, dampingRatio: 1) {
+                    self.loadingView.alpha = 0
+                }
+                animator.startAnimation()
+            }
+        }
         
         loadingView.frame = view.frame
         if #available(iOS 13.0, *) {
@@ -82,20 +92,6 @@ final class SurveyViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         delegate?.surveyDismissed(survey: survey)
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == #keyPath(webView.isLoading) {
-            if let change = change,
-                let isLoading = change[.newKey] as? Bool {
-                if !isLoading {
-                    let animator = UIViewPropertyAnimator(duration: 1.0, dampingRatio: 1) {
-                        self.loadingView.alpha = 0
-                    }
-                    animator.startAnimation()
-                }
-            }
-        }
     }
 }
 
