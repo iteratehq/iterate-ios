@@ -15,7 +15,14 @@ final class SurveyViewController: UIViewController {
     @IBOutlet weak private var loadingIndicator: UIActivityIndicatorView!
     
     var delegate: ContainerWindowDelegate?
-    var survey: Survey?
+    var survey: Survey? {
+        willSet(newSurvey) {
+            guard survey == nil else {
+                assertionFailure("Survey shouldn't be set more than once")
+                return
+            }
+        }
+    }
     
     private let MessageHandlerName = "iterateMessageHandler"
     
