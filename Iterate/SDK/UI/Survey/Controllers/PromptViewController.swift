@@ -22,7 +22,7 @@ final class PromptViewController: UIViewController {
     override func viewDidLoad() {
         preparePrompt()
         
-        // Allow the continer view to be dynamically sized by the parent
+        // Allow the container view to be dynamically sized by the parent
         view.translatesAutoresizingMaskIntoConstraints = false
         
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
