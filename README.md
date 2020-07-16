@@ -6,7 +6,7 @@
 
 ---
 
-Iterate surveys put you directly in touch with your app users to learn how you can change for the better—from your product to your app experience.
+[Iterate](https://iteratehq.com) surveys put you directly in touch with your app users to learn how you can change for the better—from your product to your app experience.
 
 Run surveys that are highly targeted, user-friendly, and on-brand. You’ll understand not just what your visitors are doing, but why.
 
@@ -15,7 +15,7 @@ Run surveys that are highly targeted, user-friendly, and on-brand. You’ll unde
 ✅ iOS 12 or higher  
 ✅ Works with iPhone or iPad  
 ✅ Swift 4.2 or higher  
-👌 No 3rd party dependencies
+👍 No 3rd party dependencies
 
 ## Install
 
@@ -30,7 +30,7 @@ pod 'Iterate', '~> 0.1'
 Then run
 
 ```bash
-$ pod install 
+$ pod install
 ```
 
 **Carthage**
@@ -47,18 +47,29 @@ Then run
 $ carthage update
 ```
 
-and follow the Carthage [instructions](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos) to copy the framework into your app. 
-
+and follow the Carthage [instructions](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos) to copy the framework into your app.
 
 ## Usage
 
-Within your app surveys are shown in response to _events_. An event can be anything from viewing a screen, clicking a button, or any other user action. You use the Iterate SDK to send events to Iterate, then from your Iterate dashboard you create surveys that target those events.
+Within your app, surveys are shown in response to _events_. An event can be anything from viewing a screen, clicking a button, or any other user action. You use the Iterate SDK to send events to Iterate, then from your Iterate dashboard you create surveys that target those events.
 
 **Quickstart**
 
-Creating your [Iterate](https://iteratehq.com) account if you haven't already, then go into your settings and copy your API key.
+Create your [Iterate](https://iteratehq.com) account if you haven't already.
 
-1. Initialize the SDK in your AppDelegate class
+1. Create a new survey and select "Install in your mobile app"
+
+<img src="https://github.com/iteratehq/iterate-ios/raw/master/Assets/new-survey.png" width="800">
+
+<br/>
+
+2. Go to the "Preview & Publish" tab and copy your SDK API key
+
+<img src="https://github.com/iteratehq/iterate-ios/raw/master/Assets/publish.png" width="500">
+
+<br/>
+
+3. Initialize the SDK in your AppDelegate class
 
 ```swift
 import Iterate
@@ -69,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Iterate.shared.configure(apiKey: YOUR_API_KEY)
+        return true
     }
 
     // ...
@@ -76,7 +88,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-2. Implement events
+If you're using SwiftUI, you can attach your App to an AppDelegate and initialize using the method above
+
+```swift
+@main
+struct MyApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
+
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        Iterate.shared.configure(apiKey: YOUR_API_KEY)
+        return true
+    }
+}
+```
+
+4. Implement events
 
 Here's an example of an event being fired when the user views the activity feed screen
 
@@ -96,11 +130,27 @@ class ViewController: UIViewController {
 }
 ```
 
-3. Create your survey on iteratehq.com and target it to that event
+Here's the same example using SwiftUI
+
+```swift
+struct ActivityFeed: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                // ...
+            }
+        }.onAppear {
+            Iterate.shared.sendEvent(name: "viewed-activity-feed")
+        }
+    }
+}
+```
+
+1. Create your survey on iteratehq.com and target it to that event
 
 <img src="https://github.com/iteratehq/iterate-ios/blob/master/Assets/event-targeting.png?raw=true" width="500">
 
-4. Publish your survey and you're done 🎉
+6. Publish your survey and you're done 🎉
 
 **Previewing your survey**
 
@@ -119,7 +169,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
       for context in URLContexts {
-          if context.url.absoluteString.contains(Iterate.PreviewParameter) {
+          if (URLComponents(url: context.url, resolvingAgainstBaseURL: false)?.queryItems?.contains { $0.name == Iterate.PreviewParameter } ?? false) {
               Iterate.shared.preview(url: context.url.absoluteURL)
           }
       }
@@ -139,7 +189,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // ...
 
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:] ) -> Bool {
-        if url.absoluteString.contains(Iterate.PreviewParameter) {
+        if (URLComponents(url: context.url, resolvingAgainstBaseURL: false)?.queryItems?.contains { $0.name == Iterate.PreviewParameter } ?? false) {
             Iterate.shared.preview(url: url.absoluteURL)
         }
     }
@@ -158,3 +208,7 @@ When implementing Iterate for the first time, we encourage you to implement even
 **Survey eligibility and frequency**
 
 By default surveys are only shown once per person and user's can only see at most 1 survey every 72 hours (which is configurable). You can learn more about how [eligibility and frequency works](https://help.iteratehq.com/en/articles/2835008-survey-eligibility-and-frequency).
+
+**Troubleshooting**
+
+If you have any issues you can head over to our [help center](https://help.iteratehq.com) to search for an answer or chat with our support team.

@@ -9,17 +9,17 @@
 import UIKit
 import WebKit
 
-class SurveyViewController: UIViewController {
-    @objc dynamic var webView: WKWebView!
-    @IBOutlet weak var loadingView: UIView!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+final class SurveyViewController: UIViewController {
+    @objc dynamic private var webView: WKWebView!
+    @IBOutlet weak private var loadingView: UIView!
+    @IBOutlet weak private var loadingIndicator: UIActivityIndicatorView!
     
     var delegate: ContainerWindowDelegate?
     var survey: Survey?
     
-    let MessageHandlerName = "iterateMessageHandler"
+    private let MessageHandlerName = "iterateMessageHandler"
     
-    override func loadView() {
+    override func viewDidLoad() {
         super.loadView()
         
         let webConfiguration = WKWebViewConfiguration()
@@ -49,10 +49,32 @@ class SurveyViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if let survey = survey {
-            let host = Iterate.shared.apiHost ?? DefaultAPIHost
-            let myRequest = URLRequest(url: URL(string:"\(host)/\(survey.companyId)/\(survey.id)/mobile")!)
+            let host = Iterate.shared.apiHost ?? Iterate.DefaultAPIHost
+            
+            var params: [String] = []
+            
+            // Include the user's auth token as a query param. The web view
+            // will use this token to authorize API calls
+            if let authToken = Iterate.shared.userApiKey {
+                params.append("auth_token=\(authToken)")
+            }
+            
+            // Include response properties. These are in the format of response_[type]_[name]=[value]
+            // e.g. response_number_userId=123
+            if let responseProperties = Iterate.shared.responseProperties {
+                params.append(contentsOf: responseProperties.map {
+                    let value = "\($0.value.value)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                    return "response\($0.value.typeString())_\($0.key)=\(value)" })
+            }
+            
+            let url = "\(host)/\(survey.companyId)/\(survey.id)/mobile?\(params.joined(separator: "&"))"
+            let myRequest = URLRequest(url: URL(string: url)!)
             webView.load(myRequest)
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        delegate?.surveyDismissed(survey: survey)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -70,23 +92,21 @@ class SurveyViewController: UIViewController {
     }
 }
 
-enum MessageType: String {
-    case Close = "close"
+private enum MessageType: String {
+    case close = "close"
 }
 
 extension SurveyViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == MessageHandlerName {
             guard let body = message.body as? [String: AnyObject],
-                let messageType = MessageType(rawValue:body["type"] as? String ?? ""),
-                let data = body["data"] as? [String: AnyObject] else {
+                let messageType = MessageType(rawValue:body["type"] as? String ?? "") else {
                 return
             }
             
             switch messageType {
-            case .Close:
-                let userInitiated = data["userInitiated"] as? Bool ?? false
-                delegate?.dismissSurvey(survey: survey, userInitiated: userInitiated)
+            case .close:
+                delegate?.dismissSurvey()
             }
         }
     }

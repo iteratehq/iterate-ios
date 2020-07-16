@@ -17,6 +17,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction func showSurvey(_ sender: Any) {
+        Iterate.shared.identify(responseProperties: [
+            "exampleString": ResponsePropertyValue("string value"),
+            "exampleNumber": ResponsePropertyValue(123),
+            "exampleBoolean": ResponsePropertyValue(true),
+        ])
         Iterate.shared.sendEvent(name: Event.ShowSurveyButtonTapped.rawValue)
     }
 }

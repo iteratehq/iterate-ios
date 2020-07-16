@@ -8,25 +8,16 @@
 
 import UIKit
 
-class ContainerWindowDelegate {
-    var window: ContainerWindow?
-    var containerViewController: ContainerViewController? {
+final class ContainerWindowDelegate {
+    private var window: PassthroughWindow?
+    private var containerViewController: ContainerViewController? {
         window?.rootViewController as? ContainerViewController
     }
-    var surveyViewController: SurveyViewController? {
-       return UIStoryboard(
-            name: "Surveys",
-            bundle: Iterate.shared.bundle
-        ).instantiateViewController(withIdentifier: "SurveyModalViewController") as? SurveyViewController
-    }
-    
-    /// Holds a reference to the view controller that presents the survey
-    var presentingViewController: UIViewController?
     
     /// Show the window
     func showWindow(survey: Survey) {
         if window == nil {
-            window = ContainerWindow(survey: survey, delegate: self)
+            window = PassthroughWindow(survey: survey, delegate: self)
         }
         
         window?.isHidden = false
@@ -46,7 +37,7 @@ class ContainerWindowDelegate {
             DispatchQueue.main.async {
                 self.showWindow(survey: survey)
                 self.containerViewController?.showPrompt(complete: {
-                    Iterate.shared.api?.displayed(survey: survey, complete: { _, _ in })
+                    Iterate.shared.api?.displayed(survey: survey, completion: { _, _ in })
                 })
             }
         }
@@ -57,21 +48,23 @@ class ContainerWindowDelegate {
             // Hide the prompt
             self.containerViewController?.hidePrompt()
             
-            guard let surveyViewController = self.surveyViewController else {
+            guard let surveyViewController = self.makeSurveyViewController() else {
                 return
             }
+            
+            self.containerViewController?.isSurveyDisplayed = true
+            self.containerViewController?.setNeedsStatusBarAppearanceUpdate()
             
             // Show the survey
             surveyViewController.survey = survey
             surveyViewController.delegate = self
-            self.presentingViewController = self.getPresentingViewController()
-            self.presentingViewController?.present(surveyViewController, animated: true, completion: nil)
+            self.getPresentingViewController()?.present(surveyViewController, animated: true, completion: nil)
         }
     }
     
     func dismissPrompt(survey: Survey?, userInitiated: Bool) {
         if let survey = survey, userInitiated {
-            Iterate.shared.api?.dismissed(survey: survey, complete: { _, _ in })
+            Iterate.shared.api?.dismissed(survey: survey, completion: { _, _ in })
         }
         
         containerViewController?.hidePrompt(complete: {
@@ -79,15 +72,20 @@ class ContainerWindowDelegate {
         })
     }
     
-    func dismissSurvey(survey: Survey?, userInitiated: Bool) {
-        if let survey = survey, userInitiated {
-            Iterate.shared.api?.dismissed(survey: survey, complete: { _, _ in })
+    /// Dismiss the survey, called when the user clicks the 'X' within the survey
+    func dismissSurvey() {
+        self.getPresentingViewController()?.dismiss(animated: true)
+    }
+    
+    /// Called once a survey has been dismissed, this can happen if a user clicks the 'X' within a survey
+    /// or drags down on the modal view
+    func surveyDismissed(survey: Survey?) {
+        if let survey = survey {
+            Iterate.shared.api?.dismissed(survey: survey, completion: { _, _ in })
         }
         
-        self.presentingViewController?.dismiss(animated: true, completion: {
-            self.presentingViewController = nil
-            self.hideWindow()
-        })
+        self.containerViewController?.isSurveyDisplayed = false
+        self.hideWindow()
     }
     
     /// Get the currently visible view controller which we will use to modally present the survey and fall back to our container view controller
@@ -111,5 +109,12 @@ class ContainerWindowDelegate {
         }
         
         return visibleViewController
+    }
+    
+    private func makeSurveyViewController() -> SurveyViewController? {
+       return UIStoryboard(
+            name: "Surveys",
+            bundle: Iterate.shared.bundle
+        ).instantiateViewController(withIdentifier: "SurveyModalViewController") as? SurveyViewController
     }
 }

@@ -8,29 +8,27 @@
 
 import UIKit
 
-class ContainerViewController: UIViewController {
+final class ContainerViewController: UIViewController {
     var delegate: ContainerWindowDelegate?
-    var promptViewController: PromptViewController?
+    private var promptViewController: PromptViewController?
     var survey: Survey?
+    var isSurveyDisplayed: Bool?
     
-    @IBOutlet weak var promptView: UIView!
-    @IBOutlet weak var promptViewBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var promptViewTopConstraint: NSLayoutConstraint!
-    
-    override func viewDidLoad() {
-        // Get the prompt child container controller
-        if let viewController = children.first as? PromptViewController {
-            promptViewController = viewController
-            promptViewController?.delegate = delegate
-        }
-        
-        promptViewBottomConstraint.isActive = false
-        promptViewTopConstraint.isActive = true
-    }
+    @IBOutlet weak private var promptView: UIView!
+    @IBOutlet weak private var promptViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var promptViewTopConstraint: NSLayoutConstraint!
     
     override func viewWillAppear(_ animated: Bool) {
         promptViewBottomConstraint.constant = 0
-        promptViewController?.survey = survey
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if let isSurveyDisplayed = isSurveyDisplayed,
+            isSurveyDisplayed {
+            return .lightContent
+        }
+        
+        return .default
     }
     
     @IBAction func handlePan(_ gesture: UIPanGestureRecognizer) {
@@ -76,8 +74,11 @@ class ContainerViewController: UIViewController {
             self.promptViewBottomConstraint.constant = 0
             self.promptViewBottomConstraint.isActive = false
             self.promptViewTopConstraint.isActive = true
-            
             self.view.layoutIfNeeded()
+        }
+        
+        animator.addCompletion { (_ UIViewAnimatingPosition) in
+            self.promptView.isHidden = true
         }
         
         if let complete = complete {
@@ -88,10 +89,12 @@ class ContainerViewController: UIViewController {
         
         animator.startAnimation()
     }
-}
-
-extension ContainerViewController: UIAdaptivePresentationControllerDelegate {
-    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        delegate?.dismissSurvey(survey: survey, userInitiated: true)
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "promptViewControllerSegue") {
+            promptViewController = segue.destination as? PromptViewController
+            promptViewController?.delegate = delegate
+            promptViewController?.survey = survey
+        }
     }
 }

@@ -13,9 +13,24 @@ public struct Survey: Codable {
     let companyId: String
     let id: String
     let prompt: Prompt?
+    let triggers: [Trigger]?
 }
 
 public struct Prompt: Codable {
     let buttonText: String?
     let message: String?
+}
+
+public struct Trigger: Codable {
+    let type: TriggerType
+    let options: TriggerOptions?
+}
+
+enum TriggerType: String, Codable {
+    case immediately = "immediately"
+    case seconds = "seconds"
+}
+
+public struct TriggerOptions: Codable {
+    let seconds: Int?
 }

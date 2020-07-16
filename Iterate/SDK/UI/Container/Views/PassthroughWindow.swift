@@ -1,5 +1,5 @@
 //
-//  ContainerWindow.swift
+//  PassthroughWindow.swift
 //  Iterate
 //
 //  Created by Michael Singleton on 1/3/20.
@@ -9,12 +9,17 @@
 import UIKit
 
 
-/// ContainerWindow class is the primary display layer for Iterate, it's a window that sits above the
+/// PassthroughWindow class is the primary display layer for Iterate, it's a window that sits above the
 /// current application window ensuring it an be displayed anywhere at anytime.
-class ContainerWindow: UIWindow {
+final class PassthroughWindow: UIWindow {
     init(survey: Survey, delegate: ContainerWindowDelegate) {
         if #available(iOS 13.0, *) {
-            if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            // Attach the window to the first foreground active UIWindowScene
+            if let scene = UIApplication.shared.connectedScenes
+                .filter({ $0.activationState == .foregroundActive })
+                .map({$0 as? UIWindowScene})
+                .compactMap({$0})
+                .first {
                 super.init(windowScene: scene)
             } else {
                 super.init(frame: UIScreen.main.bounds)
@@ -37,7 +42,7 @@ class ContainerWindow: UIWindow {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init from coder not supported")
     }
     
     /// Override the hit test to ignore hits on the window itself, this way it will pass through events to underlying views
