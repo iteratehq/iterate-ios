@@ -14,7 +14,12 @@ import UIKit
 final class PassthroughWindow: UIWindow {
     init(survey: Survey, delegate: ContainerWindowDelegate) {
         if #available(iOS 13.0, *) {
-            if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            // Attach the window to the first foreground active UIWindowScene
+            if let scene = UIApplication.shared.connectedScenes
+                .filter({ $0.activationState == .foregroundActive })
+                .map({$0 as? UIWindowScene})
+                .compactMap({$0})
+                .first {
                 super.init(windowScene: scene)
             } else {
                 super.init(frame: UIScreen.main.bounds)
