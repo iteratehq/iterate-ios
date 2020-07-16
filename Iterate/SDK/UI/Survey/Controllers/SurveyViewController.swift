@@ -46,7 +46,7 @@ final class SurveyViewController: UIViewController {
         // Show the survey once the webview has loaded
         observation = observe(\.webView.isLoading, options: [.old, .new]) { object, change in
             if let isLoading = change.newValue, !isLoading {
-                let animator = UIViewPropertyAnimator(duration: 1.0, dampingRatio: 1) {
+                let animator = UIViewPropertyAnimator(duration: 0.3, curve: .linear) {
                     self.loadingView.alpha = 0
                 }
                 animator.startAnimation()
