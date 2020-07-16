@@ -6,14 +6,22 @@
 //  Copyright © 2020 Pickaxe LLC. (DBA Iterate). All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public struct Survey: Codable {
-    let color: String
+    let colorHex: String
     let companyId: String
     let id: String
     let prompt: Prompt?
     let triggers: [Trigger]?
+    
+    enum CodingKeys: String, CodingKey {
+        case colorHex = "color"
+        case companyId
+        case id
+        case prompt
+        case triggers
+    }
 }
 
 public struct Prompt: Codable {

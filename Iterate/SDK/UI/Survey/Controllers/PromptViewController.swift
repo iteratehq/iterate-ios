@@ -36,7 +36,7 @@ final class PromptViewController: UIViewController {
         
         promptLabel.text = survey?.prompt?.message
         promptButton.setTitle(survey?.prompt?.buttonText, for: .normal)
-        if let color = survey?.color {
+        if let color = survey?.colorHex {
             promptButton.backgroundColor = UIColor(hex: color)
         }
     }
