@@ -36,9 +36,9 @@
 		27C3B29923BD360E00754F4D /* UserDefaultsStorageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29823BD360E00754F4D /* UserDefaultsStorageEngine.swift */; };
 		27C3B29C23BD3FA400754F4D /* MockStorageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29B23BD3FA400754F4D /* MockStorageEngine.swift */; };
 		27C3B29F23BE89E700754F4D /* Surveys.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C3B29E23BE89E700754F4D /* Surveys.storyboard */; };
-		27C3B2EF23BFD44400754F4D /* ContainerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2EE23BFD44400754F4D /* ContainerWindow.swift */; };
+		27C3B2EF23BFD44400754F4D /* PassthroughWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2EE23BFD44400754F4D /* PassthroughWindow.swift */; };
 		27C3B2F123BFDECF00754F4D /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2F023BFDECF00754F4D /* ContainerViewController.swift */; };
-		27C3B2F323C399B200754F4D /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2F223C399B200754F4D /* ContainerView.swift */; };
+		27C3B2F323C399B200754F4D /* PassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2F223C399B200754F4D /* PassthroughView.swift */; };
 		27D6D68C24881A45005DD502 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D6D68B24881A45005DD502 /* WebKit.framework */; platformFilter = ios; };
 		27DDDD5323C657F4005CA07C /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DDDD5223C657F4005CA07C /* SurveyViewController.swift */; };
 /* End PBXBuildFile section */
@@ -108,9 +108,9 @@
 		27C3B29B23BD3FA400754F4D /* MockStorageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorageEngine.swift; sourceTree = "<group>"; };
 		27C3B29E23BE89E700754F4D /* Surveys.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Surveys.storyboard; sourceTree = "<group>"; };
 		27C3B2DD23BE987100754F4D /* ModalExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ModalExample.xcodeproj; path = ModalExample/ModalExample.xcodeproj; sourceTree = "<group>"; };
-		27C3B2EE23BFD44400754F4D /* ContainerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerWindow.swift; sourceTree = "<group>"; };
+		27C3B2EE23BFD44400754F4D /* PassthroughWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassthroughWindow.swift; sourceTree = "<group>"; };
 		27C3B2F023BFDECF00754F4D /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
-		27C3B2F223C399B200754F4D /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		27C3B2F223C399B200754F4D /* PassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassthroughView.swift; sourceTree = "<group>"; };
 		27D6D68B24881A45005DD502 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		27DDDD5223C657F4005CA07C /* SurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -224,8 +224,8 @@
 		274B6525248EABD60021705C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				27C3B2F223C399B200754F4D /* ContainerView.swift */,
-				27C3B2EE23BFD44400754F4D /* ContainerWindow.swift */,
+				27C3B2F223C399B200754F4D /* PassthroughView.swift */,
+				27C3B2EE23BFD44400754F4D /* PassthroughWindow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -565,11 +565,11 @@
 				27821A3C24900C08004AAB22 /* Color.swift in Sources */,
 				2757AB60248FC4FE00B909C9 /* ContainerWindowDelegate.swift in Sources */,
 				27DDDD5323C657F4005CA07C /* SurveyViewController.swift in Sources */,
-				27C3B2F323C399B200754F4D /* ContainerView.swift in Sources */,
+				27C3B2F323C399B200754F4D /* PassthroughView.swift in Sources */,
 				27C3B28223BA9BB600754F4D /* Paths.swift in Sources */,
 				27063AB024980D2B00BE6913 /* DisplayedEndpoint.swift in Sources */,
 				270613D823AD8D6200DDF342 /* Iterate.swift in Sources */,
-				27C3B2EF23BFD44400754F4D /* ContainerWindow.swift in Sources */,
+				27C3B2EF23BFD44400754F4D /* PassthroughWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

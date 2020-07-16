@@ -19,7 +19,7 @@ final class SurveyViewController: UIViewController {
     
     private let MessageHandlerName = "iterateMessageHandler"
     
-    override func loadView() {
+    override func viewDidLoad() {
         super.loadView()
         
         let webConfiguration = WKWebViewConfiguration()
@@ -49,7 +49,7 @@ final class SurveyViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if let survey = survey {
-            let host = Iterate.shared.apiHost ?? DefaultAPIHost
+            let host = Iterate.shared.apiHost ?? Iterate.DefaultAPIHost
             
             var params: [String] = []
             
@@ -93,7 +93,7 @@ final class SurveyViewController: UIViewController {
 }
 
 private enum MessageType: String {
-    case Close = "close"
+    case close = "close"
 }
 
 extension SurveyViewController: WKScriptMessageHandler {
@@ -105,7 +105,7 @@ extension SurveyViewController: WKScriptMessageHandler {
             }
             
             switch messageType {
-            case .Close:
+            case .close:
                 delegate?.dismissSurvey()
             }
         }

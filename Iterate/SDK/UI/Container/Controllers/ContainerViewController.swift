@@ -18,20 +18,8 @@ final class ContainerViewController: UIViewController {
     @IBOutlet weak private var promptViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak private var promptViewTopConstraint: NSLayoutConstraint!
     
-    override func viewDidLoad() {
-        // Get the prompt child container controller
-        if let viewController = children.first as? PromptViewController {
-            promptViewController = viewController
-            promptViewController?.delegate = delegate
-        }
-        
-        promptViewBottomConstraint.isActive = false
-        promptViewTopConstraint.isActive = true
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         promptViewBottomConstraint.constant = 0
-        promptViewController?.survey = survey
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -100,5 +88,13 @@ final class ContainerViewController: UIViewController {
         }
         
         animator.startAnimation()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "promptViewControllerSegue") {
+            promptViewController = segue.destination as? PromptViewController
+            promptViewController?.delegate = delegate
+            promptViewController?.survey = survey
+        }
     }
 }

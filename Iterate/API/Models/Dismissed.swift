@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Dismissed: Codable {
+public struct Dismissal: Codable {
     let id: String
     let lastDismissed: String
     let surveyId: String

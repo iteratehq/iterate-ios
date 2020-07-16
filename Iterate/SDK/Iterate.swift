@@ -21,10 +21,13 @@ public final class Iterate {
     public static let PreviewParameter = "iterate_preview"
     
     // Current version number, will be updated on each release
-    private static let Version = "0.1.1"
+    static let Version = "0.1.1"
+    
+    /// Default API host
+    public static let DefaultAPIHost = "https://iteratehq.com"
     
     /// URL Scheme of the app, used for previewing surveys
-    private lazy var urlScheme = URLScheme()
+    lazy var urlScheme = URLScheme()
     
     /// API Client, which will be initialized when the API key is
     var api: APIClient?
@@ -33,7 +36,7 @@ public final class Iterate {
     var apiHost: String?
     
     /// The id of the survey being previewed
-    private var previewingSurveyId: String?
+    var previewingSurveyId: String?
     
     /// Storage engine for storing user data like their API key and user attributes
     private var storage: StorageEngine
@@ -56,6 +59,16 @@ public final class Iterate {
     /// You Iterate API Key, you can get this from your settings page
     var companyApiKey: String? {
         didSet {
+            // If we're changing the company API key to a different company API key
+            // clear the user api key since it won't work for a different company.
+            // We don't want to clear the user api key if the companyApiKey is nil
+            // since that would cause us to always clear the userApiKey that was loaded
+            // from storage when Iterate.shared.configure is called to set the
+            // companyApiKey.
+            if oldValue != nil && companyApiKey != oldValue  {
+                userApiKey = nil
+            }
+            
             updateApiKey()
         }
     }
@@ -63,49 +76,33 @@ public final class Iterate {
     /// The API key for a user, this is returned by the server the first time a request is made by a new user
     var userApiKey: String? {
         get {
-            if cachedUserApiKey == nil {
-                cachedUserApiKey = storage.get(key: StorageKeys.UserApiKey) as? String
-            }
-            
-            return cachedUserApiKey
+            storage.value(for: StorageKeys.UserApiKey) as? String
         }
+        
         set(newUserApiKey) {
-            cachedUserApiKey = newUserApiKey
-            storage.set(key: StorageKeys.UserApiKey, value: newUserApiKey)
-            
+            storage.set(value: newUserApiKey, for: StorageKeys.UserApiKey)
             updateApiKey()
         }
     }
     
-    /// Cached copy of the user API key that was loaded from UserDefaults
-    private var cachedUserApiKey: String?
-    
     
     // MARK: User Properties
     
-    private var userProperties: UserProperties? {
+    var userProperties: UserProperties? {
         get {
-            if cachedUserProperties == nil {
-                if let data = storage.get(key: StorageKeys.UserProperties) as? Data,
-                    let properties = try? JSONDecoder().decode(UserProperties.self, from: data) {
-                    cachedUserProperties = properties
-                }
+            if let data = storage.value(for: StorageKeys.UserProperties) as? Data {
+                return try? JSONDecoder().decode(UserProperties.self, from: data)
             }
             
-            return cachedUserProperties
+            return nil
         }
         set (newUserProperties) {
             if let newUserProperties = newUserProperties,
                 let encodedNewUserProperties = try? JSONEncoder().encode(newUserProperties) {
-                cachedUserProperties = newUserProperties
-                
-                storage.set(key: StorageKeys.UserProperties, value: encodedNewUserProperties)
+                storage.set(value: encodedNewUserProperties, for: StorageKeys.UserProperties)
             }
         }
     }
-    
-    /// Cached copy of the user properties that was loaded from UserDefaults
-    private var cachedUserProperties: UserProperties?
     
     var responseProperties: ResponseProperties?
     
@@ -132,9 +129,7 @@ public final class Iterate {
             return
         }
         
-        var context = initCurrentContext()
-        context.event = EventContext(name: name)
-        embedRequest(context: context) { (response, error) in
+        embedRequest(context: EmbedContext(self, withEventName: name)) { (response, error) in
             if let callback = complete {
                 callback(response?.survey, error)
             }
@@ -157,17 +152,11 @@ public final class Iterate {
     
     /// Configure sets the necessary configuration properties. This should be called before any other methods.
     /// - Parameter apiKey: Your Iterate API Key, you can find this on your settings page
-    public func configure(apiKey: String, apiHost: String? = DefaultAPIHost) {
+    public func configure(apiKey: String, apiHost: String? = Iterate.DefaultAPIHost) {
         // Note: we need to set the apiHost before setting the companyApiKey
         // since updating the companyApiKey is what triggers to API client
         // to be set via a custom setter
         self.apiHost = apiHost
-        
-        // If we're changing the company API key to a different company API key
-        // clear the user api key since it won't work for a different company
-        if self.companyApiKey != nil && self.companyApiKey != apiKey {
-            self.userApiKey = nil
-        }
         
         self.companyApiKey = apiKey
     }
@@ -202,7 +191,7 @@ public final class Iterate {
     ///   - context: Embed context data
     ///   - complete: Callback returning the response and error from the embed endpoint
     private func embedRequest(context: EmbedContext, complete: @escaping (EmbedResponse?, Error?) -> Void) {
-        api?.embed(context: context, complete: { (response, error) in
+        api?.embed(context: context, completion: { (response, error) in
             // Update the user API key if one was returned
             if let token = response?.auth?.token {
                 self.userApiKey = token
@@ -215,32 +204,7 @@ public final class Iterate {
     /// Update the API client to use the latest API key. We prefer to use the user API key and fall back to the company key
     private func updateApiKey() {
         if let apiKey = userApiKey ?? companyApiKey {
-            api = APIClient(apiKey: apiKey, apiHost: apiHost ?? DefaultAPIHost)
+            api = APIClient(apiKey: apiKey, apiHost: apiHost ?? Iterate.DefaultAPIHost)
         }
-    }
-    
-    /// Generate a embed context that represents the current state of the user.
-    /// In the future this may set the current 'view' the user is on, how long they've been
-    /// in the app, etc. Anything that may be used for targeting.
-    private func initCurrentContext() -> EmbedContext {
-        // Include the url scheme of the app so we can generate a url to preview the survey
-        var app: AppContext?
-        if let urlScheme = Iterate.shared.urlScheme {
-            app = AppContext(urlScheme: urlScheme, version: Iterate.Version)
-        }
-        
-        // Include the survey id we're previewing
-        var targeting: TargetingContext?
-        if let previewingSurveyId = previewingSurveyId {
-            targeting = TargetingContext(frequency: TargetingContextFrequency.always, surveyId: previewingSurveyId)
-        }
-        
-        var userPropertiesContext: UserProperties?
-        if let userProperties = Iterate.shared.userProperties {
-            userPropertiesContext = userProperties
-        }
-        
-        
-        return EmbedContext(app: app, targeting: targeting, trigger: nil, type: EmbedType.mobile, userTraits: userPropertiesContext)
     }
 }

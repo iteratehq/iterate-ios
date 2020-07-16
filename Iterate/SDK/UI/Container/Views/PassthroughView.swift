@@ -1,5 +1,5 @@
 //
-//  ContainerView.swift
+//  PassthroughView.swift
 //  Iterate
 //
 //  Created by Michael Singleton on 1/6/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ContainerView: UIView {
+final class PassthroughView: UIView {
     /// Override the hit test to ignore hits on the window itself, this way it will pass through events to underlying views
     /// - Parameters:
     ///   - point: Point of hit

@@ -8,8 +8,6 @@
 
 import Foundation
 
-public let DefaultAPIHost = "https://iteratehq.com"
-
 /// Iterate API Client
 class APIClient {
     // MARK: Properties
@@ -32,7 +30,7 @@ class APIClient {
     /// - Parameters:
     ///   - apiKey: Iterate API key
     ///   - apiHost: API Host
-    init(apiKey: String, apiHost: String = DefaultAPIHost) {
+    init(apiKey: String, apiHost: String = Iterate.DefaultAPIHost) {
         self.apiHost = apiHost
         self.apiKey = apiKey
         
@@ -48,29 +46,29 @@ class APIClient {
     ///   - path: Path to call
     ///   - data: Post body data
     ///   - complete: Results callback
-    func post<T: Codable> (path: Path, data: Data?, complete: @escaping (T?, Error?) -> Void) {
-        guard var request = request(path: path) else {
-            complete(nil, IterateError.invalidAPIUrl)
+    func post<T: Codable> (_ data: Data?, to path: Path, completion: @escaping (T?, Error?) -> Void) {
+        guard var request = makeRequest(path: path) else {
+            completion(nil, IterateError.invalidAPIUrl)
             return
         }
         
         request.httpMethod = "POST"
         request.httpBody = data
 
-        dataTask(request: request, complete: complete)
+        performDataTask(request: request, completion: completion)
     }
     
     // MARK: Helpers
     
     /// Generate a URLRequest set with the proper content type and authentication
     /// - Parameter path: API Path to request
-    func request(path: Path) -> URLRequest? {
+    func makeRequest(path: Path) -> URLRequest? {
         guard let url = URL(string: "\(apiHost)/api/v1\(path)") else {
             return nil
         }
         
         var request = URLRequest(url: url)
-        request.setValue("application/javascript", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         return request
     }
@@ -79,29 +77,29 @@ class APIClient {
     /// - Parameters:
     ///   - request: Request to run, see the request helper method to help construct it
     ///   - complete: Results callback
-    func dataTask<T: Codable>(request: URLRequest, complete: @escaping (T?, Error?) -> Void) {
+    func performDataTask<T: Codable>(request: URLRequest, completion: @escaping (T?, Error?) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
-                complete(nil, IterateError.apiRequestError)
+                completion(nil, IterateError.apiRequestError)
                 return
             }
             
             guard let data = data else {
-                complete(nil, IterateError.invalidAPIResponse)
+                completion(nil, IterateError.invalidAPIResponse)
                 return
             }
             
             guard let response = try? self.decoder.decode(Response<T>.self, from: data) else {
-                complete(nil, IterateError.jsonDecoding)
+                completion(nil, IterateError.jsonDecoding)
                 return
             }
             
             if let err = response.error {
-                complete(nil, IterateError.apiError(err))
+                completion(nil, IterateError.apiError(err))
                 return
             }
             
-            complete(response.results, nil)
+            completion(response.results, nil)
         }
         
         task.resume()

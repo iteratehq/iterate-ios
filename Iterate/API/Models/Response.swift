@@ -15,5 +15,9 @@ struct Response<ResponseType: Codable>: Codable {
     let results: ResponseType?
 }
 
-// TODO: Add properties
-struct ResponseError: Codable {}
+struct ResponseError: Codable {
+    let code: Int
+    let message: String?
+    let type: String
+    let userMessage: String?
+}
