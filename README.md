@@ -203,7 +203,7 @@ Once that's added you can scan the QR code on the "Preview & Publish" tab of you
 
 **Recommendations**
 
-When implementing Iterate for the first time, we encurage you to implement events for _all_ of your core use cases which you may want to target surveys to in the future. e.g. signup, puchased, viewed X screen, tapped notification, etc. This way you can easily launch new surveys targeting these events without needing to instrument a new event each time.
+When implementing Iterate for the first time, we encourage you to implement events for _all_ of your core use cases which you may want to target surveys to in the future. e.g. signup, purchased, viewed X screen, tapped notification, etc. This way you can easily launch new surveys targeting these events without needing to instrument a new event each time.
 
 **Survey eligibility and frequency**
 
