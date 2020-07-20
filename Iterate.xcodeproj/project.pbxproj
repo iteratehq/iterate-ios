@@ -33,7 +33,7 @@
 		27C3B29123BD1E7D00754F4D /* EmbedEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29023BD1E7D00754F4D /* EmbedEndpointTests.swift */; };
 		27C3B29423BD2A7F00754F4D /* ShowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29323BD2A7F00754F4D /* ShowTests.swift */; };
 		27C3B29723BD354C00754F4D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29623BD354C00754F4D /* Storage.swift */; };
-		27C3B29923BD360E00754F4D /* UserDefaultsStorageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29823BD360E00754F4D /* UserDefaultsStorageEngine.swift */; };
+		27C3B29923BD360E00754F4D /* KeychainStorageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29823BD360E00754F4D /* KeychainStorageEngine.swift */; };
 		27C3B29C23BD3FA400754F4D /* MockStorageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B29B23BD3FA400754F4D /* MockStorageEngine.swift */; };
 		27C3B29F23BE89E700754F4D /* Surveys.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C3B29E23BE89E700754F4D /* Surveys.storyboard */; };
 		27C3B2EF23BFD44400754F4D /* PassthroughWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2EE23BFD44400754F4D /* PassthroughWindow.swift */; };
@@ -104,7 +104,7 @@
 		27C3B29023BD1E7D00754F4D /* EmbedEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedEndpointTests.swift; sourceTree = "<group>"; };
 		27C3B29323BD2A7F00754F4D /* ShowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTests.swift; sourceTree = "<group>"; };
 		27C3B29623BD354C00754F4D /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		27C3B29823BD360E00754F4D /* UserDefaultsStorageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageEngine.swift; sourceTree = "<group>"; };
+		27C3B29823BD360E00754F4D /* KeychainStorageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorageEngine.swift; sourceTree = "<group>"; };
 		27C3B29B23BD3FA400754F4D /* MockStorageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorageEngine.swift; sourceTree = "<group>"; };
 		27C3B29E23BE89E700754F4D /* Surveys.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Surveys.storyboard; sourceTree = "<group>"; };
 		27C3B2DD23BE987100754F4D /* ModalExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ModalExample.xcodeproj; path = ModalExample/ModalExample.xcodeproj; sourceTree = "<group>"; };
@@ -355,7 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				27C3B29623BD354C00754F4D /* Storage.swift */,
-				27C3B29823BD360E00754F4D /* UserDefaultsStorageEngine.swift */,
+				27C3B29823BD360E00754F4D /* KeychainStorageEngine.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -550,7 +550,7 @@
 			files = (
 				270613E623BA4F2500DDF342 /* Survey.swift in Sources */,
 				2757AB5B248EDDFE00B909C9 /* PromptViewController.swift in Sources */,
-				27C3B29923BD360E00754F4D /* UserDefaultsStorageEngine.swift in Sources */,
+				27C3B29923BD360E00754F4D /* KeychainStorageEngine.swift in Sources */,
 				270613EB23BA6BFD00DDF342 /* Client.swift in Sources */,
 				270613E023BA4DD100DDF342 /* Errors.swift in Sources */,
 				27063AB92498109700BE6913 /* Dismissed.swift in Sources */,

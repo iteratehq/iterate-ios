@@ -48,15 +48,4 @@ class IterateTests: XCTestCase {
         client.userApiKey = "USER_123"
         XCTAssertEqual(client.api?.apiKey, "USER_123")
     }
-    
-    /// Test that the user API key is correctly used when it's loaded from default storage
-    func testStoredUserApiKeyUsed() {
-        // Set the user API key to local storage
-        Iterate().userApiKey = "USER_123"
-        
-        // Creating the instance should get the key from local storage
-        let client = Iterate()
-        client.configure(apiKey: testCompanyApiKey)
-        XCTAssertEqual(client.api?.apiKey, "USER_123")
-    }
 }

@@ -10,15 +10,15 @@ import Foundation
 
 /// Protocol to represent a simple get/set storage engine
 protocol StorageEngine {
-    func value(for key: StorageKeys) -> Any?
-    func set(value: Any?, for key: StorageKeys) -> Void
+    func value(for key: StorageKeys) -> String?
+    func set(value: String, for key: StorageKeys) -> Void
 }
 
 /// Create a Storage namespace
 struct Storage {
     
     /// Set the default shared instance of the UserDefaultsStorageEngine
-    public static let shared: StorageEngine = UserDefaultsStorageEngine()
+    public static let shared: StorageEngine = KeychainStorageEngine()
 }
 
 enum StorageKeys: String {
