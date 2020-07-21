@@ -146,10 +146,10 @@ public final class Iterate {
                 if survey.triggers?.first?.type == TriggerType.seconds {
                     let seconds: Int = survey.triggers?.first?.options?.seconds ?? 0
                     Timer.scheduledTimer(withTimeInterval: Double(seconds), repeats: false) { timer in
-                        self.container.showPrompt(survey)
+                        self.container.show(survey)
                     }
                 } else {
-                    self.container.showPrompt(survey)
+                    self.container.show(survey)
                 }
             }
         }
