@@ -13,6 +13,9 @@ final class SurveyViewController: UIViewController {
     @objc dynamic private var webView: WKWebView!
     @IBOutlet weak private var loadingView: UIView!
     @IBOutlet weak private var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var errorLoadingLabel: UILabel!
+    @IBOutlet weak var closeButton: UIButton!
+    
     
     var delegate: ContainerWindowDelegate?
     var observation: NSKeyValueObservation?
@@ -34,6 +37,7 @@ final class SurveyViewController: UIViewController {
         webConfiguration.userContentController.add(self, name: MessageHandlerName)
 
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.navigationDelegate = self
         webView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(webView)
         NSLayoutConstraint.activate([
@@ -60,6 +64,8 @@ final class SurveyViewController: UIViewController {
             loadingIndicator.style = .gray
         } 
         view.bringSubviewToFront(loadingView)
+        view.bringSubviewToFront(errorLoadingLabel)
+        view.bringSubviewToFront(closeButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,6 +95,9 @@ final class SurveyViewController: UIViewController {
             webView.load(myRequest)
         }
     }
+    @IBAction func closeSurvey(_ sender: Any) {
+        delegate?.dismissSurvey()
+    }
     
     override func viewDidDisappear(_ animated: Bool) {
         delegate?.surveyDismissed(survey: survey)
@@ -112,5 +121,13 @@ extension SurveyViewController: WKScriptMessageHandler {
                 delegate?.dismissSurvey()
             }
         }
+    }
+}
+
+extension SurveyViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+            loadingView.isHidden = true
+            errorLoadingLabel.isHidden = false
+            closeButton.isHidden = false
     }
 }

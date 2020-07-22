@@ -19,6 +19,10 @@ class MockStorageEngine: StorageEngine {
         storage[key] ?? nil
     }
     
+    func delete(for key: StorageKeys) -> Void {
+        storage[key] = nil
+    }
+    
     /// Set a value using the key
     /// - Parameters:
     ///   - key: Key to set
