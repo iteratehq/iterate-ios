@@ -36,15 +36,18 @@ final class PromptViewController: UIViewController {
         
         promptLabel.text = survey?.prompt?.message
         promptButton.setTitle(survey?.prompt?.buttonText, for: .normal)
-        if let color = survey?.color {
+        if let color = survey?.colorHex {
             promptButton.backgroundColor = UIColor(hex: color)
         }
     }
     
     @IBAction func showSurvey(_ sender: Any) {
-        if let survey = survey {
-            delegate?.showSurvey(survey)
+        guard let survey = survey else {
+            assertionFailure("Survey not set")
+            return
         }
+        
+        delegate?.showSurvey(survey)
     }
     @IBAction func close(_ sender: Any) {
         delegate?.dismissPrompt(survey: survey, userInitiated: true)

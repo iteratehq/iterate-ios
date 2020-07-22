@@ -17,8 +17,7 @@ final class PassthroughWindow: UIWindow {
             // Attach the window to the first foreground active UIWindowScene
             if let scene = UIApplication.shared.connectedScenes
                 .filter({ $0.activationState == .foregroundActive })
-                .map({$0 as? UIWindowScene})
-                .compactMap({$0})
+                .compactMap({$0 as? UIWindowScene})
                 .first {
                 super.init(windowScene: scene)
             } else {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -104,6 +104,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dpw-Ly-r8i" userLabel="Close Button">
+                                <rect key="frame" x="378" y="12" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="7LW-tn-XKL"/>
+                                    <constraint firstAttribute="width" constant="24" id="YO3-GR-u1E"/>
+                                </constraints>
+                                <color key="tintColor" red="0.83921568629999999" green="0.83921568629999999" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="close"/>
+                                <connections>
+                                    <action selector="close:" destination="hJe-TP-gyL" eventType="touchUpInside" id="sAA-ff-5S9"/>
+                                    <action selector="closeSurvey:" destination="nwb-aU-BRY" eventType="touchUpInside" id="vu1-sU-f0o"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9M9-G2-nI0">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
@@ -130,18 +143,38 @@
                                     <constraint firstAttribute="trailing" secondItem="Idc-G8-eRE" secondAttribute="trailing" id="rmD-sG-3jK"/>
                                 </constraints>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djd-Kb-cLl">
+                                <rect key="frame" x="20" y="397" width="374" height="48"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Unable to load, make sure you’re connected to the internet or try again later">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="16"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="2" minimumLineHeight="23" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="cGc-uP-ank" firstAttribute="trailing" secondItem="Dpw-Ly-r8i" secondAttribute="trailing" constant="12" id="1CX-pv-SOl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Djd-Kb-cLl" secondAttribute="trailing" id="1m7-1j-qPm"/>
+                            <constraint firstItem="Djd-Kb-cLl" firstAttribute="centerY" secondItem="IHk-by-TmP" secondAttribute="centerY" id="NR0-sN-QWv"/>
                             <constraint firstAttribute="bottom" secondItem="9M9-G2-nI0" secondAttribute="bottom" id="OLl-Wd-9sJ"/>
+                            <constraint firstItem="Dpw-Ly-r8i" firstAttribute="top" secondItem="cGc-uP-ank" secondAttribute="top" constant="12" id="PvO-1x-qMb"/>
                             <constraint firstItem="9M9-G2-nI0" firstAttribute="leading" secondItem="cGc-uP-ank" secondAttribute="leading" id="S5d-JC-cNH"/>
+                            <constraint firstItem="Djd-Kb-cLl" firstAttribute="centerX" secondItem="IHk-by-TmP" secondAttribute="centerX" id="dUJ-8e-nLe"/>
                             <constraint firstItem="9M9-G2-nI0" firstAttribute="top" secondItem="IHk-by-TmP" secondAttribute="top" id="dvq-KJ-geN"/>
+                            <constraint firstItem="Djd-Kb-cLl" firstAttribute="leading" secondItem="IHk-by-TmP" secondAttribute="leadingMargin" id="h2i-Uj-0Mo"/>
                             <constraint firstItem="9M9-G2-nI0" firstAttribute="trailing" secondItem="cGc-uP-ank" secondAttribute="trailing" id="hcg-zN-bMe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cGc-uP-ank"/>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="closeButton" destination="Dpw-Ly-r8i" id="kgc-yZ-gqW"/>
+                        <outlet property="errorLoadingLabel" destination="Djd-Kb-cLl" id="8Pn-tU-ihj"/>
                         <outlet property="loadingIndicator" destination="I5T-wW-wOX" id="JeI-hI-d0p"/>
                         <outlet property="loadingView" destination="9M9-G2-nI0" id="DPR-Zw-pOZ"/>
                     </connections>

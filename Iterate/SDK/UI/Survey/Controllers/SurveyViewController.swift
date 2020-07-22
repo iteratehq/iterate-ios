@@ -13,9 +13,20 @@ final class SurveyViewController: UIViewController {
     @objc dynamic private var webView: WKWebView!
     @IBOutlet weak private var loadingView: UIView!
     @IBOutlet weak private var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var errorLoadingLabel: UILabel!
+    @IBOutlet weak var closeButton: UIButton!
+    
     
     var delegate: ContainerWindowDelegate?
-    var survey: Survey?
+    var observation: NSKeyValueObservation?
+    var survey: Survey? {
+        willSet(newSurvey) {
+            guard survey == nil else {
+                assertionFailure("Survey shouldn't be set more than once")
+                return
+            }
+        }
+    }
     
     private let MessageHandlerName = "iterateMessageHandler"
     
@@ -26,6 +37,7 @@ final class SurveyViewController: UIViewController {
         webConfiguration.userContentController.add(self, name: MessageHandlerName)
 
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.navigationDelegate = self
         webView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(webView)
         NSLayoutConstraint.activate([
@@ -34,7 +46,16 @@ final class SurveyViewController: UIViewController {
             webView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
             webView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
         ])
-        addObserver(self, forKeyPath: #keyPath(webView.isLoading), options: [.old, .new], context: nil)
+        
+        // Show the survey once the webview has loaded
+        observation = observe(\.webView.isLoading, options: [.old, .new]) { object, change in
+            if let isLoading = change.newValue, !isLoading {
+                let animator = UIViewPropertyAnimator(duration: 0.3, curve: .linear) {
+                    self.loadingView.alpha = 0
+                }
+                animator.startAnimation()
+            }
+        }
         
         loadingView.frame = view.frame
         if #available(iOS 13.0, *) {
@@ -43,6 +64,8 @@ final class SurveyViewController: UIViewController {
             loadingIndicator.style = .gray
         } 
         view.bringSubviewToFront(loadingView)
+        view.bringSubviewToFront(errorLoadingLabel)
+        view.bringSubviewToFront(closeButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,23 +95,12 @@ final class SurveyViewController: UIViewController {
             webView.load(myRequest)
         }
     }
+    @IBAction func closeSurvey(_ sender: Any) {
+        delegate?.dismissSurvey()
+    }
     
     override func viewDidDisappear(_ animated: Bool) {
         delegate?.surveyDismissed(survey: survey)
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == #keyPath(webView.isLoading) {
-            if let change = change,
-                let isLoading = change[.newKey] as? Bool {
-                if !isLoading {
-                    let animator = UIViewPropertyAnimator(duration: 1.0, dampingRatio: 1) {
-                        self.loadingView.alpha = 0
-                    }
-                    animator.startAnimation()
-                }
-            }
-        }
     }
 }
 
@@ -109,5 +121,13 @@ extension SurveyViewController: WKScriptMessageHandler {
                 delegate?.dismissSurvey()
             }
         }
+    }
+}
+
+extension SurveyViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+            loadingView.isHidden = true
+            errorLoadingLabel.isHidden = false
+            closeButton.isHidden = false
     }
 }

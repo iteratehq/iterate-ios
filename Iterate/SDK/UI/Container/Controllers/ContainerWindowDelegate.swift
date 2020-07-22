@@ -31,35 +31,33 @@ final class ContainerWindowDelegate {
     
     func showPrompt(_ survey: Survey) {
         // Only show the survey if we have a valid prompt
-        if let _ = survey.prompt?.message,
-            let _ = survey.prompt?.buttonText {
-    
-            DispatchQueue.main.async {
-                self.showWindow(survey: survey)
-                self.containerViewController?.showPrompt(complete: {
-                    Iterate.shared.api?.displayed(survey: survey, completion: { _, _ in })
-                })
-            }
+        guard let _ = survey.prompt?.message,
+            let _ = survey.prompt?.buttonText else {
+                print("Survey (id: \(survey.id)) is missing a prompt so it won't be displayed")
+                return
         }
+        
+        self.showWindow(survey: survey)
+        self.containerViewController?.showPrompt(complete: {
+            Iterate.shared.api?.displayed(survey: survey, completion: { _, _ in })
+        })
     }
         
     func showSurvey(_ survey: Survey) {
-        DispatchQueue.main.async {
-            // Hide the prompt
-            self.containerViewController?.hidePrompt()
-            
-            guard let surveyViewController = self.makeSurveyViewController() else {
-                return
-            }
-            
-            self.containerViewController?.isSurveyDisplayed = true
-            self.containerViewController?.setNeedsStatusBarAppearanceUpdate()
-            
-            // Show the survey
-            surveyViewController.survey = survey
-            surveyViewController.delegate = self
-            self.getPresentingViewController()?.present(surveyViewController, animated: true, completion: nil)
+        // Hide the prompt
+        self.containerViewController?.hidePrompt()
+        
+        guard let surveyViewController = self.makeSurveyViewController() else {
+            return
         }
+        
+        self.containerViewController?.isSurveyDisplayed = true
+        self.containerViewController?.setNeedsStatusBarAppearanceUpdate()
+        
+        // Show the survey
+        surveyViewController.survey = survey
+        surveyViewController.delegate = self
+        self.getPresentingViewController()?.present(surveyViewController, animated: true, completion: nil)
     }
     
     func dismissPrompt(survey: Survey?, userInitiated: Bool) {

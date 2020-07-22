@@ -6,7 +6,7 @@
 //  Copyright © 2020 Pickaxe LLC. (DBA Iterate). All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /// The Iterate class is the primary class of the SDK, the main entry point is the shared singleton property
 public final class Iterate {
@@ -27,7 +27,7 @@ public final class Iterate {
     public static let DefaultAPIHost = "https://iteratehq.com"
     
     /// URL Scheme of the app, used for previewing surveys
-    lazy var urlScheme = URLScheme()
+    lazy var urlScheme = UIApplication.URLScheme()
     
     /// API Client, which will be initialized when the API key is
     var api: APIClient?
@@ -76,11 +76,16 @@ public final class Iterate {
     /// The API key for a user, this is returned by the server the first time a request is made by a new user
     var userApiKey: String? {
         get {
-            storage.value(for: StorageKeys.UserApiKey) as? String
+            storage.value(for: StorageKeys.UserApiKey)
         }
         
         set(newUserApiKey) {
-            storage.set(value: newUserApiKey, for: StorageKeys.UserApiKey)
+            if let newUserApiKey = newUserApiKey {
+                storage.set(value: newUserApiKey, for: StorageKeys.UserApiKey)
+            } else {
+                storage.delete(for: StorageKeys.UserApiKey)
+            }
+            
             updateApiKey()
         }
     }
@@ -90,7 +95,8 @@ public final class Iterate {
     
     var userProperties: UserProperties? {
         get {
-            if let data = storage.value(for: StorageKeys.UserProperties) as? Data {
+            if let properties = storage.value(for: StorageKeys.UserProperties),
+                let data = properties.data(using: .utf8) {
                 return try? JSONDecoder().decode(UserProperties.self, from: data)
             }
             
@@ -98,8 +104,9 @@ public final class Iterate {
         }
         set (newUserProperties) {
             if let newUserProperties = newUserProperties,
-                let encodedNewUserProperties = try? JSONEncoder().encode(newUserProperties) {
-                storage.set(value: encodedNewUserProperties, for: StorageKeys.UserProperties)
+                let encodedNewUserProperties = try? JSONEncoder().encode(newUserProperties),
+                let userProperties = String(data: encodedNewUserProperties, encoding: .utf8) {
+                storage.set(value: userProperties, for: StorageKeys.UserProperties)
             }
         }
     }
@@ -137,11 +144,9 @@ public final class Iterate {
             if let survey = response?.survey {
                 // Show the survey after N seconds otherwise show immediately
                 if survey.triggers?.first?.type == TriggerType.seconds {
-                    DispatchQueue.main.async {
-                        let seconds: Int = survey.triggers?.first?.options?.seconds ?? 0
-                        Timer.scheduledTimer(withTimeInterval: Double(seconds), repeats: false) { timer in
-                            self.container.showPrompt(survey)
-                        }
+                    let seconds: Int = survey.triggers?.first?.options?.seconds ?? 0
+                    Timer.scheduledTimer(withTimeInterval: Double(seconds), repeats: false) { timer in
+                        self.container.showPrompt(survey)
                     }
                 } else {
                     self.container.showPrompt(survey)
