@@ -44,7 +44,15 @@ final class ContainerViewController: UIViewController {
             return
         }
         
-        promptViewBottomConstraint.constant > 25 ? hidePrompt() : showPrompt()
+        if promptViewBottomConstraint.constant > 25 {
+            hidePrompt()
+        } else {
+            let animator = UIViewPropertyAnimator(duration: 0.2, dampingRatio: 1) {
+                self.promptViewBottomConstraint.constant = 0
+                self.view.layoutIfNeeded()
+            }
+            animator.startAnimation()
+        }
     }
     
     func showPrompt(complete: (() -> Void)? = nil) {

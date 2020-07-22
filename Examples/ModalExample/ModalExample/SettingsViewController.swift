@@ -41,7 +41,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBAction func onApiKeyEditingChanged(_ sender: UITextField) {
         UserDefaults.standard.set(apiKeyTextField.text, forKey: ApiKeyKey)
         
-        Iterate.shared.configure(apiKey: apiKeyTextField.text ?? "")
+        let apiHost = Environment(rawValue: UserDefaults.standard.integer(forKey: EnvironmentKey)) == Environment.Development ? EnvironmentUrl.Development : EnvironmentUrl.Production
+        Iterate.shared.configure(apiKey: apiKeyTextField.text ?? "", apiHost: apiHost.rawValue)
     }
     
     @IBAction func onEnvironmentChanged(_ sender: UISegmentedControl) {
