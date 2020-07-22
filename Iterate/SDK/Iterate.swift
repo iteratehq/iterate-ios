@@ -80,11 +80,12 @@ public final class Iterate {
         }
         
         set(newUserApiKey) {
-            guard let newUserApiKey = newUserApiKey else {
-                return
+            if let newUserApiKey = newUserApiKey {
+                storage.set(value: newUserApiKey, for: StorageKeys.UserApiKey)
+            } else {
+                storage.delete(for: StorageKeys.UserApiKey)
             }
             
-            storage.set(value: newUserApiKey, for: StorageKeys.UserApiKey)
             updateApiKey()
         }
     }

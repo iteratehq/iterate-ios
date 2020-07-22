@@ -10,6 +10,7 @@ import Foundation
 
 /// Protocol to represent a simple get/set storage engine
 protocol StorageEngine {
+    func delete(for key: StorageKeys) -> Void
     func value(for key: StorageKeys) -> String?
     func set(value: String, for key: StorageKeys) -> Void
 }

@@ -58,6 +58,14 @@ final class KeychainStorageEngine: StorageEngine {
         }
     }
     
+    /// Delete the value associated with the key
+    func delete(for key: StorageKeys) -> Void {
+        let status = SecItemDelete(query(for: key) as CFDictionary)
+        if status != errSecSuccess && status != errSecItemNotFound {
+            assertionFailure("Unable to delete item to keychain")
+        }
+    }
+    
     private func query(for key: StorageKeys) -> [String: Any] {
         return  [
                    kSecClass as String: kSecClassGenericPassword,
