@@ -76,11 +76,16 @@ public final class Iterate {
     /// The API key for a user, this is returned by the server the first time a request is made by a new user
     var userApiKey: String? {
         get {
-            storage.value(for: StorageKeys.UserApiKey) as? String
+            storage.value(for: StorageKeys.UserApiKey)
         }
         
         set(newUserApiKey) {
-            storage.set(value: newUserApiKey, for: StorageKeys.UserApiKey)
+            if let newUserApiKey = newUserApiKey {
+                storage.set(value: newUserApiKey, for: StorageKeys.UserApiKey)
+            } else {
+                storage.delete(for: StorageKeys.UserApiKey)
+            }
+            
             updateApiKey()
         }
     }
@@ -90,7 +95,8 @@ public final class Iterate {
     
     var userProperties: UserProperties? {
         get {
-            if let data = storage.value(for: StorageKeys.UserProperties) as? Data {
+            if let properties = storage.value(for: StorageKeys.UserProperties),
+                let data = properties.data(using: .utf8) {
                 return try? JSONDecoder().decode(UserProperties.self, from: data)
             }
             
@@ -98,8 +104,9 @@ public final class Iterate {
         }
         set (newUserProperties) {
             if let newUserProperties = newUserProperties,
-                let encodedNewUserProperties = try? JSONEncoder().encode(newUserProperties) {
-                storage.set(value: encodedNewUserProperties, for: StorageKeys.UserProperties)
+                let encodedNewUserProperties = try? JSONEncoder().encode(newUserProperties),
+                let userProperties = String(data: encodedNewUserProperties, encoding: .utf8) {
+                storage.set(value: userProperties, for: StorageKeys.UserProperties)
             }
         }
     }
