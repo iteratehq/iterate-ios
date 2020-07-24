@@ -72,7 +72,7 @@ Create your [Iterate](https://iteratehq.com) account if you haven't already.
 3. Initialize the SDK in your AppDelegate class
 
 ```swift
-import Iterate
+import IterateSDK
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -115,7 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 Here's an example of an event being fired when the user views the activity feed screen
 
 ```swift
-import Iterate
+import IterateSDK
 
 class ViewController: UIViewController {
 
@@ -161,7 +161,7 @@ The `Iterate.shared.preview(url:)` method looks for the query parameter `?iterat
 If you're using scenes add the following code to your SceneDelegate
 
 ```swift
-import Iterate
+import IterateSDK
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -182,7 +182,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 otherwise add it to your AppDelegate
 
 ```swift
-import Iterate
+import IterateSDK
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
