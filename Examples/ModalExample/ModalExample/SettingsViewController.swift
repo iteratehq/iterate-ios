@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Iterate
+import IterateSDK
 
 let ApiKeyKey = "com.iteratehq.apikey"
 let EnvironmentKey = "com.iteratehq.environment"

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Iterate
+@testable import IterateSDK
 
 /// Contains tests for the configure method of the Iterate class
 class ConfigureTests: XCTestCase {

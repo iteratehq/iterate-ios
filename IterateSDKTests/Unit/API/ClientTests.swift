@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Iterate
+@testable import IterateSDK
 
 class ClientTests: XCTestCase {
     
