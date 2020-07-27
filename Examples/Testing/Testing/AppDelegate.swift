@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Iterate
+import IterateSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Iterate
+@testable import IterateSDK
 
 /// Contains tests for the show method of the Iterate class
 class ShowTests: XCTestCase {
