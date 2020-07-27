@@ -29,18 +29,20 @@ final class ContainerWindowDelegate {
         window = nil
     }
     
-    func showPrompt(_ survey: Survey) {
-        // Only show the survey if we have a valid prompt
-        guard let _ = survey.prompt?.message,
-            let _ = survey.prompt?.buttonText else {
-                print("Survey (id: \(survey.id)) is missing a prompt so it won't be displayed")
-                return
+    /// Show either the prompt (if there is one) or the survey
+    func show(_ survey: Survey) {
+        if survey.prompt != nil {
+            showPrompt(survey)
+        } else {
+            showSurvey(survey)
         }
         
+        Iterate.shared.api?.displayed(survey: survey, completion: { _, _ in })
+    }
+    
+    func showPrompt(_ survey: Survey) {
         self.showWindow(survey: survey)
-        self.containerViewController?.showPrompt(complete: {
-            Iterate.shared.api?.displayed(survey: survey, completion: { _, _ in })
-        })
+        self.containerViewController?.showPrompt()
     }
         
     func showSurvey(_ survey: Survey) {
