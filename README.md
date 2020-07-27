@@ -55,7 +55,7 @@ Within your app, surveys are shown in response to _events_. An event can be anyt
 
 **Quickstart**
 
-Create your [Iterate](https://iteratehq.com) account if you haven't already.
+Create your [Iterate](https://iteratehq.com) account if you haven't already and send an email to support@iteratehq.com to request access to Iterate for iOS. 
 
 1. Create a new survey and select "Install in your mobile app"
 
@@ -152,9 +152,30 @@ struct ActivityFeed: View {
 
 6. Publish your survey and you're done 🎉
 
-**Previewing your survey**
+## Previewing your survey
 
-You'll likely want to preview your survey before publishing it so you can test it out and confirm everything is working correctly. To enable previewing you'll need to have a [custom URL scheme](https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app) for you app and add the following code when your app is opened from your app's URL scheme.
+You'll likely want to preview your survey before publishing it so you can test it out and confirm everything is working correctly. You can preview using code or with a [custom URL scheme](https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app). Previewing using code is easier during initial development to confirm you've installed everything correctly. Previewing using the custom URL scheme makes it easier to test on actual devices and for those without access to xcode.
+
+
+**Using code**
+
+In the "Preview & Publish" tab select 'Learn more' and copy the code.
+
+<img src="https://github.com/iteratehq/iterate-ios/blob/master/Assets/preview-with-code.png?raw=true" width="500">
+
+
+This makes use of the preview method which will ensure the survey is returned once the event your survey is targeting is fired.
+
+```swift
+    override func viewDidAppear(_ animated: Bool) {
+       Iterate.shared.preview(surveyId: "YOUR_SURVEY_ID")
+       Iterate.shared.sendEvent(name: "viewed-activity-feed")
+   }
+```
+
+**Using a custom URL scheme**
+
+First, make sure your app has a custom URL scheme set. Then add the following code when your app is opened from your app's URL scheme.
 
 The `Iterate.shared.preview(url:)` method looks for the query parameter `?iterate_preview=YOUR_SURVEY_ID` which enables _preview mode_ allowing you to see the survey in response to your targeted event being fired, but before it's published for everyone.
 
@@ -201,14 +222,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 Once that's added you can scan the QR code on the "Preview & Publish" tab of your survey which will open your app allowing you to preview the survey once the event you're targeting has fired.
 
-**Recommendations**
+## Recommendations
 
 When implementing Iterate for the first time, we encourage you to implement events for _all_ of your core use cases which you may want to target surveys to in the future. e.g. signup, purchased, viewed X screen, tapped notification, etc. This way you can easily launch new surveys targeting these events without needing to instrument a new event each time.
 
-**Survey eligibility and frequency**
+## Survey eligibility and frequency
 
 By default surveys are only shown once per person and user's can only see at most 1 survey every 72 hours (which is configurable). You can learn more about how [eligibility and frequency works](https://help.iteratehq.com/en/articles/2835008-survey-eligibility-and-frequency).
 
-**Troubleshooting**
+## Troubleshooting
 
 If you have any issues you can head over to our [help center](https://help.iteratehq.com) to search for an answer or chat with our support team.

@@ -49,8 +49,14 @@ final class PassthroughWindow: UIWindow {
     ///   - point: Point of hit
     ///   - event: Event that caused the hit
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        let view = super.hitTest(point, with: event)
+        guard let rootViewController = self.rootViewController else {
+            return nil
+        }
         
-        return view == self ? nil : view
+        if let view = rootViewController.view.hitTest(point, with: event) {
+            return view
+        }
+        
+        return nil
     }
 }
