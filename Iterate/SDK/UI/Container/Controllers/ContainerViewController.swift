@@ -56,24 +56,26 @@ final class ContainerViewController: UIViewController {
     }
     
     func showPrompt(complete: (() -> Void)? = nil) {
-        promptView.isHidden = false
-        self.promptViewBottomConstraint.constant = promptViewController?.view.frame.height ?? 300
-        self.promptViewBottomConstraint.isActive = true
-        self.promptViewTopConstraint.isActive = false
-        view.layoutIfNeeded()
-        
-        let animator = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 1) {
-            self.promptViewBottomConstraint.constant = 0
+        DispatchQueue.main.async {
+            self.promptView.isHidden = false
+            self.promptViewBottomConstraint.constant = self.promptViewController?.view.frame.height ?? 300
+            self.promptViewBottomConstraint.isActive = true
+            self.promptViewTopConstraint.isActive = false
             self.view.layoutIfNeeded()
-        }
-        
-        if let complete = complete {
-            animator.addCompletion { (_ UIViewAnimatingPosition) in
-                complete()
+            
+            let animator = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 1) {
+                self.promptViewBottomConstraint.constant = 0
+                self.view.layoutIfNeeded()
             }
+            
+            if let complete = complete {
+                animator.addCompletion { (_ UIViewAnimatingPosition) in
+                    complete()
+                }
+            }
+            
+            animator.startAnimation()
         }
-        
-        animator.startAnimation()
     }
     
     func hidePrompt(complete: (() -> Void)? = nil) {
