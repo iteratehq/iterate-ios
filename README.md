@@ -24,7 +24,7 @@ Run surveys that are highly targeted, user-friendly, and on-brand. You’ll unde
 You can install Iterate using the [CocoaPods](http://cocoapods.org/) dependency manager by installing CocoaPods and adding the following to your Podfile:
 
 ```ruby
-pod 'Iterate', '~> 0.1'
+pod 'Iterate', '~> 1.0'
 ```
 
 Then run
@@ -38,7 +38,7 @@ $ pod install
 You can install Iterate using the [Carthage](https://github.com/Carthage/Carthage) dependency manager by installing Carthage and adding the following to your Cartfile:
 
 ```text
-github "iteratehq/iterate-ios" ~> 0.1
+github "iteratehq/iterate-ios" ~> 1.0
 ```
 
 Then run
@@ -55,7 +55,7 @@ Within your app, surveys are shown in response to _events_. An event can be anyt
 
 **Quickstart**
 
-Create your [Iterate](https://iteratehq.com) account if you haven't already and send an email to support@iteratehq.com to request access to Iterate for iOS. 
+Create your [Iterate](https://iteratehq.com) account if you haven't already and send an email to support@iteratehq.com to request access to Iterate for iOS.
 
 1. Create a new survey and select "Install in your mobile app"
 
@@ -156,13 +156,11 @@ struct ActivityFeed: View {
 
 You'll likely want to preview your survey before publishing it so you can test it out and confirm everything is working correctly. You can preview using code or with a [custom URL scheme](https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app). Previewing using code is easier during initial development to confirm you've installed everything correctly. Previewing using the custom URL scheme makes it easier to test on actual devices and for those without access to xcode.
 
-
 **Using code**
 
 In the "Preview & Publish" tab select 'Learn more' and copy the code.
 
 <img src="https://github.com/iteratehq/iterate-ios/blob/master/Assets/preview-with-code.png?raw=true" width="500">
-
 
 This makes use of the preview method which will ensure the survey is returned once the event your survey is targeting is fired.
 

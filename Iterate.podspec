@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name           = "Iterate"
-  spec.version        = "0.1.1"
+  spec.version        = "1.0.0"
   spec.summary        = "In-app user research made easy."
   spec.description    = <<-DESC
                         Iterate surveys put you directly in touch with your app users to 
@@ -13,10 +13,10 @@ Pod::Spec.new do |spec|
 
   spec.platform       = :ios, "12.0"
   spec.source         = { :git => "https://github.com/iteratehq/iterate-ios.git", :tag => "v#{spec.version}" }
-  spec.source_files   = "Iterate/**/*.{h,m,swift}"
+  spec.source_files   = "IterateSDK/**/*.{h,m,swift}"
   spec.resource_bundles = {
-    'Iterate' => ["Iterate/**/*.{storyboard,xib,xcassets,json,imageset,png}"]
+    'Iterate' => ["IterateSDK/**/*.{storyboard,xib,xcassets,json,imageset,png}"]
   }
-  spec.swift_versions = ['4.2', '5.0']
+  spec.swift_versions = ['4.2', '5.0', '5.1', '5.2', '5.3']
   spec.framework      = "Webkit"
 end
