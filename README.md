@@ -224,6 +224,12 @@ Once that's added you can scan the QR code on the "Preview & Publish" tab of you
 
 When implementing Iterate for the first time, we encourage you to implement events for _all_ of your core use cases which you may want to target surveys to in the future. e.g. signup, purchased, viewed X screen, tapped notification, etc. This way you can easily launch new surveys targeting these events without needing to instrument a new event each time.
 
+## Associating data with a user
+
+Using the [Identify](https://github.com/iteratehq/iterate-ios/wiki/Iterate#identifyuserproperties) method, you can easily add properties to a user that can be used to target surveys to them and associate the information with all of their future responses.
+
+For more information see our [help article](https://help.iteratehq.com/en/articles/4457590-associating-data-with-a-user-or-response).
+
 ## Survey eligibility and frequency
 
 By default surveys are only shown once per person and user's can only see at most 1 survey every 72 hours (which is configurable). You can learn more about how [eligibility and frequency works](https://help.iteratehq.com/en/articles/2835008-survey-eligibility-and-frequency).
