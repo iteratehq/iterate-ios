@@ -207,10 +207,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // ...
 
-    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:] ) -> Bool {
-        if (URLComponents(url: context.url, resolvingAgainstBaseURL: false)?.queryItems?.contains { $0.name == Iterate.PreviewParameter } ?? false) {
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
+        if (URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.contains { $0.name == Iterate.PreviewParameter } ?? false) {
             Iterate.shared.preview(url: url.absoluteURL)
         }
+
+        return true
     }
 
     // ...
