@@ -13,6 +13,7 @@ final class ContainerWindowDelegate {
     private var containerViewController: ContainerViewController? {
         window?.rootViewController as? ContainerViewController
     }
+    var isSurveyOrPromptDisplayed: Bool?
     
     /// Show the window
     func showWindow(survey: Survey) {
@@ -27,10 +28,18 @@ final class ContainerWindowDelegate {
     func hideWindow() {
         window?.isHidden = true
         window = nil
+        isSurveyOrPromptDisplayed = false
     }
     
     /// Show either the prompt (if there is one) or the survey
     func show(_ survey: Survey) {
+        // Don't show another survey if we're already showing one
+        if let isSurveyOrPromptDisplayed = isSurveyOrPromptDisplayed, isSurveyOrPromptDisplayed {
+            return
+        }
+        
+        isSurveyOrPromptDisplayed = true
+        
         if survey.prompt != nil {
             showPrompt(survey)
         } else {
