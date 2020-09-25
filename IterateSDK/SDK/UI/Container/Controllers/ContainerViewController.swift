@@ -45,7 +45,7 @@ final class ContainerViewController: UIViewController {
         }
         
         if promptViewBottomConstraint.constant > 25 {
-            hidePrompt()
+            delegate?.dismissPrompt(survey: survey, userInitiated: true)
         } else {
             let animator = UIViewPropertyAnimator(duration: 0.2, dampingRatio: 1) {
                 self.promptViewBottomConstraint.constant = 0
