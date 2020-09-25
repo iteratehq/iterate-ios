@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.1](https://github.com/iteratehq/iterate-ios/releases/tag/v1.0.1)
+
+Released on 2020-09-25.
+
+**Fixed**
+
+- Prevent a survey from re-presenting if a survey is already presented
+
 ## [1.0.0](https://github.com/iteratehq/iterate-ios/releases/tag/v1.0.0)
 
 Released on 2020-07-28.
