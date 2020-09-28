@@ -99,7 +99,13 @@ final class ContainerWindowDelegate {
     
     /// Get the currently visible view controller which we will use to modally present the survey and fall back to our container view controller
     func getPresentingViewController() -> UIViewController? {
-        let window = UIApplication.shared.windows.first { $0.isKeyWindow }
+        // Find the first key window that is not our own passthrough window
+        var window = UIApplication.shared.windows.first { $0.isKeyWindow && $0 != self.window }
+        // If we didn't find one, get the first non-key window since our window may be key (happens in iOS 14.2)
+        if window == nil {
+           window = UIApplication.shared.windows.first { $0 != self.window }
+        }
+        
         var visibleViewController = window?.rootViewController
         
         if visibleViewController == nil {
