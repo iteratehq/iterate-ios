@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.2](https://github.com/iteratehq/iterate-ios/releases/tag/v1.0.2)
+
+Released on 2020-09-28.
+
+**Fixed**
+
+- Display the survey on the correct window on iOS 14.2
+
 ## [1.0.1](https://github.com/iteratehq/iterate-ios/releases/tag/v1.0.1)
 
 Released on 2020-09-25.
