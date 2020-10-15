@@ -22,6 +22,11 @@ final class PromptViewController: UIViewController {
     override func viewDidLoad() {
         preparePrompt()
         
+        // Override interface style until the full survey interface properly supports dark mode
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
+        
         // Allow the container view to be dynamically sized by the parent
         view.translatesAutoresizingMaskIntoConstraints = false
         
