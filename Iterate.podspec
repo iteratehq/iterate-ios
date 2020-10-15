@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name           = "Iterate"
-  spec.version        = "1.0.2"
+  spec.version        = "1.0.3"
   spec.summary        = "In-app user research made easy."
   spec.description    = <<-DESC
                         Iterate surveys put you directly in touch with your app users to 
