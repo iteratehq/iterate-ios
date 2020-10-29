@@ -66,10 +66,7 @@ final class SurveyViewController: UIViewController {
         view.bringSubviewToFront(loadingView)
         view.bringSubviewToFront(errorLoadingLabel)
         view.bringSubviewToFront(closeButton)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         
         if let survey = survey {
             let host = Iterate.shared.apiHost ?? Iterate.DefaultAPIHost
@@ -95,6 +92,7 @@ final class SurveyViewController: UIViewController {
             webView.load(myRequest)
         }
     }
+    
     @IBAction func closeSurvey(_ sender: Any) {
         delegate?.dismissSurvey()
     }
