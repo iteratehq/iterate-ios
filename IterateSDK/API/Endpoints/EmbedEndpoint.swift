@@ -12,6 +12,7 @@ import Foundation
 struct EmbedResponse: Codable {
     let auth: EmbedAuth?
     let survey: Survey?
+    let tracking: TrackingContext?
 }
 
 /// Embed auth, a token is returned when embed is requested with a company auth token and not a user auth token.

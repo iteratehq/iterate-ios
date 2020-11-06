@@ -111,6 +111,23 @@ public final class Iterate {
         }
     }
     
+    // MARK: Tracking Last Updated
+    
+    var trackingLastUpdated: Int? {
+        get {
+            if let trackingLastUpdatedString = storage.value(for: StorageKeys.TrackingLastUpdated) {
+                return Int(trackingLastUpdatedString)
+            }
+            
+            return nil
+        }
+        set (newTrackingLastUpdated) {
+            if let newTrackingLastUpdated = newTrackingLastUpdated {
+                storage.set(value: String(newTrackingLastUpdated), for: StorageKeys.TrackingLastUpdated)
+            }
+        }
+    }
+    
     var responseProperties: ResponseProperties?
     
     // MARK: Init
@@ -200,6 +217,11 @@ public final class Iterate {
             // Update the user API key if one was returned
             if let token = response?.auth?.token {
                 self.userApiKey = token
+            }
+            
+            // Update the last tracked date if one was returned
+            if let lastUpdated = response?.tracking?.lastUpdated {
+                self.trackingLastUpdated = lastUpdated
             }
             
             complete(response, error)
