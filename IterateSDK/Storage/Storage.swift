@@ -23,6 +23,7 @@ struct Storage {
 }
 
 enum StorageKeys: String {
+    case TrackingLastUpdated = "trackingLastUpdated"
     case UserApiKey = "userApiKey"
     case UserProperties = "userProperties"
 }

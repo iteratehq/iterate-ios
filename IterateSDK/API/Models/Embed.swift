@@ -14,6 +14,7 @@ struct EmbedContext: Codable {
     var app: AppContext
     var event: EventContext?
     var targeting: TargetingContext?
+    var tracking: TrackingContext?
     var trigger: TriggerContext?
     var type: EmbedType
     var userTraits: UserProperties?
@@ -35,6 +36,10 @@ struct EmbedContext: Codable {
         // Include user properties
         if let userProperties = iterate.userProperties {
             userTraits = userProperties
+        }
+        
+        if let trackingLastUpdated = iterate.trackingLastUpdated {
+            tracking = TrackingContext(lastUpdated: trackingLastUpdated)
         }
     }
     
@@ -65,6 +70,13 @@ struct EventContext: Codable {
 struct TargetingContext: Codable {
     var frequency: TargetingContextFrequency
     var surveyId: String?
+}
+
+// MARK: Tracking
+
+/// Contains tracking data that is used to count monthly unique users
+struct TrackingContext: Codable {
+    var lastUpdated: Int
 }
 
 /// Targeting content frequecy options. e.g. 'Always' is used to force
