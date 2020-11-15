@@ -21,7 +21,7 @@ public final class Iterate {
     public static let PreviewParameter = "iterate_preview"
     
     // Current version number, will be updated on each release
-    static let Version = "1.0.4"
+    static let Version = "1.0.5"
     
     /// Default API host
     public static let DefaultAPIHost = "https://iteratehq.com"

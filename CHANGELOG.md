@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.5](https://github.com/iteratehq/iterate-ios/releases/tag/v1.0.5)
+
+Release on 2020-11-15.
+
+**Fixed**
+
+- Added 'last updated at' timestamp to ensure we don't count a user as an 'active user' more than once per month
+
 ## [1.0.4](https://github.com/iteratehq/iterate-ios/releases/tag/v1.0.4)
 
 Release on 2020-10-29.
