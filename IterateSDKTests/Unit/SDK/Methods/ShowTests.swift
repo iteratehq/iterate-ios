@@ -22,7 +22,7 @@ class ShowTests: XCTestCase {
             exp.fulfill()
         }
         
-        waitForExpectations(timeout: 3)
+        waitForExpectations(timeout: 10)
         XCTAssertEqual(error as? IterateError, IterateError.invalidAPIKey)
     }
 }
