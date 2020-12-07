@@ -37,6 +37,6 @@ class EmbedEndpointTests: XCTestCase {
             embedComplete.fulfill()
         }
         
-        waitForExpectations(timeout: 3)
+        waitForExpectations(timeout: 10)
     }
 }

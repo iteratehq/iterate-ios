@@ -37,7 +37,7 @@ class ClientTests: XCTestCase {
         client.post(data, to: Paths.surveys.embed) { (response: EmbedResponse?, error) in
             postComplete.fulfill()
         }
-         waitForExpectations(timeout: 3)
+         waitForExpectations(timeout: 10)
     }
 }
 

@@ -22,7 +22,7 @@ class SendEventIntegrationTests: XCTestCase {
             exp.fulfill()
         }
         
-        waitForExpectations(timeout: 3)
+        waitForExpectations(timeout: 10)
         XCTAssertEqual(error as? IterateError, IterateError.invalidAPIKey)
     }
     
@@ -41,7 +41,7 @@ class SendEventIntegrationTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 3)
+        waitForExpectations(timeout: 10)
 
         XCTAssertNil(error)
         XCTAssertEqual(survey?.id, testIntegrationSurvey)
@@ -59,7 +59,7 @@ class SendEventIntegrationTests: XCTestCase {
         iterateInstance.sendEvent(name: testEventName) { (surveyCallback, errorCallback) in
             exp.fulfill()
         }
-        waitForExpectations(timeout: 3)
+        waitForExpectations(timeout: 10)
         XCTAssertNotNil(iterateInstance.userApiKey)
         XCTAssertNotEqual(iterateInstance.api?.apiKey, testCompanyApiKey)
     }
