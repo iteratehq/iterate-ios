@@ -55,7 +55,7 @@ Within your app, surveys are shown in response to _events_. An event can be anyt
 
 **Quickstart**
 
-Create your [Iterate](https://iteratehq.com) account if you haven't already and send an email to support@iteratehq.com to request access to Iterate for iOS.
+Log in to or Sign up for an [Iterate](https://iteratehq.com) account if you haven't already.
 
 1. Create a new survey and select "Install in your mobile app"
 
@@ -146,7 +146,7 @@ struct ActivityFeed: View {
 }
 ```
 
-1. Create your survey on iteratehq.com and target it to that event
+5. On the Targeting options tab of your Iterate survey, set the survey to show when that event is triggered
 
 <img src="https://github.com/iteratehq/iterate-ios/blob/master/Assets/event-targeting.png?raw=true" width="500">
 
