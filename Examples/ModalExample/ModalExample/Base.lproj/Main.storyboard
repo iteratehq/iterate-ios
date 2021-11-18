@@ -31,18 +31,22 @@
                                     <segue destination="PiM-9k-JCb" kind="presentation" id="VpH-CX-709"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMo-eK-fdv">
-                                <rect key="frame" x="129" y="501" width="157" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMo-eK-fdv">
+                                <rect key="frame" x="157" y="494" width="100" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="h2W-u6-OWN"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Logout"/>
                                 <connections>
                                     <action selector="logout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pu2-Pg-CHB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAq-96-isN">
-                                <rect key="frame" x="139" y="465" width="136" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAq-96-isN">
+                                <rect key="frame" x="157" y="463" width="100" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="yW4-cO-bKT"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Login"/>
                                 <connections>
@@ -53,9 +57,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="qAq-96-isN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DT1-uz-TMq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Yi3-8b-4Gu" secondAttribute="trailing" constant="20" id="Hg1-Pb-k3z"/>
+                            <constraint firstItem="qAq-96-isN" firstAttribute="top" secondItem="IBb-fP-goQ" secondAttribute="bottom" id="W02-l3-kVa"/>
                             <constraint firstItem="Yi3-8b-4Gu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ZnB-o1-9fn"/>
                             <constraint firstItem="IBb-fP-goQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cEP-AS-88K"/>
+                            <constraint firstItem="aMo-eK-fdv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rZz-LL-Vbs"/>
+                            <constraint firstItem="aMo-eK-fdv" firstAttribute="top" secondItem="qAq-96-isN" secondAttribute="bottom" id="vUz-hf-mAa"/>
                             <constraint firstItem="Yi3-8b-4Gu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="vjo-hX-JJW"/>
                             <constraint firstItem="IBb-fP-goQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="yq8-6X-GoN"/>
                         </constraints>
