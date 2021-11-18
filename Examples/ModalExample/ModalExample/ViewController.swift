@@ -17,12 +17,25 @@ class ViewController: UIViewController {
     }
 
     @IBAction func showSurvey(_ sender: Any) {
+        Iterate.shared.preview(surveyId: "5efa0121a9fffa0001c70b8d")
+        Iterate.shared.sendEvent(name: Event.ShowSurveyButtonTapped.rawValue)
+    }
+    
+    @IBAction func login(_ sender: Any) {
+        Iterate.shared.identify(userProperties: [
+            "first_name": UserPropertyValue("Test"),
+            "last_name": UserPropertyValue("User"),
+            "account_id": UserPropertyValue(123)
+        ])
         Iterate.shared.identify(responseProperties: [
             "exampleString": ResponsePropertyValue("string value"),
             "exampleNumber": ResponsePropertyValue(123),
             "exampleBoolean": ResponsePropertyValue(true),
         ])
-        Iterate.shared.sendEvent(name: Event.ShowSurveyButtonTapped.rawValue)
+    }
+    
+    @IBAction func logout(_ sender: Any) {
+        Iterate.shared.reset()
     }
 }
 

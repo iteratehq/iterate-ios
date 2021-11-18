@@ -66,6 +66,13 @@ final class KeychainStorageEngine: StorageEngine {
         }
     }
     
+    /// Delete all values from storage
+    func clear() -> Void {
+        delete(for: StorageKeys.TrackingLastUpdated)
+        delete(for: StorageKeys.UserApiKey)
+        delete(for: StorageKeys.UserProperties)
+    }
+    
     private func query(for key: StorageKeys) -> [String: Any] {
         return  [
                    kSecClass as String: kSecClassGenericPassword,
