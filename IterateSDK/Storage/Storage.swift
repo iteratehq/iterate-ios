@@ -13,6 +13,7 @@ protocol StorageEngine {
     func delete(for key: StorageKeys) -> Void
     func value(for key: StorageKeys) -> String?
     func set(value: String, for key: StorageKeys) -> Void
+    func clear() -> Void
 }
 
 /// Create a Storage namespace
@@ -22,6 +23,7 @@ struct Storage {
     public static let shared: StorageEngine = KeychainStorageEngine()
 }
 
+// NOTE: if you're adding a new StorageKey, remember to add it to the clear() method
 enum StorageKeys: String {
     case TrackingLastUpdated = "trackingLastUpdated"
     case UserApiKey = "userApiKey"

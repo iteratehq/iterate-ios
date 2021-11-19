@@ -23,6 +23,12 @@ class MockStorageEngine: StorageEngine {
         storage[key] = nil
     }
     
+    func clear() -> Void {
+        delete(for: StorageKeys.UserProperties)
+        delete(for: StorageKeys.UserApiKey)
+        delete(for: StorageKeys.TrackingLastUpdated)
+    }
+    
     /// Set a value using the key
     /// - Parameters:
     ///   - key: Key to set

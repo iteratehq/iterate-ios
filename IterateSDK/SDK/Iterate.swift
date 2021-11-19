@@ -205,6 +205,17 @@ public final class Iterate {
         self.responseProperties = responseProperties
     }
     
+    public func reset() {
+        // Clear everything from storage
+        self.storage.clear()
+        
+        // Update the API key
+        updateApiKey()
+        
+        // Clear response properties
+        responseProperties = nil
+    }
+    
     // MARK: Private methods
     
     /// Helper method used when calling the embed endpoint which is responsible for updating the user API key
