@@ -232,6 +232,8 @@ Using the [Identify](https://github.com/iteratehq/iterate-ios/wiki/Iterate#ident
 
 For more information see our [help article](https://help.iteratehq.com/en/articles/4457590-associating-data-with-a-user-or-response).
 
+Note: if your app allows users to log out, you can call `Iterate.shared.reset()` method to clear all stored user data on logout.
+
 ## Survey eligibility and frequency
 
 By default surveys are only shown once per person and user's can only see at most 1 survey every 72 hours (which is configurable). You can learn more about how [eligibility and frequency works](https://help.iteratehq.com/en/articles/2835008-survey-eligibility-and-frequency).
