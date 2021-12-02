@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.6](https://github.com/iteratehq/iterate-ios/releases/tag/v1.0.6)
+
+Released on 2021-12-01.
+
+**Added**
+
+- Added `Iterate.shared.reset()` method to clear the current user. SHould be used when a user logs out
+
 ## [1.0.5](https://github.com/iteratehq/iterate-ios/releases/tag/v1.0.5)
 
 Release on 2020-11-15.
