@@ -38,6 +38,9 @@ public final class Iterate {
     /// The id of the survey being previewed
     var previewingSurveyId: String?
     
+    /// The name of a custom font to be used in the prompt and survey UI
+    var fontName: String?
+    
     /// Storage engine for storing user data like their API key and user attributes
     private var storage: StorageEngine
     
@@ -174,13 +177,15 @@ public final class Iterate {
     
     /// Configure sets the necessary configuration properties. This should be called before any other methods.
     /// - Parameter apiKey: Your Iterate API Key, you can find this on your settings page
-    public func configure(apiKey: String, apiHost: String? = Iterate.DefaultAPIHost) {
+    public func configure(apiKey: String, apiHost: String? = Iterate.DefaultAPIHost, fontName: String? = nil) {
         // Note: we need to set the apiHost before setting the companyApiKey
         // since updating the companyApiKey is what triggers to API client
         // to be set via a custom setter
         self.apiHost = apiHost
         
         self.companyApiKey = apiKey
+        
+        self.fontName = fontName
     }
     
     /// Preview processes the custom scheme url that was used to open the app and sets

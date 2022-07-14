@@ -87,9 +87,24 @@ final class SurveyViewController: UIViewController {
                     return "response\($0.value.typeString())_\($0.key)=\(value)" })
             }
             
-            let url = "\(host)/\(survey.companyId)/\(survey.id)/mobile?\(params.joined(separator: "&"))"
-            let myRequest = URLRequest(url: URL(string: url)!)
-            webView.load(myRequest)
+            // If the user has specified a font name, get a path to it within the bundle to send as a query parameter, for
+            // use in the webview's CSS
+            if let bundleUrlString = Bundle.main.bundleURL.absoluteString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let fontName = Iterate.shared.fontName, let fontFileName = fileNameFromFontName(fontName: fontName) {
+                params.append("fontPath=\(bundleUrlString)/\(fontFileName)")
+            }
+            
+            params.append("absoluteURLs=true")
+            
+            let urlString = "\(host)/\(survey.companyId)/\(survey.id)/mobile?\(params.joined(separator: "&"))"
+            do {
+                if let url = URL(string: urlString) {
+                    let html = try String(contentsOf: url)
+                    webView.loadHTMLString(html, baseURL: Bundle.main.bundleURL)
+                }
+            } catch {
+                // Something went wrong fetching the survey HTML. Dismiss the survey modal.
+                delegate?.dismissSurvey()
+            }
         }
     }
     
@@ -101,6 +116,8 @@ final class SurveyViewController: UIViewController {
         delegate?.surveyDismissed(survey: survey)
     }
 }
+
+
 
 private enum MessageType: String {
     case close = "close"
