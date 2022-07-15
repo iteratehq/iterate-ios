@@ -24,8 +24,7 @@ func fontNamesFromFile(for file: URL) -> [String]? {
 
     if let postScriptName = font.postScriptName {
         fontNames.append(String(postScriptName))
-    }
-    if let fullName = font.fullName {
+    } else if let fullName = font.fullName {
         fontNames.append(String(fullName))
     }
     

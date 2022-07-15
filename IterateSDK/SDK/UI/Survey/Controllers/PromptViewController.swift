@@ -44,13 +44,14 @@ final class PromptViewController: UIViewController {
         if let color = survey?.colorHex {
             promptButton.backgroundColor = UIColor(hex: color)
         }
-        if let fontName = Iterate.shared.fontName {
-            let uiFont = UIFont(name: fontName, size: 16.0)
+        if let surveyTextFontName = Iterate.shared.surveyTextFontName {
+            let uiFont = UIFont(name: surveyTextFontName, size: 16.0)
             promptLabel.font = uiFont
-            
-            if let titleLabel = promptButton.titleLabel {
-                titleLabel.font = uiFont
-            }
+        }
+        
+        if let titleLabel = promptButton.titleLabel, let buttonFontName = Iterate.shared.buttonFontName {
+            let uiFont = UIFont(name: buttonFontName, size: 16.0)
+            titleLabel.font = uiFont
         }
     }
     

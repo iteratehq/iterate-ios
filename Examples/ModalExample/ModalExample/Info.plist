@@ -44,6 +44,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>WorkSans-VariableFont_wght.ttf</string>
+		<string>Merriweather-Regular.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

@@ -89,8 +89,13 @@ final class SurveyViewController: UIViewController {
             
             // If the user has specified a font name, get a path to it within the bundle to send as a query parameter, for
             // use in the webview's CSS
-            if let bundleUrlString = Bundle.main.bundleURL.absoluteString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let fontName = Iterate.shared.fontName, let fontFileName = fileNameFromFontName(fontName: fontName) {
-                params.append("fontPath=\(bundleUrlString)/\(fontFileName)")
+            if let bundleUrlString = Bundle.main.bundleURL.absoluteString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+                if let surveyTextFontName = Iterate.shared.surveyTextFontName, let surveyTextFontFileName = fileNameFromFontName(fontName: surveyTextFontName) {
+                    params.append("surveyTextFontPath=\(bundleUrlString)/\(surveyTextFontFileName)")
+                }
+                if let buttonFontName = Iterate.shared.buttonFontName, let buttonFontFileName = fileNameFromFontName(fontName: buttonFontName) {
+                    params.append("buttonFontPath=\(bundleUrlString)/\(buttonFontFileName)")
+                }
             }
             
             params.append("absoluteURLs=true")
