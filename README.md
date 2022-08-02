@@ -228,13 +228,15 @@ When implementing Iterate for the first time, we encourage you to implement even
 
 ## Custom fonts
 
-Custom fonts that are available in your app bundle can be used in the Iterate survey view by passing their names to the `Iterate.shared.configure` method like this:
+Custom fonts that are available in your app bundle can be used in the Iterate survey view by passing their names to the `Iterate.shared.configure` method, like this:
 
 ```swift
 Iterate.shared.configure(apiKey: YOUR_API_KEY, surveyTextFontName: "Merriweather-Regular", buttonFontName: "WorkSans-Regular")
 ```
 
-True Type fonts and Open Type Fonts are supported. To find the correct font name, see [Apple's documentation on custom fonts](https://developer.apple.com/documentation/uikit/text_display_and_fonts/adding_a_custom_font_to_your_app#2939906).
+The font specified in the `buttonFontName` parameter will be used in all survey interface buttons (question responses, previous / next buttons, etc). The font specified in `surveyTextFontName` will be used for all other survey text (question prompts, explanatory copy, etc).
+
+True Type fonts and Open Type Fonts are supported. To find the correct font name to use, see [Apple's documentation on custom fonts](https://developer.apple.com/documentation/uikit/text_display_and_fonts/adding_a_custom_font_to_your_app#2939906).
 
 ## Associating data with a user
 
