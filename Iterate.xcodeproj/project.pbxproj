@@ -41,7 +41,6 @@
 		27C3B2F323C399B200754F4D /* PassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2F223C399B200754F4D /* PassthroughView.swift */; };
 		27D6D68C24881A45005DD502 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D6D68B24881A45005DD502 /* WebKit.framework */; platformFilter = ios; };
 		27DDDD5323C657F4005CA07C /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DDDD5223C657F4005CA07C /* SurveyViewController.swift */; };
-		2C8162602880621600B2AE48 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81625F2880621600B2AE48 /* Font.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,7 +113,6 @@
 		27C3B2F223C399B200754F4D /* PassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassthroughView.swift; sourceTree = "<group>"; };
 		27D6D68B24881A45005DD502 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		27DDDD5223C657F4005CA07C /* SurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
-		2C81625F2880621600B2AE48 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,7 +261,6 @@
 			children = (
 				27821A3B24900C08004AAB22 /* Color.swift */,
 				274FAFFA249C0B970014C012 /* Scheme.swift */,
-				2C81625F2880621600B2AE48 /* Font.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -554,7 +551,6 @@
 				270613E623BA4F2500DDF342 /* Survey.swift in Sources */,
 				2757AB5B248EDDFE00B909C9 /* PromptViewController.swift in Sources */,
 				27C3B29923BD360E00754F4D /* KeychainStorageEngine.swift in Sources */,
-				2C8162602880621600B2AE48 /* Font.swift in Sources */,
 				270613EB23BA6BFD00DDF342 /* Client.swift in Sources */,
 				270613E023BA4DD100DDF342 /* Errors.swift in Sources */,
 				27063AB92498109700BE6913 /* Dismissed.swift in Sources */,

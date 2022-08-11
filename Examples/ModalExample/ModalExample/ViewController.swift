@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func showSurvey(_ sender: Any) {
-        Iterate.shared.preview(surveyId: "62c6ff93ac09f7010b9be567")
+        Iterate.shared.preview(surveyId: "5efa0121a9fffa0001c70b8d")
         Iterate.shared.sendEvent(name: Event.ShowSurveyButtonTapped.rawValue)
     }
     

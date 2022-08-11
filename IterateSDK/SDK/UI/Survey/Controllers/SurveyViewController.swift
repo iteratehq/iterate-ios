@@ -87,29 +87,9 @@ final class SurveyViewController: UIViewController {
                     return "response\($0.value.typeString())_\($0.key)=\(value)" })
             }
             
-            // If the user has specified a font name, get a path to it within the bundle to send as a query parameter, for
-            // use in the webview's CSS
-            if let bundleUrlString = Bundle.main.bundleURL.absoluteString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-                if let surveyTextFontName = Iterate.shared.surveyTextFontName, let surveyTextFontFileName = fileNameFromFontName(fontName: surveyTextFontName) {
-                    params.append("surveyTextFontPath=\(bundleUrlString)/\(surveyTextFontFileName)")
-                }
-                if let buttonFontName = Iterate.shared.buttonFontName, let buttonFontFileName = fileNameFromFontName(fontName: buttonFontName) {
-                    params.append("buttonFontPath=\(bundleUrlString)/\(buttonFontFileName)")
-                }
-            }
-            
-            params.append("absoluteURLs=true")
-            
-            let urlString = "\(host)/\(survey.companyId)/\(survey.id)/mobile?\(params.joined(separator: "&"))"
-            do {
-                if let url = URL(string: urlString) {
-                    let html = try String(contentsOf: url)
-                    webView.loadHTMLString(html, baseURL: Bundle.main.bundleURL)
-                }
-            } catch {
-                // Something went wrong fetching the survey HTML. Dismiss the survey modal.
-                delegate?.dismissSurvey()
-            }
+            let url = "\(host)/\(survey.companyId)/\(survey.id)/mobile?\(params.joined(separator: "&"))"
+            let myRequest = URLRequest(url: URL(string: url)!)
+            webView.load(myRequest)
         }
     }
     
@@ -121,8 +101,6 @@ final class SurveyViewController: UIViewController {
         delegate?.surveyDismissed(survey: survey)
     }
 }
-
-
 
 private enum MessageType: String {
     case close = "close"
