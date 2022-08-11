@@ -19,8 +19,6 @@
 		27C3B2BA23BE987100754F4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C3B2B823BE987100754F4D /* LaunchScreen.storyboard */; };
 		27C3B2C523BE987100754F4D /* ModalExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2C423BE987100754F4D /* ModalExampleTests.swift */; };
 		27C3B2D023BE987100754F4D /* ModalExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2CF23BE987100754F4D /* ModalExampleUITests.swift */; };
-		2C8162662880B20300B2AE48 /* WorkSans-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C8162652880B20300B2AE48 /* WorkSans-VariableFont_wght.ttf */; };
-		2CD5EE522881F4600039D550 /* Merriweather-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CD5EE512881F4600039D550 /* Merriweather-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,8 +72,6 @@
 		27C3B2CB23BE987100754F4D /* ModalExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModalExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C3B2CF23BE987100754F4D /* ModalExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalExampleUITests.swift; sourceTree = "<group>"; };
 		27C3B2D123BE987100754F4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2C8162652880B20300B2AE48 /* WorkSans-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-VariableFont_wght.ttf"; sourceTree = "<group>"; };
-		2CD5EE512881F4600039D550 /* Merriweather-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +124,6 @@
 		27C3B2AC23BE986D00754F4D /* ModalExample */ = {
 			isa = PBXGroup;
 			children = (
-				2C8162642880B1EC00B2AE48 /* Fonts */,
 				27C3B2AD23BE986D00754F4D /* AppDelegate.swift */,
 				27C3B2AF23BE986D00754F4D /* SceneDelegate.swift */,
 				27C3B2B123BE986D00754F4D /* ViewController.swift */,
@@ -168,15 +163,6 @@
 				276BB96C240887E200DFCED2 /* Iterate.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		2C8162642880B1EC00B2AE48 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				2CD5EE512881F4600039D550 /* Merriweather-Regular.ttf */,
-				2C8162652880B20300B2AE48 /* WorkSans-VariableFont_wght.ttf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,10 +271,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				27C3B2BA23BE987100754F4D /* LaunchScreen.storyboard in Resources */,
-				2C8162662880B20300B2AE48 /* WorkSans-VariableFont_wght.ttf in Resources */,
 				27C3B2B723BE987100754F4D /* Assets.xcassets in Resources */,
 				27C3B2B523BE986D00754F4D /* Main.storyboard in Resources */,
-				2CD5EE522881F4600039D550 /* Merriweather-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

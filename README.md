@@ -226,18 +226,6 @@ Once that's added you can scan the QR code on the "Preview & Publish" tab of you
 
 When implementing Iterate for the first time, we encourage you to implement events for _all_ of your core use cases which you may want to target surveys to in the future. e.g. signup, purchased, viewed X screen, tapped notification, etc. This way you can easily launch new surveys targeting these events without needing to instrument a new event each time.
 
-## Custom fonts
-
-Custom fonts that are available in your app bundle can be used in the Iterate survey view by passing their names to the `Iterate.shared.configure` method, like this:
-
-```swift
-Iterate.shared.configure(apiKey: YOUR_API_KEY, surveyTextFontName: "Merriweather-Regular", buttonFontName: "WorkSans-Regular")
-```
-
-The font specified in the `buttonFontName` parameter will be used in all survey interface buttons (question responses, previous / next buttons, etc). The font specified in `surveyTextFontName` will be used for all other survey text (question prompts, explanatory copy, etc).
-
-True Type fonts and Open Type Fonts are supported. To find the correct font name to use, see [Apple's documentation on custom fonts](https://developer.apple.com/documentation/uikit/text_display_and_fonts/adding_a_custom_font_to_your_app#2939906).
-
 ## Associating data with a user
 
 Using the [Identify](https://github.com/iteratehq/iterate-ios/wiki/Iterate#identifyuserproperties) method, you can easily add properties to a user that can be used to target surveys to them and associate the information with all of their future responses.
