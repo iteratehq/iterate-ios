@@ -128,4 +128,30 @@ extension SurveyViewController: WKNavigationDelegate {
             errorLoadingLabel.isHidden = false
             closeButton.isHidden = false
     }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        guard let url = navigationAction.request.url else {
+            decisionHandler(.cancel)
+            return
+        }
+        
+        if let urlScheme = url.scheme, let urlHost = url.host {
+            var baseUrl = "\(urlScheme)://\(urlHost)"
+            if let urlPort = url.port {
+                baseUrl += ":\(urlPort)"
+            }
+            
+            if baseUrl != Iterate.shared.apiHost {
+                UIApplication.shared.open(url)
+                
+                decisionHandler(.cancel)
+                return
+            }
+        }
+        
+        
+            
+
+        decisionHandler(.allow)
+    }
 }
