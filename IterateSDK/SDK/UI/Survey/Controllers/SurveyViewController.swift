@@ -104,7 +104,11 @@ final class SurveyViewController: UIViewController {
             do {
                 if let url = URL(string: urlString) {
                     let html = try String(contentsOf: url)
-                    webView.loadHTMLString(html, baseURL: Bundle.main.bundleURL)
+                    var baseUrlString = Bundle.main.bundleURL.absoluteString
+                    if let authToken = Iterate.shared.userApiKey {
+                        baseUrlString = "\(baseUrlString)?auth_token=\(authToken)"
+                    }
+                    webView.loadHTMLString(html, baseURL: URL(string: baseUrlString))
                 }
             } catch {
                 // Something went wrong fetching the survey HTML. Dismiss the survey modal.
