@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.9](https://github.com/iteratehq/iterate-ios/releases/tag/v1.0.9)
+
+Released on 2022-09-15.
+
+**Fixed**
+
+- Restored custom font support
+- Fixed an issue that prevented external links in survey copy from opening
+
 ## [1.0.8](https://github.com/iteratehq/iterate-ios/releases/tag/v1.0.8)
 
 Released on 2022-08-11.
