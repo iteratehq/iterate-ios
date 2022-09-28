@@ -230,7 +230,7 @@ public final class Iterate {
         responseProperties = nil
     }
     
-    public func setFallback(windowTag: Int) {
+    public func setFallback(windowTag: Int?) {
         fallbackWindowTag = windowTag
     }
     
