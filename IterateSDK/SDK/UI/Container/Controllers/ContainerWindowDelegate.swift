@@ -101,7 +101,14 @@ final class ContainerWindowDelegate {
     func getPresentingViewController() -> UIViewController? {
         // Find the first key window that is not our own passthrough window
         var window = UIApplication.shared.windows.first { $0.isKeyWindow && $0 != self.window }
+        
+        // If we didn't find one, but we do have a fallbackWindowTag, try retrieve a window with that tag instead.
+        if window == nil, let fallbackWindowTag = Iterate.shared.fallbackWindowTag {
+            window = UIApplication.shared.windows.first { $0.tag == fallbackWindowTag }
+        }
+        
         // If we didn't find one, get the first non-key window since our window may be key (happens in iOS 14.2)
+        // If your app uses multiple windows and enters this if, consider setting a fallbackWindowTag.
         if window == nil {
            window = UIApplication.shared.windows.first { $0 != self.window }
         }

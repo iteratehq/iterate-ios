@@ -44,6 +44,10 @@ public final class Iterate {
     /// The name of a custom font to be used for buttons in the prompt and survey UI
     var buttonFontName: String?
     
+    /// The fallback window tag for when Iterate determines that it became the key window and tries to avoid itself.
+    /// This may help resolve issues if your app handles multiple windows and tries to open Iterate from any other than the first window.
+    var fallbackWindowTag: Int?
+    
     /// Storage engine for storing user data like their API key and user attributes
     private var storage: StorageEngine
     
@@ -224,6 +228,10 @@ public final class Iterate {
         
         // Clear response properties
         responseProperties = nil
+    }
+    
+    public func setFallback(windowTag: Int) {
+        fallbackWindowTag = windowTag
     }
     
     // MARK: Private methods
