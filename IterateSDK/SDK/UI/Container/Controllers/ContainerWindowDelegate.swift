@@ -19,6 +19,10 @@ final class ContainerWindowDelegate {
     func showWindow(survey: Survey) {
         if window == nil {
             window = PassthroughWindow(survey: survey, delegate: self)
+            
+            if let windowTag = Iterate.shared.iterateWindowTag {
+                window?.tag = windowTag
+            }
         }
         
         window?.isHidden = false

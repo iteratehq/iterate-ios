@@ -44,6 +44,9 @@ public final class Iterate {
     /// The name of a custom font to be used for buttons in the prompt and survey UI
     var buttonFontName: String?
     
+    /// If set, Iterate's container window will be given a tag that can be compared to later.
+    var iterateWindowTag: Int?
+    
     /// The fallback window tag for when Iterate determines that it became the key window and tries to avoid itself.
     /// This may help resolve issues if your app handles multiple windows and tries to open Iterate from any other than the first window.
     var fallbackWindowTag: Int?
@@ -219,6 +222,10 @@ public final class Iterate {
         self.responseProperties = responseProperties
     }
     
+    public func identify(windowTag: Int?) {
+        self.iterateWindowTag = windowTag
+    }
+    
     public func reset() {
         // Clear everything from storage
         self.storage.clear()
@@ -232,6 +239,10 @@ public final class Iterate {
     
     public func setFallback(windowTag: Int?) {
         fallbackWindowTag = windowTag
+    }
+    
+    public func hideWindow() {
+        container.hideWindow()
     }
     
     // MARK: Private methods
