@@ -100,19 +100,25 @@ final class SurveyViewController: UIViewController {
             
             params.append("absoluteURLs=true")
             
-            let urlString = "\(host)/\(survey.companyId)/\(survey.id)/mobile?\(params.joined(separator: "&"))"
-            do {
-                if let url = URL(string: urlString) {
-                    let html = try String(contentsOf: url)
-                    var baseUrlString = Bundle.main.bundleURL.absoluteString
-                    if let authToken = Iterate.shared.userApiKey {
-                        baseUrlString = "\(baseUrlString)?auth_token=\(authToken)"
+            DispatchQueue.global(qos: .userInitiated).async {
+                let urlString = "\(host)/\(survey.companyId)/\(survey.id)/mobile?\(params.joined(separator: "&"))"
+                do {
+                    if let url = URL(string: urlString) {
+                        let html = try String(contentsOf: url)
+                        var baseUrlString = Bundle.main.bundleURL.absoluteString
+                        if let authToken = Iterate.shared.userApiKey {
+                            baseUrlString = "\(baseUrlString)?auth_token=\(authToken)"
+                        }
+                        DispatchQueue.main.async {
+                            self.webView.loadHTMLString(html, baseURL: URL(string: baseUrlString))
+                        }
                     }
-                    webView.loadHTMLString(html, baseURL: URL(string: baseUrlString))
+                } catch {
+                    DispatchQueue.main.async {
+                        // Something went wrong fetching the survey HTML. Dismiss the survey modal.
+                        self.delegate?.dismissSurvey()
+                    }
                 }
-            } catch {
-                // Something went wrong fetching the survey HTML. Dismiss the survey modal.
-                delegate?.dismissSurvey()
             }
         }
     }
