@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.10](https://github.com/iteratehq/iterate-ios/releases/tag/v1.0.10)
+
+Released 2022-10-03.
+
+**Fixed**
+
+- Fixed a Main Thread Checker warning when opening the survey view
+
 ## [1.0.9](https://github.com/iteratehq/iterate-ios/releases/tag/v1.0.9)
 
 Released on 2022-09-15.
