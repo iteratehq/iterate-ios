@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		270613C723AD862C00DDF342 /* IterateSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270613BD23AD862C00DDF342 /* IterateSDK.framework */; };
+		270613C723AD862C00DDF342 /* Iterate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270613BD23AD862C00DDF342 /* Iterate.framework */; };
 		270613CC23AD862C00DDF342 /* IterateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613CB23AD862C00DDF342 /* IterateTests.swift */; };
 		270613CE23AD862C00DDF342 /* Iterate.h in Headers */ = {isa = PBXBuildFile; fileRef = 270613C023AD862C00DDF342 /* Iterate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		270613D823AD8D6200DDF342 /* Iterate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613D723AD8D6200DDF342 /* Iterate.swift */; };
@@ -75,7 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		270613BD23AD862C00DDF342 /* IterateSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IterateSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		270613BD23AD862C00DDF342 /* Iterate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Iterate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		270613C023AD862C00DDF342 /* Iterate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Iterate.h; sourceTree = "<group>"; };
 		270613C123AD862C00DDF342 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		270613C623AD862C00DDF342 /* IterateSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IterateSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,7 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				270613C723AD862C00DDF342 /* IterateSDK.framework in Frameworks */,
+				270613C723AD862C00DDF342 /* Iterate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +149,7 @@
 		270613BE23AD862C00DDF342 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				270613BD23AD862C00DDF342 /* IterateSDK.framework */,
+				270613BD23AD862C00DDF342 /* Iterate.framework */,
 				270613C623AD862C00DDF342 /* IterateSDKTests.xctest */,
 			);
 			name = Products;
@@ -434,7 +434,7 @@
 			);
 			name = IterateSDK;
 			productName = Iterate;
-			productReference = 270613BD23AD862C00DDF342 /* IterateSDK.framework */;
+			productReference = 270613BD23AD862C00DDF342 /* Iterate.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		270613C523AD862C00DDF342 /* IterateSDKTests */ = {
@@ -739,7 +739,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.iteratehq.Iterate;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = Iterate;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -766,7 +766,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.iteratehq.Iterate;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = Iterate;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

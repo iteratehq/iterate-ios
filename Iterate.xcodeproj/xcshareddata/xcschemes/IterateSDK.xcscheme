@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "270613BC23AD862C00DDF342"
-               BuildableName = "IterateSDK.framework"
+               BuildableName = "Iterate.framework"
                BlueprintName = "IterateSDK"
                ReferencedContainer = "container:Iterate.xcodeproj">
             </BuildableReference>
@@ -32,7 +32,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "270613BC23AD862C00DDF342"
-            BuildableName = "IterateSDK.framework"
+            BuildableName = "Iterate.framework"
             BlueprintName = "IterateSDK"
             ReferencedContainer = "container:Iterate.xcodeproj">
          </BuildableReference>
@@ -71,7 +71,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "270613BC23AD862C00DDF342"
-            BuildableName = "IterateSDK.framework"
+            BuildableName = "Iterate.framework"
             BlueprintName = "IterateSDK"
             ReferencedContainer = "container:Iterate.xcodeproj">
          </BuildableReference>

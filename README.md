@@ -19,19 +19,12 @@ Run surveys that are highly targeted, user-friendly, and on-brand. You’ll unde
 
 ## Install
 
-**CocoaPods**
+**Swift Package Manager (SPM)**
 
-You can install Iterate using the [CocoaPods](http://cocoapods.org/) dependency manager by installing CocoaPods and adding the following to your Podfile:
-
-```ruby
-pod 'Iterate', '~> 1.0'
-```
-
-Then run
-
-```bash
-$ pod install
-```
+- Xcode -> Project -> Package Dependencies -> Click "+"
+- Paste "https://github.com/iteratehq/iterate-ios" into search bar
+- Specify versioning rules and select project to add library
+- Press "Add Package"
 
 **Carthage**
 
@@ -49,12 +42,28 @@ $ carthage update
 
 and follow the Carthage [instructions](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos) to copy the framework into your app.
 
+<<<<<<< Updated upstream
 **Swift Package Manager (SPM)**
 
 - Xcode -> Project -> Package Dependencies -> Click "+"    
 - Paste "https://github.com/iteratehq/iterate-ios" into search bar
 - Specify versioning rules and select project to add library
 - Press "Add Package"
+=======
+**CocoaPods**
+
+You can install Iterate using the [CocoaPods](http://cocoapods.org/) dependency manager by installing CocoaPods and adding the following to your Podfile:
+
+```ruby
+pod 'Iterate', '~> 1.0'
+```
+
+Then run
+
+```bash
+$ pod install
+```
+>>>>>>> Stashed changes
 
 ## Usage
 
@@ -122,7 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 Here's an example of an event being fired when the user views the activity feed screen
 
 ```swift
-import IterateSDK
+import Iterate
 
 class ViewController: UIViewController {
 
@@ -187,7 +196,7 @@ The `Iterate.shared.preview(url:)` method looks for the query parameter `?iterat
 If you're using scenes add the following code to your SceneDelegate
 
 ```swift
-import IterateSDK
+import Iterate
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -208,7 +217,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 otherwise add it to your AppDelegate
 
 ```swift
-import IterateSDK
+import Iterate
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

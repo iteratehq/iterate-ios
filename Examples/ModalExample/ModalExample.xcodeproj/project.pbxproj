@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		27313F0A24CB675A00095EE0 /* IterateSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27313F0924CB675A00095EE0 /* IterateSDK.framework */; };
-		27313F0B24CB675A00095EE0 /* IterateSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27313F0924CB675A00095EE0 /* IterateSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		276BB97524099B7500DFCED2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276BB97424099B7500DFCED2 /* SettingsViewController.swift */; };
 		27AEEEA5245DB33300351EC1 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AEEEA4245DB33300351EC1 /* Events.swift */; };
 		27C3B2AE23BE986D00754F4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2AD23BE986D00754F4D /* AppDelegate.swift */; };
@@ -19,6 +17,8 @@
 		27C3B2BA23BE987100754F4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C3B2B823BE987100754F4D /* LaunchScreen.storyboard */; };
 		27C3B2C523BE987100754F4D /* ModalExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2C423BE987100754F4D /* ModalExampleTests.swift */; };
 		27C3B2D023BE987100754F4D /* ModalExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3B2CF23BE987100754F4D /* ModalExampleUITests.swift */; };
+		27D7337C2975F1FD0021C0F5 /* Iterate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D7337B2975F1FD0021C0F5 /* Iterate.framework */; };
+		27D7337D2975F1FD0021C0F5 /* Iterate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27D7337B2975F1FD0021C0F5 /* Iterate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,13 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		27313F0C24CB675A00095EE0 /* Embed Frameworks */ = {
+		27D7337E2975F1FD0021C0F5 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				27313F0B24CB675A00095EE0 /* IterateSDK.framework in Embed Frameworks */,
+				27D7337D2975F1FD0021C0F5 /* Iterate.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,6 +72,7 @@
 		27C3B2CB23BE987100754F4D /* ModalExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModalExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C3B2CF23BE987100754F4D /* ModalExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalExampleUITests.swift; sourceTree = "<group>"; };
 		27C3B2D123BE987100754F4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27D7337B2975F1FD0021C0F5 /* Iterate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Iterate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27313F0A24CB675A00095EE0 /* IterateSDK.framework in Frameworks */,
+				27D7337C2975F1FD0021C0F5 /* Iterate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +159,7 @@
 		27C3B2E923BE9ABD00754F4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27D7337B2975F1FD0021C0F5 /* Iterate.framework */,
 				27313F0924CB675A00095EE0 /* IterateSDK.framework */,
 				276BB971240997F600DFCED2 /* Iterate.framework */,
 				276BB96C240887E200DFCED2 /* Iterate.framework */,
@@ -175,7 +177,7 @@
 				27C3B2A623BE986D00754F4D /* Sources */,
 				27C3B2A723BE986D00754F4D /* Frameworks */,
 				27C3B2A823BE986D00754F4D /* Resources */,
-				27313F0C24CB675A00095EE0 /* Embed Frameworks */,
+				27D7337E2975F1FD0021C0F5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

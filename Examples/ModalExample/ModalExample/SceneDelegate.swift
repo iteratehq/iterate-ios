@@ -6,7 +6,7 @@
 //  Copyright © 2020 Iterate. All rights reserved.
 //
 
-import IterateSDK
+import Iterate
 import UIKit
 
 @available(iOS 13.0, *)
