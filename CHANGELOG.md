@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.11](https://github.com/iteratehq/iterate-ios/releases/tag/1.0.11)
+
+Released 2023-01-16.
+
+**Added**
+
+- Added support for Swift Package Manager (SPM) (thank you [@MadGeorge](https://github.com/MadGeorge)!)
+
+**Changed**
+
+- The target name has changed to `Iterate` (formerly `import IterateSDK`)
+
 ## [1.0.10](https://github.com/iteratehq/iterate-ios/releases/tag/v1.0.10)
 
 Released 2022-10-03.
@@ -59,7 +71,6 @@ Release on 2020-10-29.
 **Fixed**
 
 - Fixed an issue that caused the survey view to be reloaded unexpectedly
-
 
 ## [1.0.3](https://github.com/iteratehq/iterate-ios/releases/tag/v1.0.3)
 
