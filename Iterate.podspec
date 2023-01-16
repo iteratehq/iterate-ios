@@ -12,7 +12,7 @@ Pod::Spec.new do |spec|
   spec.author         = { "Iterate" => "team@iteratehq.com" }
 
   spec.platform       = :ios, "12.0"
-  spec.source         = { :git => "https://github.com/iteratehq/iterate-ios.git", :tag => "v#{spec.version}" }
+  spec.source         = { :git => "https://github.com/iteratehq/iterate-ios.git", :tag => "#{spec.version}" }
   spec.source_files   = "IterateSDK/**/*.{h,m,swift}"
   spec.resource_bundles = {
     'Iterate' => ["IterateSDK/**/*.{storyboard,xib,xcassets,json,imageset,png}"]
