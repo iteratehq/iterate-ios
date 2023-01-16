@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import IterateSDK
+import Iterate
 
 class ViewController: UIViewController {
 
