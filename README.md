@@ -49,6 +49,13 @@ $ carthage update
 
 and follow the Carthage [instructions](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos) to copy the framework into your app.
 
+**Swift Package Manager (SPM)**
+
+- Xcode -> Project -> Package Dependencies -> Click "+"    
+- Paste "https://github.com/iteratehq/iterate-ios" into search bar
+- Specify versioning rules and select project to add library
+- Press "Add Package"
+
 ## Usage
 
 Within your app, surveys are shown in response to _events_. An event can be anything from viewing a screen, clicking a button, or any other user action. You use the Iterate SDK to send events to Iterate, then from your Iterate dashboard you create surveys that target those events.

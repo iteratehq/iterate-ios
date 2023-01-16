@@ -17,3 +17,7 @@ Iterate for iOS is an open source project and we love to receive contributions f
 5. Create a PR to iterate-ios/master and request a review. Include as much detail as possible in the PR explaining the change and method used to implement it.
 6. Make any changes in response to the review.
 7. Celebrate your honorary status as a member of the team!
+
+### Important notes
+
+In order to support both CocoaPods and SPM, all views with custom classes in the Storyboard or Xib files should leave "Inherit Module From Target" unchecked and explicitly declare Module "Iterate".
