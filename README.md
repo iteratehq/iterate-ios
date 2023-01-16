@@ -42,14 +42,6 @@ $ carthage update
 
 and follow the Carthage [instructions](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos) to copy the framework into your app.
 
-<<<<<<< Updated upstream
-**Swift Package Manager (SPM)**
-
-- Xcode -> Project -> Package Dependencies -> Click "+"    
-- Paste "https://github.com/iteratehq/iterate-ios" into search bar
-- Specify versioning rules and select project to add library
-- Press "Add Package"
-=======
 **CocoaPods**
 
 You can install Iterate using the [CocoaPods](http://cocoapods.org/) dependency manager by installing CocoaPods and adding the following to your Podfile:
@@ -63,7 +55,6 @@ Then run
 ```bash
 $ pod install
 ```
->>>>>>> Stashed changes
 
 ## Usage
 
@@ -88,7 +79,7 @@ Log in to or Sign up for an [Iterate](https://iteratehq.com) account if you have
 3. Initialize the SDK in your AppDelegate class
 
 ```swift
-import IterateSDK
+import Iterate
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
