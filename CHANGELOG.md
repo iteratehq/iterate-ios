@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.12](https://github.com/iteratehq/iterate-ios/releases/tag/v1.0.12)
+
+Released 2023-02-15.
+
+**Fixed**
+
+- Fixed response properties not being sent in versions 1.0.9-1.0.11
+- Fixed response and user properties not available in mustache templates in 1.0.9-1.0.11
+
 ## [1.0.11](https://github.com/iteratehq/iterate-ios/releases/tag/1.0.11)
 
 Released 2023-01-16.
