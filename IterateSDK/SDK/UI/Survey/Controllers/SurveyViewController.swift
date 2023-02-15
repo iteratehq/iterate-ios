@@ -105,10 +105,7 @@ final class SurveyViewController: UIViewController {
                 do {
                     if let url = URL(string: urlString) {
                         let html = try String(contentsOf: url)
-                        var baseUrlString = Bundle.main.bundleURL.absoluteString
-                        if let authToken = Iterate.shared.userApiKey {
-                            baseUrlString = "\(baseUrlString)?auth_token=\(authToken)"
-                        }
+                        let baseUrlString = "\(Bundle.main.bundleURL.absoluteString)?\(params.joined(separator: "&"))"
                         DispatchQueue.main.async {
                             self.webView.loadHTMLString(html, baseURL: URL(string: baseUrlString))
                         }
