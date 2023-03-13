@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension URL {
+public extension URL {
     
     /// Returns true 
     var isIteratePreviewURL: Bool {
