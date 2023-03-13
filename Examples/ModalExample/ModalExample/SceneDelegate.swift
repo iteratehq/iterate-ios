@@ -53,7 +53,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         for context in URLContexts {
-            if (URLComponents(url: context.url, resolvingAgainstBaseURL: false)?.queryItems?.contains { $0.name == Iterate.PreviewParameter } ?? false) {
+            if (context.url.isIteratePreviewURL) {
                 Iterate.shared.preview(url: context.url.absoluteURL)
             }
         }
