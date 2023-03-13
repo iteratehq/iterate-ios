@@ -10,7 +10,7 @@ import Foundation
 
 public extension URL {
     
-    /// Returns true 
+    /// Returns `true` if the receiver contains the Iterate preview parameter.
     var isIteratePreviewURL: Bool {
         return URLComponents(url: self, resolvingAgainstBaseURL: false)?.queryItems?.contains { $0.name == Iterate.PreviewParameter } ?? false
     }
