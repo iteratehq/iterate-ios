@@ -84,7 +84,7 @@ final class SurveyViewController: UIViewController {
             if let responseProperties = Iterate.shared.responseProperties {
                 params.append(contentsOf: responseProperties.map {
                     let value = "\($0.value.value)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                    return "response\($0.value.typeString())_\($0.key)=\(value)" })
+                    return "response\($0.value.typeString)_\($0.key)=\(value)" })
             }
             
             // If the user has specified a font name, get a path to it within the bundle to send as a query parameter, for
