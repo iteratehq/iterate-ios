@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import IterateSDK
+@testable import Iterate
 
 /// Contains tests for the show method of the Iterate class
 class SendEventIntegrationTests: XCTestCase {
