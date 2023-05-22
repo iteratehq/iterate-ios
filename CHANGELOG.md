@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.1.0](https://github.com/iteratehq/iterate-ios/releases/tag/v1.1.0)
+
+Released 2023-05-22.
+
+**Added**
+
+- Added support for date types in user and response properties
+
 ## [1.0.12](https://github.com/iteratehq/iterate-ios/releases/tag/v1.0.12)
 
 Released 2023-02-15.
