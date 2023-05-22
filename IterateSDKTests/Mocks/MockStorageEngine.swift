@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import IterateSDK
+@testable import Iterate
 
 /// Storage engine backed by in memory dictionary
 class MockStorageEngine: StorageEngine {

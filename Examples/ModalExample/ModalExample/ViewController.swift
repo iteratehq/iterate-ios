@@ -17,7 +17,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func showSurvey(_ sender: Any) {
-        Iterate.shared.preview(surveyId: "5efa0121a9fffa0001c70b8d")
         Iterate.shared.sendEvent(name: Event.ShowSurveyButtonTapped.rawValue)
     }
     
@@ -25,12 +24,15 @@ class ViewController: UIViewController {
         Iterate.shared.identify(userProperties: [
             "first_name": UserPropertyValue("Test"),
             "last_name": UserPropertyValue("User"),
-            "account_id": UserPropertyValue(123)
+            "account_id": UserPropertyValue(123),
+            "date_joined": UserPropertyValue(Calendar.current.date(from: DateComponents(year: 2023, month: 5, day: 12))!
+),
         ])
         Iterate.shared.identify(responseProperties: [
             "exampleString": ResponsePropertyValue("string value"),
             "exampleNumber": ResponsePropertyValue(123),
             "exampleBoolean": ResponsePropertyValue(true),
+            "exampleDate": ResponsePropertyValue(Calendar.current.date(from: DateComponents(year: 2023, month: 5, day: 13))!)
         ])
     }
     
