@@ -67,6 +67,7 @@ final class SurveyViewController: UIViewController {
         view.bringSubviewToFront(errorLoadingLabel)
         view.bringSubviewToFront(closeButton)
         
+        prepareStyle()
         
         if let survey = survey {
             let host = Iterate.shared.apiHost ?? Iterate.DefaultAPIHost
@@ -85,6 +86,10 @@ final class SurveyViewController: UIViewController {
                 params.append(contentsOf: responseProperties.map {
                     let value = "\($0.value.value)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
                     return "response\($0.value.typeString)_\($0.key)=\(value)" })
+            }
+            
+            if self.traitCollection.userInterfaceStyle == .dark {
+                params.append("theme=dark")
             }
             
             // If the user has specified a font name, get a path to it within the bundle to send as a query parameter, for
@@ -117,6 +122,21 @@ final class SurveyViewController: UIViewController {
                     }
                 }
             }
+        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        prepareStyle()
+    }
+    
+    private func prepareStyle() {
+        if self.traitCollection.userInterfaceStyle == .dark {
+            view.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
+            loadingView.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
+        } else {
+            view.backgroundColor = UIColor.white
+            loadingView.backgroundColor = UIColor.white
         }
     }
     
