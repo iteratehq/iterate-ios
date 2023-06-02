@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,7 +36,7 @@
                                     <segue destination="hJe-TP-gyL" kind="embed" identifier="promptViewControllerSegue" id="V1N-ct-tog"/>
                                 </connections>
                             </containerView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hjn-bG-L7g">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hjn-bG-L7g">
                                 <rect key="frame" x="192" y="809" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -43,6 +44,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="0rX-C1-A2z"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -53,7 +55,6 @@
                             <constraint firstItem="lyp-c9-ocK" firstAttribute="leading" secondItem="tMS-cA-DE8" secondAttribute="leading" id="dWP-vo-QqA"/>
                             <constraint firstItem="lyp-c9-ocK" firstAttribute="top" secondItem="tMS-cA-DE8" secondAttribute="bottom" id="n7N-uG-Ev5"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="0rX-C1-A2z"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Rvd-Xr-Mzg"/>
@@ -101,7 +102,7 @@
             <objects>
                 <viewController storyboardIdentifier="SurveyModalViewController" id="nwb-aU-BRY" userLabel="Survey Modal View Controller" customClass="SurveyViewController" customModule="Iterate" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IHk-by-TmP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dpw-Ly-r8i" userLabel="Close Button">
@@ -118,17 +119,17 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9M9-G2-nI0">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="I5T-wW-wOX">
-                                        <rect key="frame" x="189.5" y="403.5" width="35" height="35"/>
+                                        <rect key="frame" x="189.5" y="425.5" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="c3J-3z-HF2"/>
                                             <constraint firstAttribute="height" constant="35" id="sbo-aw-eDz"/>
                                         </constraints>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idc-G8-eRE">
-                                        <rect key="frame" x="0.0" y="450.5" width="414" height="19.5"/>
+                                        <rect key="frame" x="0.0" y="472.5" width="414" height="19.5"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -144,7 +145,7 @@
                                 </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djd-Kb-cLl">
-                                <rect key="frame" x="20" y="397" width="374" height="48"/>
+                                <rect key="frame" x="20" y="419" width="374" height="48"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Unable to load, make sure you’re connected to the internet or try again later">
                                         <attributes>
@@ -156,6 +157,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="cGc-uP-ank"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cGc-uP-ank" firstAttribute="trailing" secondItem="Dpw-Ly-r8i" secondAttribute="trailing" constant="12" id="1CX-pv-SOl"/>
@@ -169,7 +171,6 @@
                             <constraint firstItem="Djd-Kb-cLl" firstAttribute="leading" secondItem="IHk-by-TmP" secondAttribute="leadingMargin" id="h2i-Uj-0Mo"/>
                             <constraint firstItem="9M9-G2-nI0" firstAttribute="trailing" secondItem="cGc-uP-ank" secondAttribute="trailing" id="hcg-zN-bMe"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="cGc-uP-ank"/>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
@@ -191,7 +192,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="185"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyR-wO-C2T">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyR-wO-C2T">
                                 <rect key="frame" x="40" y="24" width="334" height="71"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Do you wish you could add more recipes to your order each week? Let us know in this 1-minute survey!">
@@ -203,9 +204,9 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="44" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuT-f5-a3f">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="44" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuT-f5-a3f">
                                 <rect key="frame" x="40" y="111" width="334" height="44"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <inset key="contentEdgeInsets" minX="12" minY="12" maxX="12" maxY="12"/>
                                 <state key="normal" title="Happy to help">
@@ -221,7 +222,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5a-XX-PgF" userLabel="Close Button">
-                                <rect key="frame" x="382" y="52" width="24" height="24"/>
+                                <rect key="frame" x="382" y="56" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="R5R-no-ST3"/>
                                     <constraint firstAttribute="height" constant="24" id="RYF-tK-XtU"/>
@@ -233,6 +234,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="wkK-uh-fIM"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zyR-wO-C2T" firstAttribute="top" secondItem="uRf-zf-xnB" secondAttribute="top" constant="24" id="1K0-7G-tMZ"/>
@@ -246,13 +248,12 @@
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="zuT-f5-a3f" secondAttribute="bottom" constant="24" id="TBE-3T-xZP"/>
                             <constraint firstItem="zuT-f5-a3f" firstAttribute="trailing" secondItem="wkK-uh-fIM" secondAttribute="trailing" constant="-40" id="uVK-Xm-jLX"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="wkK-uh-fIM"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="10"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                                <real key="value" value="0.5"/>
+                                <real key="value" value="0.40000000000000002"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
                                 <size key="value" width="0.0" height="2"/>
@@ -263,6 +264,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="P5a-XX-PgF" id="AMr-a8-IlL"/>
                         <outlet property="promptButton" destination="zuT-f5-a3f" id="S71-Vt-Ya0"/>
                         <outlet property="promptLabel" destination="zyR-wO-C2T" id="VBn-ug-iWA"/>
                     </connections>
@@ -274,5 +276,8 @@
     </scenes>
     <resources>
         <image name="close" width="24" height="24"/>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
