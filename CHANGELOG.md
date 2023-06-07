@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.2.0](https://github.com/iteratehq/iterate-ios/releases/tag/v1.2.0)
+
+Released 2023-06-07.
+
+**Added**
+
+- Added support for dark mode
+
 ## [1.1.0](https://github.com/iteratehq/iterate-ios/releases/tag/v1.1.0)
 
 Released 2023-05-22.

@@ -1,8 +1,8 @@
-![Iterate for iOS](https://github.com/iteratehq/iterate-ios/blob/master/Assets/static-banner.png?raw=true)
+![Iterate for iOS](https://github.com/iteratehq/iterate-ios/blob/main/Assets/static-banner.png?raw=true)
 
 # Iterate for iOS
 
-[![build](https://img.shields.io/travis/com/iteratehq/iterate-ios)](https://travis-ci.com/github/iteratehq/iterate-ios) [![version](https://img.shields.io/codeclimate/maintainability/iteratehq/iterate-ios)](https://codeclimate.com/github/iteratehq/iterate-ios) [![version](https://img.shields.io/github/v/tag/iteratehq/iterate-ios?label=version)](https://github.com/iteratehq/iterate-ios/releases) [![CocoaPod](https://img.shields.io/cocoapods/v/Iterate)](https://cocoapods.org/pods/Iterate) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![license](https://img.shields.io/github/license/iteratehq/iterate-ios?color=%23000000)](https://github.com/iteratehq/iterate-ios/blob/master/LICENSE.txt)
+[![build](https://img.shields.io/travis/com/iteratehq/iterate-ios)](https://travis-ci.com/github/iteratehq/iterate-ios) [![version](https://img.shields.io/codeclimate/maintainability/iteratehq/iterate-ios)](https://codeclimate.com/github/iteratehq/iterate-ios) [![version](https://img.shields.io/github/v/tag/iteratehq/iterate-ios?label=version)](https://github.com/iteratehq/iterate-ios/releases) [![CocoaPod](https://img.shields.io/cocoapods/v/Iterate)](https://cocoapods.org/pods/Iterate) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![license](https://img.shields.io/github/license/iteratehq/iterate-ios?color=%23000000)](https://github.com/iteratehq/iterate-ios/blob/main/LICENSE.txt)
 
 ---
 
@@ -66,13 +66,13 @@ Log in to or Sign up for an [Iterate](https://iteratehq.com) account if you have
 
 1. Create a new survey and select "Install in your mobile app"
 
-<img src="https://github.com/iteratehq/iterate-ios/raw/master/Assets/new-survey.png" width="800">
+<img src="https://github.com/iteratehq/iterate-ios/raw/main/Assets/new-survey.png" width="800">
 
 <br/>
 
 2. Go to the "Preview & Publish" tab and copy your SDK API key
 
-<img src="https://github.com/iteratehq/iterate-ios/raw/master/Assets/publish.png" width="500">
+<img src="https://github.com/iteratehq/iterate-ios/raw/main/Assets/publish.png" width="500">
 
 <br/>
 
@@ -155,7 +155,7 @@ struct ActivityFeed: View {
 
 5. On the Targeting options tab of your Iterate survey, set the survey to show when that event is triggered
 
-<img src="https://github.com/iteratehq/iterate-ios/blob/master/Assets/event-targeting.png?raw=true" width="500">
+<img src="https://github.com/iteratehq/iterate-ios/blob/main/Assets/event-targeting.png?raw=true" width="500">
 
 6. Publish your survey and you're done 🎉
 
@@ -167,7 +167,7 @@ You'll likely want to preview your survey before publishing it so you can test i
 
 In the "Preview & Publish" tab select 'Learn more' and copy the code.
 
-<img src="https://github.com/iteratehq/iterate-ios/blob/master/Assets/preview-with-code.png?raw=true" width="500">
+<img src="https://github.com/iteratehq/iterate-ios/blob/main/Assets/preview-with-code.png?raw=true" width="500">
 
 This makes use of the preview method which will ensure the survey is returned once the event your survey is targeting is fired.
 

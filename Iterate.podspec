@@ -1,13 +1,13 @@
 Pod::Spec.new do |spec|
   spec.name           = "Iterate"
-  spec.version        = "1.1.0"
+  spec.version        = "1.2.0"
   spec.summary        = "In-app user research made easy."
   spec.description    = <<-DESC
                         Iterate surveys put you directly in touch with your app users to 
                         learn how you can change for the better.
                         DESC
   spec.homepage       = "https://iteratehq.com"
-  spec.screenshots    = "https://github.com/iteratehq/iterate-ios/raw/master/Assets/static-banner.png?raw=true"
+  spec.screenshots    = "https://github.com/iteratehq/iterate-ios/raw/main/Assets/static-banner.png?raw=true"
   spec.license        = { :type => "MIT" }
   spec.author         = { "Iterate" => "team@iteratehq.com" }
 
