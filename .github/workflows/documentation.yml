@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Generate Documentation
-        uses: SwiftDocOrg/swift-doc@main
+        uses: SwiftDocOrg/swift-doc@master
         with:
           inputs: "IterateSDK/"
           module-name: IterateSDK
