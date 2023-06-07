@@ -14,6 +14,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        prepareStyle()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        prepareStyle()
+    }
+    
+    private func prepareStyle() {
+        if self.traitCollection.userInterfaceStyle == .dark {
+            view.backgroundColor = UIColor.black
+        } else {
+            view.backgroundColor = UIColor.white
+        }
     }
 
     @IBAction func showSurvey(_ sender: Any) {

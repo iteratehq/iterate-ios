@@ -27,3 +27,7 @@ extension UIColor {
         self.init(red:red, green:green, blue:blue, alpha:1)
     }
 }
+
+enum Colors: String {
+    case LightBlack = "#1f1f1f"
+}

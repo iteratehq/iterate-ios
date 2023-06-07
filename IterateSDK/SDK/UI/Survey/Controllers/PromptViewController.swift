@@ -11,6 +11,7 @@ import UIKit
 final class PromptViewController: UIViewController {
     @IBOutlet weak private var promptLabel: UILabel?
     @IBOutlet weak private var promptButton: UIButton?
+    @IBOutlet weak var closeButton: UIButton!
     
     var delegate: ContainerWindowDelegate?
     var survey: Survey? {
@@ -21,11 +22,7 @@ final class PromptViewController: UIViewController {
     
     override func viewDidLoad() {
         preparePrompt()
-        
-        // Override interface style until the full survey interface properly supports dark mode
-        if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .light
-        }
+        prepareStyle()
         
         // Allow the container view to be dynamically sized by the parent
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -33,6 +30,30 @@ final class PromptViewController: UIViewController {
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        prepareStyle()
+    }
+    
+    private func prepareStyle() {
+        guard let promptButton = promptButton else {
+            return
+        }
+        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            view.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
+            self.closeButton.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
+            if let darkColor = survey?.colorDarkHex {
+                promptButton.backgroundColor = UIColor(hex: darkColor)
+            }
+        } else {
+            view.backgroundColor = UIColor.white
+            if let color = survey?.colorHex {
+                promptButton.backgroundColor = UIColor(hex: color)
+            }
+        }
+    }
+
     private func preparePrompt() {
         guard let promptLabel = promptLabel,
             let promptButton = promptButton else {
@@ -41,9 +62,6 @@ final class PromptViewController: UIViewController {
         
         promptLabel.text = survey?.prompt?.message
         promptButton.setTitle(survey?.prompt?.buttonText, for: .normal)
-        if let color = survey?.colorHex {
-            promptButton.backgroundColor = UIColor(hex: color)
-        }
         if let surveyTextFontName = Iterate.shared.surveyTextFontName {
             let uiFont = UIFont(name: surveyTextFontName, size: 16.0)
             promptLabel.font = uiFont
