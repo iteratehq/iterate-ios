@@ -43,7 +43,7 @@ final class PromptViewController: UIViewController {
         if self.traitCollection.userInterfaceStyle == .dark {
             view.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
             self.closeButton.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
-            if let darkColor = survey?.colorDarkHex {
+            if let darkColor = survey?.colorDarkHex ?? survey?.colorHex {
                 promptButton.backgroundColor = UIColor(hex: darkColor)
             }
         } else {

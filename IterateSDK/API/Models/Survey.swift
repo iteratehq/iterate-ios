@@ -10,7 +10,7 @@ import UIKit
 
 public struct Survey: Codable {
     let colorHex: String
-    let colorDarkHex: String
+    let colorDarkHex: String?
     let companyId: String
     let id: String
     let prompt: Prompt?
