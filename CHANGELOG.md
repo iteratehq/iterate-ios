@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.2.1](https://github.com/iteratehq/iterate-ios/releases/tag/v1.2.1)
+
+Released 2023-09-20.
+
+**Fixed**
+
+- Fixed an issue causing surveys without a dark mode color specified from showing up
+
 ## [1.2.0](https://github.com/iteratehq/iterate-ios/releases/tag/v1.2.0)
 
 Released 2023-06-07.
