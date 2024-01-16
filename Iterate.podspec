@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name           = "Iterate"
-  spec.version        = "1.2.1"
+  spec.version        = "1.3.0"
   spec.summary        = "In-app user research made easy."
   spec.description    = <<-DESC
                         Iterate surveys put you directly in touch with your app users to 
@@ -19,4 +19,5 @@ Pod::Spec.new do |spec|
   }
   spec.swift_versions = ['4.2', '5.0', '5.1', '5.2', '5.3']
   spec.framework      = "Webkit"
+  spec.dependency 'swift-markdown'
 end
