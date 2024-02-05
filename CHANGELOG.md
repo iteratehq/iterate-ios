@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.1](https://github.com/iteratehq/iterate-ios/releases/tag/v1.3.1)
+
+Released 2024-02-05.
+
+**Fixed**
+
+- Fixed missing dependency in Package.swift
+
 ## [1.3.0](https://github.com/iteratehq/iterate-ios/releases/tag/v1.3.0)
 
 Released 2024-01-16.
