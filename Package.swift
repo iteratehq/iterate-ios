@@ -14,11 +14,15 @@ let package = Package(
             targets: ["Iterate"]
         ),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-markdown", from: "0.3.0"),
+    ],
     targets: [
         .target(
             name: "Iterate",
-            dependencies: [],
+            dependencies: [
+                .product(name: "Markdown", package: "swift-markdown"),
+            ],
             path: "IterateSDK",
             exclude: ["Info.plist"],
             resources: [
