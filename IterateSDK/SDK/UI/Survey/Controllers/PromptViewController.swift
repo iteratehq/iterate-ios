@@ -47,6 +47,7 @@ final class PromptViewController: UIViewController {
             self.closeButton.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
             if let darkColor = survey?.colorDarkHex ?? survey?.colorHex {
                 promptButton.backgroundColor = UIColor(hex: darkColor)
+                promptView.textColor = UIColor.white
                 // Color for links in markdown
                 promptView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(hex: darkColor)]
             }
