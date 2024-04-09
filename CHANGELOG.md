@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.2](https://github.com/iteratehq/iterate-ios/releases/tag/v1.3.2)
+
+Released 2024-04-09.
+
+**Fixed**
+
+- Fixed prompt background color in dark mode
+
 ## [1.3.1](https://github.com/iteratehq/iterate-ios/releases/tag/v1.3.1)
 
 Released 2024-02-05.
