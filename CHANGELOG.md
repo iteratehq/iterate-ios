@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.3](https://github.com/iteratehq/iterate-ios/releases/tag/v1.3.3)
+
+Released 2024-04-10.
+
+**Added**
+
+- Dismiss survey on app background
+
 ## [1.3.2](https://github.com/iteratehq/iterate-ios/releases/tag/v1.3.2)
 
 Released 2024-04-09.
