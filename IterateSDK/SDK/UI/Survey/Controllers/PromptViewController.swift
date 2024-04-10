@@ -30,8 +30,12 @@ final class PromptViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+
+        NotificationCenter.default.addObserver(self, selector: #selector(close(_ :)),
+                                               name: UIApplication.willResignActiveNotification, object: nil)
+
     }
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         prepareStyle()
@@ -93,7 +97,8 @@ final class PromptViewController: UIViewController {
         
         delegate?.showSurvey(survey)
     }
-    @IBAction func close(_ sender: Any) {
+
+    @IBAction @objc func close(_ sender: Any) {
         delegate?.dismissPrompt(survey: survey, userInitiated: true)
     }
 }
