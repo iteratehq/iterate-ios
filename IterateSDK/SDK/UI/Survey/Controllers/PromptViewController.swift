@@ -45,23 +45,40 @@ final class PromptViewController: UIViewController {
         guard let promptButton = promptButton else {
             return
         }
-        
-        if self.traitCollection.userInterfaceStyle == .dark {
-            view.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
-            self.closeButton.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
-            if let darkColor = survey?.colorDarkHex ?? survey?.colorHex {
-                promptButton.backgroundColor = UIColor(hex: darkColor)
-                promptView.textColor = UIColor.white
-                // Color for links in markdown
-                promptView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(hex: darkColor)]
+
+        switch survey?.appearance {
+        case "dark":
+            applyDarkModeStyles(promptButton: promptButton)
+            
+        case "light":
+            applyLightModeStyles(promptButton: promptButton)
+
+        default:
+            if self.traitCollection.userInterfaceStyle == .dark {
+                applyDarkModeStyles(promptButton: promptButton)
+            } else {
+                applyLightModeStyles(promptButton: promptButton)
             }
-        } else {
-            view.backgroundColor = UIColor.white
-            if let color = survey?.colorHex {
-                promptButton.backgroundColor = UIColor(hex: color)
-                // Color for links in markdown
-                promptView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(hex: color)]
-            }
+        }
+    }
+    
+    private func applyDarkModeStyles(promptButton: UIButton) {
+        view.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
+        self.closeButton.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
+        if let darkColor = survey?.colorDarkHex ?? survey?.colorHex {
+            promptButton.backgroundColor = UIColor(hex: darkColor)
+            promptView.textColor = UIColor.white
+            // Color for links in markdown
+            promptView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(hex: darkColor)]
+        }
+    }
+
+    private func applyLightModeStyles(promptButton: UIButton) {
+        view.backgroundColor = UIColor.white
+        if let color = survey?.colorHex {
+            promptButton.backgroundColor = UIColor(hex: color)
+            // Color for links in markdown
+            promptView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(hex: color)]
         }
     }
 

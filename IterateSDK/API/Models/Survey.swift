@@ -9,6 +9,7 @@
 import UIKit
 
 public struct Survey: Codable {
+    let appearance: String?
     let colorHex: String
     let colorDarkHex: String?
     let companyId: String
@@ -17,6 +18,7 @@ public struct Survey: Codable {
     let triggers: [Trigger]?
     
     enum CodingKeys: String, CodingKey {
+        case appearance
         case colorHex = "color"
         case colorDarkHex = "colorDark"
         case companyId

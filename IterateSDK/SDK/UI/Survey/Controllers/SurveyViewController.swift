@@ -88,9 +88,9 @@ final class SurveyViewController: UIViewController {
                     return "response\($0.value.typeString)_\($0.key)=\(value)" })
             }
             
-            if self.traitCollection.userInterfaceStyle == .dark {
-                params.append("theme=dark")
-            }
+            if survey.appearance == "dark" || self.traitCollection.userInterfaceStyle == .dark {
+                    params.append("theme=dark")
+                }
             
             // If the user has specified a font name, get a path to it within the bundle to send as a query parameter, for
             // use in the webview's CSS
@@ -131,13 +131,30 @@ final class SurveyViewController: UIViewController {
     }
     
     private func prepareStyle() {
-        if self.traitCollection.userInterfaceStyle == .dark {
-            view.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
-            loadingView.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
-        } else {
-            view.backgroundColor = UIColor.white
-            loadingView.backgroundColor = UIColor.white
+        switch survey?.appearance {
+        case "dark":
+            applyDarkModeStyles()
+            
+        case "light":
+            applyLightModeStyles()
+
+        default:
+            if self.traitCollection.userInterfaceStyle == .dark {
+                applyDarkModeStyles()
+            } else {
+                applyLightModeStyles()
+            }
         }
+    }
+    
+    private func applyDarkModeStyles() {
+        view.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
+        loadingView.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
+    }
+
+    private func applyLightModeStyles() {
+        view.backgroundColor = UIColor.white
+        loadingView.backgroundColor = UIColor.white
     }
     
     @IBAction func closeSurvey(_ sender: Any) {
