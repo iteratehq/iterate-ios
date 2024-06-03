@@ -12,6 +12,7 @@ import WebKit
 final class SurveyViewController: UIViewController {
     @objc dynamic private var webView: WKWebView!
     @IBOutlet weak private var loadingView: UIView!
+    @IBOutlet weak private var loadingLabel: UILabel!
     @IBOutlet weak private var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var errorLoadingLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
@@ -150,6 +151,8 @@ final class SurveyViewController: UIViewController {
     private func applyDarkModeStyles() {
         view.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
         loadingView.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
+        loadingLabel.textColor = UIColor.white
+        loadingIndicator.color = UIColor.white
     }
 
     private func applyLightModeStyles() {
