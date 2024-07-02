@@ -14,7 +14,9 @@ public struct Survey: Codable {
     let colorDarkHex: String?
     let companyId: String
     let id: String
+    let primaryLanguage: String?
     let prompt: Prompt?
+    let translations: [Translation]?
     let triggers: [Trigger]?
     
     enum CodingKeys: String, CodingKey {
@@ -23,7 +25,9 @@ public struct Survey: Codable {
         case colorDarkHex = "colorDark"
         case companyId
         case id
+        case primaryLanguage
         case prompt
+        case translations
         case triggers
     }
 }
@@ -31,6 +35,34 @@ public struct Survey: Codable {
 public struct Prompt: Codable {
     let buttonText: String?
     let message: String?
+}
+
+public struct Translation: Codable {
+    let language: String
+    let items: [TranslationKey: TranslationItem]?
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        language = try container.decode(String.self, forKey: .language)
+        
+        if let itemsDict = try? container.decode([String: TranslationItem].self, forKey: .items) {
+            items = Dictionary(uniqueKeysWithValues: itemsDict.compactMap { key, value in
+                guard let translationKey = TranslationKey(rawValue: key) else { return nil }
+                return (translationKey, value)
+            })
+        } else {
+            items = nil
+        }
+    }
+}
+
+public struct TranslationItem: Codable {
+    let text: String
+}
+
+enum TranslationKey: String, Codable {
+    case promptMessage = "survey.prompt.text"
+    case promptButton = "survey.prompt.buttonText"
 }
 
 public struct Trigger: Codable {
