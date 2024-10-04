@@ -84,22 +84,26 @@ final class PromptViewController: UIViewController {
 
     private func preparePrompt() {
         guard let promptView = promptView,
-            let promptButton = promptButton else {
+            let promptButton = promptButton,
+            let survey = survey else {
                 return
         }
         
+        let promptMessage = getTranslationForKey(key: .promptMessage, survey: survey) ?? survey.prompt?.message
+        let promptButtonLabel = getTranslationForKey(key: .promptButton, survey: survey) ?? survey.prompt?.buttonText
+
         var markdownRenderer = MarkdownRenderer(withFontName: Iterate.shared.surveyTextFontName)
         // Logic to re-render the view, this is needed when async tasks like image downloads finish. Attributed text doesn't automatically
         // update when attachments are changed, so we just re-set the attributed text to force a re-render.
         markdownRenderer.rerender = {
             DispatchQueue.main.async {
-                promptView.attributedText = markdownRenderer.attributedString(from: Document(parsing: self.survey?.prompt?.message ?? ""))
+                promptView.attributedText = markdownRenderer.attributedString(from: Document(parsing: promptMessage ?? ""))
             }
         }
-        promptView.attributedText = markdownRenderer.attributedString(from: Document(parsing: survey?.prompt?.message ?? ""))
+        promptView.attributedText = markdownRenderer.attributedString(from: Document(parsing: promptMessage ?? ""))
         
 
-        promptButton.setTitle(survey?.prompt?.buttonText, for: .normal)
+        promptButton.setTitle(promptButtonLabel, for: .normal)
         if let titleLabel = promptButton.titleLabel, let buttonFontName = Iterate.shared.buttonFontName {
             let uiFont = UIFont(name: buttonFontName, size: 16.0)
             titleLabel.font = uiFont

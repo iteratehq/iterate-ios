@@ -44,6 +44,7 @@
 		27D6D68C24881A45005DD502 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D6D68B24881A45005DD502 /* WebKit.framework */; platformFilter = ios; };
 		27DDDD5323C657F4005CA07C /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DDDD5223C657F4005CA07C /* SurveyViewController.swift */; };
 		2C0F0B0829BF8C3E000BD234 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0F0B0429BF8C3E000BD234 /* URL.swift */; };
+		2C6163102C2F26BF00FD8317 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C61630F2C2F26BF00FD8317 /* Language.swift */; };
 		2C8162602880621600B2AE48 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81625F2880621600B2AE48 /* Font.swift */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,7 @@
 		27D6D68B24881A45005DD502 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		27DDDD5223C657F4005CA07C /* SurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
 		2C0F0B0429BF8C3E000BD234 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		2C61630F2C2F26BF00FD8317 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		2C81625F2880621600B2AE48 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -272,6 +274,7 @@
 				274FAFFA249C0B970014C012 /* Scheme.swift */,
 				2C81625F2880621600B2AE48 /* Font.swift */,
 				274C4EB52B474F76003A08FE /* Markdown.swift */,
+				2C61630F2C2F26BF00FD8317 /* Language.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				27DDDD5323C657F4005CA07C /* SurveyViewController.swift in Sources */,
 				27C3B2F323C399B200754F4D /* PassthroughView.swift in Sources */,
 				27C3B28223BA9BB600754F4D /* Paths.swift in Sources */,
+				2C6163102C2F26BF00FD8317 /* Language.swift in Sources */,
 				27063AB024980D2B00BE6913 /* DisplayedEndpoint.swift in Sources */,
 				270613D823AD8D6200DDF342 /* Iterate.swift in Sources */,
 				27C3B2EF23BFD44400754F4D /* PassthroughWindow.swift in Sources */,
