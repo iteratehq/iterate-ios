@@ -32,13 +32,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func showSurvey(_ sender: Any) {
-        Iterate.shared.identify(responseProperties: [
-            "with_survey": ResponsePropertyValue("delayed"),
-        ])
-        Iterate.shared.sendEvent(name: Event.ShowSurveyButtonTapped2.rawValue)
-        Iterate.shared.identify(responseProperties: [
-            "with_survey": ResponsePropertyValue("immediate"),
-        ])
         Iterate.shared.sendEvent(name: Event.ShowSurveyButtonTapped.rawValue)
     }
     
