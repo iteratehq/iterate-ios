@@ -10,4 +10,5 @@ import Foundation
 
 enum Event: String {
     case ShowSurveyButtonTapped = "show-survey-button-tapped"
+    case ShowSurveyButtonTapped2 = "show-survey-button-tapped-2"
 }

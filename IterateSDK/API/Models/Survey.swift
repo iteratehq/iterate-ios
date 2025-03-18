@@ -8,7 +8,7 @@
 
 import UIKit
 
-public struct Survey: Codable {
+public class Survey: Codable {
     let appearance: String?
     let colorHex: String
     let colorDarkHex: String?
@@ -18,6 +18,7 @@ public struct Survey: Codable {
     let prompt: Prompt?
     let translations: [Translation]?
     let triggers: [Trigger]?
+    var capturedResponseProperties: ResponseProperties?
     
     enum CodingKeys: String, CodingKey {
         case appearance
@@ -29,6 +30,33 @@ public struct Survey: Codable {
         case prompt
         case translations
         case triggers
+    }
+    
+    // Empty initializer for testing
+    init() {
+        self.appearance = nil
+        self.colorHex = ""
+        self.colorDarkHex = nil
+        self.companyId = ""
+        self.id = ""
+        self.primaryLanguage = nil
+        self.prompt = nil
+        self.translations = nil
+        self.triggers = nil
+    }
+    
+    // Full initializer
+    init(appearance: String?, colorHex: String, colorDarkHex: String?, companyId: String, id: String, 
+         primaryLanguage: String?, prompt: Prompt?, translations: [Translation]?, triggers: [Trigger]?) {
+        self.appearance = appearance
+        self.colorHex = colorHex
+        self.colorDarkHex = colorDarkHex
+        self.companyId = companyId
+        self.id = id
+        self.primaryLanguage = primaryLanguage
+        self.prompt = prompt
+        self.translations = translations
+        self.triggers = triggers
     }
 }
 
