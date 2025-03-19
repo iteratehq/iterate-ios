@@ -248,6 +248,15 @@ public final class Iterate {
                 self.trackingLastUpdated = lastUpdated
             }
             
+            // Use eventTraits as responseProperties if they were returned
+            if let eventTraits = response?.eventTraits {
+                var properties = ResponseProperties()
+                for (key, value) in eventTraits {
+                    properties[key] = ResponsePropertyValue(value.value)
+                }
+                self.responseProperties = properties
+            }
+            
             complete(response, error)
         })
     }
