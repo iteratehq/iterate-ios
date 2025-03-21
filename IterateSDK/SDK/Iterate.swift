@@ -250,7 +250,7 @@ public final class Iterate {
             
             // Use eventTraits as responseProperties if they were returned
             if let eventTraits = response?.eventTraits {
-                var properties = ResponseProperties()
+                var properties = self.responseProperties ?? ResponseProperties()
                 for (key, value) in eventTraits {
                     properties[key] = ResponsePropertyValue(value.value)
                 }
