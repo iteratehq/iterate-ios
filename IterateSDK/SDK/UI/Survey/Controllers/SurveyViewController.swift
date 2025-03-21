@@ -85,7 +85,7 @@ final class SurveyViewController: UIViewController {
             // e.g. response_number_userId=123
             if let responseProperties = Iterate.shared.responseProperties {
                 params.append(contentsOf: responseProperties.map {
-                    let value = "\($0.value.value)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                    let value = ("\($0.value.value)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "").replacingOccurrences(of: "&", with: "%26")
                     return "response\($0.value.typeString)_\($0.key)=\(value)" })
             }
             
