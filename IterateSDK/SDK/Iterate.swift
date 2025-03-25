@@ -210,22 +210,22 @@ public final class Iterate {
         previewingSurveyId = surveyId
     }
     
-    public func identify(userProperties: UserProperties?) {
+    public func identify(userProperties: UserProperties?, mergeWithExisting: Bool = false) {
         if let newProperties = userProperties {
-            if self.userProperties == nil {
-                self.userProperties = newProperties
-            } else {
+            if mergeWithExisting && self.userProperties != nil {
                 self.userProperties?.merge(newProperties) { (_, new) in new }
+            } else {
+                self.userProperties = newProperties
             }
         }
     }
     
-    public func identify(responseProperties: ResponseProperties?) {
+    public func identify(responseProperties: ResponseProperties?, mergeWithExisting: Bool = false) {
         if let newProperties = responseProperties {
-            if self.responseProperties == nil {
-                self.responseProperties = newProperties
-            } else {
+            if mergeWithExisting && self.responseProperties != nil {
                 self.responseProperties?.merge(newProperties) { (_, new) in new }
+            } else {
+                self.responseProperties = newProperties
             }
         }
     }

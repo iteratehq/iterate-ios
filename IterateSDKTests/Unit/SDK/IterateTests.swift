@@ -49,19 +49,25 @@ class IterateTests: XCTestCase {
         XCTAssertEqual(client.api?.apiKey, "USER_123")
     }
     
-    /// Test merging behavior of user properties
-    func testUserPropertiesMerging() {
+    /// Test behavior of user properties with and without merging
+    func testUserPropertiesBehavior() {
         let client = Iterate(storage: MockStorageEngine())
         
-        // Test basic merging
+        // Test default overwrite behavior
         client.identify(userProperties: ["first": UserPropertyValue("John")])
         client.identify(userProperties: ["last": UserPropertyValue("Doe")])
+        XCTAssertEqual(client.userProperties?.count, 1)
+        XCTAssertEqual(client.userProperties?["last"]?.value as? String, "Doe")
+        
+        // Test explicit merge behavior
+        client.identify(userProperties: ["first": UserPropertyValue("John")], mergeWithExisting: true)
+        client.identify(userProperties: ["last": UserPropertyValue("Doe")], mergeWithExisting: true)
         XCTAssertEqual(client.userProperties?.count, 2)
         XCTAssertEqual(client.userProperties?["first"]?.value as? String, "John")
         XCTAssertEqual(client.userProperties?["last"]?.value as? String, "Doe")
         
-        // Test overwriting
-        client.identify(userProperties: ["first": UserPropertyValue("Jane")])
+        // Test overwriting with merge enabled
+        client.identify(userProperties: ["first": UserPropertyValue("Jane")], mergeWithExisting: true)
         XCTAssertEqual(client.userProperties?["first"]?.value as? String, "Jane")
         XCTAssertEqual(client.userProperties?.count, 2)
         
@@ -81,7 +87,7 @@ class IterateTests: XCTestCase {
             "number": UserPropertyValue(123),
             "boolean": UserPropertyValue(true),
             "date": UserPropertyValue(Date())
-        ])
+        ], mergeWithExisting: true)
         XCTAssertEqual(client.userProperties?.count, 6)
         
         // Test reset
@@ -89,13 +95,19 @@ class IterateTests: XCTestCase {
         XCTAssertNil(client.userProperties)
     }
     
-    /// Test merging behavior of response properties
-    func testResponsePropertiesMerging() {
+    /// Test behavior of response properties with and without merging
+    func testResponsePropertiesBehavior() {
         let client = Iterate(storage: MockStorageEngine())
         
-        // Test basic merging
+        // Test default overwrite behavior
         client.identify(responseProperties: ["prop1": ResponsePropertyValue("value1")])
         client.identify(responseProperties: ["prop2": ResponsePropertyValue("value2")])
+        XCTAssertEqual(client.responseProperties?.count, 1)
+        XCTAssertEqual(client.responseProperties?["prop2"]?.value as? String, "value2")
+        
+        // Test explicit merge behavior
+        client.identify(responseProperties: ["prop1": ResponsePropertyValue("value1")], mergeWithExisting: true)
+        client.identify(responseProperties: ["prop2": ResponsePropertyValue("value2")], mergeWithExisting: true)
         XCTAssertEqual(client.responseProperties?.count, 2)
         
         // Test different types
@@ -104,11 +116,11 @@ class IterateTests: XCTestCase {
             "number": ResponsePropertyValue(123),
             "boolean": ResponsePropertyValue(true),
             "date": ResponsePropertyValue(Date())
-        ])
+        ], mergeWithExisting: true)
         XCTAssertEqual(client.responseProperties?.count, 6)
         
-        // Test overwriting
-        client.identify(responseProperties: ["prop1": ResponsePropertyValue("new value")])
+        // Test overwriting with merge enabled
+        client.identify(responseProperties: ["prop1": ResponsePropertyValue("new value")], mergeWithExisting: true)
         XCTAssertEqual(client.responseProperties?.count, 6)
         
         // Test nil handling
