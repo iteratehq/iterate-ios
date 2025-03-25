@@ -59,6 +59,10 @@ class IterateTests: XCTestCase {
         XCTAssertEqual(client.userProperties?.count, 1)
         XCTAssertEqual(client.userProperties?["last"]?.value as? String, "Doe")
         
+        // Test that nil clears properties when mergeWithExisting is false
+        client.identify(userProperties: nil)
+        XCTAssertNil(client.userProperties)
+        
         // Test explicit merge behavior
         client.identify(userProperties: ["first": UserPropertyValue("John")], mergeWithExisting: true)
         client.identify(userProperties: ["last": UserPropertyValue("Doe")], mergeWithExisting: true)
@@ -66,14 +70,14 @@ class IterateTests: XCTestCase {
         XCTAssertEqual(client.userProperties?["first"]?.value as? String, "John")
         XCTAssertEqual(client.userProperties?["last"]?.value as? String, "Doe")
         
+        // Test that nil preserves properties when mergeWithExisting is true
+        client.identify(userProperties: nil, mergeWithExisting: true)
+        XCTAssertNotNil(client.userProperties)
+        XCTAssertEqual(client.userProperties?.count, 2)
+        
         // Test overwriting with merge enabled
         client.identify(userProperties: ["first": UserPropertyValue("Jane")], mergeWithExisting: true)
         XCTAssertEqual(client.userProperties?["first"]?.value as? String, "Jane")
-        XCTAssertEqual(client.userProperties?.count, 2)
-        
-        // Test nil handling
-        client.identify(userProperties: nil)
-        XCTAssertNotNil(client.userProperties)
         XCTAssertEqual(client.userProperties?.count, 2)
         
         // Test empty dict
@@ -105,9 +109,18 @@ class IterateTests: XCTestCase {
         XCTAssertEqual(client.responseProperties?.count, 1)
         XCTAssertEqual(client.responseProperties?["prop2"]?.value as? String, "value2")
         
+        // Test that nil clears properties when mergeWithExisting is false
+        client.identify(responseProperties: nil)
+        XCTAssertNil(client.responseProperties)
+        
         // Test explicit merge behavior
         client.identify(responseProperties: ["prop1": ResponsePropertyValue("value1")], mergeWithExisting: true)
         client.identify(responseProperties: ["prop2": ResponsePropertyValue("value2")], mergeWithExisting: true)
+        XCTAssertEqual(client.responseProperties?.count, 2)
+        
+        // Test that nil preserves properties when mergeWithExisting is true
+        client.identify(responseProperties: nil, mergeWithExisting: true)
+        XCTAssertNotNil(client.responseProperties)
         XCTAssertEqual(client.responseProperties?.count, 2)
         
         // Test different types
@@ -121,11 +134,6 @@ class IterateTests: XCTestCase {
         
         // Test overwriting with merge enabled
         client.identify(responseProperties: ["prop1": ResponsePropertyValue("new value")], mergeWithExisting: true)
-        XCTAssertEqual(client.responseProperties?.count, 6)
-        
-        // Test nil handling
-        client.identify(responseProperties: nil)
-        XCTAssertNotNil(client.responseProperties)
         XCTAssertEqual(client.responseProperties?.count, 6)
         
         // Test empty dict

@@ -211,22 +211,28 @@ public final class Iterate {
     }
     
     public func identify(userProperties: UserProperties?, mergeWithExisting: Bool = false) {
-        if let newProperties = userProperties {
-            if mergeWithExisting && self.userProperties != nil {
+        // If mergeWithExisting is true, and there are existing user properties, merge the new properties with the existing ones
+        if mergeWithExisting && self.userProperties != nil {
+            if let newProperties = userProperties {
                 self.userProperties?.merge(newProperties) { (_, new) in new }
-            } else {
-                self.userProperties = newProperties
             }
+        } else {
+            // If mergeWithExisting is false, or there are no existing user properties, set the user properties to the new ones.
+            // (or, if userProperties is nil, clear the user properties)
+            self.userProperties = userProperties
         }
     }
     
     public func identify(responseProperties: ResponseProperties?, mergeWithExisting: Bool = false) {
-        if let newProperties = responseProperties {
-            if mergeWithExisting && self.responseProperties != nil {
+        // If mergeWithExisting is true, and there are existing response properties, merge the new properties with the existing ones
+        if mergeWithExisting && self.responseProperties != nil {
+            if let newProperties = responseProperties {
                 self.responseProperties?.merge(newProperties) { (_, new) in new }
-            } else {
-                self.responseProperties = newProperties
             }
+        } else {
+            // If mergeWithExisting is false, or there are no existing response properties, set the response properties to the new ones.
+            // (or, if responseProperties is nil, clear the response properties)
+            self.responseProperties = responseProperties
         }
     }
     
