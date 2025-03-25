@@ -48,4 +48,81 @@ class IterateTests: XCTestCase {
         client.userApiKey = "USER_123"
         XCTAssertEqual(client.api?.apiKey, "USER_123")
     }
+    
+    /// Test merging behavior of user properties
+    func testUserPropertiesMerging() {
+        let client = Iterate(storage: MockStorageEngine())
+        
+        // Test basic merging
+        client.identify(userProperties: ["first": UserPropertyValue("John")])
+        client.identify(userProperties: ["last": UserPropertyValue("Doe")])
+        XCTAssertEqual(client.userProperties?.count, 2)
+        XCTAssertEqual(client.userProperties?["first"]?.value as? String, "John")
+        XCTAssertEqual(client.userProperties?["last"]?.value as? String, "Doe")
+        
+        // Test overwriting
+        client.identify(userProperties: ["first": UserPropertyValue("Jane")])
+        XCTAssertEqual(client.userProperties?["first"]?.value as? String, "Jane")
+        XCTAssertEqual(client.userProperties?.count, 2)
+        
+        // Test nil handling
+        client.identify(userProperties: nil)
+        XCTAssertNotNil(client.userProperties)
+        XCTAssertEqual(client.userProperties?.count, 2)
+        
+        // Test empty dict
+        client.identify(userProperties: [:])
+        XCTAssertNotNil(client.userProperties)
+        XCTAssertEqual(client.userProperties?.count, 2)
+        
+        // Test different types
+        client.identify(userProperties: [
+            "string": UserPropertyValue("text"),
+            "number": UserPropertyValue(123),
+            "boolean": UserPropertyValue(true),
+            "date": UserPropertyValue(Date())
+        ])
+        XCTAssertEqual(client.userProperties?.count, 6)
+        
+        // Test reset
+        client.reset()
+        XCTAssertNil(client.userProperties)
+    }
+    
+    /// Test merging behavior of response properties
+    func testResponsePropertiesMerging() {
+        let client = Iterate(storage: MockStorageEngine())
+        
+        // Test basic merging
+        client.identify(responseProperties: ["prop1": ResponsePropertyValue("value1")])
+        client.identify(responseProperties: ["prop2": ResponsePropertyValue("value2")])
+        XCTAssertEqual(client.responseProperties?.count, 2)
+        
+        // Test different types
+        client.identify(responseProperties: [
+            "string": ResponsePropertyValue("text"),
+            "number": ResponsePropertyValue(123),
+            "boolean": ResponsePropertyValue(true),
+            "date": ResponsePropertyValue(Date())
+        ])
+        XCTAssertEqual(client.responseProperties?.count, 6)
+        
+        // Test overwriting
+        client.identify(responseProperties: ["prop1": ResponsePropertyValue("new value")])
+        XCTAssertEqual(client.responseProperties?.count, 6)
+        
+        // Test nil handling
+        client.identify(responseProperties: nil)
+        XCTAssertNotNil(client.responseProperties)
+        XCTAssertEqual(client.responseProperties?.count, 6)
+        
+        // Test empty dict
+        client.identify(responseProperties: [:])
+        XCTAssertNotNil(client.responseProperties)
+        XCTAssertEqual(client.responseProperties?.count, 6)
+        
+        // Test reset
+        client.reset()
+        XCTAssertNil(client.responseProperties)
+    }
 }

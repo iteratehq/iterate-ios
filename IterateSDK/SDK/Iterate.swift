@@ -211,11 +211,23 @@ public final class Iterate {
     }
     
     public func identify(userProperties: UserProperties?) {
-        self.userProperties = userProperties
+        if let newProperties = userProperties {
+            if self.userProperties == nil {
+                self.userProperties = newProperties
+            } else {
+                self.userProperties?.merge(newProperties) { (_, new) in new }
+            }
+        }
     }
     
     public func identify(responseProperties: ResponseProperties?) {
-        self.responseProperties = responseProperties
+        if let newProperties = responseProperties {
+            if self.responseProperties == nil {
+                self.responseProperties = newProperties
+            } else {
+                self.responseProperties?.merge(newProperties) { (_, new) in new }
+            }
+        }
     }
     
     public func reset() {
