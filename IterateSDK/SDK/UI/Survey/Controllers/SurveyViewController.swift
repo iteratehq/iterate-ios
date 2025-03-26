@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import WebKit
+@preconcurrency import WebKit
 
 final class SurveyViewController: UIViewController {
     @objc dynamic private var webView: WKWebView!
