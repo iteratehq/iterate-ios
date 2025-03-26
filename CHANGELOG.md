@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.5.1](https://github.com/iteratehq/iterate-ios/releases/tag/v1.5.1)
+
+Released 2025-03-26.
+
+**Added**
+
+- Support server-returned response properties
+- Support merge and replace behavior in the `identify` command
+
+**Fixed**
+
+- Response properties are guaranteed to preserve their values at the time an event is triggered
+- Ampersand's are correctly encoded when present in response properties
+
 ## [1.5.0](https://github.com/iteratehq/iterate-ios/releases/tag/v1.5.0)
 
 Released 2024-10-04.
