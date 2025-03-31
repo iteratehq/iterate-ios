@@ -83,7 +83,8 @@ final class SurveyViewController: UIViewController {
             
             // Include response properties. These are in the format of response_[type]_[name]=[value]
             // e.g. response_number_userId=123
-            if let responseProperties = Iterate.shared.responseProperties {
+            // Use the survey's captured response properties instead of the global ones
+            if let responseProperties = survey.capturedResponseProperties ?? Iterate.shared.responseProperties {
                 params.append(contentsOf: responseProperties.map {
                     let value = "\($0.value.value)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
                     return "response\($0.value.typeString)_\($0.key)=\(value)" })

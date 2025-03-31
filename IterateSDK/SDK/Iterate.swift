@@ -162,12 +162,14 @@ public final class Iterate {
             return
         }
         
+        // Capture the current response properties at the time sendEvent is called
+        let capturedResponseProperties = self.responseProperties
+        
         embedRequest(context: EmbedContext(self, withEventName: name)) { (response, error) in
-            if let callback = complete {
-                callback(response?.survey, error)
-            }
-            
             if let survey = response?.survey {
+                // Assign the captured response properties to the survey
+                survey.capturedResponseProperties = capturedResponseProperties
+                
                 // Show the survey after N seconds otherwise show immediately
                 if survey.triggers?.first?.type == TriggerType.seconds {
                     let seconds: Int = survey.triggers?.first?.options?.seconds ?? 0
@@ -177,6 +179,10 @@ public final class Iterate {
                 } else {
                     self.container.show(survey)
                 }
+            }
+            
+            if let callback = complete {
+                callback(response?.survey, error)
             }
         }
     }
