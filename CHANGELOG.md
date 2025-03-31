@@ -3,9 +3,9 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
-## [1.5.1](https://github.com/iteratehq/iterate-ios/releases/tag/v1.5.1)
+## [1.5.2](https://github.com/iteratehq/iterate-ios/releases/tag/v1.5.2)
 
-Released 2025-03-26.
+Released 2025-03-31.
 
 **Added**
 
