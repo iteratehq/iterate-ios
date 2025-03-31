@@ -11,6 +11,7 @@ import Foundation
 /// Embed response
 struct EmbedResponse: Codable {
     let auth: EmbedAuth?
+    let eventTraits: UserProperties?
     let survey: Survey?
     let tracking: TrackingContext?
 }
