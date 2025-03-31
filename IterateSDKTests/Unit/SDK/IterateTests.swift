@@ -48,4 +48,101 @@ class IterateTests: XCTestCase {
         client.userApiKey = "USER_123"
         XCTAssertEqual(client.api?.apiKey, "USER_123")
     }
+    
+    /// Test behavior of user properties with and without merging
+    func testUserPropertiesBehavior() {
+        let client = Iterate(storage: MockStorageEngine())
+        
+        // Test default overwrite behavior
+        client.identify(userProperties: ["first": UserPropertyValue("John")])
+        client.identify(userProperties: ["last": UserPropertyValue("Doe")])
+        XCTAssertEqual(client.userProperties?.count, 1)
+        XCTAssertEqual(client.userProperties?["last"]?.value as? String, "Doe")
+        
+        // Test that nil clears properties when mergeWithExisting is false
+        client.identify(userProperties: nil)
+        XCTAssertNil(client.userProperties)
+        
+        // Test explicit merge behavior
+        client.identify(userProperties: ["first": UserPropertyValue("John")], mergeWithExisting: true)
+        client.identify(userProperties: ["last": UserPropertyValue("Doe")], mergeWithExisting: true)
+        XCTAssertEqual(client.userProperties?.count, 2)
+        XCTAssertEqual(client.userProperties?["first"]?.value as? String, "John")
+        XCTAssertEqual(client.userProperties?["last"]?.value as? String, "Doe")
+        
+        // Test that nil preserves properties when mergeWithExisting is true
+        client.identify(userProperties: nil, mergeWithExisting: true)
+        XCTAssertNotNil(client.userProperties)
+        XCTAssertEqual(client.userProperties?.count, 2)
+        
+        // Test overwriting with merge enabled
+        client.identify(userProperties: ["first": UserPropertyValue("Jane")], mergeWithExisting: true)
+        XCTAssertEqual(client.userProperties?["first"]?.value as? String, "Jane")
+        XCTAssertEqual(client.userProperties?.count, 2)
+        
+        // Test empty dict
+        client.identify(userProperties: [:])
+        XCTAssertNotNil(client.userProperties)
+        XCTAssertEqual(client.userProperties?.count, 2)
+        
+        // Test different types
+        client.identify(userProperties: [
+            "string": UserPropertyValue("text"),
+            "number": UserPropertyValue(123),
+            "boolean": UserPropertyValue(true),
+            "date": UserPropertyValue(Date())
+        ], mergeWithExisting: true)
+        XCTAssertEqual(client.userProperties?.count, 6)
+        
+        // Test reset
+        client.reset()
+        XCTAssertNil(client.userProperties)
+    }
+    
+    /// Test behavior of response properties with and without merging
+    func testResponsePropertiesBehavior() {
+        let client = Iterate(storage: MockStorageEngine())
+        
+        // Test default overwrite behavior
+        client.identify(responseProperties: ["prop1": ResponsePropertyValue("value1")])
+        client.identify(responseProperties: ["prop2": ResponsePropertyValue("value2")])
+        XCTAssertEqual(client.responseProperties?.count, 1)
+        XCTAssertEqual(client.responseProperties?["prop2"]?.value as? String, "value2")
+        
+        // Test that nil clears properties when mergeWithExisting is false
+        client.identify(responseProperties: nil)
+        XCTAssertNil(client.responseProperties)
+        
+        // Test explicit merge behavior
+        client.identify(responseProperties: ["prop1": ResponsePropertyValue("value1")], mergeWithExisting: true)
+        client.identify(responseProperties: ["prop2": ResponsePropertyValue("value2")], mergeWithExisting: true)
+        XCTAssertEqual(client.responseProperties?.count, 2)
+        
+        // Test that nil preserves properties when mergeWithExisting is true
+        client.identify(responseProperties: nil, mergeWithExisting: true)
+        XCTAssertNotNil(client.responseProperties)
+        XCTAssertEqual(client.responseProperties?.count, 2)
+        
+        // Test different types
+        client.identify(responseProperties: [
+            "string": ResponsePropertyValue("text"),
+            "number": ResponsePropertyValue(123),
+            "boolean": ResponsePropertyValue(true),
+            "date": ResponsePropertyValue(Date())
+        ], mergeWithExisting: true)
+        XCTAssertEqual(client.responseProperties?.count, 6)
+        
+        // Test overwriting with merge enabled
+        client.identify(responseProperties: ["prop1": ResponsePropertyValue("new value")], mergeWithExisting: true)
+        XCTAssertEqual(client.responseProperties?.count, 6)
+        
+        // Test empty dict
+        client.identify(responseProperties: [:])
+        XCTAssertNotNil(client.responseProperties)
+        XCTAssertEqual(client.responseProperties?.count, 6)
+        
+        // Test reset
+        client.reset()
+        XCTAssertNil(client.responseProperties)
+    }
 }
