@@ -44,7 +44,7 @@ class ViewController: UIViewController {
 ),
         ])
         Iterate.shared.identify(responseProperties: [
-            "exampleString": ResponsePropertyValue("string value"),
+            "exampleString": ResponsePropertyValue("string & value"),
             "exampleNumber": ResponsePropertyValue(123),
             "exampleBoolean": ResponsePropertyValue(true),
             "exampleDate": ResponsePropertyValue(Calendar.current.date(from: DateComponents(year: 2023, month: 5, day: 13))!)
