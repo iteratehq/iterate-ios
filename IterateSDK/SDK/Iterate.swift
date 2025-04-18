@@ -154,37 +154,15 @@ public final class Iterate {
     ///   - name: Event name
     ///   - complete: optional callback with the results of the request
     public func sendEvent(name: String, complete: ((Survey?, Error?) -> Void)? = nil) {
-        guard self.api != nil else {
-            if let callback = complete {
-                callback(nil, IterateError.invalidAPIKey)
-            }
-            
-            return
-        }
-        
-        // Capture the current response properties at the time sendEvent is called
-        let capturedResponseProperties = self.responseProperties
-        
-        embedRequest(context: EmbedContext(self, withEventName: name)) { (response, error) in
-            if let survey = response?.survey {
-                // Assign the captured response properties to the survey
-                survey.capturedResponseProperties = capturedResponseProperties
-                
-                // Show the survey after N seconds otherwise show immediately
-                if survey.triggers?.first?.type == TriggerType.seconds {
-                    let seconds: Int = survey.triggers?.first?.options?.seconds ?? 0
-                    Timer.scheduledTimer(withTimeInterval: Double(seconds), repeats: false) { timer in
-                        self.container.show(survey)
-                    }
-                } else {
-                    self.container.show(survey)
-                }
-            }
-            
-            if let callback = complete {
-                callback(response?.survey, error)
-            }
-        }
+        return send(context: EmbedContext(self, withEventName: name))
+    }
+    
+    /// Send manual trigger to show a specific survey
+    /// - Parameters:
+    ///   - surveyId: Survey id to show
+    ///   - complete: optional callback with the results of the request
+    public func install(surveyId: String, complete: ((Survey?, Error?) -> Void)? = nil) {
+        return send(context: EmbedContext(self, withSurveyId: surveyId))
     }
     
     /// Configure sets the necessary configuration properties. This should be called before any other methods.
@@ -283,6 +261,44 @@ public final class Iterate {
             
             complete(response, error)
         })
+    }
+    
+    /// Helper method to handle setting up response properties and displaying the survey
+    /// - Parameters:
+    ///   - context: Embed context data
+    ///   - complete: Callback returning the response and error from the embed endpoint
+    private func send(context: EmbedContext, complete: ((Survey?, Error?) -> Void)? = nil) {
+        guard self.api != nil else {
+            if let callback = complete {
+                callback(nil, IterateError.invalidAPIKey)
+            }
+            
+            return
+        }
+        
+        // Capture the current response properties at the time sendEvent is called
+        let capturedResponseProperties = self.responseProperties
+        
+        embedRequest(context: context) { (response, error) in
+            if let survey = response?.survey {
+                // Assign the captured response properties to the survey
+                survey.capturedResponseProperties = capturedResponseProperties
+                
+                // Show the survey after N seconds otherwise show immediately
+                if survey.triggers?.first?.type == TriggerType.seconds {
+                    let seconds: Int = survey.triggers?.first?.options?.seconds ?? 0
+                    Timer.scheduledTimer(withTimeInterval: Double(seconds), repeats: false) { timer in
+                        self.container.show(survey)
+                    }
+                } else {
+                    self.container.show(survey)
+                }
+            }
+            
+            if let callback = complete {
+                callback(response?.survey, error)
+            }
+        }
     }
     
     /// Update the API client to use the latest API key. We prefer to use the user API key and fall back to the company key

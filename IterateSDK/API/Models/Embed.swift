@@ -47,6 +47,11 @@ struct EmbedContext: Codable {
         self.init(iterate)
         event = EventContext(name: eventName)
     }
+    
+    init(_ iterate: Iterate, withSurveyId surveyId: String) {
+        self.init(iterate)
+        trigger = TriggerContext(surveyId: surveyId, type: EmbedTriggerType.manual)
+    }
 }
 
 // MARK: App
