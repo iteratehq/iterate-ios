@@ -86,7 +86,7 @@ final class SurveyViewController: UIViewController {
             // Use the survey's captured response properties instead of the global ones
             if let responseProperties = survey.capturedResponseProperties ?? Iterate.shared.responseProperties {
                 params.append(contentsOf: responseProperties.map {
-                    let value = "\($0.value.value)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                    let value = ("\($0.value.value)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "").replacingOccurrences(of: "&", with: "%26")
                     return "response\($0.value.typeString)_\($0.key)=\(value)" })
             }
             
