@@ -66,19 +66,23 @@ final class PromptViewController: UIViewController {
         view.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
         self.closeButton.backgroundColor = UIColor(hex: Colors.LightBlack.rawValue)
         if let darkColor = survey?.colorDarkHex ?? survey?.colorHex {
-            promptButton.backgroundColor = UIColor(hex: darkColor)
+            let backgroundColor = UIColor(hex: darkColor)
+            promptButton.backgroundColor = backgroundColor
+            promptButton.setTitleColor(backgroundColor.contrastingTextColor(), for: .normal)
             promptView.textColor = UIColor.white
             // Color for links in markdown
-            promptView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(hex: darkColor)]
+            promptView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: backgroundColor]
         }
     }
 
     private func applyLightModeStyles(promptButton: UIButton) {
         view.backgroundColor = UIColor.white
         if let color = survey?.colorHex {
-            promptButton.backgroundColor = UIColor(hex: color)
+            let backgroundColor = UIColor(hex: color)
+            promptButton.backgroundColor = backgroundColor
+            promptButton.setTitleColor(backgroundColor.contrastingTextColor(), for: .normal)
             // Color for links in markdown
-            promptView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(hex: color)]
+            promptView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: backgroundColor]
         }
     }
 

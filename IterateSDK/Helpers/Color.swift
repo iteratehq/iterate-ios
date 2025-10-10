@@ -26,6 +26,25 @@ extension UIColor {
         let blue  = CGFloat(b) / 255.0
         self.init(red:red, green:green, blue:blue, alpha:1)
     }
+
+    func luminance() -> CGFloat {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+
+        guard getRed(&red, green: &green, blue: &blue, alpha: &alpha) else {
+            return 0
+        }
+
+        // Calculate relative luminance using the same formula as Android's ColorUtils.calculateLuminance
+        // https://www.w3.org/TR/WCAG20-TECHS/G17.html
+        return 0.2126 * red + 0.7152 * green + 0.0722 * blue
+    }
+
+    func contrastingTextColor() -> UIColor {
+        return luminance() < 0.5 ? .white : .black
+    }
 }
 
 enum Colors: String {
