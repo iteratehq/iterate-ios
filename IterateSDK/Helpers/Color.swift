@@ -37,9 +37,22 @@ extension UIColor {
             return 0
         }
 
-        // Calculate relative luminance using the same formula as Android's ColorUtils.calculateLuminance
-        // https://www.w3.org/TR/WCAG20-TECHS/G17.html
-        return 0.2126 * red + 0.7152 * green + 0.0722 * blue
+        // Linearize sRGB values (gamma correction) per WCAG spec
+        // https://www.w3.org/TR/WCAG20/#relativeluminancedef
+        let linearize: (CGFloat) -> CGFloat = { channel in
+            if channel <= 0.03928 {
+                return channel / 12.92
+            } else {
+                return pow((channel + 0.055) / 1.055, 2.4)
+            }
+        }
+        
+        let r = linearize(red)
+        let g = linearize(green)
+        let b = linearize(blue)
+        
+        // Calculate relative luminance using WCAG formula
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b
     }
 
     func contrastingTextColor() -> UIColor {
