@@ -26,6 +26,38 @@ extension UIColor {
         let blue  = CGFloat(b) / 255.0
         self.init(red:red, green:green, blue:blue, alpha:1)
     }
+
+    func luminance() -> CGFloat {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+
+        guard getRed(&red, green: &green, blue: &blue, alpha: &alpha) else {
+            return 0
+        }
+
+        // Linearize sRGB values (gamma correction) per WCAG spec
+        // https://www.w3.org/TR/WCAG20/#relativeluminancedef
+        let linearize: (CGFloat) -> CGFloat = { channel in
+            if channel <= 0.03928 {
+                return channel / 12.92
+            } else {
+                return pow((channel + 0.055) / 1.055, 2.4)
+            }
+        }
+        
+        let r = linearize(red)
+        let g = linearize(green)
+        let b = linearize(blue)
+        
+        // Calculate relative luminance using WCAG formula
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b
+    }
+
+    func contrastingTextColor() -> UIColor {
+        return luminance() < 0.5 ? .white : .black
+    }
 }
 
 enum Colors: String {
