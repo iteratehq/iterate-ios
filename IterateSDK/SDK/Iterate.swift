@@ -154,7 +154,7 @@ public final class Iterate {
     ///   - name: Event name
     ///   - complete: optional callback with the results of the request
     public func sendEvent(name: String, complete: ((Survey?, Error?) -> Void)? = nil) {
-        return send(context: EmbedContext(self, withEventName: name))
+        return send(context: EmbedContext(self, withEventName: name), complete: complete)
     }
     
     /// Send manual trigger to show a specific survey
@@ -162,7 +162,7 @@ public final class Iterate {
     ///   - surveyId: Survey id to show
     ///   - complete: optional callback with the results of the request
     public func install(surveyId: String, complete: ((Survey?, Error?) -> Void)? = nil) {
-        return send(context: EmbedContext(self, withSurveyId: surveyId))
+        return send(context: EmbedContext(self, withSurveyId: surveyId), complete: complete)
     }
     
     /// Configure sets the necessary configuration properties. This should be called before any other methods.
