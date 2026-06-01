@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.6.3](https://github.com/iteratehq/iterate-ios/releases/tag/v1.6.3)
+
+Released 2026-06-01.
+
+**Added**
+
+- Fix sendEvent and install dropping completion handlers
+
 ## [1.6.2](https://github.com/iteratehq/iterate-ios/releases/tag/v1.6.2)
 
 Released 2025-10-24.
