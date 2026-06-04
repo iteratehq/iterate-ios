@@ -29,6 +29,9 @@ jobs:
             -workspace Iterate.xcworkspace \
             -scheme IterateSDK \
             -destination 'platform=macOS,variant=Mac Catalyst' \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
             -quiet
 
       - name: Test
@@ -37,4 +40,7 @@ jobs:
             -workspace Iterate.xcworkspace \
             -scheme IterateSDK \
             -destination 'platform=macOS,variant=Mac Catalyst' \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
             -quiet
