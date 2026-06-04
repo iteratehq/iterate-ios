@@ -108,7 +108,7 @@ public final class Iterate {
                 let data = properties.data(using: .utf8) {
                 return try? JSONDecoder().decode(UserProperties.self, from: data)
             }
-            
+
             return nil
         }
         set (newUserProperties) {
@@ -116,6 +116,8 @@ public final class Iterate {
                 let encodedNewUserProperties = try? JSONEncoder().encode(newUserProperties),
                 let userProperties = String(data: encodedNewUserProperties, encoding: .utf8) {
                 storage.set(value: userProperties, for: StorageKeys.UserProperties)
+            } else if newUserProperties == nil {
+                storage.delete(for: StorageKeys.UserProperties)
             }
         }
     }
@@ -200,6 +202,8 @@ public final class Iterate {
             if let newProperties = userProperties {
                 self.userProperties?.merge(newProperties) { (_, new) in new }
             }
+        } else if let newProperties = userProperties, newProperties.isEmpty {
+            // Empty dict is a no-op — don't clear existing properties
         } else {
             // If mergeWithExisting is false, or there are no existing user properties, set the user properties to the new ones.
             // (or, if userProperties is nil, clear the user properties)
@@ -213,6 +217,8 @@ public final class Iterate {
             if let newProperties = responseProperties {
                 self.responseProperties?.merge(newProperties) { (_, new) in new }
             }
+        } else if let newProperties = responseProperties, newProperties.isEmpty {
+            // Empty dict is a no-op — don't clear existing properties
         } else {
             // If mergeWithExisting is false, or there are no existing response properties, set the response properties to the new ones.
             // (or, if responseProperties is nil, clear the response properties)

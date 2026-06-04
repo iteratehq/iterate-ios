@@ -11,8 +11,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    name: Build
+  build-and-test:
+    name: Build & Test
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
@@ -23,13 +23,12 @@ jobs:
       - name: Resolve package dependencies
         run: xcodebuild -resolvePackageDependencies -workspace Iterate.xcworkspace -scheme IterateSDK
 
-      - name: Build
+      - name: Build & Test
         run: |
-          xcodebuild build \
+          xcodebuild test \
             -workspace Iterate.xcworkspace \
             -scheme IterateSDK \
             -destination 'platform=macOS,variant=Mac Catalyst' \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGNING_ALLOWED=NO \
-            -quiet
+            CODE_SIGNING_ALLOWED=NO

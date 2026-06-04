@@ -33,6 +33,15 @@ final class ContainerWindowDelegate {
     
     /// Show either the prompt (if there is one) or the survey
     func show(_ survey: Survey) {
+        // Don't show UI when there's no active window scene (e.g., unit tests, background)
+        if #available(iOS 13.0, *) {
+            guard UIApplication.shared.connectedScenes
+                .compactMap({ $0 as? UIWindowScene })
+                .first(where: { $0.activationState == .foregroundActive }) != nil else {
+                return
+            }
+        }
+
         // Don't show another survey if we're already showing one
         if let isSurveyOrPromptDisplayed = isSurveyOrPromptDisplayed, isSurveyOrPromptDisplayed {
             return

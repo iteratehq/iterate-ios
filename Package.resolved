@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "cmark-gfm",
+        "repositoryURL": "https://github.com/swiftlang/swift-cmark.git",
+        "state": {
+          "branch": null,
+          "revision": "b97d09472e847a416629f026eceae0e2afcfad65",
+          "version": "0.7.0"
+        }
+      },
+      {
+        "package": "swift-markdown",
+        "repositoryURL": "https://github.com/apple/swift-markdown",
+        "state": {
+          "branch": null,
+          "revision": "d8cf111c276ed18cff82d3cad563d2ca5903b982",
+          "version": "0.7.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
