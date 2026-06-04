@@ -28,7 +28,7 @@ jobs:
           xcodebuild build-for-testing \
             -workspace Iterate.xcworkspace \
             -scheme IterateSDK \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+            -destination 'platform=macOS,variant=Mac Catalyst' \
             -quiet
 
       - name: Test
@@ -36,5 +36,5 @@ jobs:
           xcodebuild test-without-building \
             -workspace Iterate.xcworkspace \
             -scheme IterateSDK \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+            -destination 'platform=macOS,variant=Mac Catalyst' \
             -quiet
