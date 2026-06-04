@@ -108,7 +108,7 @@ public final class Iterate {
                 let data = properties.data(using: .utf8) {
                 return try? JSONDecoder().decode(UserProperties.self, from: data)
             }
-
+            
             return nil
         }
         set (newUserProperties) {
