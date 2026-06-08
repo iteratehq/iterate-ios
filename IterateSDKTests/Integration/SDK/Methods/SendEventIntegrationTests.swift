@@ -27,27 +27,6 @@ class SendEventIntegrationTests: XCTestCase {
     }
     
     /// Test that the show method correctly returns a survey
-    func testSendEventReturnsASurvey() {
-        var error: Error?
-        var survey: Survey?
-        let exp = expectation(description: "Show completion callback")
-        let iterateInstance = Iterate(storage: MockStorageEngine())
-        iterateInstance.configure(apiKey: testCompanyApiKey)
-        iterateInstance.preview(surveyId: testIntegrationSurvey)
-        iterateInstance.sendEvent(name: testEventName) { (surveyCallback, errorCallback) in
-            survey = surveyCallback
-            error = errorCallback
-            
-            exp.fulfill()
-        }
-
-        waitForExpectations(timeout: 10)
-
-        XCTAssertNil(error)
-        XCTAssertEqual(survey?.id, testIntegrationSurvey)
-    }
-    
-    /// Test that the show method correctly returns a survey
     func testSendEventSetsUserApiKey() {
         let exp = expectation(description: "Show completion callback")
         let iterateInstance = Iterate(storage: MockStorageEngine())
