@@ -46,6 +46,8 @@ public final class Iterate {
     
     /// Storage engine for storing user data like their API key and user attributes
     private var storage: StorageEngine
+
+    private var onEventCallback: ((InteractionEvent) -> Void)?
     
     /// Container manages the overlay window
     private let container = ContainerWindowDelegate()
@@ -165,6 +167,11 @@ public final class Iterate {
         return send(context: EmbedContext(self, withSurveyId: surveyId), complete: complete)
     }
     
+    /// Set a callback to observe survey interaction lifecycle events.
+    public func onEvent(_ callback: @escaping (InteractionEvent) -> Void) {
+        onEventCallback = callback
+    }
+
     /// Configure sets the necessary configuration properties. This should be called before any other methods.
     /// - Parameter apiKey: Your Iterate API Key, you can find this on your settings page
     public func configure(apiKey: String, apiHost: String? = Iterate.DefaultAPIHost, surveyTextFontName: String? = nil, buttonFontName: String? = nil) {
@@ -229,6 +236,10 @@ public final class Iterate {
         
         // Clear response properties
         responseProperties = nil
+    }
+
+    func dispatchInteractionEvent(_ event: InteractionEvent) {
+        onEventCallback?(event)
     }
     
     // MARK: Private methods

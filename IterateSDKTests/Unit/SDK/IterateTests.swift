@@ -33,6 +33,27 @@ class IterateTests: XCTestCase {
         XCTAssertNoThrow(Iterate.shared)
     }
     
+    func testOnEventCallbackReceivesInteractionEvents() {
+        let client = Iterate(storage: MockStorageEngine())
+        let survey = Survey()
+        var receivedEvent: InteractionEvent?
+
+        client.onEvent { event in
+            receivedEvent = event
+        }
+
+        client.dispatchInteractionEvent(InteractionEvent(type: .displayed, survey: survey, source: .survey))
+
+        guard let event = receivedEvent else {
+            XCTFail("Expected onEvent callback to receive an event")
+            return
+        }
+
+        XCTAssertEqual(event.type, .displayed)
+        XCTAssertEqual(event.source, .survey)
+        XCTAssertTrue(event.survey === survey)
+    }
+
     /// Test that the company API key is correctly used when the user API key isn't present
     func testCompanyApiKeyUsed() {
         let client = Iterate(storage: MockStorageEngine())

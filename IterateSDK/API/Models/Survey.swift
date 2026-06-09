@@ -13,7 +13,7 @@ public class Survey: Codable {
     let colorHex: String
     let colorDarkHex: String?
     let companyId: String
-    let id: String
+    public let id: String
     let primaryLanguage: String?
     let prompt: Prompt?
     let translations: [Translation]?

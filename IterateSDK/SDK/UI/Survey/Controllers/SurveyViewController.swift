@@ -20,6 +20,7 @@ final class SurveyViewController: UIViewController {
     
     var delegate: ContainerWindowDelegate?
     var observation: NSKeyValueObservation?
+    private var progress: InteractionEventProgress?
     var survey: Survey? {
         willSet(newSurvey) {
             guard survey == nil else {
@@ -166,7 +167,7 @@ final class SurveyViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        delegate?.surveyDismissed(survey: survey)
+        delegate?.surveyDismissed(survey: survey, progress: progress)
     }
 }
 
@@ -174,12 +175,15 @@ final class SurveyViewController: UIViewController {
 
 private enum MessageType: String {
     case close = "close"
+    case progress = "progress"
+    case response = "response"
+    case surveyComplete = "survey-complete"
 }
 
 extension SurveyViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == MessageHandlerName {
-            guard let body = message.body as? [String: AnyObject],
+            guard let body = message.body as? [String: Any],
                 let messageType = MessageType(rawValue:body["type"] as? String ?? "") else {
                 return
             }
@@ -187,8 +191,66 @@ extension SurveyViewController: WKScriptMessageHandler {
             switch messageType {
             case .close:
                 delegate?.dismissSurvey()
+            case .progress:
+                progress = InteractionEventProgress(data: body["data"])
+            case .response:
+                guard let survey = survey,
+                    let data = body["data"] as? [String: Any],
+                    let question = InteractionEventQuestion(data: data["question"]),
+                    let response = data["response"],
+                    !(response is NSNull) else {
+                    return
+                }
+
+                Iterate.shared.dispatchInteractionEvent(
+                    InteractionEvent(type: .response, survey: survey, question: question, response: response)
+                )
+            case .surveyComplete:
+                if let survey = survey {
+                    Iterate.shared.dispatchInteractionEvent(InteractionEvent(type: .surveyComplete, survey: survey))
+                }
             }
         }
+    }
+}
+
+private extension InteractionEventQuestion {
+    init?(data: Any?) {
+        guard let data = data as? [String: Any],
+            let id = data["id"] as? String,
+            let prompt = data["prompt"] as? String else {
+            return nil
+        }
+
+        self.init(id: id, prompt: prompt)
+    }
+}
+
+private extension InteractionEventProgress {
+    init?(data: Any?) {
+        guard let data = data as? [String: Any],
+            let completed = InteractionEventProgress.intValue(data["completed"]),
+            let total = InteractionEventProgress.intValue(data["total"]) else {
+            return nil
+        }
+
+        self.init(
+            completed: completed,
+            total: total,
+            currentQuestion: InteractionEventQuestion(data: data["currentQuestion"])
+        )
+    }
+
+    private static func intValue(_ value: Any?) -> Int? {
+        if let value = value as? Int {
+            return value
+        }
+
+        if let value = value as? NSNumber {
+            return value.intValue
+        }
+
+        return nil
     }
 }
 
