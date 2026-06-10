@@ -13,12 +13,14 @@ import UIKit
 /// current application window ensuring it an be displayed anywhere at anytime.
 final class PassthroughWindow: UIWindow {
     init(survey: Survey, delegate: ContainerWindowDelegate) {
+        let presentingWindow = PassthroughWindow.frontmostApplicationWindow()
+
         if #available(iOS 13.0, *) {
-            // Attach the window to the first foreground active UIWindowScene
-            if let scene = UIApplication.shared.connectedScenes
-                .filter({ $0.activationState == .foregroundActive })
-                .compactMap({$0 as? UIWindowScene})
-                .first {
+            let fallbackScene = UIApplication.shared.connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .first { $0.activationState == .foregroundActive }
+
+            if let scene = presentingWindow?.windowScene ?? fallbackScene {
                 super.init(windowScene: scene)
             } else {
                 super.init(frame: UIScreen.main.bounds)
@@ -26,6 +28,8 @@ final class PassthroughWindow: UIWindow {
         } else {
             super.init(frame: UIScreen.main.bounds)
         }
+
+        windowLevel = PassthroughWindow.promptWindowLevel(above: presentingWindow?.windowLevel)
         
         // Initialize the root view controller
         if let containerViewController = UIStoryboard(
@@ -43,6 +47,14 @@ final class PassthroughWindow: UIWindow {
     required init?(coder: NSCoder) {
         fatalError("init from coder not supported")
     }
+
+    static func promptWindowLevel(above windowLevel: UIWindow.Level?) -> UIWindow.Level {
+        let normalWindowLevel = UIWindow.Level.normal.rawValue
+        let desiredWindowLevel = (windowLevel?.rawValue ?? normalWindowLevel) + 1
+        let maximumPromptWindowLevel = UIWindow.Level.alert.rawValue - 1
+
+        return UIWindow.Level(rawValue: min(desiredWindowLevel, maximumPromptWindowLevel))
+    }
     
     /// Override the hit test to ignore hits on the window itself, this way it will pass through events to underlying views
     /// - Parameters:
@@ -58,5 +70,24 @@ final class PassthroughWindow: UIWindow {
         }
         
         return nil
+    }
+
+    private static func frontmostApplicationWindow() -> UIWindow? {
+        let maximumPromptWindowLevel = UIWindow.Level.alert.rawValue - 1
+
+        return UIApplication.shared.windows
+            .filter {
+                !$0.isHidden &&
+                    $0.rootViewController != nil &&
+                    !($0 is PassthroughWindow) &&
+                    $0.windowLevel.rawValue < maximumPromptWindowLevel
+            }
+            .max { lhs, rhs in
+                if lhs.windowLevel == rhs.windowLevel {
+                    return !lhs.isKeyWindow && rhs.isKeyWindow
+                }
+
+                return lhs.windowLevel.rawValue < rhs.windowLevel.rawValue
+            }
     }
 }
