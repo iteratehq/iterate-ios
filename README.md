@@ -31,7 +31,7 @@ Run surveys that are highly targeted, user-friendly, and on-brand. You’ll unde
 You can install Iterate using the [Carthage](https://github.com/Carthage/Carthage) dependency manager by installing Carthage and adding the following to your Cartfile:
 
 ```text
-github "iteratehq/iterate-ios" ~> 1.6.3
+github "iteratehq/iterate-ios" ~> 1.6.4
 ```
 
 Then run
@@ -47,7 +47,7 @@ and follow the Carthage [instructions](https://github.com/Carthage/Carthage#if-y
 You can install Iterate using the [CocoaPods](http://cocoapods.org/) dependency manager by installing CocoaPods and adding the following to your Podfile:
 
 ```ruby
-pod 'Iterate', '~> 1.6.3'
+pod 'Iterate', '~> 1.6.4'
 ```
 
 Then run

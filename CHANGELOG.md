@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 `iterate-ios` adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.6.4](https://github.com/iteratehq/iterate-ios/releases/tag/v1.6.4)
+
+Released 2026-06-10.
+
+**Added**
+
+- Added lifecycle event callbacks
+
+**Fixed**
+
+- Fixed an issue with the survey prompt window level
+
 ## [1.6.3](https://github.com/iteratehq/iterate-ios/releases/tag/v1.6.3)
 
 Released 2026-06-01.
