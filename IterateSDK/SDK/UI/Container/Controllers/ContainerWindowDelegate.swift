@@ -52,6 +52,7 @@ final class ContainerWindowDelegate {
     func showPrompt(_ survey: Survey) {
         self.showWindow(survey: survey)
         self.containerViewController?.showPrompt()
+        Iterate.shared.dispatchInteractionEvent(InteractionEvent(type: .displayed, survey: survey, source: .prompt))
     }
         
     func showSurvey(_ survey: Survey) {
@@ -69,11 +70,13 @@ final class ContainerWindowDelegate {
         surveyViewController.survey = survey
         surveyViewController.delegate = self
         self.getPresentingViewController()?.present(surveyViewController, animated: true, completion: nil)
+        Iterate.shared.dispatchInteractionEvent(InteractionEvent(type: .displayed, survey: survey, source: .survey))
     }
     
     func dismissPrompt(survey: Survey?, userInitiated: Bool) {
         if let survey = survey, userInitiated {
             Iterate.shared.api?.dismissed(survey: survey, completion: { _, _ in })
+            Iterate.shared.dispatchInteractionEvent(InteractionEvent(type: .dismiss, survey: survey, source: .prompt))
         }
         
         containerViewController?.hidePrompt(complete: {
@@ -88,9 +91,10 @@ final class ContainerWindowDelegate {
     
     /// Called once a survey has been dismissed, this can happen if a user clicks the 'X' within a survey
     /// or drags down on the modal view
-    func surveyDismissed(survey: Survey?) {
+    func surveyDismissed(survey: Survey?, progress: InteractionEventProgress?) {
         if let survey = survey {
             Iterate.shared.api?.dismissed(survey: survey, completion: { _, _ in })
+            Iterate.shared.dispatchInteractionEvent(InteractionEvent(type: .dismiss, survey: survey, source: .survey, progress: progress))
         }
         
         self.containerViewController?.isSurveyDisplayed = false

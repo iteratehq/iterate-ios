@@ -233,6 +233,27 @@ Once that's added you can scan the QR code on the "Preview & Publish" tab of you
 
 When implementing Iterate for the first time, we encourage you to implement events for _all_ of your core use cases which you may want to target surveys to in the future. e.g. signup, purchased, viewed X screen, tapped notification, etc. This way you can easily launch new surveys targeting these events without needing to instrument a new event each time.
 
+## Survey lifecycle events
+
+Use `onEvent` to observe survey interaction lifecycle events in your app.
+
+```swift
+Iterate.shared.onEvent { event in
+    switch event.type {
+    case .displayed:
+        // Prompt or survey displayed
+    case .dismiss:
+        // Prompt or survey dismissed
+    case .response:
+        // Question response submitted
+    case .surveyComplete:
+        // User reached the thank you screen
+    }
+}
+```
+
+Displayed and dismiss events include `event.source` (`.prompt` or `.survey`). Survey dismiss events may include `event.progress`, and response events include `event.question` and `event.response`.
+
 ## Custom fonts
 
 Custom fonts that are available in your app bundle can be used in the Iterate survey view by passing their names to the `Iterate.shared.configure` method, like this:

@@ -11,6 +11,7 @@
 		270613CC23AD862C00DDF342 /* IterateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613CB23AD862C00DDF342 /* IterateTests.swift */; };
 		270613CE23AD862C00DDF342 /* Iterate.h in Headers */ = {isa = PBXBuildFile; fileRef = 270613C023AD862C00DDF342 /* Iterate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		270613D823AD8D6200DDF342 /* Iterate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613D723AD8D6200DDF342 /* Iterate.swift */; };
+		270613DA23AD8D6200DDF342 /* InteractionEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613D923AD8D6200DDF342 /* InteractionEvents.swift */; };
 		270613DC23AE773500DDF342 /* ConfigureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613DB23AE773500DDF342 /* ConfigureTests.swift */; };
 		270613DE23BA4A0900DDF342 /* SendEventIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613DD23BA4A0900DDF342 /* SendEventIntegrationTests.swift */; };
 		270613E023BA4DD100DDF342 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270613DF23BA4DD100DDF342 /* Errors.swift */; };
@@ -88,6 +89,7 @@
 		270613CB23AD862C00DDF342 /* IterateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterateTests.swift; sourceTree = "<group>"; };
 		270613CD23AD862C00DDF342 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		270613D723AD8D6200DDF342 /* Iterate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Iterate.swift; sourceTree = "<group>"; };
+		270613D923AD8D6200DDF342 /* InteractionEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionEvents.swift; sourceTree = "<group>"; };
 		270613DB23AE773500DDF342 /* ConfigureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureTests.swift; sourceTree = "<group>"; };
 		270613DD23BA4A0900DDF342 /* SendEventIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEventIntegrationTests.swift; sourceTree = "<group>"; };
 		270613DF23BA4DD100DDF342 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				270613E923BA6B3D00DDF342 /* API */,
 				27C3B28323BA9D7E00754F4D /* Error */,
+				270613D523AD8D6200DDF342 /* Events */,
 				27821A3724900BE9004AAB22 /* Helpers */,
 				270613E123BA4EB600DDF342 /* SDK */,
 				27C3B29523BD352800754F4D /* Storage */,
@@ -199,6 +202,14 @@
 				270613D723AD8D6200DDF342 /* Iterate.swift */,
 			);
 			path = SDK;
+			sourceTree = "<group>";
+		};
+		270613D523AD8D6200DDF342 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				270613D923AD8D6200DDF342 /* InteractionEvents.swift */,
+			);
+			path = Events;
 			sourceTree = "<group>";
 		};
 		270613E923BA6B3D00DDF342 /* API */ = {
@@ -595,6 +606,7 @@
 				2C6163102C2F26BF00FD8317 /* Language.swift in Sources */,
 				27063AB024980D2B00BE6913 /* DisplayedEndpoint.swift in Sources */,
 				270613D823AD8D6200DDF342 /* Iterate.swift in Sources */,
+				270613DA23AD8D6200DDF342 /* InteractionEvents.swift in Sources */,
 				27C3B2EF23BFD44400754F4D /* PassthroughWindow.swift in Sources */,
 				2C0F0B0829BF8C3E000BD234 /* URL.swift in Sources */,
 			);
