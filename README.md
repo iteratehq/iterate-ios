@@ -15,7 +15,7 @@ Run surveys that are highly targeted, user-friendly, and on-brand. You’ll unde
 ✅ iOS 12 or higher  
 ✅ Works with iPhone or iPad  
 ✅ Swift 4.2 or higher  
-👍 No 3rd party dependencies
+📦 One dependency: [swift-markdown](https://github.com/apple/swift-markdown), used to render Markdown in prompt text
 
 ## Install
 
@@ -270,7 +270,7 @@ True Type fonts and Open Type Fonts are supported. To find the correct font name
 
 Using the [Identify](https://github.com/iteratehq/iterate-ios/wiki/Iterate#identifyuserproperties) method, you can easily add properties to a user that can be used to target surveys to them and associate the information with all of their future responses.
 
-For more information see our [help article](https://help.iteratehq.com/en/articles/4457590-associating-data-with-a-user-or-response).
+For more information see our [help article](https://help.iteratehq.com/en/articles/4457590-associating-data-with-a-user-or-response-in-app).
 
 Note: if your app allows users to log out, you can call `Iterate.shared.reset()` method to clear all stored user data on logout.
 
@@ -281,3 +281,7 @@ By default surveys are only shown once per person and user's can only see at mos
 ## Troubleshooting
 
 If you have any issues you can head over to our [help center](https://help.iteratehq.com) to search for an answer or chat with our support team.
+
+## Architecture
+
+For a description of the delivery model, event flow, callbacks, targeting architecture, and how responses reach connected integrations, see [ARCHITECTURE.md](ARCHITECTURE.md).
